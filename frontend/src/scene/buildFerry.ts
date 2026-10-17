@@ -97,6 +97,34 @@ export function buildFerry(): THREE.Group {
   add(mergeGeometries(bays), M.dark, 'Vehicle deck openings')
   add(mergeGeometries(posts), M.white, 'Vehicle deck frames')
 
+  // "BC FERRIES" on both sides at both ends, clear of the bays (|z| < 37), between the boot-top and the stripe.
+  // Each patch follows the hull surface, so the letters sit flat on the curved ends.
+  const NAME = { z0: 40, z1: 70, y0: 1.5, y1: 6.2, off: 0.1, nu: 24, nv: 4 }
+  const namePatch = (sx: number, sz: number) => {
+    const p: number[] = [], uv: number[] = [], ix: number[] = []
+    const zMin = sz > 0 ? NAME.z0 : -NAME.z1
+    for (let i = 0; i <= NAME.nu; i++) for (let j = 0; j <= NAME.nv; j++) {
+      const u = i / NAME.nu, v = j / NAME.nv
+      // Seen from outside, text reads towards -z on starboard (+x) and towards +z on port.
+      const z = zMin + (NAME.z1 - NAME.z0) * (sx > 0 ? 1 - u : u)
+      const y = NAME.y0 + (NAME.y1 - NAME.y0) * v
+      p.push(sx * (hullHalf(Math.abs(z) / (L / 2), y) + NAME.off), y, z)
+      uv.push(u, v)
+    }
+    for (let i = 0; i < NAME.nu; i++) for (let j = 0; j < NAME.nv; j++) {
+      const a = i * (NAME.nv + 1) + j, b = a + NAME.nv + 1
+      ix.push(a, b, a + 1, b, b + 1, a + 1)
+    }
+    const g = new THREE.BufferGeometry()
+    g.setAttribute('position', new THREE.Float32BufferAttribute(p, 3))
+    g.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2))
+    g.setIndex(ix)
+    g.computeVertexNormals()
+    return g
+  }
+  const lettering = new THREE.MeshStandardMaterial({ name: 'Hull lettering', map: nameTexture('BC FERRIES'), alphaTest: 0.5, roughness: 0.5 })
+  add(mergeGeometries([-1, 1].flatMap((sx) => [-1, 1].map((sz) => namePatch(sx, sz)))), lettering, 'Hull lettering')
+
   /* ---------- superstructure tiers ---------- */
   const rounded = (len: number, wid: number, r: number) => {
     r = Math.min(r, wid / 2 - 0.01, len / 2 - 0.01)
@@ -208,4 +236,24 @@ export function buildFerry(): THREE.Group {
 
   ship.userData = { radars, props } satisfies FerryParts
   return ship
+}
+
+/** White bold lettering on a transparent canvas, sized for a 30 m × 4.7 m hull patch. */
+function nameTexture(text: string): THREE.CanvasTexture {
+  const canvas = document.createElement('canvas')
+  canvas.width = 2048
+  canvas.height = 320
+  const ctx = canvas.getContext('2d')
+  if (ctx) {
+    ctx.font = '700 230px "Helvetica Neue", Arial, sans-serif'
+    ctx.letterSpacing = '14px'
+    ctx.textAlign = 'center'
+    ctx.textBaseline = 'middle'
+    ctx.fillStyle = '#ffffff'
+    ctx.fillText(text, canvas.width / 2, canvas.height / 2 + 8, canvas.width - 80)
+  }
+  const tex = new THREE.CanvasTexture(canvas)
+  tex.colorSpace = THREE.SRGBColorSpace
+  tex.anisotropy = 8
+  return tex
 }

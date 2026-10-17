@@ -4,6 +4,7 @@
       "text": "Which sea animal has three hearts?",
       "answer": "b",
       "pic": "giant Pacific octopus",
+      "picId": "octopus",
       "options": [["a", "Orca"], ["b", "Giant Pacific octopus"], ["c", "Harbour seal"], ["d", "Chinook salmon"]],
       "hint": "It lives on the seafloor and has eight arms. Check the Sea life tab.",
       "why": "The giant Pacific octopus has three hearts: two pump blood through its gills and one sends it around the body. Its blood is blue, too!"
@@ -12,6 +13,7 @@
       "text": "Why is the water less salty near Tsawwassen?",
       "answer": "c",
       "pic": "Fraser River meeting the sea",
+      "picId": "fraser-plume",
       "options": [["a", "Rain falls on the ferry"], ["b", "Fish drink the salt"], ["c", "A big river pours in fresh water"], ["d", "The ferry filters it"]],
       "hint": "Look at the Seafloor tab near the end of the route.",
       "why": "The Fraser River empties into the Strait of Georgia. Its fresh water is lighter than salt water, so it spreads out on top."
@@ -20,6 +22,7 @@
       "text": "What makes the tide go up and down?",
       "answer": "b",
       "pic": "Moon and Earth",
+      "picId": "earth-moon",
       "options": [["a", "The wind"], ["b", "The Moon pulling on the sea"], ["c", "Waves from ferries"], ["d", "Whales swimming"]],
       "hint": "The answer is in the sky. Check the Tides & weather tab.",
       "why": "The Moon's gravity pulls the ocean into a bulge. As Earth spins through it, the water here rises and falls about twice a day."
@@ -28,6 +31,7 @@
       "text": "What do the orcas that live here mostly eat?",
       "answer": "b",
       "pic": "orca chasing salmon",
+      "picId": "orca",
       "options": [["a", "Kelp"], ["b", "Salmon"], ["c", "Jellyfish"], ["d", "Sea stars"]],
       "hint": "It is a big fish that swims up rivers to lay its eggs.",
       "why": "Resident orcas in these waters mostly eat salmon, especially big Chinook salmon."
@@ -36,6 +40,7 @@
       "text": "What are the tiny plants that float in the sea called?",
       "answer": "a",
       "pic": "phytoplankton under a microscope",
+      "picId": "phytoplankton",
       "options": [["a", "Phytoplankton"], ["b", "Coral"], ["c", "Barnacles"], ["d", "Sea urchins"]],
       "hint": "The ferry measures them with its chlorophyll sensor.",
       "why": "Phytoplankton are tiny plant-like living things. They feed almost everything else in the sea, and the ferry measures them as chlorophyll."

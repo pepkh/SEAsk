@@ -1,0 +1,42 @@
+{
+  "_comment": [
+    "Maps each ShipRow column to an ONC sensor. Used by app/sources/onc.py.",
+    "location: 'nav' = ONC_NAV_LOCATION_CODE (TWSB.N1), 'ship' = ONC_LOCATION_CODE (TWSB); any other value is used as a literal locationCode.",
+    "deviceCategory: ONC deviceCategoryCode. One scalardata/location request is made per (location, deviceCategory).",
+    "sensorCategoryCode: candidate codes, first match wins. Codes come from the TWSB inventory (Neon 'sensors' table); confirm with scripts/onc_discover.py.",
+    "unit: target unit. The value is converted from the sensor's unitOfMeasure (see UNIT_ALIASES/CONVERSIONS in onc.py). Omit to pass the value through.",
+    "checkAge: true = null when the sample is more than ONC_MAX_SENSOR_AGE_S older than the NAV sample (e.g. the seawater pump is off at the dock).",
+    "transform: optional change applied after the unit conversion. 'magnetic_to_true' adds MAGNETIC_DECLINATION_DEG and wraps to 0-360.",
+    "fallback: optional second sensor (same keys) read only when the first one has no usable value. Its group is requested only then.",
+    "The NAV group (location 'nav') is cached for ONC_NAV_CACHE_S, every other group for ONC_CACHE_S.",
+    "heading: NAV 'heading' is the ship's true heading (gyro). ORIENTATION 'magnetic_heading' is a fallback only: on 2026-08-17 it read 299-3 deg while the true heading went all the way round (compass deviation up to ~60 deg), so magnetic + declination is right within a few degrees at the Swartz Bay berth but ~40 deg off at Tsawwassen."
+  ],
+  "columns": {
+    "latitude": {"location": "nav", "deviceCategory": "NAV", "sensorCategoryCode": ["latitude"], "checkAge": false},
+    "longitude": {"location": "nav", "deviceCategory": "NAV", "sensorCategoryCode": ["longitude"], "checkAge": false},
+    "ship_course": {"location": "nav", "deviceCategory": "NAV", "sensorCategoryCode": ["ship_course", "course_over_ground", "course"], "checkAge": true},
+    "speed_over_ground": {"location": "nav", "deviceCategory": "NAV", "sensorCategoryCode": ["speed_over_ground", "speed"], "unit": "kn", "checkAge": true},
+    "roll": {"location": "nav", "deviceCategory": "NAV", "sensorCategoryCode": ["roll"], "checkAge": true},
+    "heading": {
+      "location": "nav", "deviceCategory": "NAV", "sensorCategoryCode": ["heading"], "checkAge": true,
+      "fallback": {"location": "ship", "deviceCategory": "ORIENTATION", "sensorCategoryCode": ["magnetic_heading"], "transform": "magnetic_to_true", "checkAge": true}
+    },
+
+    "tsg_temperature": {"location": "ship", "deviceCategory": "TSG", "sensorCategoryCode": ["temperature"], "unit": "C", "checkAge": true},
+    "salinity": {"location": "ship", "deviceCategory": "TSG", "sensorCategoryCode": ["salinity"], "checkAge": true},
+    "conductivity": {"location": "ship", "deviceCategory": "TSG", "sensorCategoryCode": ["conductivity"], "checkAge": true},
+    "sound_speed": {"location": "ship", "deviceCategory": "TSG", "sensorCategoryCode": ["sound_speed", "soundspeed"], "checkAge": true},
+
+    "chlorophyll": {"location": "ship", "deviceCategory": "TURBCHLFL", "sensorCategoryCode": ["chlorophyll"], "checkAge": true},
+    "turbidity": {"location": "ship", "deviceCategory": "TURBCHLFL", "sensorCategoryCode": ["turbidity", "turbidity_ntu"], "checkAge": true},
+    "cdom_fluorescence": {"location": "ship", "deviceCategory": "TURBCHLFL", "sensorCategoryCode": ["cdom_fluorescence", "cdom"], "checkAge": true},
+
+    "air_temperature": {"location": "ship", "deviceCategory": "TEMPHUMID", "sensorCategoryCode": ["air_temperature", "temperature"], "unit": "C", "checkAge": true},
+    "barometric_pressure": {"location": "ship", "deviceCategory": "BARPRESS", "sensorCategoryCode": ["barometric_pressure", "pressure"], "unit": "hPa", "checkAge": true},
+
+    "current": {"location": "ship", "deviceCategory": "PVCS", "sensorCategoryCode": ["current"], "checkAge": true},
+    "tank_level": {"location": "ship", "deviceCategory": "PVCS", "sensorCategoryCode": ["tank_level"], "checkAge": true},
+    "systemstatus": {"location": "ship", "deviceCategory": "PVCS", "sensorCategoryCode": ["systemstatus", "system_status"], "checkAge": true},
+    "valve_position_status": {"location": "ship", "deviceCategory": "PVCS", "sensorCategoryCode": ["valve_position_status"], "checkAge": true}
+  }
+}

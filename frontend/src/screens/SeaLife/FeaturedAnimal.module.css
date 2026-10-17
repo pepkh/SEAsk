@@ -20,6 +20,11 @@
   flex: none;
 }
 
+.heroPhoto {
+  position: absolute;
+  inset: 0;
+}
+
 .badge {
   position: absolute;
   left: 22px;

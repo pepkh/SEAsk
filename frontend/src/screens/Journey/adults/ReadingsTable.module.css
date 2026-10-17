@@ -58,3 +58,11 @@
   border-radius: 6px;
   padding: 3px 7px;
 }
+
+/* Why some readings are empty (pump off at the dock) */
+.note {
+  margin: 10px 0 4px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--muted);
+}

@@ -6,7 +6,8 @@
     "lookout": {
       "title": "Look out for cormorants",
       "text": "Black birds drying their wings on the posts near the dock",
-      "photo": "cormorant"
+      "photo": "cormorant",
+      "photoId": "cormorant"
     },
     "happening": {
       "title": "Calm water at the terminal",
@@ -20,7 +21,8 @@
     "lookout": {
       "title": "Look out for orcas",
       "text": "Tall black fins travel through this channel in family groups",
-      "photo": "orca"
+      "photo": "orca",
+      "photoId": "orca"
     },
     "happening": {
       "title": "Island water, mixed by the tide",
@@ -34,7 +36,8 @@
     "lookout": {
       "title": "Look out for harbour seals",
       "text": "Heads bobbing near the rocks on your left",
-      "photo": "seal"
+      "photo": "seal",
+      "photoId": "harbour-seal"
     },
     "happening": {
       "title": "Tides are stirring the water column",
@@ -48,7 +51,8 @@
     "lookout": {
       "title": "Look out for dolphins",
       "text": "White-sided dolphins sometimes leap in the waves beside the ship",
-      "photo": "white-sided dolphin"
+      "photo": "white-sided dolphin",
+      "photoId": "white-sided-dolphin"
     },
     "happening": {
       "title": "Deep, open water",
@@ -62,7 +66,8 @@
     "lookout": {
       "title": "Look out for herons",
       "text": "Great blue herons hunt in the shallow water near the causeway",
-      "photo": "great blue heron"
+      "photo": "great blue heron",
+      "photoId": "great-blue-heron"
     },
     "happening": {
       "title": "Fresh water on top",

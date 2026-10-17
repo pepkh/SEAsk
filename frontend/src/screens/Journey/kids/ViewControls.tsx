@@ -1,5 +1,4 @@
 import { GlobeIcon, SideViewIcon, TopViewIcon } from '../../../components/icons'
-import { MAP_MODE_ENABLED } from '../../../config/env'
 import { useKiosk } from '../../../context/KioskContext'
 import { useLanguage } from '../../../i18n/LanguageContext'
 import type { ViewName } from '../../../scene/constants'
@@ -14,7 +13,7 @@ interface Props {
 /** Camera buttons (3D / side / top) and, when map mode is on, the Sea/Map button. */
 export function ViewControls({ view, onView, className = '' }: Props) {
   const { t } = useLanguage()
-  const { sceneMode, setSceneMode } = useKiosk()
+  const { sceneMode, setSceneMode, mapAvailable } = useKiosk()
   const buttons = [
     { name: 'chase', label: t('journey.views.chase'), icon: '3D' },
     { name: 'side', label: t('journey.views.side'), icon: <SideViewIcon /> },
@@ -28,7 +27,7 @@ export function ViewControls({ view, onView, className = '' }: Props) {
           {icon}
         </button>
       ))}
-      {MAP_MODE_ENABLED && <SceneModeButton variant="glass" mode={sceneMode} onToggle={() => setSceneMode(sceneMode === 'sea' ? 'map' : 'sea')} />}
+      {mapAvailable && <SceneModeButton variant="glass" mode={sceneMode} onToggle={() => setSceneMode(sceneMode === 'sea' ? 'map' : 'sea')} />}
     </div>
   )
 }

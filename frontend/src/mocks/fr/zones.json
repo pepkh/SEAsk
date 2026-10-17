@@ -6,7 +6,8 @@
     "lookout": {
       "title": "Cherchez les cormorans",
       "text": "Des oiseaux noirs font sécher leurs ailes sur les poteaux près du quai",
-      "photo": "cormoran"
+      "photo": "cormoran",
+      "photoId": "cormorant"
     },
     "happening": {
       "title": "Eau calme au terminal",
@@ -20,7 +21,8 @@
     "lookout": {
       "title": "Cherchez les épaulards",
       "text": "De grands ailerons noirs traversent ce chenal en groupes familiaux",
-      "photo": "épaulard"
+      "photo": "épaulard",
+      "photoId": "orca"
     },
     "happening": {
       "title": "L'eau des îles, mélangée par la marée",
@@ -34,7 +36,8 @@
     "lookout": {
       "title": "Cherchez les phoques communs",
       "text": "Des têtes qui flottent près des rochers à votre gauche",
-      "photo": "phoque"
+      "photo": "phoque",
+      "photoId": "harbour-seal"
     },
     "happening": {
       "title": "Les marées brassent la colonne d'eau",
@@ -48,7 +51,8 @@
     "lookout": {
       "title": "Cherchez les dauphins",
       "text": "Les dauphins à flancs blancs sautent parfois dans les vagues près du navire",
-      "photo": "dauphin à flancs blancs"
+      "photo": "dauphin à flancs blancs",
+      "photoId": "white-sided-dolphin"
     },
     "happening": {
       "title": "Des eaux profondes et libres",
@@ -62,7 +66,8 @@
     "lookout": {
       "title": "Cherchez les hérons",
       "text": "Les grands hérons chassent dans l'eau peu profonde près de la chaussée",
-      "photo": "grand héron"
+      "photo": "grand héron",
+      "photoId": "great-blue-heron"
     },
     "happening": {
       "title": "De l'eau douce en surface",

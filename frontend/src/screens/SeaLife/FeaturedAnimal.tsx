@@ -1,3 +1,4 @@
+import { Photo } from '../../components/Photo/Photo'
 import { formatNumber } from '../../i18n/format'
 import { useLanguage } from '../../i18n/LanguageContext'
 import type { SpeciesContent } from '../../types/content'
@@ -11,7 +12,7 @@ export function FeaturedAnimal({ featured }: { featured: SpeciesContent['feature
   return (
     <div className={styles.card}>
       <div className={styles.hero}>
-        {t('seaLife.heroPhoto', { name: featured.photo })}
+        <Photo id={featured.photoId} alt={featured.photo} placeholder={t('seaLife.heroPhoto', { name: featured.photo })} className={styles.heroPhoto} />
         <span className={styles.badge}>{t('seaLife.featured')}</span>
       </div>
       <div className={styles.body}>

@@ -1,3 +1,4 @@
+import { Photo } from '../../components/Photo/Photo'
 import { useLanguage } from '../../i18n/LanguageContext'
 import type { QuizQuestion } from '../../types/content'
 import styles from './AnswerPanel.module.css'
@@ -30,7 +31,7 @@ export function AnswerPanel({ question, picked, isLast, onNext }: Props) {
   const correct = picked === question.answer
   return (
     <div className={styles.answered}>
-      <div className={styles.picture}>{t('quiz.illustration', { pic: question.pic })}</div>
+      <Photo id={question.picId} alt={question.pic} placeholder={t('quiz.illustration', { pic: question.pic })} className={styles.picture} />
       <div className={styles.body}>
         <span className={`${styles.verdict} ${correct ? styles.correct : styles.wrong}`}>
           {t(correct ? 'quiz.correct' : 'quiz.wrong')}

@@ -20,6 +20,8 @@
     "label": "Change language: English or French"
   },
   "sampleData": "SAMPLE DATA",
+  "sampleTides": "SAMPLE TIDES",
+  "sampleWeather": "SAMPLE WEATHER",
   "compass": "N,NE,E,SE,S,SW,W,NW",
   "photo": "[photo: {name}]",
   "waypoint": {
@@ -39,6 +41,8 @@
     },
     "eta": "{place} in {min} min",
     "toGo": "{km} km to go",
+    "sensorsResting": "Sensors rest while the ferry is docked",
+    "noReading": "No reading right now",
     "next": "Next: {place}",
     "yourRoute": "Your route",
     "routeMapLabel": "Route map with the ferry near {place}",
@@ -63,17 +67,27 @@
       "reading": "Reading",
       "now": "Now",
       "last15": "Last 15 min",
-      "qc": "QC"
+      "qc": "QC",
+      "dockedNote": "The sea sensors rest while the ferry is docked. They start again when it sails."
     },
     "colourBy": "Colour the track by",
     "trackMapLabel": "Route map with the track coloured by {reading}",
     "happening": "What's happening here",
     "aboutData": "About the data",
-    "aboutDataText": "Instruments on board sample seawater through an intake in the hull as the ferry sails. Readings come from Ocean Networks Canada and refresh every second.",
-    "qcNote": "QC = share of readings passing quality checks"
+    "aboutDataText": "Instruments on board sample seawater through an intake in the hull as the ferry sails. Readings come from Ocean Networks Canada and refresh every few seconds.",
+    "qcNote": "QC = share of readings passing quality checks",
+    "landmarks": {
+      "kinds": {
+        "peak": "Mountain",
+        "island": "Island",
+        "place": "Place",
+        "water": "Water"
+      },
+      "height": "about {m} m high"
+    }
   },
   "seaLife": {
-    "title": "Who lives below us?",
+    "title": "Life below us",
     "subtitleStart": "Animals and plants of the Salish Sea, near ",
     "subtitleEnd": " right now",
     "filterLabel": "Show animals by group",
@@ -134,7 +148,68 @@
     "waves": "Waves",
     "visibility": "How far you can see",
     "sunset": "Sunset",
-    "moonTonight": "Moon tonight: {phase}"
+    "moonTonight": "Moon tonight: {phase}",
+    "compassWords": "north,north-east,east,south-east,south,south-west,west,north-west",
+    "flowing": "Flowing {dir}",
+    "slackTitle": "Slack water",
+    "slackText": "The current is turning around: a calm moment for boats.",
+    "liveCurrent": "Right now about {kn} knots.",
+    "nextSlack": "Next slack water at {time}.",
+    "state": {
+      "high": "High tide now",
+      "low": "Low tide now",
+      "almostHigh": "Almost high tide",
+      "almostLow": "Almost low tide",
+      "rising": "The tide is coming in",
+      "falling": "The tide is going out"
+    },
+    "trend": {
+      "risingMin": "Water is rising for about {n} more minutes",
+      "risingHours": "Water is rising for about {n} more hours",
+      "fallingMin": "Water is falling for about {n} more minutes",
+      "fallingHours": "Water is falling for about {n} more hours",
+      "turnSoonFall": "The water will soon start to fall",
+      "turnSoonRise": "The water will soon start to rise"
+    }
+  },
+  "weather": {
+    "sky": {
+      "clear": "Clear sky",
+      "fewClouds": "A few clouds",
+      "partlyCloudy": "Partly cloudy",
+      "cloudy": "Mostly cloudy",
+      "overcast": "Overcast",
+      "drizzle": "Drizzle",
+      "rain": "Rain",
+      "thunder": "Thunderstorm",
+      "snow": "Snow",
+      "fog": "Fog"
+    },
+    "waves": {
+      "calm": "flat calm",
+      "ripples": "small ripples",
+      "small": "small waves",
+      "choppy": "choppy",
+      "rough": "rough sea"
+    },
+    "visibility": {
+      "far": "Clear enough to spot Mount Baker",
+      "islands": "You can see the nearby islands",
+      "hazy": "Hazy: the islands look faint",
+      "fog": "Foggy: listen for the foghorn"
+    },
+    "moon": {
+      "new": "New moon",
+      "waxingCrescent": "Waxing crescent",
+      "firstQuarter": "First quarter",
+      "waxingGibbous": "Waxing gibbous",
+      "full": "Full moon",
+      "waningGibbous": "Waning gibbous",
+      "lastQuarter": "Last quarter",
+      "waningCrescent": "Waning crescent"
+    },
+    "creditWeather": "Weather: OpenWeather",
+    "creditWaves": "Waves: Open-Meteo"
   },
   "quiz": {
     "title": "Ocean quiz",

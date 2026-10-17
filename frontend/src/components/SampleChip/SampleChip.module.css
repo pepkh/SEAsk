@@ -9,24 +9,15 @@
   white-space: nowrap;
 }
 
-/* Over the 3D sea (Home) */
+/* Over the 3D sea (Home), in the row with the audience and language buttons */
 .overlay {
-  position: absolute;
-  left: 50%;
-  top: 30px;
-  transform: translateX(-50%);
+  align-self: center;
   font-family: var(--mono);
   font-size: 12px;
   color: var(--muted);
   background: rgba(255, 255, 255, 0.7);
   border-radius: 999px;
   padding: 6px 12px;
+  white-space: nowrap;
   pointer-events: none;
-  z-index: 1;
-}
-
-@media (max-width: 900px) {
-  .overlay {
-    top: 12px;
-  }
 }

@@ -2,6 +2,9 @@
 :root {
   color-scheme: light;
 
+  /* Window size ÷ 1920×1080, set by useUiScale. Cards and pages use zoom: var(--ui-scale). */
+  --ui-scale: 1;
+
   /* Style guide colours */
   --ink: #15191C;
   --muted: #5D676D;

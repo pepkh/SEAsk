@@ -1,4 +1,6 @@
+/* Laid out at kiosk size and zoomed to the window. */
 .screen {
+  zoom: var(--ui-scale);
   height: 100%;
   background: var(--ground);
 }
@@ -34,9 +36,27 @@
 }
 
 .pair {
-  flex: 1;
-  min-height: 0;
+  flex: 1 0 auto;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 18px;
+}
+
+@media (max-width: 900px) {
+  .screen,
+  .section {
+    height: auto;
+  }
+
+  .section {
+    padding: 20px 16px;
+  }
+
+  .body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }

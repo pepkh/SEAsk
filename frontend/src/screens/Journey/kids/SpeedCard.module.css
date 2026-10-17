@@ -32,12 +32,6 @@
   color: var(--muted);
 }
 
-@media (max-width: 1400px) {
-  .n {
-    font-size: 88px;
-  }
-}
-
 @media (max-width: 900px) {
   .n {
     font-size: 72px;

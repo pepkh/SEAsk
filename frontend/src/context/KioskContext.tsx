@@ -1,5 +1,7 @@
-import { createContext, useContext, useMemo, useState, type ReactNode } from 'react'
-import { HOME_SCENE } from '../config/env'
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
+import { HOME_SCENE, MAP_MODE_ENABLED } from '../config/env'
+import { tilesAvailable } from '../map/tilesAvailable'
+import type { ViewName } from '../scene/constants'
 
 export type Audience = 'kids' | 'adults'
 export type SceneMode = 'sea' | 'map'
@@ -10,6 +12,11 @@ interface KioskValue {
   /** Journey background: the 3D sea scene or the Cesium map */
   sceneMode: SceneMode
   setSceneMode: (mode: SceneMode) => void
+  /** Map mode is on and its offline tiles are there (shows the globe button). */
+  mapAvailable: boolean
+  /** Camera view of the 3D sea and the map, the same for Kids and Grown-ups */
+  view: ViewName
+  setView: (view: ViewName) => void
 }
 
 const KioskContext = createContext<KioskValue | null>(null)
@@ -18,7 +25,24 @@ const KioskContext = createContext<KioskValue | null>(null)
 export function KioskProvider({ children }: { children: ReactNode }) {
   const [audience, setAudience] = useState<Audience>('kids')
   const [sceneMode, setSceneMode] = useState<SceneMode>(HOME_SCENE)
-  const value = useMemo(() => ({ audience, setAudience, sceneMode, setSceneMode }), [audience, sceneMode])
+  const [mapAvailable, setMapAvailable] = useState(MAP_MODE_ENABLED)
+  const [view, setView] = useState<ViewName>('chase')
+
+  // Without the offline tiles the map would be an empty globe, so use the sea.
+  useEffect(() => {
+    if (!MAP_MODE_ENABLED) return
+    tilesAvailable().then((ok) => {
+      if (ok) return
+      console.warn('No offline map tiles in public/tiles, using the 3D sea.')
+      setMapAvailable(false)
+      setSceneMode('sea')
+    })
+  }, [])
+
+  const value = useMemo(
+    () => ({ audience, setAudience, sceneMode, setSceneMode, mapAvailable, view, setView }),
+    [audience, sceneMode, mapAvailable, view],
+  )
   return <KioskContext value={value}>{children}</KioskContext>
 }
 

@@ -1,9 +1,9 @@
 import { NavLink, useLocation } from 'react-router'
 import { useClock } from '../../hooks/useClock'
-import { useContent } from '../../hooks/useContent'
 import { compassPoint, formatTime } from '../../i18n/format'
 import { useLanguage, type TKey } from '../../i18n/LanguageContext'
 import { useShip } from '../../ship/ShipProvider'
+import { useWeather } from '../../weather/WeatherProvider'
 import styles from './Dock.module.css'
 import { JourneyIcon, QuizIcon, SeafloorIcon, SeaLifeIcon, TidesIcon } from './dockIcons'
 
@@ -18,14 +18,14 @@ const TABS: { to: string; label: TKey; Icon: () => React.JSX.Element }[] = [
 export function Dock() {
   const { t, lang } = useLanguage()
   const now = useClock()
-  const weather = useContent('weather')
+  const weather = useWeather()
   const ship = useShip()
   const onJourney = useLocation().pathname.startsWith('/journey')
 
   // Journey shows the wind; the other tabs show the arrival.
   let fact = ''
-  if (onJourney && weather) {
-    fact = t('dock.wind', { kn: weather.wind.kn, dir: compassPoint(weather.wind.fromDeg, t('compass')) })
+  if (onJourney) {
+    fact = t('dock.wind', { kn: Math.round(weather.wind.kn), dir: compassPoint(weather.wind.fromDeg, t('compass')) })
   } else if (!onJourney && ship) {
     const { sailing } = ship
     fact = sailing.etaMin === null

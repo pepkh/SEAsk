@@ -3,6 +3,7 @@ import { getLatestRow } from '../api/shipFeed'
 import { FEED_POLL_MS } from '../config/env'
 import type { ShipRow } from '../types/feed'
 import type { Sailing } from '../types/sailing'
+import type { DataSource } from '../types/source'
 import { deriveSailing } from './sailing'
 
 export interface ShipState {
@@ -10,6 +11,8 @@ export interface ShipState {
   /** Rows of the last 90 minutes, oldest first. A crossing is about 80 minutes. */
   history: ShipRow[]
   sailing: Sailing
+  /** Live feed, or the sample feed while the live one is down */
+  source: DataSource
 }
 
 const HISTORY_ROWS = (90 * 60 * 1000) / FEED_POLL_MS
@@ -22,15 +25,25 @@ export function ShipProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     let live = true
+    let busy = false
     let history: ShipRow[] = []
+    let source: DataSource | undefined
     const poll = async () => {
+      // A slow backend answer must not start a second request.
+      if (busy) return
+      busy = true
       try {
-        const row = await getLatestRow()
+        const next = await getLatestRow()
         if (!live) return
-        history = [...history.slice(1 - HISTORY_ROWS), row]
-        setState({ row, history, sailing: deriveSailing(row, history) })
+        // Live and sample positions differ, so a new source starts a new history (no jump in the track).
+        if (next.source !== source) history = []
+        source = next.source
+        history = [...history.slice(1 - HISTORY_ROWS), next.row]
+        setState({ row: next.row, history, sailing: deriveSailing(next.row, history), source: next.source })
       } catch (err) {
         console.error(err)
+      } finally {
+        busy = false
       }
     }
     poll()

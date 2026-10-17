@@ -59,8 +59,14 @@ export function imageryProviders(lang: Lang): { key: string; provider: UrlTempla
   )
 }
 
-/** Licence attribution for the selected imagery (shown by MapScene). */
-export const imageryCredit = () => (MAP_IMAGERY === 'sentinel' ? TILE_LAYERS.sentinel.credit : TILE_LAYERS.nrcanMap.credit)
+const imageryLayer = () => (MAP_IMAGERY === 'sentinel' ? TILE_LAYERS.sentinel : TILE_LAYERS.nrcanMap)
+
+/** Licence attribution for the selected imagery (shown by MapScene), in full and short. */
+export const imageryCredit = () => imageryLayer().credit
+export const imageryShortCredit = () => imageryLayer().short ?? imageryLayer().credit
+
+/** Satellite imagery is dark (forests); this lifts it towards the sea-scene look. Not used on the NRCan map. */
+export const IMAGERY_LOOK = MAP_IMAGERY === 'sentinel' ? { brightness: 1.25, contrast: 1.05, gamma: 1.12, saturation: 1.15 } : {}
 
 let terrain: Promise<TerrainProvider> | undefined
 

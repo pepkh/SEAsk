@@ -1,4 +1,6 @@
+/* Laid out at kiosk size and zoomed to the window. */
 .screen {
+  zoom: var(--ui-scale);
   height: 100%;
   background: var(--ground);
 }

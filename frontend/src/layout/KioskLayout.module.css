@@ -2,7 +2,7 @@
   position: relative;
   height: 100%;
   display: grid;
-  grid-template-rows: minmax(0, 1fr) 112px;
+  grid-template-rows: minmax(0, 1fr) calc(112px * var(--ui-scale));
   overflow: hidden;
 }
 

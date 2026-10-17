@@ -1,3 +1,4 @@
+import type { LandmarksContent } from './landmark'
 import type { ReadingKey, TrackKey } from './feed'
 
 /* Static content. Each type is the response of GET /api/{name}?lang=en|fr. */
@@ -9,7 +10,8 @@ export interface ZoneText {
   blurb: string
   /** Grown-ups pill title */
   adultTitle: string
-  lookout: { title: string; text: string; photo: string }
+  /** `photo` is the translated subject; `photoId` keys src/config/photos.json. */
+  lookout: { title: string; text: string; photo: string; photoId?: string }
   happening: { title: string; text: string }
 }
 
@@ -49,6 +51,7 @@ export interface Species {
   group: SpeciesGroup
   text: string
   photo: string
+  photoId?: string
 }
 
 export interface SpeciesContent {
@@ -57,6 +60,7 @@ export interface SpeciesContent {
     latin: string
     text: string
     photo: string
+    photoId?: string
     sizes: { role: 'you' | 'featured' | 'reference'; label: string; m: number }[]
     footnote: string
   }
@@ -72,10 +76,6 @@ export interface SeafloorContent {
 
 export interface TidesContent {
   place: string
-  headline: string
-  sub: string
-  /** Local time of the tide reading, "HH:MM" */
-  observedAt: string
   /** Tide height in metres, one value every 24 minutes from 00:00 (61 values) */
   heights: number[]
   extremes: { type: 'high' | 'low'; h: number; at: string }[]
@@ -83,23 +83,11 @@ export interface TidesContent {
   explainer: { title: string; text: string }
 }
 
-export interface WeatherContent {
-  tempC: number
-  feelsLikeC: number
-  sky: string
-  wind: { kn: number; fromDeg: number }
-  waves: { m: number; text: string }
-  visibilityKm: number
-  visibilityText: string
-  /** Local time, "HH:MM" */
-  sunset: string
-  moonPhase: string
-}
-
 export interface QuizQuestion {
   text: string
   answer: string
   pic: string
+  picId?: string
   options: [string, string][]
   hint: string
   why: string
@@ -111,12 +99,12 @@ export interface QuizContent {
 
 /** Map of content name → response type. */
 export interface ContentMap {
+  landmarks: LandmarksContent
   zones: ZonesContent
   readings: ReadingsContent
   species: SpeciesContent
   seafloor: SeafloorContent
   tides: TidesContent
-  weather: WeatherContent
   quiz: QuizContent
 }
 

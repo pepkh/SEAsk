@@ -4,6 +4,7 @@
     "latin": "Orcinus orca · also called killer whale",
     "text": "Orcas live in family groups called pods. Each pod has its own set of calls, a bit like a family accent. Some orcas in these waters eat mostly salmon.",
     "photo": "orca",
+    "photoId": "orca",
     "sizes": [
       { "role": "you", "label": "You", "m": 1.3 },
       { "role": "featured", "label": "Orca", "m": 8 },
@@ -12,19 +13,19 @@
     "footnote": "Our ferry is about as long as 20 orcas swimming nose to tail."
   },
   "items": [
-    { "id": "humpback", "name": "Humpback whale", "habitat": "surface", "group": "mammals", "photo": "humpback whale",
+    { "id": "humpback", "name": "Humpback whale", "habitat": "surface", "group": "mammals", "photo": "humpback whale", "photoId": "humpback",
       "text": "Once rare here, humpbacks are back. Watch for a spout and a tail flip." },
-    { "id": "harbour-seal", "name": "Harbour seal", "habitat": "shore", "group": "mammals", "photo": "harbour seal",
+    { "id": "harbour-seal", "name": "Harbour seal", "habitat": "shore", "group": "mammals", "photo": "harbour seal", "photoId": "harbour-seal",
       "text": "Spotted coats, puppy faces. They rest on rocks at low tide." },
-    { "id": "white-sided-dolphin", "name": "White-sided dolphin", "habitat": "surface", "group": "mammals", "photo": "white-sided dolphin",
+    { "id": "white-sided-dolphin", "name": "White-sided dolphin", "habitat": "surface", "group": "mammals", "photo": "white-sided dolphin", "photoId": "white-sided-dolphin",
       "text": "Fast, playful and social. Sometimes they leap beside boats." },
-    { "id": "chinook", "name": "Chinook salmon", "habitat": "openWater", "group": "fish", "photo": "Chinook salmon",
+    { "id": "chinook", "name": "Chinook salmon", "habitat": "openWater", "group": "fish", "photo": "Chinook salmon", "photoId": "chinook",
       "text": "The biggest Pacific salmon, and a favourite food of local orcas." },
-    { "id": "octopus", "name": "Giant octopus", "habitat": "seafloor", "group": "invertebrates", "photo": "giant Pacific octopus",
+    { "id": "octopus", "name": "Giant octopus", "habitat": "seafloor", "group": "invertebrates", "photo": "giant Pacific octopus", "photoId": "octopus",
       "text": "Three hearts, blue blood, and it can change colour in a blink." },
-    { "id": "glass-sponge", "name": "Glass sponge reef", "habitat": "deep", "group": "invertebrates", "photo": "glass sponge reef",
+    { "id": "glass-sponge", "name": "Glass sponge reef", "habitat": "deep", "group": "invertebrates", "photo": "glass sponge reef", "photoId": "glass-sponge",
       "text": "Scientists thought reefs like these vanished long ago, until they were found living off BC." },
-    { "id": "bull-kelp", "name": "Bull kelp", "habitat": "shore", "group": "seaweed", "photo": "bull kelp forest",
+    { "id": "bull-kelp", "name": "Bull kelp", "habitat": "shore", "group": "seaweed", "photo": "bull kelp forest", "photoId": "bull-kelp",
       "text": "A seaweed that grows into a tall underwater forest in a single summer." }
   ]
 }

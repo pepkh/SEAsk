@@ -20,6 +20,8 @@
     "label": "Changer de langue : anglais ou français"
   },
   "sampleData": "DONNÉES D'EXEMPLE",
+  "sampleTides": "MARÉES D'EXEMPLE",
+  "sampleWeather": "MÉTÉO D'EXEMPLE",
   "compass": "N,NE,E,SE,S,SO,O,NO",
   "photo": "[photo : {name}]",
   "waypoint": {
@@ -39,6 +41,8 @@
     },
     "eta": "{place} dans {min} min",
     "toGo": "encore {km} km",
+    "sensorsResting": "Les capteurs se reposent pendant que le traversier est à quai",
+    "noReading": "Pas de mesure pour le moment",
     "next": "Prochain départ : {place}",
     "yourRoute": "Votre trajet",
     "routeMapLabel": "Carte du trajet avec le traversier près de {place}",
@@ -63,17 +67,27 @@
       "reading": "Mesure",
       "now": "Maintenant",
       "last15": "15 dernières min",
-      "qc": "CQ"
+      "qc": "CQ",
+      "dockedNote": "Les capteurs marins se reposent pendant que le traversier est à quai. Ils repartent quand il navigue."
     },
     "colourBy": "Colorer le trajet selon",
     "trackMapLabel": "Carte du trajet colorée selon {reading}",
     "happening": "Ce qui se passe ici",
     "aboutData": "À propos des données",
-    "aboutDataText": "Des instruments à bord prélèvent l'eau de mer par une prise dans la coque pendant la traversée. Les mesures viennent d'Ocean Networks Canada et se mettent à jour chaque seconde.",
-    "qcNote": "CQ = part des mesures qui passent le contrôle de qualité"
+    "aboutDataText": "Des instruments à bord prélèvent l'eau de mer par une prise dans la coque pendant la traversée. Les mesures viennent d'Ocean Networks Canada et se mettent à jour toutes les quelques secondes.",
+    "qcNote": "CQ = part des mesures qui passent le contrôle de qualité",
+    "landmarks": {
+      "kinds": {
+        "peak": "Montagne",
+        "island": "Île",
+        "place": "Lieu",
+        "water": "Plan d'eau"
+      },
+      "height": "environ {m} m d'altitude"
+    }
   },
   "seaLife": {
-    "title": "Qui vit sous nous?",
+    "title": "La vie sous nos pieds",
     "subtitleStart": "Animaux et plantes de la mer des Salish, près de ",
     "subtitleEnd": ", en ce moment",
     "filterLabel": "Afficher les animaux par groupe",
@@ -134,7 +148,68 @@
     "waves": "Vagues",
     "visibility": "Visibilité",
     "sunset": "Coucher du soleil",
-    "moonTonight": "Lune ce soir : {phase}"
+    "moonTonight": "Lune ce soir : {phase}",
+    "compassWords": "le nord,le nord-est,l'est,le sud-est,le sud,le sud-ouest,l'ouest,le nord-ouest",
+    "flowing": "Coule vers {dir}",
+    "slackTitle": "Étale",
+    "slackText": "Le courant change de sens : un moment calme pour les bateaux.",
+    "liveCurrent": "En ce moment, environ {kn} nœuds.",
+    "nextSlack": "Prochaine étale à {time}.",
+    "state": {
+      "high": "Marée haute en ce moment",
+      "low": "Marée basse en ce moment",
+      "almostHigh": "Bientôt la marée haute",
+      "almostLow": "Bientôt la marée basse",
+      "rising": "La marée monte",
+      "falling": "La marée descend"
+    },
+    "trend": {
+      "risingMin": "L'eau monte encore pendant environ {n} minutes",
+      "risingHours": "L'eau monte encore pendant environ {n} heures",
+      "fallingMin": "L'eau descend encore pendant environ {n} minutes",
+      "fallingHours": "L'eau descend encore pendant environ {n} heures",
+      "turnSoonFall": "L'eau va bientôt commencer à descendre",
+      "turnSoonRise": "L'eau va bientôt commencer à monter"
+    }
+  },
+  "weather": {
+    "sky": {
+      "clear": "Ciel dégagé",
+      "fewClouds": "Quelques nuages",
+      "partlyCloudy": "Partiellement nuageux",
+      "cloudy": "Plutôt nuageux",
+      "overcast": "Couvert",
+      "drizzle": "Bruine",
+      "rain": "Pluie",
+      "thunder": "Orage",
+      "snow": "Neige",
+      "fog": "Brouillard"
+    },
+    "waves": {
+      "calm": "mer d'huile",
+      "ripples": "petites vaguelettes",
+      "small": "petites vagues",
+      "choppy": "mer agitée",
+      "rough": "grosse mer"
+    },
+    "visibility": {
+      "far": "Assez clair pour voir le mont Baker",
+      "islands": "On voit les îles voisines",
+      "hazy": "Brumeux : les îles sont pâles",
+      "fog": "Brouillard : écoutez la corne de brume"
+    },
+    "moon": {
+      "new": "Nouvelle lune",
+      "waxingCrescent": "Premier croissant",
+      "firstQuarter": "Premier quartier",
+      "waxingGibbous": "Gibbeuse croissante",
+      "full": "Pleine lune",
+      "waningGibbous": "Gibbeuse décroissante",
+      "lastQuarter": "Dernier quartier",
+      "waningCrescent": "Dernier croissant"
+    },
+    "creditWeather": "Météo : OpenWeather",
+    "creditWaves": "Vagues : Open-Meteo"
   },
   "quiz": {
     "title": "Quiz océan",

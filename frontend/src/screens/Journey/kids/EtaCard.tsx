@@ -5,11 +5,22 @@ import type { ZoneText } from '../../../types/content'
 import type { Sailing } from '../../../types/sailing'
 import styles from './EtaCard.module.css'
 
-/** Close labels hide so they do not overlap the label at the ship. */
-const LABEL_GAP = 0.15
+/** Rough width of one 13 px character as a share of the bar (about 370 px at kiosk size). */
+const CHAR_W = 0.02
+/** Space kept between two labels, as a share of the bar */
+const LABEL_GAP = 0.03
 
 const position = (at: number) => (at <= 0 ? '7px' : at >= 1 ? 'calc(100% - 7px)' : `${at * 100}%`)
 const edgeClass = (at: number) => (at < 0.08 ? styles.first : at > 0.92 ? styles.last : '')
+
+/** Where a label sits on the bar (0–1), from its alignment: left-aligned at the start, right-aligned at the end. */
+function extent(at: number, text: string): [number, number] {
+  const w = text.length * CHAR_W
+  return at < 0.08 ? [at, at + w] : at > 0.92 ? [at - w, at] : [at - w / 2, at + w / 2]
+}
+
+/** A stop label hides when it would touch the label at the ship. */
+const clear = (a: [number, number], b: [number, number]) => a[1] + LABEL_GAP <= b[0] || b[1] + LABEL_GAP <= a[0]
 
 /** Arrival time and the progress bar with the route stops (reversed on the return crossing). */
 export function EtaCard({ sailing, zone }: { sailing: Sailing; zone: ZoneText }) {
@@ -18,6 +29,7 @@ export function EtaCard({ sailing, zone }: { sailing: Sailing; zone: ZoneText })
   const stops = ROUTE.stops
     .map((s) => ({ ...s, at: sailing.direction === 1 ? s.at : 1 - s.at }))
     .sort((a, b) => a.at - b.at)
+  const here = extent(p, zone.here)
 
   return (
     <div className={styles.eta}>
@@ -36,15 +48,17 @@ export function EtaCard({ sailing, zone }: { sailing: Sailing; zone: ZoneText })
           <span key={s.at} className={`${styles.dot} ${s.at <= p ? styles.on : ''}`} style={{ left: position(s.at) }} />
         ))}
         <span className={styles.me} style={{ left: `${p * 100}%` }} />
-        {stops.map(
-          (s) =>
-            s.label &&
-            Math.abs(s.at - p) >= LABEL_GAP && (
+        {stops.map((s) => {
+          if (!s.label) return null
+          const text = t(`waypoint.${s.label}`)
+          return (
+            clear(extent(s.at, text), here) && (
               <span key={s.label} className={`${styles.lbl} ${edgeClass(s.at)}`} style={{ left: `${s.at * 100}%` }}>
-                {t(`waypoint.${s.label}`)}
+                {text}
               </span>
-            ),
-        )}
+            )
+          )
+        })}
         <span className={`${styles.lbl} ${styles.cur} ${edgeClass(p)}`} style={{ left: `${p * 100}%` }}>
           {zone.here}
         </span>

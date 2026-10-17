@@ -1,10 +1,9 @@
-import { lazy, Suspense, useState } from 'react'
+import { lazy, Suspense } from 'react'
 import { AudienceToggle } from '../../../components/AudienceToggle/AudienceToggle'
 import { LanguageButton } from '../../../components/LanguageButton/LanguageButton'
 import { SampleChip } from '../../../components/SampleChip/SampleChip'
 import { useKiosk } from '../../../context/KioskContext'
 import { useContent } from '../../../hooks/useContent'
-import type { ViewName } from '../../../scene/constants'
 import { useShip } from '../../../ship/ShipProvider'
 import { DepthCard } from './DepthCard'
 import { EtaCard } from './EtaCard'
@@ -25,8 +24,7 @@ export function JourneyKids() {
   const ship = useShip()
   const zones = useContent('zones')
   const readings = useContent('readings')
-  const { sceneMode } = useKiosk()
-  const [view, setView] = useState<ViewName>('chase')
+  const { sceneMode, view, setView } = useKiosk()
   const zone = ship && zones ? zones[ship.sailing.zoneId] : undefined
 
   return (
@@ -36,23 +34,23 @@ export function JourneyKids() {
           {sceneMode === 'map' ? <KidsMap view={view} /> : <SeaScene view={view} speedKn={ship?.row.speed_over_ground ?? 0} />}
         </Suspense>
       </div>
-      <SampleChip variant="overlay" />
       {ship && zone && readings && (
         <div className={styles.hud}>
           <HereCard zone={zone} className={styles.here} />
           <div className={styles.toggles}>
+            <SampleChip variant="overlay" show={ship.source === 'sample'} />
             <AudienceToggle variant="glass" />
             <LanguageButton variant="glass" />
           </div>
           <div className={styles.left}>
             <SpeedCard row={ship.row} sailing={ship.sailing} />
             <EtaCard sailing={ship.sailing} zone={zone} />
-            <ReadingTiles row={ship.row} readings={readings} />
+            <ReadingTiles row={ship.row} sailing={ship.sailing} readings={readings} />
           </div>
           <ViewControls view={view} onView={setView} className={styles.ctrls} />
           <LookoutCard lookout={zone.lookout} className={styles.lookout} />
           <div className={styles.right}>
-            {sceneMode === 'sea' && <MiniRouteMap sailing={ship.sailing} place={zone.here} />}
+            <MiniRouteMap sailing={ship.sailing} place={zone.here} />
             <DepthCard fraction={ship.sailing.fraction} />
           </div>
         </div>

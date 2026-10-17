@@ -15,6 +15,7 @@ import App from './App'
 import { KioskProvider } from './context/KioskContext'
 import { LanguageProvider } from './i18n/LanguageContext'
 import { ShipProvider } from './ship/ShipProvider'
+import { WeatherProvider } from './weather/WeatherProvider'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -22,7 +23,9 @@ createRoot(document.getElementById('root')!).render(
       <LanguageProvider>
         <KioskProvider>
           <ShipProvider>
-            <App />
+            <WeatherProvider>
+              <App />
+            </WeatherProvider>
           </ShipProvider>
         </KioskProvider>
       </LanguageProvider>

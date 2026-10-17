@@ -1,5 +1,6 @@
 import { formatHour, formatNumber, formatTime, minutesOf, todayAt } from '../../i18n/format'
 import { useLanguage } from '../../i18n/LanguageContext'
+import { describeTide } from '../../tides/trend'
 import type { TidesContent } from '../../types/content'
 import styles from './TideChart.module.css'
 
@@ -12,11 +13,14 @@ const yAt = (h: number) => 260 - 62 * h
 const NOW_CLEARANCE = 60
 const NOW_SHIFT = 126
 
-export function TideChart({ tides }: { tides: TidesContent }) {
+/** Today's tide curve with "Now" at the clock time, and a headline worked out from the curve. */
+export function TideChart({ tides, now }: { tides: TidesContent; now: Date }) {
   const { t, lang } = useLanguage()
+  const nowMin = now.getHours() * 60 + now.getMinutes()
+  const said = describeTide(tides.heights, nowMin)
   const step = (X1 - X0) / (tides.heights.length - 1)
   const curve = 'M' + tides.heights.map((h, i) => `${(X0 + i * step).toFixed(1)} ${yAt(h).toFixed(1)}`).join(' L')
-  const nowX = xAt(minutesOf(tides.observedAt))
+  const nowX = xAt(nowMin)
   const k = (nowX - X0) / step
   const i = Math.min(tides.heights.length - 2, Math.floor(k))
   const nowY = yAt(tides.heights[i] + (tides.heights[i + 1] - tides.heights[i]) * (k - i))
@@ -26,9 +30,9 @@ export function TideChart({ tides }: { tides: TidesContent }) {
       <div className={styles.head}>
         <div className={styles.headText}>
           <span className={styles.eyebrow}>{t('tides.tideToday', { place: tides.place })}</span>
-          <span className={styles.title}>{tides.headline}</span>
+          <span className={styles.title}>{t(`tides.state.${said.headline}`)}</span>
         </div>
-        <span className={styles.sub}>{tides.sub}</span>
+        <span className={styles.sub}>{t(`tides.trend.${said.sub}`, { n: said.n })}</span>
       </div>
       <svg viewBox="0 0 1100 300" className={styles.chart} role="img" aria-label={t('tides.chartLabel')}>
         <defs>

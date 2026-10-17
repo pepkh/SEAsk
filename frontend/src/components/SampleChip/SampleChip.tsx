@@ -1,10 +1,16 @@
-import { USE_MOCKS } from '../../config/env'
-import { useLanguage } from '../../i18n/LanguageContext'
+import { useLanguage, type TKey } from '../../i18n/LanguageContext'
 import styles from './SampleChip.module.css'
 
-/** "SAMPLE DATA". Shown only while the kiosk uses mock data. */
-export function SampleChip({ variant = 'outline' }: { variant?: 'outline' | 'overlay' }) {
+interface Props {
+  variant?: 'outline' | 'overlay'
+  /** Shown only while the screen shows sample data */
+  show?: boolean
+  label?: TKey
+}
+
+/** "SAMPLE DATA" chip. */
+export function SampleChip({ variant = 'outline', show = true, label = 'sampleData' }: Props) {
   const { t } = useLanguage()
-  if (!USE_MOCKS) return null
-  return <span className={styles[variant]}>{t('sampleData')}</span>
+  if (!show) return null
+  return <span className={styles[variant]}>{t(label)}</span>
 }

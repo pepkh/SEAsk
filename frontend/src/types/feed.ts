@@ -24,8 +24,10 @@ export interface ShipRow {
   roll: number | null
   /** PSU */
   salinity: number | null
-  /** degrees true */
+  /** Course over ground, degrees true (GPS noise when the ship is nearly stopped) */
   ship_course: number
+  /** Where the bow points, degrees true (compass). Missing in older feeds. */
+  heading?: number | null
   /** m/s */
   sound_speed: number | null
   /** knots */
