@@ -67,7 +67,7 @@ Direct import of `combined.csv`. One row per second.
 | Column                                       | Type   | Unit      | Notes                                                                                 |
 | -------------------------------------------- | ------ | --------- | ------------------------------------------------------------------------------------- |
 | `time`                                       | text   | UTC       | e.g. `2026-08-17 07:00:00.062000+00:00`. Unique. Stored as text for now.              |
-| `time_local`                                 | text   | UTC-07:00 | Pacific Daylight Time. Will be dropped. Pacific Daylight Time. Redundant with `time`. |
+| `time_local`                                 | text   | UTC-07:00 | Pacific Daylight Time. Same instant as `time`.                                        |
 | `latitude`, `longitude`                      | double | deg       | Ship position                                                                         |
 | `speed_over_ground`                          | double | m/s       | Below ~2 m/s means docked or maneuvering                                              |
 | `heading`, `ship_course`, `magnetic_heading` | double | deg       |                                                                                       |
@@ -108,6 +108,21 @@ Direct import of `inventory.csv`. One row per variable.
 Column names are camelCase, so quote them in SQL: `select "deviceCategoryCode" from sensors`.
 
 Two rows have `sensor = 'temperature'`. In `readings_raw` they are `tsg_temperature` and `oxysensor_temperature`. `valve_position_status` exists here but not in `readings_raw`.
+
+#### `readings` (86,400 rows, 21 MB)
+
+Cleaned `readings_raw`: `time` is now `ts` (`timestamptz`, primary key). Other columns are unchanged.
+
+#### `crossings` (8 rows)
+
+One row per trip, numbered by start time.
+
+| Column      | Type        | Notes                                |
+| ----------- | ----------- | ------------------------------------ |
+| `id`        | smallint    | Primary key, 1 to 8                  |
+| `direction` | text        | `swb_to_tsa` or `tsa_to_swb`         |
+| `start_ts`  | timestamptz | Departure                            |
+| `end_ts`    | timestamptz | Arrival                              |
 
 ---
 
