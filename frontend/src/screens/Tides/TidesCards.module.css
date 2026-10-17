@@ -1,0 +1,61 @@
+.card {
+  background: var(--card);
+  border-radius: 24px;
+  padding: 24px 26px;
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.dark {
+  background: var(--ink);
+  color: #fff;
+}
+
+.compass {
+  width: 140px;
+  height: 140px;
+  flex: none;
+}
+
+.moon {
+  width: 210px;
+  height: 126px;
+  flex: none;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.eyebrow {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.dark .eyebrow {
+  color: var(--muted-on-dark);
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.titleSmall {
+  font-size: 26px;
+}
+
+.body {
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--body);
+}
+
+.dark .body {
+  color: var(--body-on-dark);
+}

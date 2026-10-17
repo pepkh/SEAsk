@@ -1,0 +1,28 @@
+.viewer {
+  position: absolute;
+  inset: 0;
+}
+
+/* The app shows its own attribution line (.credits). */
+.viewer :global(.cesium-viewer-bottom) {
+  display: none;
+}
+
+/* Licence attribution: bottom centre, in the free strip under the HUD cards. */
+.credits {
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  transform: translateX(-50%);
+  max-width: calc(100% - 32px);
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}

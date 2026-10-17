@@ -1,0 +1,52 @@
+/* Design tokens from the style guide board and the Home mockup. */
+:root {
+  color-scheme: light;
+
+  /* Style guide colours */
+  --ink: #15191C;
+  --muted: #5D676D;
+  --ground: #E9EDEF;
+  --panel: #F4F6F7;
+  --card: #FFFFFF;
+  --line: #DCE1E3;
+  --accent: #1F6FE0;
+  --accent-hover: #1556B3;
+  --accent-soft: #E9F1FD;
+  --sea-map: #CBDDE6;
+  --deep: #0B1418;
+  --coral: #E2553A;
+  --sun: #F5C04A;
+
+  /* Recurring colours */
+  --body: #3C464B;
+  --on-dark: #F1F4F5;
+  --muted-on-dark: #A9B4B9;
+  --body-on-dark: #D5DCDF;
+  --link-on-dark: #8FC0FF;
+  --photo: #DCE7EC;
+  --chip-line: #D3D9DC;
+  --track: #E1E6E8;
+  --dot-off: #C3CCD0;
+  --button-soft: #EEF1F2;
+  --rule: #E6EAEC;
+  --rule-soft: #F0F2F3;
+  --route-ahead: #5E7480;
+  --good: #0E8C5A;
+  --good-soft: #E1F5EB;
+  --bad: #C8432A;
+  --bad-soft: #FDE7E2;
+
+  /* Home mockup (glass cards over the 3D sea) */
+  --sky-top: #9fc6db;
+  --horizon: #e1ecef;
+  --glass: rgba(255, 255, 255, .86);
+
+  /* Shadows */
+  --shadow-float: 0 6px 24px rgba(21, 25, 28, 0.12);
+  --shadow-card: 0 10px 40px rgba(21, 25, 28, 0.16);
+  --shadow-dark: 0 10px 40px rgba(21, 25, 28, 0.2);
+
+  /* Fonts */
+  --display: 'Outfit', 'Helvetica Neue', sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+}

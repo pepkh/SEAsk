@@ -1,0 +1,45 @@
+.speed {
+  composes: card from './glass.module.css';
+  border-radius: 22px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.n {
+  font-size: 112px;
+  font-weight: 300;
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.u {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-bottom: 4px;
+}
+
+.u b {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.u span {
+  font-size: 16px;
+  color: var(--muted);
+}
+
+@media (max-width: 1400px) {
+  .n {
+    font-size: 88px;
+  }
+}
+
+@media (max-width: 900px) {
+  .n {
+    font-size: 72px;
+  }
+}

@@ -1,0 +1,106 @@
+.card {
+  background: var(--card);
+  border-radius: 28px;
+  padding: 40px 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.progress {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dots span {
+  width: 44px;
+  height: 8px;
+  border-radius: 4px;
+}
+
+.dotDone {
+  background: var(--accent);
+}
+
+.dotNow {
+  background: var(--ink);
+}
+
+.dotNext {
+  background: var(--chip-line);
+}
+
+.question {
+  font-size: 54px;
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.answers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: auto;
+}
+
+.answer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 120px;
+  padding: 0 26px;
+  border-radius: 22px;
+  background: #FFFFFF;
+  border: 3px solid var(--line);
+  color: var(--ink);
+  font: 500 26px var(--display);
+  text-align: left;
+  cursor: pointer;
+}
+
+.badge {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--button-soft);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 22px;
+  flex: none;
+}
+
+.right {
+  background: var(--good-soft);
+  border-color: var(--good);
+}
+
+.right .badge {
+  background: var(--good);
+  color: #FFFFFF;
+}
+
+.wrong {
+  background: var(--bad-soft);
+  border-color: var(--bad);
+}
+
+.wrong .badge {
+  background: var(--bad);
+  color: #FFFFFF;
+}

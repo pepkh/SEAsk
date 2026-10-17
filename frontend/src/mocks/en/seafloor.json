@@ -1,0 +1,22 @@
+{
+  "markers": [
+    { "label": "Bull kelp", "cx": 110, "cy": 84, "tx": 132, "ty": 89 },
+    { "label": "Dolphins", "cx": 1000, "cy": 96, "tx": 1022, "ty": 101 },
+    { "label": "Chinook salmon", "cx": 560, "cy": 160, "tx": 582, "ty": 165 },
+    { "label": "Giant octopus", "cx": 310, "cy": 268, "tx": 210, "ty": 248 },
+    { "label": "Glass sponge reef", "cx": 1240, "cy": 470, "tx": 1262, "ty": 455 }
+  ],
+  "places": [
+    { "label": "Swanson Channel", "x": 360 },
+    { "label": "Strait of Georgia", "x": 1270 },
+    { "label": "Fraser River plume", "x": 1660 }
+  ],
+  "facts": [
+    { "eyebrow": "Deepest part of the strait", "title": "About 420 m",
+      "text": "Nearly three Harbour Centre towers stacked on top of each other." },
+    { "eyebrow": "Active Pass", "title": "A narrow, rushing gap",
+      "text": "Tides pour through here, stirring up the water and food for fish and birds." },
+    { "eyebrow": "Fraser River plume", "title": "Fresh water on top",
+      "text": "River water is lighter than salt water, so it spreads across the top like a muddy blanket." }
+  ]
+}

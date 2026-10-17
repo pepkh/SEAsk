@@ -1,0 +1,79 @@
+.dock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--card);
+  color: var(--ink);
+  border-top: 1px solid var(--line);
+  padding-left: max(36px, env(safe-area-inset-left, 0px));
+  padding-right: max(36px, env(safe-area-inset-right, 0px));
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  overflow-x: auto;
+}
+
+.dock a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 76px;
+  padding: 0 26px;
+  border-radius: 18px;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.dock a[aria-current='page'] {
+  background: var(--accent-soft);
+  font-weight: 600;
+}
+
+.dock svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;
+}
+
+.dock a[aria-current='page'] svg {
+  stroke: var(--accent);
+}
+
+.spacer {
+  flex: 1;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-size: 20px;
+  color: var(--body);
+  white-space: nowrap;
+}
+
+.meta i {
+  width: 1px;
+  height: 32px;
+  background: var(--line);
+}
+
+.meta b {
+  font-size: 24px;
+  color: var(--ink);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 900px) {
+  .dock a span,
+  .meta span {
+    display: none;
+  }
+}

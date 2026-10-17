@@ -1,0 +1,29 @@
+.mini {
+  composes: card from './glass.module.css';
+  border-radius: 22px;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  height: 250px;
+}
+
+.mini svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cap {
+  position: absolute;
+  left: 16px;
+  top: 14px;
+  z-index: 1;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.85);
+  padding: 5px 9px;
+  border-radius: 999px;
+}

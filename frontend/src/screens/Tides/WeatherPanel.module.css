@@ -1,0 +1,96 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-height: 0;
+}
+
+.outside {
+  background: var(--card);
+  border-radius: 24px;
+  padding: 26px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.outsideText {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.eyebrow {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.temp {
+  font-size: 96px;
+  font-weight: 300;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+.sky {
+  font-size: 20px;
+  color: var(--body);
+}
+
+.icon {
+  width: 150px;
+  height: 125px;
+  flex: none;
+}
+
+.tiles {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.tile {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.label {
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.dial {
+  width: 58px;
+  height: 58px;
+}
+
+.wave {
+  width: 80px;
+  height: 40px;
+}
+
+.value {
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.value span {
+  font-size: 17px;
+  color: var(--muted);
+}
+
+.note {
+  font-size: 15px;
+  color: var(--body);
+}

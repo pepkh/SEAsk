@@ -1,0 +1,23 @@
+{
+  "place": "Active Pass",
+  "headline": "Almost high tide",
+  "sub": "Water is rising for about 20 more minutes",
+  "observedAt": "14:41",
+  "heights": [1.668, 1.892, 2.115, 2.327, 2.524, 2.697, 2.842, 2.953, 3.029, 3.068, 3.069, 3.037, 2.971, 2.877, 2.76, 2.627, 2.484, 2.339, 2.197, 2.065, 1.95, 1.858, 1.792, 1.755, 1.747, 1.771, 1.824, 1.903, 2.006, 2.126, 2.256, 2.394, 2.529, 2.655, 2.766, 2.856, 2.919, 2.953, 2.952, 2.915, 2.84, 2.734, 2.595, 2.427, 2.239, 2.034, 1.819, 1.605, 1.395, 1.202, 1.027, 0.882, 0.771, 0.697, 0.663, 0.673, 0.724, 0.816, 0.947, 1.11, 1.302],
+  "extremes": [
+    { "type": "high", "h": 3.1, "at": "03:48" },
+    { "type": "low", "h": 1.8, "at": "09:30" },
+    { "type": "high", "h": 3.0, "at": "15:00" },
+    { "type": "low", "h": 0.7, "at": "21:42" }
+  ],
+  "current": {
+    "title": "Flowing east",
+    "text": "As the tide rises, sea water rushes through the pass toward the Strait.",
+    "topSpeedKn": 7,
+    "bearingDeg": 90
+  },
+  "explainer": {
+    "title": "The Moon pulls on the sea",
+    "text": "Its gravity tugs the ocean into a bulge. As Earth spins, we pass through it, so the water rises and falls about twice a day."
+  }
+}

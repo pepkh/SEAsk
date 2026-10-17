@@ -1,0 +1,120 @@
+/* Layout: full-bleed 3D scene with the ferry centre stage; glass cards float left and right. */
+.screen {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--sky-top) 0%, var(--horizon) 48%, var(--horizon) 100%);
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.canvas canvas {
+  display: block;
+  touch-action: none;
+}
+
+.hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  padding-block: 28px;
+  padding-left: max(28px, env(safe-area-inset-left, 0px));
+  padding-right: max(28px, env(safe-area-inset-right, 0px));
+  display: grid;
+  grid-template-columns: 420px minmax(0, 1fr) 400px;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 18px;
+}
+
+.hud > * {
+  pointer-events: auto;
+}
+
+.here {
+  grid-column: 1 / 3;
+  grid-row: 1;
+  align-self: start;
+}
+
+.toggles {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+  display: flex;
+  gap: 12px;
+  align-self: start;
+}
+
+.left {
+  grid-column: 1;
+  grid-row: 2 / 4;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-self: end;
+  min-height: 0;
+}
+
+.ctrls {
+  grid-column: 3;
+  grid-row: 2;
+  justify-self: end;
+  align-self: center;
+}
+
+.right {
+  grid-column: 3;
+  grid-row: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-self: end;
+}
+
+.lookout {
+  grid-column: 2;
+  grid-row: 3;
+  justify-self: center;
+  align-self: end;
+}
+
+@media (max-width: 1400px) {
+  .hud {
+    grid-template-columns: 360px minmax(0, 1fr) 330px;
+  }
+
+  .lookout {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .screen {
+    height: auto;
+    overflow: visible;
+  }
+
+  .canvas {
+    position: relative;
+    height: 56vh;
+  }
+
+  .hud {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-block: 16px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+
+  .toggles,
+  .ctrls,
+  .lookout {
+    display: none;
+  }
+}

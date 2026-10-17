@@ -1,0 +1,32 @@
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: #16222A;
+  border-radius: 22px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.eyebrow {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--link-on-dark);
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.text {
+  font-size: 17px;
+  line-height: 1.4;
+  color: #C3CED3;
+}

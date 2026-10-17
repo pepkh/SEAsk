@@ -1,0 +1,23 @@
+{
+  "items": [
+    { "key": "tsg_temperature", "name": "Température de l'eau", "unit": "°C", "digits": 2, "qc": 99,
+      "kids": { "name": "Température de la mer", "hint": "Plus froide qu'une piscine", "digits": 1 } },
+    { "key": "salinity", "name": "Salinité", "unit": "PSU", "digits": 2, "qc": 99,
+      "kids": { "name": "Sel", "hint": "≈ 5 cuillères à thé de sel par litre", "digits": 1 } },
+    { "key": "conductivity", "name": "Conductivité", "unit": "S/m", "digits": 2, "qc": 99 },
+    { "key": "chlorophyll", "name": "Chlorophylle", "unit": "µg/L", "digits": 2, "qc": 98,
+      "kids": { "name": "Plancton", "hint": "De petites plantes qui nourrissent la mer", "digits": 1 } },
+    { "key": "turbidity", "name": "Turbidité", "unit": "NTU", "digits": 2, "qc": 97,
+      "kids": { "name": "Clarté de l'eau", "hint": "Claire : la lumière descend loin", "digits": 1 } },
+    { "key": "cdom_fluorescence", "name": "Fluorescence de la MODC", "unit": "ppb", "digits": 2, "qc": 99 },
+    { "key": "sound_speed", "name": "Vitesse du son", "unit": "m/s", "digits": 1, "qc": 100 },
+    { "key": "air_temperature", "name": "Température de l'air", "unit": "°C", "digits": 1, "qc": 100 },
+    { "key": "barometric_pressure", "name": "Pression de l'air", "unit": "hPa", "digits": 1, "qc": 100 }
+  ],
+  "tracks": [
+    { "key": "salinity", "label": "Salinité", "unit": "PSU", "min": 29.6, "max": 30.6 },
+    { "key": "tsg_temperature", "label": "Température", "unit": "°C", "min": 9.8, "max": 10.8 },
+    { "key": "turbidity", "label": "Turbidité", "unit": "NTU", "min": 0.6, "max": 1.4 },
+    { "key": "chlorophyll", "label": "Chlorophylle", "unit": "µg/L", "min": 1.4, "max": 2.2 }
+  ]
+}

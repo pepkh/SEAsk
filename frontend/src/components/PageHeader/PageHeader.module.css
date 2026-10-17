@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.title {
+  margin: 0;
+  font-size: 44px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Seafloor sets --page-subtitle for its dark background. */
+.subtitle {
+  font-size: 19px;
+  color: var(--page-subtitle, var(--muted));
+}
+
+.subtitle b {
+  color: var(--ink);
+}
+
+.compact {
+  align-items: center;
+  gap: 20px;
+}
+
+.compact .text {
+  gap: 4px;
+}

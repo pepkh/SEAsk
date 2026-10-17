@@ -1,0 +1,22 @@
+{
+  "markers": [
+    { "label": "Varech géant", "cx": 110, "cy": 84, "tx": 132, "ty": 89 },
+    { "label": "Dauphins", "cx": 1000, "cy": 96, "tx": 1022, "ty": 101 },
+    { "label": "Saumon quinnat", "cx": 560, "cy": 160, "tx": 582, "ty": 165 },
+    { "label": "Pieuvre géante", "cx": 310, "cy": 268, "tx": 210, "ty": 248 },
+    { "label": "Récif d'éponges siliceuses", "cx": 1240, "cy": 470, "tx": 1262, "ty": 455 }
+  ],
+  "places": [
+    { "label": "Chenal Swanson", "x": 360 },
+    { "label": "Détroit de Georgia", "x": 1270 },
+    { "label": "Panache du Fraser", "x": 1660 }
+  ],
+  "facts": [
+    { "eyebrow": "Point le plus profond du détroit", "title": "Environ 420 m",
+      "text": "Presque trois tours Harbour Centre empilées l'une sur l'autre." },
+    { "eyebrow": "Active Pass", "title": "Un passage étroit et rapide",
+      "text": "Les marées s'y engouffrent, brassent l'eau et apportent de la nourriture aux poissons et aux oiseaux." },
+    { "eyebrow": "Panache du fleuve Fraser", "title": "De l'eau douce en surface",
+      "text": "L'eau du fleuve est plus légère que l'eau salée, alors elle s'étend en surface comme une couverture boueuse." }
+  ]
+}

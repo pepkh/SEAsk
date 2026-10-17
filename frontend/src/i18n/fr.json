@@ -1,0 +1,157 @@
+{
+  "dock": {
+    "label": "Sections du kiosque",
+    "journey": "Traversée",
+    "seaLife": "Vie marine",
+    "seafloor": "Fond marin",
+    "tides": "Marées et météo",
+    "quiz": "Quiz océan",
+    "wind": "Vent {kn} nd {dir}",
+    "eta": "{place} dans {min} min",
+    "next": "Prochain départ : {place}"
+  },
+  "audience": {
+    "label": "Public",
+    "kids": "Enfants",
+    "adults": "Adultes"
+  },
+  "language": {
+    "button": "EN · FR",
+    "label": "Changer de langue : anglais ou français"
+  },
+  "sampleData": "DONNÉES D'EXEMPLE",
+  "compass": "N,NE,E,SE,S,SO,O,NO",
+  "photo": "[photo : {name}]",
+  "waypoint": {
+    "swartzBay": "Swartz Bay",
+    "strait": "Détroit",
+    "tsawwassen": "Tsawwassen"
+  },
+  "journey": {
+    "youAreHere": "Vous êtes ici",
+    "knots": "nœuds",
+    "speedHint": "environ {kmh} km/h, {comparison}",
+    "speedDocked": "le navire est à quai",
+    "comparison": {
+      "slow": "aussi vite qu'un vélo",
+      "medium": "aussi vite qu'un autobus de ville",
+      "fast": "aussi vite qu'une voiture sur l'autoroute"
+    },
+    "eta": "{place} dans {min} min",
+    "toGo": "encore {km} km",
+    "next": "Prochain départ : {place}",
+    "yourRoute": "Votre trajet",
+    "routeMapLabel": "Carte du trajet avec le traversier près de {place}",
+    "underShip": "Sous le navire",
+    "mOfWater": "m d'eau",
+    "diveDown": "Plonger →",
+    "views": {
+      "chase": "Caméra de poursuite",
+      "side": "Vue de côté",
+      "top": "Vue d'en haut",
+      "showMap": "Afficher la carte",
+      "showSea": "Afficher la mer"
+    },
+    "nowCrossing": "Traversée en cours",
+    "nextCrossing": "Prochaine traversée",
+    "speed": "Vitesse",
+    "course": "Cap",
+    "position": "Position",
+    "kn": "nd",
+    "arrive": "Arrivée à {place} {time}",
+    "table": {
+      "reading": "Mesure",
+      "now": "Maintenant",
+      "last15": "15 dernières min",
+      "qc": "CQ"
+    },
+    "colourBy": "Colorer le trajet selon",
+    "trackMapLabel": "Carte du trajet colorée selon {reading}",
+    "happening": "Ce qui se passe ici",
+    "aboutData": "À propos des données",
+    "aboutDataText": "Des instruments à bord prélèvent l'eau de mer par une prise dans la coque pendant la traversée. Les mesures viennent d'Ocean Networks Canada et se mettent à jour chaque seconde.",
+    "qcNote": "CQ = part des mesures qui passent le contrôle de qualité"
+  },
+  "seaLife": {
+    "title": "Qui vit sous nous?",
+    "subtitleStart": "Animaux et plantes de la mer des Salish, près de ",
+    "subtitleEnd": ", en ce moment",
+    "filterLabel": "Afficher les animaux par groupe",
+    "filters": {
+      "all": "Tous",
+      "mammals": "Mammifères",
+      "fish": "Poissons",
+      "invertebrates": "Invertébrés",
+      "seaweed": "Algues"
+    },
+    "featured": "Animal de la traversée",
+    "heroPhoto": "[grande photo ou modèle 3D : {name}]",
+    "sizeCheck": "Comparer la taille",
+    "spotted": "Vous avez vu quelque chose?",
+    "spottedText": "Touchez pour noter ce que vous avez vu. Votre observation apparaîtra sur la carte à la prochaine traversée."
+  },
+  "habitat": {
+    "surface": "Surface",
+    "shore": "Rivage",
+    "openWater": "Eaux libres",
+    "seafloor": "Fond marin",
+    "deep": "Profondeurs"
+  },
+  "seafloor": {
+    "title": "Qu'y a-t-il sous le navire?",
+    "subtitle": "Une coupe de la mer, de Swartz Bay à Tsawwassen. Le navire est en haut, le fond marin en bas.",
+    "viewLabel": "Vue du fond marin",
+    "slice": "Vue en coupe",
+    "threeD": "Fond marin 3D",
+    "sliceLabel": "Coupe de la profondeur de l'eau le long du trajet du traversier",
+    "sunlight": "Zone éclairée",
+    "sunlightSub": "les plantes peuvent y pousser",
+    "twilight": "Zone crépusculaire",
+    "twilightSub": "trop sombre pour les plantes",
+    "you": "Vous · {place}",
+    "waterBelow": "Eau sous vous",
+    "footnote": "Profondeur étirée 25× pour mieux voir la forme · profil donné à titre d'exemple"
+  },
+  "tides": {
+    "title": "Marées et météo",
+    "subtitle": "Ce que font la mer et le ciel autour du navire en ce moment",
+    "tideToday": "Marée du jour · {place}",
+    "chartLabel": "Hauteur de la marée pendant la journée, avec l'heure actuelle",
+    "now": "Maintenant",
+    "high": "Haute {h} m · {time}",
+    "low": "Basse {h} m · {time}",
+    "currentIn": "Courant dans {place}",
+    "currentLabel": "Flèche du courant vers {dir}",
+    "topSpeed": "Vitesse maximale aujourd'hui : {n} nœuds.",
+    "north": "N",
+    "whyTides": "Pourquoi y a-t-il des marées?",
+    "moonPullLabel": "La Lune attire un renflement d'océan sur la Terre",
+    "moon": "Lune",
+    "outside": "Dehors en ce moment",
+    "feelsLike": "{sky} · ressenti {t}°",
+    "wind": "Vent",
+    "windFrom": "nd du {dir}",
+    "waves": "Vagues",
+    "visibility": "Visibilité",
+    "sunset": "Coucher du soleil",
+    "moonTonight": "Lune ce soir : {phase}"
+  },
+  "quiz": {
+    "title": "Quiz océan",
+    "subtitle": "Cinq questions sur la mer que vous traversez. Toutes les réponses sont dans les autres onglets.",
+    "progress": "Question {num} sur {total}",
+    "score": "Votre score",
+    "illustration": "[illustration : {pic}]",
+    "hint": "Besoin d'un indice?",
+    "correct": "Bonne réponse!",
+    "wrong": "Pas tout à fait!",
+    "next": "Question suivante",
+    "seeScore": "Voir mon score",
+    "complete": "Quiz terminé",
+    "finalAll": "Expert de l'océan! Tout est juste.",
+    "finalGood": "Belle traversée! Vous connaissez cette mer.",
+    "finalTry": "Bel effort! Explorez les onglets et rejouez.",
+    "playAgain": "Rejouer",
+    "meetAnimals": "Voir les animaux"
+  }
+}

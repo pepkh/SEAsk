@@ -1,0 +1,46 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--card);
+  border-radius: 18px;
+  padding: 16px 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.row b {
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.row span {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.bar {
+  position: relative;
+  height: 10px;
+}
+
+.track {
+  position: absolute;
+  inset: 2px 0;
+  border-radius: 3px;
+  background: var(--track);
+}
+
+.fill {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  bottom: 2px;
+  border-radius: 3px;
+  background: var(--accent);
+}

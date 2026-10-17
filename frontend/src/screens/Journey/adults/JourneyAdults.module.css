@@ -1,0 +1,84 @@
+.screen {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 600px minmax(0, 1fr);
+  background: var(--ground);
+}
+
+/* Left: data panel */
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 36px 32px 24px 40px;
+  background: var(--panel);
+  min-height: 0;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.eyebrow {
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+/* Right: map with floating cards */
+.mapArea {
+  position: relative;
+  overflow: hidden;
+  background: var(--sea-map);
+}
+
+.pill {
+  position: absolute;
+  left: 32px;
+  top: 30px;
+}
+
+.toggles {
+  position: absolute;
+  right: 32px;
+  top: 30px;
+  display: flex;
+  gap: 12px;
+}
+
+.colourBy {
+  position: absolute;
+  right: 32px;
+  top: 118px;
+}
+
+.happening {
+  position: absolute;
+  left: 32px;
+  bottom: 28px;
+}
+
+.bottomRight {
+  position: absolute;
+  right: 32px;
+  bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
