@@ -9,7 +9,7 @@ from sqlalchemy import text
 
 from app.config import get_settings
 from app.http import start_client, stop_client
-from app.routes import ship, status, tides, weather
+from app.routes import derived, ship, status, tides, weather
 from db import get_engine
 
 
@@ -46,6 +46,8 @@ app.include_router(ship.router)
 app.include_router(weather.router)
 app.include_router(tides.router)
 app.include_router(status.router)
+# Before the `/trips/{trip_id}` route below, so `/trips/stats` is not read as a trip id.
+app.include_router(derived.router)
 
 
 class Point(BaseModel):

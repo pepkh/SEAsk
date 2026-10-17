@@ -1,0 +1,192 @@
+.card {
+  width: 620px;
+  background: var(--card);
+  border-radius: 24px;
+  padding: 18px 24px 14px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* "Now" and "Usually" values: the direct labels of the dot and the line */
+.stats {
+  margin: 0;
+  display: flex;
+  gap: 18px;
+  flex-shrink: 0;
+}
+
+.stats div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.stats dt {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.stats dd {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.keyNow {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.keyUsual {
+  width: 14px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--accent);
+}
+
+.plot {
+  position: relative;
+}
+
+.plot svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.plot svg:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+.band {
+  fill: var(--panel);
+}
+
+.grid {
+  stroke: var(--rule);
+  stroke-width: 1;
+}
+
+.axis {
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.tick {
+  font-family: var(--mono);
+  font-size: 11px;
+  fill: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.zoneLabel {
+  font-size: 12px;
+  fill: var(--muted);
+}
+
+.area {
+  fill: var(--accent);
+  fill-opacity: 0.1;
+}
+
+.line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+/* Where the ship is now */
+.here {
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+
+.crosshair {
+  stroke: var(--muted);
+  stroke-width: 1;
+}
+
+.usualDot {
+  fill: var(--accent);
+  stroke: var(--card);
+  stroke-width: 2;
+}
+
+.nowDot {
+  fill: var(--ink);
+  stroke: var(--card);
+  stroke-width: 2;
+}
+
+.tooltip {
+  position: absolute;
+  top: -6px;
+  pointer-events: none;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 10px;
+  padding: 6px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  white-space: nowrap;
+  box-shadow: var(--shadow-float);
+}
+
+.tooltip b {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.tooltip span {
+  font-size: 12px;
+  color: var(--muted-on-dark);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

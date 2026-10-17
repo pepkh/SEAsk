@@ -35,6 +35,9 @@ class ShipLatest(BaseModel):
         "off by up to ~60°). Unlike ship_course it stays steady at the berth.",
         examples=[316.8],
     )
+    oxygen_saturation: float | None = Field(
+        description="Dissolved oxygen as % of what the water holds at equilibrium with the air (OXYSENSOR)."
+    )
     roll: float | None = Field(description="Degrees.")
     salinity: float | None = Field(description="PSU.")
     ship_course: float | None = Field(description="Course over ground, degrees true.")

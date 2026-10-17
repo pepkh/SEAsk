@@ -71,11 +71,15 @@
   top: 118px;
 }
 
-.happening {
+/* Route profile chart above "What's happening here" */
+.leftStack {
   zoom: var(--ui-scale);
   position: absolute;
   left: 32px;
   bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .bottomRight {

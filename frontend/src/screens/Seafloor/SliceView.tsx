@@ -5,7 +5,13 @@ import type { Sailing } from '../../types/sailing'
 import styles from './SliceView.module.css'
 
 const SHADOW_ROOM = 40
-const profile = SLICE_PROFILE.map(([x, y]) => `${x} ${y}`).join(' L')
+/** Marker radius plus a little air: a marker drawn deeper than this above the seafloor is moved up. */
+const MARKER_CLEARANCE = 20
+const profile = SLICE_PROFILE.map(([x, y]) => `${x.toFixed(1)} ${y.toFixed(1)}`).join(' L')
+/** Deepest point of the seafloor line, [x, y]. */
+const deepest = SLICE_PROFILE.reduce((best, p) => (p[1] > best[1] ? p : best))
+/** The twilight-zone label (y 360 to 382) needs water below it. */
+const TWILIGHT_LABEL_Y = 400
 
 /** Cross-section of the sea along the route. The ship and the depth probe follow the route fraction. */
 export function SliceView({ content, sailing, place }: { content: SeafloorContent; sailing: Sailing; place: string }) {
@@ -13,6 +19,11 @@ export function SliceView({ content, sailing, place }: { content: SeafloorConten
   const x = sliceX(sailing.fraction)
   const floor = floorY(x)
   const [start, end] = sailing.direction === 1 ? [24, SLICE_WIDTH] : [SLICE_WIDTH, 24]
+  // The marker positions come from the mockup drawing; keep them in the water above the real seafloor.
+  const markers = content.markers.map((m) => {
+    const lift = Math.max(0, m.cy - (floorY(m.cx) - MARKER_CLEARANCE))
+    return { ...m, cy: m.cy - lift, ty: m.ty - lift }
+  })
 
   return (
     <div className={styles.panel}>
@@ -35,11 +46,18 @@ export function SliceView({ content, sailing, place }: { content: SeafloorConten
         <rect x="0" y="0" width="1848" height="70" fill="url(#skyG)" />
         <rect x="0" y="70" width="1848" height="530" fill="url(#waterG)" />
         <line x1="0" y1="330" x2="1848" y2="330" stroke="#FFFFFF" strokeOpacity="0.22" strokeDasharray="6 10" />
-        <g fontFamily="Outfit, sans-serif" textAnchor="end">
-          <text x="1830" y="106" fontSize="18" fontWeight="600" fill="#FFFFFF" opacity="0.85">{t('seafloor.sunlight')}</text>
-          <text x="1830" y="128" fontSize="15" fill="#DDEAF0" opacity="0.75">{t('seafloor.sunlightSub')}</text>
-          <text x="1830" y="360" fontSize="18" fontWeight="600" fill="#FFFFFF" opacity="0.8">{t('seafloor.twilight')}</text>
-          <text x="1830" y="382" fontSize="15" fill="#DDEAF0" opacity="0.7">{t('seafloor.twilightSub')}</text>
+        <path d={`M${profile} L1850 600 L24 600 Z`} fill="url(#floorG)" />
+        <path d={`M${profile}`} fill="none" stroke="#C9B38E" strokeWidth="3" />
+        {/* Over the deepest water. The route only reaches the twilight zone (below 200 m) where it is deeper. */}
+        <g fontFamily="Outfit, sans-serif" textAnchor="middle">
+          <text x={deepest[0]} y="150" fontSize="18" fontWeight="600" fill="#FFFFFF" opacity="0.85">{t('seafloor.sunlight')}</text>
+          <text x={deepest[0]} y="172" fontSize="15" fill="#DDEAF0" opacity="0.75">{t('seafloor.sunlightSub')}</text>
+          {deepest[1] > TWILIGHT_LABEL_Y && (
+            <>
+              <text x={deepest[0]} y="360" fontSize="18" fontWeight="600" fill="#FFFFFF" opacity="0.8">{t('seafloor.twilight')}</text>
+              <text x={deepest[0]} y="382" fontSize="15" fill="#DDEAF0" opacity="0.7">{t('seafloor.twilightSub')}</text>
+            </>
+          )}
         </g>
         <g fontFamily="JetBrains Mono, monospace" fontSize="13" fill="#BFD3DC" opacity="0.7">
           <text x="10" y="135">50 m</text>
@@ -47,8 +65,6 @@ export function SliceView({ content, sailing, place }: { content: SeafloorConten
           <text x="10" y="330">200 m</text>
           <text x="10" y="460">300 m</text>
         </g>
-        <path d={`M${profile} L1850 600 L24 600 Z`} fill="url(#floorG)" />
-        <path d={`M${profile}`} fill="none" stroke="#C9B38E" strokeWidth="3" />
         <rect x="0" y="40" width="40" height="30" fill="#8C9A7A" />
         <rect x="1808" y="44" width="40" height="26" fill="#8C9A7A" />
         <path d={`M${start} ${SURFACE_Y} L${x} ${SURFACE_Y}`} style={{ stroke: 'var(--accent)' }} strokeWidth="5" strokeLinecap="round" />
@@ -71,7 +87,7 @@ export function SliceView({ content, sailing, place }: { content: SeafloorConten
         </g>
         <path d="M1560 70 Q1700 70 1848 70 L1848 112 Q1720 98 1560 70 Z" fill="#B59A6A" opacity="0.28" />
         <g fontFamily="Outfit, sans-serif" fontSize="15" fill="#FFFFFF">
-          {content.markers.map((m) => (
+          {markers.map((m) => (
             <g key={m.label}>
               <circle cx={m.cx} cy={m.cy} r="16" fill="#E2553A" />
               <text x={m.tx} y={m.ty}>{m.label}</text>

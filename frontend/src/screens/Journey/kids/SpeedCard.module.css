@@ -16,6 +16,7 @@
 }
 
 .u {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -30,6 +31,22 @@
 .u span {
   font-size: 16px;
   color: var(--muted);
+}
+
+/* Ride comfort from the roll of the last minute */
+.u .comfort {
+  margin-top: 4px;
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  padding: 4px 10px 4px 8px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 500;
 }
 
 @media (max-width: 900px) {

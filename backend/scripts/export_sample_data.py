@@ -60,6 +60,7 @@ FEED_COLUMNS = {
     "conductivity": 4,
     "current": 2,
     "heading": 1,
+    "oxygen_saturation": 1,
     "roll": 1,
     "salinity": 3,
     "ship_course": 1,
@@ -75,9 +76,10 @@ FEED_COLUMNS = {
 REQUIRED = ("latitude", "longitude", "ship_course", "speed_over_ground", "heading")
 READINGS_SQL = text(
     "select ts, latitude, longitude, air_temperature, barometric_pressure, cdom_fluorescence, "
-    "chlorophyll, conductivity, current, heading, magnetic_heading, roll, salinity, ship_course, "
-    "sound_speed, speed_over_ground, systemstatus, tank_level, tsg_temperature, turbidity, "
-    "valve_position_status from readings where ts >= :start and ts <= :end order by ts"
+    "chlorophyll, conductivity, current, heading, magnetic_heading, oxygen_saturation, roll, "
+    "salinity, ship_course, sound_speed, speed_over_ground, systemstatus, tank_level, "
+    "tsg_temperature, turbidity, valve_position_status from readings "
+    "where ts >= :start and ts <= :end order by ts"
 )
 
 

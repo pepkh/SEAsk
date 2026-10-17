@@ -4,6 +4,7 @@ import { LanguageButton } from '../../../components/LanguageButton/LanguageButto
 import { SampleChip } from '../../../components/SampleChip/SampleChip'
 import { useKiosk } from '../../../context/KioskContext'
 import { useContent } from '../../../hooks/useContent'
+import { comfortOf } from '../../../ship/comfort'
 import { useShip } from '../../../ship/ShipProvider'
 import { DepthCard } from './DepthCard'
 import { EtaCard } from './EtaCard'
@@ -43,7 +44,7 @@ export function JourneyKids() {
             <LanguageButton variant="glass" />
           </div>
           <div className={styles.left}>
-            <SpeedCard row={ship.row} sailing={ship.sailing} />
+            <SpeedCard row={ship.row} sailing={ship.sailing} comfort={comfortOf(ship.history)} />
             <EtaCard sailing={ship.sailing} zone={zone} />
             <ReadingTiles row={ship.row} sailing={ship.sailing} readings={readings} />
           </div>

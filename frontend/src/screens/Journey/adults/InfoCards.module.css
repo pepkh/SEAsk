@@ -65,6 +65,34 @@
   color: var(--body);
 }
 
+/* How the water here usually differs from the whole route */
+.compare {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--rule);
+}
+
+.compareTitle {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  background: var(--button-soft);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
 .about {
   width: 400px;
   background: var(--ink);

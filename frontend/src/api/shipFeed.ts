@@ -79,6 +79,7 @@ async function mockRow(now: Date): Promise<ShipRow> {
     cdom_fluorescence: lerp(a.cdom_fluorescence, b.cdom_fluorescence),
     chlorophyll: lerp(a.chlorophyll, b.chlorophyll),
     conductivity: lerp(a.conductivity, b.conductivity),
+    oxygen_saturation: lerp(a.oxygen_saturation, b.oxygen_saturation),
     salinity: lerp(a.salinity, b.salinity),
     ship_course: angle(a.ship_course, b.ship_course),
     heading: a.heading === null || a.heading === undefined || b.heading === null || b.heading === undefined ? a.heading : angle(a.heading, b.heading),

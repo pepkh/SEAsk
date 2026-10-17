@@ -25,6 +25,8 @@ All settings are described in [`.env.example`](.env.example). Never commit `.env
 | `GET /api/weather?lat=&lon=` | OpenWeatherMap + Open-Meteo Marine | Point inside the Salish Sea box (lat 47.5 to 50.5, lon -125.5 to -121.5), else 422. Each part is `live` or `unavailable`; 503 `weather_unavailable` if both fail. |
 | `GET /api/tides?lat=&lon=` | DFO IWLS (no key) | Today's tide (local day, America/Vancouver) at the nearest of `DFO_TIDE_STATIONS` and the Active Pass current. Same box as `/api/weather`, else 422. 503 `tides_unavailable` if the tide fails; `current` is null if only the current station fails. |
 | `GET /api/status` | | Per source (`onc`, `openweathermap`, `openmeteo`, `dfo`): `configured`, `ok`, `last_error`, `last_success_at`. |
+| `GET /trips/stats` | Neon | One row per trip: distance, speed, berth and Active Pass time, roll, mean water values (`crossing_stats`). |
+| `GET /trips/{id}/profile`, `GET /route/profile` | Neon | Water values and depth in 200 parts of the route, for one trip or all trips (`route_profile`). |
 
 ### Heading
 
@@ -71,6 +73,19 @@ code. To check the codes and units against the live API:
 
 ```sh
 .venv/bin/python scripts/onc_discover.py
+```
+
+## Derived tables
+
+`scripts/build_derived.py` builds `readings_derived`, `route_profile` and `crossing_stats` in Neon
+(see `DATA.md`) and the kiosk's offline copy of `/route/profile`. It needs the extra packages in
+`requirements-scripts.txt`, ONC_TOKEN (for the QC flags) and the GEBCO grid in `backend/data/`
+(git-ignored), copied from `s3://ocean-hackathon-2026/data/bcferries/bathymetry_salishsea/`:
+
+```sh
+uv pip install --python .venv/bin/python -r requirements-scripts.txt
+.venv/bin/python scripts/build_derived.py --dry-run   # summaries only
+.venv/bin/python scripts/build_derived.py             # replaces the three tables
 ```
 
 ## Sample data for the frontend

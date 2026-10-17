@@ -233,3 +233,6 @@ dist/
 .env.*
 !.env.example
 .DS_Store
+
+# Downloaded raw data (GEBCO, README) used by backend/scripts
+backend/data/

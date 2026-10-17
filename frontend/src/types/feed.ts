@@ -21,6 +21,9 @@ export interface ShipRow {
   /** S/m */
   conductivity: number | null
   current: number | null
+  /** Dissolved oxygen, % of saturation */
+  oxygen_saturation: number | null
+  /** Degrees, positive to starboard */
   roll: number | null
   /** PSU */
   salinity: number | null
@@ -45,6 +48,7 @@ export interface ShipRow {
 export type ReadingKey =
   | 'tsg_temperature'
   | 'salinity'
+  | 'oxygen_saturation'
   | 'conductivity'
   | 'chlorophyll'
   | 'turbidity'
@@ -54,4 +58,4 @@ export type ReadingKey =
   | 'barometric_pressure'
 
 /** The readings that can colour the track on the Grown-ups map. */
-export type TrackKey = 'salinity' | 'tsg_temperature' | 'turbidity' | 'chlorophyll'
+export type TrackKey = 'salinity' | 'tsg_temperature' | 'oxygen_saturation' | 'turbidity' | 'chlorophyll'

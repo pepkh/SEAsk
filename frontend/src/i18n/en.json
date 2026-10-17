@@ -76,6 +76,30 @@
     "aboutData": "About the data",
     "aboutDataText": "Instruments on board sample seawater through an intake in the hull as the ferry sails. Readings come from Ocean Networks Canada and refresh every few seconds.",
     "qcNote": "QC = share of readings passing quality checks",
+    "comfort": {
+      "calm": "Smooth sailing",
+      "gentle": "Gently rocking",
+      "rolly": "Rolling: hold on!"
+    },
+    "profile": {
+      "title": "{reading} along the route",
+      "subtitle": "Usual values from 8 crossings on 17 Aug 2026",
+      "now": "Now",
+      "usual": "Usually",
+      "label": "Chart of {reading} along the route from Swartz Bay to Tsawwassen, with the ship's position",
+      "tableCaption": "Usual {reading} in each part of the route",
+      "zone": "Part of the route",
+      "value": "Usual value"
+    },
+    "compare": {
+      "title": "Usually here, compared with the whole route",
+      "colder": "{v} °C colder",
+      "warmer": "{v} °C warmer",
+      "fresher": "{v} PSU less salty",
+      "saltier": "{v} PSU saltier",
+      "lessO2": "{v}% less oxygen",
+      "moreO2": "{v}% more oxygen"
+    },
     "landmarks": {
       "kinds": {
         "peak": "Mountain",
@@ -124,7 +148,7 @@
     "twilightSub": "too dark for plants",
     "you": "You · {place}",
     "waterBelow": "Water below you",
-    "footnote": "Depth stretched 25× so the shape is easy to see · profile shown is a placeholder"
+    "footnote": "Depth under the route from GEBCO 2026, stretched 25× so the shape is easy to see"
   },
   "tides": {
     "title": "Tides & weather",

@@ -76,6 +76,30 @@
     "aboutData": "À propos des données",
     "aboutDataText": "Des instruments à bord prélèvent l'eau de mer par une prise dans la coque pendant la traversée. Les mesures viennent d'Ocean Networks Canada et se mettent à jour toutes les quelques secondes.",
     "qcNote": "CQ = part des mesures qui passent le contrôle de qualité",
+    "comfort": {
+      "calm": "Navigation en douceur",
+      "gentle": "Léger roulis",
+      "rolly": "Ça roule : tenez-vous bien!"
+    },
+    "profile": {
+      "title": "{reading} le long du trajet",
+      "subtitle": "Valeurs habituelles de 8 traversées le 17 août 2026",
+      "now": "Maintenant",
+      "usual": "D'habitude",
+      "label": "Graphique : {reading} le long du trajet de Swartz Bay à Tsawwassen, avec la position du navire",
+      "tableCaption": "Valeur habituelle ({reading}) dans chaque partie du trajet",
+      "zone": "Partie du trajet",
+      "value": "Valeur habituelle"
+    },
+    "compare": {
+      "title": "D'habitude ici, comparé à tout le trajet",
+      "colder": "{v} °C plus froide",
+      "warmer": "{v} °C plus chaude",
+      "fresher": "{v} PSU moins salée",
+      "saltier": "{v} PSU plus salée",
+      "lessO2": "{v} % d'oxygène en moins",
+      "moreO2": "{v} % d'oxygène en plus"
+    },
     "landmarks": {
       "kinds": {
         "peak": "Montagne",
@@ -124,7 +148,7 @@
     "twilightSub": "trop sombre pour les plantes",
     "you": "Vous · {place}",
     "waterBelow": "Eau sous vous",
-    "footnote": "Profondeur étirée 25× pour mieux voir la forme · profil donné à titre d'exemple"
+    "footnote": "Profondeur sous le trajet selon GEBCO 2026, étirée 25× pour mieux voir la forme"
   },
   "tides": {
     "title": "Marées et météo",

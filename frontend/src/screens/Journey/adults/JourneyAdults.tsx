@@ -4,7 +4,9 @@ import { LanguageButton } from '../../../components/LanguageButton/LanguageButto
 import { SampleChip } from '../../../components/SampleChip/SampleChip'
 import { useKiosk } from '../../../context/KioskContext'
 import { useContent } from '../../../hooks/useContent'
+import { useRouteProfile } from '../../../hooks/useRouteProfile'
 import { useLanguage } from '../../../i18n/LanguageContext'
+import { binAt } from '../../../ship/profile'
 import { useShip } from '../../../ship/ShipProvider'
 import type { TrackKey } from '../../../types/feed'
 import { SceneModeButton, ViewControls } from '../kids/ViewControls'
@@ -12,6 +14,7 @@ import { ArrivalCard } from './ArrivalCard'
 import { AboutDataCard, HappeningCard, PlacePill } from './InfoCards'
 import styles from './JourneyAdults.module.css'
 import { ReadingsTable } from './ReadingsTable'
+import { RouteProfileCard } from './RouteProfileCard'
 import { StatTiles } from './StatTiles'
 import { TrackColourCard } from './TrackColourCard'
 import { TrackMap } from './TrackMap'
@@ -25,6 +28,7 @@ export function JourneyAdults() {
   const ship = useShip()
   const zones = useContent('zones')
   const readings = useContent('readings')
+  const profile = useRouteProfile()
   const { sceneMode, setSceneMode, mapAvailable, view, setView } = useKiosk()
   const [trackKey, setTrackKey] = useState<TrackKey>('salinity')
 
@@ -33,6 +37,7 @@ export function JourneyAdults() {
   const zone = zones[sailing.zoneId]
   const track = readings.tracks.find((tr) => tr.key === trackKey) ?? readings.tracks[0]
   const crossing = crossingRows(history)
+  const digits = readings.items.find((item) => item.key === track.key)?.digits ?? 2
 
   return (
     <div className={styles.screen}>
@@ -63,7 +68,10 @@ export function JourneyAdults() {
           <LanguageButton variant="floating" />
         </div>
         <TrackColourCard tracks={readings.tracks} track={track} onSelect={setTrackKey} className={styles.colourBy} />
-        <HappeningCard zone={zone} className={styles.happening} />
+        <div className={styles.leftStack}>
+          <RouteProfileCard profile={profile} track={track} digits={digits} row={row} sailing={sailing} zones={zones} />
+          <HappeningCard zone={zone} usual={binAt(profile, sailing.fraction)} />
+        </div>
         <div className={styles.bottomRight}>
           {/* The map has the same camera buttons as Kids; the 2D sea map only needs the globe button. */}
           {sceneMode === 'map' ? (

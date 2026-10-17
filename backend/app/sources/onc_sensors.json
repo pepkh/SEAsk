@@ -31,6 +31,8 @@
     "turbidity": {"location": "ship", "deviceCategory": "TURBCHLFL", "sensorCategoryCode": ["turbidity", "turbidity_ntu"], "checkAge": true},
     "cdom_fluorescence": {"location": "ship", "deviceCategory": "TURBCHLFL", "sensorCategoryCode": ["cdom_fluorescence", "cdom"], "checkAge": true},
 
+    "oxygen_saturation": {"location": "ship", "deviceCategory": "OXYSENSOR", "sensorCategoryCode": ["oxygen_saturation"], "checkAge": true},
+
     "air_temperature": {"location": "ship", "deviceCategory": "TEMPHUMID", "sensorCategoryCode": ["air_temperature", "temperature"], "unit": "C", "checkAge": true},
     "barometric_pressure": {"location": "ship", "deviceCategory": "BARPRESS", "sensorCategoryCode": ["barometric_pressure", "pressure"], "unit": "hPa", "checkAge": true},
 

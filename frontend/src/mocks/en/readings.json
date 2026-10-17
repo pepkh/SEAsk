@@ -4,20 +4,22 @@
       "kids": { "name": "Sea temperature", "hint": "Colder than a swimming pool", "digits": 1 } },
     { "key": "salinity", "name": "Salinity", "unit": "PSU", "digits": 2, "qc": 99,
       "kids": { "name": "Saltiness", "hint": "≈ 5 teaspoons of salt per litre", "digits": 1 } },
+    { "key": "oxygen_saturation", "name": "O₂ saturation", "unit": "%", "digits": 1, "qc": 99,
+      "kids": { "name": "Oxygen for fish", "hint": "Air in the water that fish breathe", "digits": 0 } },
     { "key": "conductivity", "name": "Conductivity", "unit": "S/m", "digits": 2, "qc": 99 },
     { "key": "chlorophyll", "name": "Chlorophyll", "unit": "µg/L", "digits": 2, "qc": 98,
       "kids": { "name": "Plankton", "hint": "Tiny plants feeding the sea", "digits": 1 } },
-    { "key": "turbidity", "name": "Turbidity", "unit": "NTU", "digits": 2, "qc": 97,
-      "kids": { "name": "Water clarity", "hint": "Clear: sunlight reaches deep", "digits": 1 } },
+    { "key": "turbidity", "name": "Turbidity", "unit": "NTU", "digits": 2, "qc": 97 },
     { "key": "cdom_fluorescence", "name": "CDOM fluorescence", "unit": "ppb", "digits": 2, "qc": 99 },
     { "key": "sound_speed", "name": "Speed of sound", "unit": "m/s", "digits": 1, "qc": 100 },
     { "key": "air_temperature", "name": "Air temperature", "unit": "°C", "digits": 1, "qc": 100 },
     { "key": "barometric_pressure", "name": "Air pressure", "unit": "hPa", "digits": 1, "qc": 100 }
   ],
   "tracks": [
-    { "key": "salinity", "label": "Salinity", "unit": "PSU", "min": 29.6, "max": 30.6 },
-    { "key": "tsg_temperature", "label": "Temperature", "unit": "°C", "min": 9.8, "max": 10.8 },
-    { "key": "turbidity", "label": "Turbidity", "unit": "NTU", "min": 0.6, "max": 1.4 },
-    { "key": "chlorophyll", "label": "Chlorophyll", "unit": "µg/L", "min": 1.4, "max": 2.2 }
+    { "key": "salinity", "label": "Salinity", "unit": "PSU", "min": 26, "max": 30 },
+    { "key": "tsg_temperature", "label": "Temperature", "unit": "°C", "min": 12, "max": 17 },
+    { "key": "oxygen_saturation", "label": "Oxygen", "unit": "%", "min": 70, "max": 120 },
+    { "key": "turbidity", "label": "Turbidity", "unit": "NTU", "min": 1.8, "max": 2.6 },
+    { "key": "chlorophyll", "label": "Chlorophyll", "unit": "µg/L", "min": 0.5, "max": 5 }
   ]
 }
