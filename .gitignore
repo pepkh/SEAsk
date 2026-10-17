@@ -218,3 +218,17 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Python
+backend/venv/
+__pycache__/
+*.pyc
+
+# React
+node_modules/
+dist/
+
+# Environment
+.env
+.env.*
+.DS_Store
