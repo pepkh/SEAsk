@@ -2,6 +2,7 @@ import { Cartographic, defined, Math as CesiumMath, ScreenSpaceEventHandler, Scr
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useCesium } from 'resium'
+import { KnowledgeIcon } from '../components/KnowledgeIcon/KnowledgeIcon'
 import { useContent } from '../hooks/useContent'
 import { formatNumber } from '../i18n/format'
 import { useLanguage } from '../i18n/LanguageContext'
@@ -17,6 +18,8 @@ const PINNED_MS = 8000
 const LAND_MIN_M = WATER_HEIGHT + 2
 /** Labels nearer the right edge than this open to the left of the pointer (px). */
 const FLIP_PX = 380
+/** Specialties shown on a label, at most */
+const CHIPS = 3
 
 interface Shown {
   id: string
@@ -97,6 +100,16 @@ export function Landmarks({ onOpenChange }: { onOpenChange: (open: boolean) => v
         <span className={styles.kind}>{height ? `${kind} · ${height}` : kind}</span>
         <b className={styles.name}>{text.name}</b>
         <span className={styles.fact}>{text.fact}</span>
+        {text.knowledge?.specialties && (
+          <span className={styles.chips}>
+            {text.knowledge.specialties.slice(0, CHIPS).map((s) => (
+              <span key={s.text} className={styles.chip}>
+                <KnowledgeIcon kind={s.kind} size={16} />
+                {s.text}
+              </span>
+            ))}
+          </span>
+        )}
       </div>
     </div>,
     viewer.container,

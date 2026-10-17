@@ -1,0 +1,18 @@
+.screen {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+}
+
+/* Laid out at kiosk size and zoomed to the window */
+.corner {
+  zoom: var(--ui-scale);
+  position: absolute;
+  top: 32px;
+  right: max(36px, env(safe-area-inset-right, 0px));
+}
+
+.lang {
+  font-size: 18px;
+  font-weight: 600;
+}

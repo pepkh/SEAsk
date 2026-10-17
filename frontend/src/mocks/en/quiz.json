@@ -6,7 +6,7 @@
       "pic": "giant Pacific octopus",
       "picId": "octopus",
       "options": [["a", "Orca"], ["b", "Giant Pacific octopus"], ["c", "Harbour seal"], ["d", "Chinook salmon"]],
-      "hint": "It lives on the seafloor and has eight arms. Check the Sea life tab.",
+      "hint": "It lives on the seafloor and has eight arms. Dive in to meet it.",
       "why": "The giant Pacific octopus has three hearts: two pump blood through its gills and one sends it around the body. Its blood is blue, too!"
     },
     {
@@ -15,7 +15,7 @@
       "pic": "Fraser River meeting the sea",
       "picId": "fraser-plume",
       "options": [["a", "Rain falls on the ferry"], ["b", "Fish drink the salt"], ["c", "A big river pours in fresh water"], ["d", "The ferry filters it"]],
-      "hint": "Look at the Seafloor tab near the end of the route.",
+      "hint": "Watch the saltiness on the ferry's card as we get close to Tsawwassen.",
       "why": "The Fraser River empties into the Strait of Georgia. Its fresh water is lighter than salt water, so it spreads out on top."
     },
     {
@@ -24,7 +24,7 @@
       "pic": "Moon and Earth",
       "picId": "earth-moon",
       "options": [["a", "The wind"], ["b", "The Moon pulling on the sea"], ["c", "Waves from ferries"], ["d", "Whales swimming"]],
-      "hint": "The answer is in the sky. Check the Tides & weather tab.",
+      "hint": "The answer is in the sky. Watch the tide on the ferry's card.",
       "why": "The Moon's gravity pulls the ocean into a bulge. As Earth spins through it, the water here rises and falls about twice a day."
     },
     {

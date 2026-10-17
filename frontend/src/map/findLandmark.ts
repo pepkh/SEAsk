@@ -24,3 +24,17 @@ export function findLandmark(lat: number, lon: number, onLand: boolean): Landmar
 }
 
 export const findLandmarkById = (id: string) => LANDMARKS.find((mark) => mark.id === id)
+
+/**
+ * The island whose shore is nearest to a point (the ship), within `withinM` of it, or undefined.
+ * Island points sit inside the island, `radiusM` from its shore.
+ */
+export function nearestIsland(lat: number, lon: number, withinM: number): Landmark | undefined {
+  let best: { mark: Landmark; gap: number } | undefined
+  for (const mark of LANDMARKS) {
+    if (mark.kind !== 'island') continue
+    const gap = Math.min(...mark.points.map((p) => distanceM([lat, lon], p))) - mark.radiusM
+    if (gap <= withinM && (!best || gap < best.gap)) best = { mark, gap }
+  }
+  return best?.mark
+}

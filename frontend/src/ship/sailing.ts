@@ -1,10 +1,10 @@
-import { FEED_POLL_MS } from '../config/env'
 import routeJson from '../config/route.json'
 import terminalsJson from '../config/terminals.json'
 import type { ShipRow } from '../types/feed'
 import type { LatLon, Route, Terminal, TerminalId } from '../types/route'
 import type { Direction, Sailing } from '../types/sailing'
 import { bearingDeg, cumulativeM, distanceM, pointAlong, projectOnLine } from './geo'
+import { recentRows } from './recent'
 
 export const ROUTE = routeJson as Route
 const TERMINALS = terminalsJson as Terminal[]
@@ -17,9 +17,10 @@ const TSA = terminal('TSA')
 
 const KN_TO_KMH = 1.852
 const DOCKED_MAX_KN = 1
-const ETA_MIN_KN = 5
-/** Rows in the last 5 minutes (the kiosk polls the feed at a fixed rate) */
-const ETA_AVERAGE_ROWS = (5 * 60 * 1000) / FEED_POLL_MS
+/** Below this average speed (speeding up after leaving, slowing to arrive) the ETA uses the service speed */
+const ETA_MIN_KN = 12
+/** The ETA uses the average speed over this much recent history (ms) */
+const ETA_AVERAGE_MS = 5 * 60_000
 
 /** Route fraction (0 at Swartz Bay, 1 at Tsawwassen) and route bearing at a position. */
 export function locate(lat: number, lon: number): { fraction: number; routeBearing: number } {
@@ -53,8 +54,8 @@ export function zoneAt(fraction: number): string {
 
 const angleDiff = (a: number, b: number) => Math.abs(((a - b + 540) % 360) - 180)
 
-/** Calculate the sailing state from the latest row and the recent history. */
-export function deriveSailing(row: ShipRow, history: ShipRow[]): Sailing {
+/** Calculate the sailing state from the latest row and the recent history. `now` (ms) dates the arrival time. */
+export function deriveSailing(row: ShipRow, history: ShipRow[], now = Date.now()): Sailing {
   const docked = dockedAt(row)
   const { fraction, routeBearing } = locate(row.latitude, row.longitude)
 
@@ -71,7 +72,7 @@ export function deriveSailing(row: ShipRow, history: ShipRow[]): Sailing {
 
   let etaMin: number | null = null
   if (!docked) {
-    const recent = history.slice(-ETA_AVERAGE_ROWS)
+    const recent = recentRows(history, ETA_AVERAGE_MS)
     const avgKn = recent.reduce((sum, r) => sum + r.speed_over_ground, 0) / Math.max(1, recent.length)
     const kn = avgKn >= ETA_MIN_KN ? avgKn : ROUTE.serviceSpeedKn
     etaMin = Math.round((remainingKm / (kn * KN_TO_KMH)) * 60)
@@ -88,7 +89,7 @@ export function deriveSailing(row: ShipRow, history: ShipRow[]): Sailing {
     totalKm,
     remainingKm,
     etaMin,
-    arrivalAt: etaMin === null ? null : new Date(Date.now() + etaMin * 60_000),
+    arrivalAt: etaMin === null ? null : new Date(now + etaMin * 60_000),
     zoneId: docked ? (docked.id === 'SWB' ? ROUTE.zones[0].id : ROUTE.zones[ROUTE.zones.length - 1].id) : zoneAt(fraction),
   }
 }

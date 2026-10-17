@@ -1,0 +1,56 @@
+/* A raised neumorphic button; pressed, it sinks into the surface. */
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 26px 0 0;
+  border: 0;
+  border-radius: 999px;
+  background: var(--neu-surface);
+  box-shadow: var(--neu-out);
+  color: var(--ink);
+  cursor: pointer;
+  font: 600 22px var(--display);
+  -webkit-tap-highlight-color: transparent;
+  transition: box-shadow 140ms ease, scale 140ms var(--ease-spring);
+}
+
+.orb {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+}
+
+.back:active {
+  box-shadow: var(--neu-in);
+  scale: 0.97;
+}
+
+.deep {
+  background: var(--water-surface);
+  box-shadow: 9px 9px 22px rgba(13, 52, 70, 0.35), -6px -6px 18px rgba(255, 255, 255, 0.55);
+}
+
+.deep .orb {
+  color: var(--water-deep);
+}
+
+.deep:active {
+  box-shadow: inset 6px 6px 14px rgba(13, 52, 70, 0.35), inset -6px -6px 14px rgba(255, 255, 255, 0.45);
+}
+
+@media (max-width: 900px) {
+  .back {
+    font-size: 17px;
+    gap: 10px;
+    padding-right: 18px;
+  }
+
+  .orb {
+    width: 64px;
+    height: 64px;
+  }
+}

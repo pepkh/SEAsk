@@ -1,0 +1,165 @@
+/* The facts on the left, the diver's spot on the right */
+.card {
+  width: 650px;
+  padding: 22px 18px 18px 26px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 140px;
+  column-gap: 8px;
+}
+
+.main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Where the diver stands, on a soft little stage of light */
+.diverSpot {
+  align-self: end;
+  height: 214px;
+  border-radius: 0 0 22px 22px;
+  background: radial-gradient(ellipse 60% 14% at 50% 94%, rgba(31, 111, 224, 0.18), transparent 70%);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 6px;
+}
+
+.live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #c8302a;
+}
+
+.live i {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #e5372a;
+  box-shadow: 0 0 0 0 rgba(229, 55, 42, 0.55);
+  animation: pulse 1.8s ease-out infinite;
+}
+
+/* Rewound: a warm tint, so the card never passes for live */
+.rewound {
+  background: rgba(255, 246, 228, 0.88);
+}
+
+.ago {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #8a4b12;
+}
+
+.clock {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-right: auto;
+  font-variant-numeric: tabular-nums;
+}
+
+.where {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.where small {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.where b {
+  font-size: 38px;
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+
+.when {
+  font-size: 21px;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.when span {
+  color: var(--body);
+  font-weight: 400;
+}
+
+.slot {
+  margin-top: 12px;
+  padding-top: 16px;
+  border-top: 1.5px solid var(--rule);
+  height: 124px;
+  overflow: hidden;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 6px;
+}
+
+.dots i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--dot-off);
+  transition: width 300ms ease, background 300ms ease;
+}
+
+.dots .on {
+  width: 24px;
+  border-radius: 4px;
+  background: var(--accent);
+}
+
+@keyframes pulse {
+  70% {
+    box-shadow: 0 0 0 9px rgba(229, 55, 42, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(229, 55, 42, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live i {
+    animation: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .card {
+    width: auto;
+    grid-template-columns: minmax(0, 1fr) 96px;
+  }
+
+  .diverSpot {
+    height: 150px;
+  }
+
+  .where b {
+    font-size: 30px;
+  }
+
+  .slot {
+    height: auto;
+    min-height: 124px;
+  }
+}

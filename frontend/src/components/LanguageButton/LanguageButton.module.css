@@ -24,3 +24,16 @@
 .plain {
   background: var(--card);
 }
+
+.neu {
+  height: 72px;
+  padding: 0 28px;
+  font-size: 19px;
+  background: var(--neu-surface);
+  box-shadow: var(--neu-out-small);
+  transition: box-shadow 140ms ease;
+}
+
+.neu:active {
+  box-shadow: var(--neu-in);
+}

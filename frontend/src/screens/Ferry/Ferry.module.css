@@ -1,0 +1,133 @@
+/*
+ * Laid out at 1920 × 1080 and zoomed to the window (the 3D world behind is not zoomed). The HUD lets touches
+ * through to the world (drag to look around); only the card and the bubbles take them.
+ * The positions keep a clear oval in the middle for the ferry.
+ */
+.hud {
+  zoom: var(--ui-scale);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hud > * {
+  pointer-events: auto;
+  position: absolute;
+  animation: driftIn 620ms var(--ease-spring) both;
+  animation-delay: calc(var(--i, 0) * 70ms + 120ms);
+}
+
+.card {
+  --i: 0;
+  left: 36px;
+  top: 32px;
+}
+
+.corner {
+  --i: 1;
+  top: 32px;
+  right: 36px;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+/* Quiz and Ocean lab: the same size, one above the other on the right */
+.quiz {
+  --i: 2;
+  right: 66px;
+  top: 214px;
+}
+
+.lab {
+  --i: 3;
+  right: 66px;
+  top: 430px;
+}
+
+.map {
+  --i: 4;
+  left: 70px;
+  bottom: 34px;
+}
+
+/* Dive in at the right end, clear of the map credit line below. The diver jumps into it from the card. */
+.dive {
+  --i: 5;
+  right: 52px;
+  bottom: 44px;
+}
+
+/* While rewound: the live-stream controls, between the route map and the diver */
+.live {
+  left: 540px;
+  bottom: 70px;
+  animation: none;
+}
+
+.lang {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Leaving (diving or session end): everything drifts up and fades as the water comes. */
+.leaving > * {
+  animation: driftOut 360ms ease-in both;
+  pointer-events: none;
+}
+
+@keyframes driftIn {
+  from {
+    opacity: 0;
+    translate: 0 40px;
+    scale: 0.85;
+  }
+}
+
+@keyframes driftOut {
+  to {
+    opacity: 0;
+    translate: 0 -60px;
+    scale: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hud > *,
+  .leaving > * {
+    animation: none;
+  }
+}
+
+/* Phones: the world takes the top 56 % of the screen and the HUD stacks below it. */
+@media (max-width: 900px) {
+  .hud {
+    position: relative;
+    inset: auto;
+    padding: calc(56vh + 16px) 16px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+  }
+
+  .hud > * {
+    position: static;
+  }
+
+  .card {
+    flex-basis: 100%;
+  }
+
+  /* The two big bubbles are wider than a phone */
+  .map,
+  .dive {
+    zoom: 0.82;
+  }
+
+  .corner {
+    position: absolute !important;
+    top: 12px;
+    right: 12px;
+  }
+}

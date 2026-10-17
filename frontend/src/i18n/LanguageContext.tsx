@@ -18,6 +18,8 @@ export type TVars = Record<string, string | number>
 interface LanguageValue {
   lang: Lang
   toggle: () => void
+  /** Set a language, e.g. back to English when a visitor session ends. */
+  setLang: (lang: Lang) => void
   t: (key: TKey, vars?: TVars) => string
 }
 
@@ -32,7 +34,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       const text = key.split('.').reduce<unknown>((node, part) => (node as Record<string, unknown>)[part], dict) as string
       return vars ? text.replace(/\{(\w+)\}/g, (_, name: string) => String(vars[name] ?? '')) : text
     }
-    return { lang, toggle, t }
+    return { lang, toggle, setLang, t }
   }, [lang, toggle])
   return <LanguageContext value={value}>{children}</LanguageContext>
 }

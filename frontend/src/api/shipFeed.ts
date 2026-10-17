@@ -1,4 +1,5 @@
 import { LIVE_DATA, REPLAY_SPEED } from '../config/env'
+import { interpolateRow } from '../ship/interpolate'
 import type { ShipRow } from '../types/feed'
 import type { DataSource } from '../types/source'
 import { getJson } from './http'
@@ -63,29 +64,47 @@ async function mockRow(now: Date): Promise<ShipRow> {
   const pos = ((secOfDay * REPLAY_SPEED) % (feed.length * stepS)) / stepS
   const a = feed[Math.floor(pos)]
   const b = feed[(Math.floor(pos) + 1) % feed.length]
-  const t = pos % 1
-  const lerp = (x: number | null, y: number | null) => (x === null || y === null ? x : x + (y - x) * t)
-  // Angles take the short way round (350° → 10° turns through 0°).
-  const angle = (x: number, y: number) => (x + (((((y - x) % 360) + 540) % 360) - 180) * t + 360) % 360
+  return interpolateRow(a, b, pos % 1, now)
+}
 
-  return {
-    ...a,
-    time: now.toISOString(),
-    time_local: now.toISOString(),
-    latitude: lerp(a.latitude, b.latitude)!,
-    longitude: lerp(a.longitude, b.longitude)!,
-    air_temperature: lerp(a.air_temperature, b.air_temperature),
-    barometric_pressure: lerp(a.barometric_pressure, b.barometric_pressure),
-    cdom_fluorescence: lerp(a.cdom_fluorescence, b.cdom_fluorescence),
-    chlorophyll: lerp(a.chlorophyll, b.chlorophyll),
-    conductivity: lerp(a.conductivity, b.conductivity),
-    oxygen_saturation: lerp(a.oxygen_saturation, b.oxygen_saturation),
-    salinity: lerp(a.salinity, b.salinity),
-    ship_course: angle(a.ship_course, b.ship_course),
-    heading: a.heading === null || a.heading === undefined || b.heading === null || b.heading === undefined ? a.heading : angle(a.heading, b.heading),
-    sound_speed: lerp(a.sound_speed, b.sound_speed),
-    speed_over_ground: lerp(a.speed_over_ground, b.speed_over_ground)!,
-    tsg_temperature: lerp(a.tsg_temperature, b.tsg_temperature),
-    turbidity: lerp(a.turbidity, b.turbidity),
+/** GET /api/ship/history: the recent track, oldest first, one row per step. */
+interface LiveHistory {
+  source: 'live'
+  step_s: number
+  rows: LiveRow[]
+}
+
+export interface FeedHistory {
+  rows: ShipRow[]
+  source: DataSource
+}
+
+/** Rows this far apart when the sample feed fills in the past (s) */
+const SAMPLE_HISTORY_STEP_S = 5
+
+/**
+ * The last `minutes` of the ship's track, so a visitor session starts with the whole current crossing (the kiosk
+ * polls nothing while it waits on the welcome screen). Live from the backend with VITE_LIVE_DATA, else made from
+ * the sample feed, which can say where the ship was at any time.
+ */
+export async function getHistory(minutes: number): Promise<FeedHistory> {
+  if (LIVE_DATA) {
+    try {
+      const body = await getJson<LiveHistory>(`/api/ship/history?minutes=${minutes}&step=5`, 15_000)
+      let course = 0
+      let speed = 0
+      const rows = body.rows.map((row) => {
+        course = row.ship_course ?? course
+        speed = row.speed_over_ground ?? speed
+        return { ...row, ship_course: course, speed_over_ground: speed }
+      })
+      return { rows, source: 'live' }
+    } catch (err) {
+      console.warn('Live ship history unavailable, starting with the sample history.', err)
+    }
   }
+  const now = Date.now()
+  const count = Math.floor((minutes * 60) / SAMPLE_HISTORY_STEP_S)
+  const rows = await Promise.all(Array.from({ length: count }, (_, i) => mockRow(new Date(now - (count - i) * SAMPLE_HISTORY_STEP_S * 1000))))
+  return { rows, source: 'sample' }
 }

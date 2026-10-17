@@ -1,0 +1,157 @@
+/* Above the screens and the transition water (the diver is seen jumping in and sinking under it). */
+.diver {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 50;
+  transform-origin: 50% 88%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* The canvas fills the box but never takes a touch; the button covers only the figure. */
+.art,
+.sprite {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.art,
+.art * {
+  pointer-events: none !important;
+}
+
+.hit {
+  position: absolute;
+  left: 30%;
+  right: 30%;
+  top: 8%;
+  bottom: 6%;
+  padding: 0;
+  border: 0;
+  background: none;
+  pointer-events: auto;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hit:disabled {
+  pointer-events: none;
+}
+
+.hit:focus-visible {
+  outline: 4px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 24px;
+}
+
+/* On the Dive screen the diver is under water: a little bluer and dimmer. */
+.underwater {
+  filter: saturate(0.8) brightness(0.92) drop-shadow(0 0 18px rgba(127, 196, 216, 0.55));
+}
+
+.speech {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 51;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+/* The line sits above the diver's head, on the side with more room. */
+.say {
+  position: absolute;
+  bottom: 0;
+  width: max-content;
+  max-width: min(calc(380px * var(--ui-scale)), var(--room, 380px));
+  padding: calc(14px * var(--ui-scale)) calc(20px * var(--ui-scale));
+  border-radius: calc(22px * var(--ui-scale));
+  background: var(--card-glass);
+  backdrop-filter: var(--card-backdrop);
+  -webkit-backdrop-filter: var(--card-backdrop);
+  box-shadow: var(--card-shadow);
+  font-size: calc(20px * var(--ui-scale));
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--ink);
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(10px * var(--ui-scale));
+  animation: say 260ms var(--ease-spring) both;
+}
+
+.speech[data-vertical='below'] .say {
+  bottom: auto;
+  top: 0;
+}
+
+.speech[data-side='left'] .say {
+  right: 0;
+  border-bottom-right-radius: 6px;
+  transform-origin: 100% 100%;
+}
+
+.speech[data-side='right'] .say {
+  left: 0;
+  border-bottom-left-radius: 6px;
+  transform-origin: 0 100%;
+}
+
+.tourButtons {
+  display: flex;
+  align-items: center;
+  gap: calc(10px * var(--ui-scale));
+}
+
+.next {
+  border: 0;
+  border-radius: 999px;
+  padding: calc(9px * var(--ui-scale)) calc(22px * var(--ui-scale));
+  background: var(--accent);
+  color: #fff;
+  font: 600 calc(17px * var(--ui-scale)) var(--display);
+  box-shadow: 0 6px 16px rgba(31, 111, 224, 0.3);
+  cursor: pointer;
+}
+
+.next:active,
+.skip:active {
+  scale: 0.95;
+}
+
+.step {
+  margin-left: calc(4px * var(--ui-scale));
+  font-size: calc(14px * var(--ui-scale));
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.skip {
+  border: 0;
+  border-radius: 999px;
+  padding: calc(8px * var(--ui-scale)) calc(18px * var(--ui-scale));
+  background: var(--bubble-fill);
+  box-shadow: var(--bubble-shadow);
+  font: 600 calc(16px * var(--ui-scale)) var(--display);
+  cursor: pointer;
+}
+
+@keyframes say {
+  from {
+    scale: 0.6;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .say {
+    animation: none;
+  }
+}

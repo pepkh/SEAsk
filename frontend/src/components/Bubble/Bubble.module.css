@@ -1,0 +1,116 @@
+/*
+ * The bubble rule: it floats (idle bob) and shines (glass with a highlight), and it squishes when touched.
+ * Bob and press use the separate `translate` and `scale` properties, so they don't fight over `transform`.
+ */
+.bubble {
+  --size: 160px;
+  position: relative;
+  border: 0;
+  padding: 0;
+  background: none;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: var(--ink);
+  -webkit-tap-highlight-color: transparent;
+  animation: bob 7s ease-in-out infinite;
+  animation-delay: calc(var(--bob) * -1s);
+  transition: scale 180ms var(--ease-spring);
+}
+
+.bubble:active {
+  scale: 0.93;
+  transition-duration: 90ms;
+}
+
+.bubble:focus-visible {
+  outline: none;
+}
+
+.bubble:focus-visible .orb {
+  outline: 4px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.orb {
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1.5px solid var(--bubble-rim);
+  box-shadow: var(--bubble-shadow);
+  backdrop-filter: var(--bubble-backdrop);
+  -webkit-backdrop-filter: var(--bubble-backdrop);
+}
+
+/* The shine: a soft highlight at the top left, over whatever is inside. */
+.orb::after {
+  content: '';
+  position: absolute;
+  left: 13%;
+  top: 8%;
+  width: 36%;
+  height: 22%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+  rotate: -28deg;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.glass {
+  background: var(--bubble-fill);
+}
+
+/* Water inside (Dive in): light at the top, deep at the bottom */
+.water {
+  background: linear-gradient(180deg, var(--water-surface) 0%, var(--water-mid) 55%, var(--water-deep) 100%);
+  color: #fff;
+}
+
+.accent {
+  background: radial-gradient(circle at 32% 26%, #5d9cf5 0%, var(--accent) 55%, #1452ad 100%);
+  color: #fff;
+}
+
+/* Go Live (red, like a live stream) */
+.live {
+  background: radial-gradient(circle at 32% 26%, #ff7b6b 0%, #e5372a 55%, #b3241b 100%);
+  color: #fff;
+}
+
+.caption {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.15;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: var(--card-glass);
+  box-shadow: var(--card-shadow);
+  white-space: nowrap;
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bubble {
+    animation: none;
+    transition: none;
+  }
+}

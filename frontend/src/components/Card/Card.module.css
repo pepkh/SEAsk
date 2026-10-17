@@ -1,0 +1,18 @@
+/* Flat and still: no bob, no shine, no press state. */
+.card {
+  border-radius: 26px;
+  cursor: default;
+}
+
+.glass {
+  background: var(--card-glass);
+  backdrop-filter: var(--card-backdrop);
+  -webkit-backdrop-filter: var(--card-backdrop);
+  box-shadow: var(--card-shadow);
+}
+
+.deep {
+  background: var(--neu-deep-surface);
+  color: var(--on-dark);
+  box-shadow: var(--neu-deep-out);
+}

@@ -38,6 +38,7 @@ class Settings:
     onc_nav_location_code: str
     onc_cache_s: float
     onc_nav_cache_s: float
+    onc_history_cache_s: float
     onc_max_sensor_age_s: float
     onc_max_position_age_s: float
     magnetic_declination_deg: float
@@ -68,6 +69,7 @@ def get_settings() -> Settings:
         onc_nav_location_code=_str("ONC_NAV_LOCATION_CODE", "TWSB.N1"),
         onc_cache_s=_float("ONC_CACHE_S", 30),
         onc_nav_cache_s=_float("ONC_NAV_CACHE_S", 3),
+        onc_history_cache_s=_float("ONC_HISTORY_CACHE_S", 20),
         onc_max_sensor_age_s=_float("ONC_MAX_SENSOR_AGE_S", 300),
         onc_max_position_age_s=_float("ONC_MAX_POSITION_AGE_S", 900),
         magnetic_declination_deg=_float("MAGNETIC_DECLINATION_DEG", 15.3),

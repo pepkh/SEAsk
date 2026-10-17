@@ -1,0 +1,155 @@
+.peek {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+
+.photo {
+  aspect-ratio: 4 / 3;
+  border-radius: 28px;
+  box-shadow: var(--neu-out);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding-right: 70px;
+}
+
+.badge {
+  background: var(--sun);
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 7px 14px;
+}
+
+.name {
+  margin: 0;
+  font-size: 54px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.latin {
+  font-size: 19px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.chip {
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 5px 12px;
+}
+
+.surface,
+.shore {
+  color: #0b6b61;
+  background: #ddf2ee;
+}
+
+.openWater {
+  color: #1556b3;
+  background: #e3edfc;
+}
+
+.seafloor,
+.deep {
+  color: #fff;
+  background: #2f4a5a;
+}
+
+.text {
+  margin: 4px 0 0;
+  font-size: 23px;
+  line-height: 1.45;
+  color: var(--body);
+}
+
+/* Size check, in a well pressed into the panel */
+.sizes {
+  align-self: stretch;
+  margin-top: 8px;
+  padding: 20px 22px;
+  border-radius: 22px;
+  box-shadow: var(--neu-in);
+  display: grid;
+  gap: 12px;
+}
+
+.eyebrow {
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr) 110px;
+  align-items: center;
+  gap: 14px;
+  font-size: 18px;
+}
+
+.row i {
+  display: block;
+  height: 14px;
+  min-width: 8px;
+  border-radius: 7px;
+  animation: grow 700ms var(--ease-water) 200ms both;
+  transform-origin: 0 50%;
+}
+
+.you {
+  background: var(--accent);
+}
+
+.animal {
+  background: var(--water-mid);
+}
+
+.row b {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--body);
+}
+
+@keyframes grow {
+  from {
+    scale: 0 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .row i {
+    animation: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .peek {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .body {
+    padding-right: 0;
+  }
+
+  .name {
+    font-size: 36px;
+  }
+
+  .row {
+    grid-template-columns: 90px minmax(0, 1fr) 80px;
+  }
+}

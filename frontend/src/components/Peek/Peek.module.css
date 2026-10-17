@@ -1,0 +1,78 @@
+.peek {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 30, 41, 0.42);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: fade 220ms ease both;
+}
+
+/* Laid out at kiosk size and zoomed to the window; it grows from the tapped point. */
+.panel {
+  zoom: var(--ui-scale);
+  position: relative;
+  width: min(1400px, calc(100vw / var(--ui-scale) - 120px));
+  max-height: calc(100vh / var(--ui-scale) - 100px);
+  overflow: auto;
+  border-radius: 36px;
+  padding: 40px 44px;
+  outline: none;
+  animation: grow 360ms var(--ease-spring) both;
+}
+
+.light {
+  background: var(--neu-surface);
+  box-shadow: 0 30px 80px rgba(7, 30, 41, 0.35);
+}
+
+.deep {
+  background: var(--neu-deep-surface);
+  color: var(--on-dark);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+
+.close {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  z-index: 2;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+/* The panel's own box is centred, so it starts small near the tap and settles in the middle. */
+@keyframes grow {
+  from {
+    opacity: 0;
+    scale: 0.3;
+    translate: calc((var(--ox) - 50vw) / var(--ui-scale)) calc((var(--oy) - 50vh) / var(--ui-scale));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .backdrop {
+    animation: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .panel {
+    width: calc(100vw - 24px);
+    max-height: calc(100vh - 24px);
+    padding: 24px 18px;
+    border-radius: 24px;
+  }
+}

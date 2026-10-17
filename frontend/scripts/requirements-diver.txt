@@ -1,0 +1,7 @@
+# For scripts/build-diver.py only (not the backend). Tested with Python 3.12.
+# The decimation result depends on these exact versions (scipy and networkx change the part order).
+fast-simplification==0.2.0
+networkx==3.7
+numpy==2.5.4
+scipy==1.18.1
+trimesh==5.1.1

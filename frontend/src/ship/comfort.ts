@@ -1,9 +1,9 @@
-import { FEED_POLL_MS } from '../config/env'
 import type { ShipRow } from '../types/feed'
+import { recentRows } from './recent'
 
 export type Comfort = 'calm' | 'gentle' | 'rolly'
 
-const WINDOW_ROWS = (60 * 1000) / FEED_POLL_MS
+const WINDOW_MS = 60_000
 const MIN_ROWS = 10
 /**
  * Limits on the standard deviation of roll over the last minute, degrees. The same as
@@ -15,7 +15,7 @@ const GENTLE_MAX_DEG = 1
 
 /** How much the ship rolls over the last minute, or null with too few roll readings. */
 export function comfortOf(history: ShipRow[]): Comfort | null {
-  const rolls = history.slice(-WINDOW_ROWS).flatMap((r) => (r.roll === null ? [] : [r.roll]))
+  const rolls = recentRows(history, WINDOW_MS).flatMap((r) => (r.roll === null ? [] : [r.roll]))
   if (rolls.length < MIN_ROWS) return null
   const mean = rolls.reduce((s, v) => s + v, 0) / rolls.length
   const std = Math.sqrt(rolls.reduce((s, v) => s + (v - mean) ** 2, 0) / (rolls.length - 1))

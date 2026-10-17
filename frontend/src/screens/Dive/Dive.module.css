@@ -1,0 +1,142 @@
+.body {
+  display: grid;
+  grid-template-columns: 380px minmax(0, 1fr);
+  gap: 26px;
+  animation: settle 700ms var(--ease-water) both;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  min-height: 0;
+}
+
+.bands {
+  display: grid;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  min-height: 0;
+  min-width: 0;
+}
+
+/*
+ * Each band is a solid surface, so its tiles can be neumorphic (shadows of the same colour, lighter and darker).
+ * They darken going down; the tiles take their colours from the band.
+ */
+.band {
+  --band: #c9e7f0;
+  --tile-light: rgba(255, 255, 255, 0.85);
+  --tile-dark: rgba(84, 140, 160, 0.45);
+  --band-ink: var(--water-floor);
+  position: relative;
+  border-radius: 30px;
+  background: var(--band);
+  color: var(--band-ink);
+  padding: 18px 26px 18px 30px;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  min-height: 0;
+  min-width: 0;
+  animation: settle 600ms var(--ease-water) both;
+}
+
+.surface {
+  animation-delay: 80ms;
+}
+
+.open {
+  --band: #4f97b0;
+  --tile-light: rgba(150, 205, 222, 0.5);
+  --tile-dark: rgba(16, 56, 72, 0.55);
+  --band-ink: #fff;
+  animation-delay: 180ms;
+}
+
+.floor {
+  --band: var(--neu-deep-surface);
+  --tile-light: var(--neu-deep-light);
+  --tile-dark: var(--neu-deep-dark);
+  --band-ink: var(--on-dark);
+  animation-delay: 280ms;
+}
+
+.bandName {
+  margin: 0;
+  width: 150px;
+  flex: none;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.tiles {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  gap: 24px;
+  /* Room for the tiles' soft shadows, which the scrolling row would otherwise clip */
+  padding: 28px 28px;
+  margin: -28px -28px -28px -10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.slicePeek {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.peekTitle {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 600;
+}
+
+.slice {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Arriving under water: everything settles in from above, as if sinking. */
+@keyframes settle {
+  from {
+    opacity: 0;
+    translate: 0 -40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .body,
+  .band {
+    animation: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .band {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 16px;
+  }
+
+  .bandName {
+    width: auto;
+  }
+
+  .tiles {
+    width: 100%;
+    margin: -28px -16px -28px -16px;
+    padding: 28px 16px;
+  }
+}

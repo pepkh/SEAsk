@@ -1,0 +1,53 @@
+.gauge {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  padding: 24px 24px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.eyebrow {
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.depth {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--water-floor);
+}
+
+.column {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+
+.band rect {
+  fill: transparent;
+  stroke: rgba(255, 255, 255, 0.35);
+  stroke-width: 2;
+  transition: stroke 250ms ease, fill 250ms ease;
+}
+
+.band text {
+  font: 500 21px var(--display);
+  fill: var(--body);
+  transition: fill 250ms ease;
+}
+
+.on rect {
+  stroke: var(--sun);
+  stroke-width: 5;
+  fill: rgba(245, 192, 74, 0.18);
+}
+
+.on text {
+  fill: var(--ink);
+  font-weight: 700;
+}

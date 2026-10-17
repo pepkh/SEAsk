@@ -1,103 +1,542 @@
 {
   "bruce-peak": {
     "name": "Bruce Peak",
-    "fact": "The highest point on Saltspring Island."
+    "fact": "The highest point on Saltspring Island.",
+    "knowledge": {
+      "tagline": "Salt Spring's rooftop",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "nature",
+          "text": "The highest mountain in all the Gulf Islands"
+        },
+        {
+          "kind": "nature",
+          "text": "Look for the radio and phone towers on top"
+        }
+      ],
+      "checked": false
+    }
   },
   "mount-tuam": {
     "name": "Mount Tuam",
-    "fact": "A steep mountain at the south end of Saltspring Island."
+    "fact": "A steep mountain at the south end of Saltspring Island.",
+    "knowledge": {
+      "tagline": "Watching over Satellite Channel",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "nature",
+          "text": "Its steep southeast slope is a nature reserve"
+        }
+      ],
+      "checked": false
+    }
   },
   "mount-maxwell": {
     "name": "Mount Maxwell",
-    "fact": "Its cliff-top park has one of the best views in the Gulf Islands."
+    "fact": "Its cliff-top park has one of the best views in the Gulf Islands.",
+    "knowledge": {
+      "tagline": "Salt Spring's lookout",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "Made a park in 1938 for its amazing views"
+        },
+        {
+          "kind": "nature",
+          "text": "A great spot to watch the sunset over Burgoyne Bay"
+        }
+      ],
+      "checked": false
+    }
   },
   "mount-galiano": {
     "name": "Mount Galiano",
-    "fact": "Hikers climb it to watch the ferries go through Active Pass."
+    "fact": "Hikers climb it to watch the ferries go through Active Pass.",
+    "knowledge": {
+      "tagline": "Lookout over Active Pass",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "nature",
+          "text": "On clear days you can see Mount Baker from the top"
+        }
+      ],
+      "checked": false
+    }
   },
   "mount-parke": {
     "name": "Mount Parke",
-    "fact": "The highest point on Mayne Island."
+    "fact": "The highest point on Mayne Island.",
+    "knowledge": {
+      "tagline": "Mayne's high lookout",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "nature",
+          "text": "Its ridge trail gives wide views of land and sea"
+        },
+        {
+          "kind": "nature",
+          "text": "Look for ravens, eagles and turkey vultures"
+        }
+      ],
+      "checked": false
+    }
   },
   "mount-norman": {
     "name": "Mount Norman",
-    "fact": "The highest point of the Pender Islands, in Gulf Islands National Park Reserve."
+    "fact": "The highest point of the Pender Islands, in Gulf Islands National Park Reserve.",
+    "knowledge": {
+      "tagline": "The Penders' lookout",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "nature",
+          "text": "A wooden lookout deck sits at the very top"
+        },
+        {
+          "kind": "history",
+          "text": "Named in 1860 after a Royal Navy paymaster"
+        }
+      ],
+      "checked": false
+    }
   },
   "mount-warburton-pike": {
     "name": "Mount Warburton Pike",
-    "fact": "Saturna Island's highest point, looking over Boundary Pass to the USA."
+    "fact": "Saturna Island's highest point, looking over Boundary Pass to the USA.",
+    "knowledge": {
+      "tagline": "Saturna's high ridge",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "Named for Warburton Pike, an explorer and author"
+        },
+        {
+          "kind": "nature",
+          "text": "Wild goats roam its long, rocky ridge"
+        }
+      ],
+      "checked": false
+    }
   },
   "mount-newton": {
     "name": "Mount Newton",
-    "fact": "A forested hill on the Saanich Peninsula, south of the Swartz Bay terminal."
+    "fact": "A forested hill on the Saanich Peninsula, south of the Swartz Bay terminal.",
+    "knowledge": {
+      "tagline": "A forest park on the peninsula",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "Its park was BC's first donated park, in 1921"
+        }
+      ],
+      "checked": false
+    }
   },
   "grouse-mountain": {
     "name": "Grouse Mountain",
-    "fact": "A ski hill above North Vancouver. Its lights twinkle at night."
+    "fact": "A ski hill above North Vancouver. Its lights twinkle at night.",
+    "knowledge": {
+      "tagline": "Vancouver's mountain playground",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "nature",
+          "text": "Hikers climb the Grouse Grind: about 2,800 steps!"
+        },
+        {
+          "kind": "nature",
+          "text": "A big cable car carries people to the top"
+        }
+      ],
+      "checked": false
+    }
   },
   "mount-seymour": {
     "name": "Mount Seymour",
-    "fact": "A ski mountain in Mount Seymour Provincial Park, North Vancouver."
+    "fact": "A ski mountain in Mount Seymour Provincial Park, North Vancouver.",
+    "knowledge": {
+      "tagline": "North Shore snow fun",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "A provincial park since 1936"
+        },
+        {
+          "kind": "nature",
+          "text": "Skiing, snowshoeing and sledding in winter"
+        }
+      ],
+      "checked": false
+    }
   },
   "black-mountain": {
     "name": "Black Mountain",
-    "fact": "Part of Cypress Provincial Park, above West Vancouver."
+    "fact": "Part of Cypress Provincial Park, above West Vancouver.",
+    "knowledge": {
+      "tagline": "One of Cypress Mountain's peaks",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "Its ski area, Cypress, hosted 2010 Olympic events"
+        }
+      ],
+      "checked": false
+    }
   },
   "mount-constitution": {
     "name": "Mount Constitution",
-    "fact": "The highest point of the San Juan Islands, in the USA. A stone tower stands on top."
+    "fact": "The highest point of the San Juan Islands, in the USA. A stone tower stands on top.",
+    "knowledge": {
+      "tagline": "Top of the San Juan Islands",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "Its stone tower was finished in 1936"
+        },
+        {
+          "kind": "nature",
+          "text": "It stands in Moran State Park, on Orcas Island"
+        }
+      ],
+      "checked": false
+    }
   },
   "saltspring-island": {
     "name": "Saltspring Island",
-    "fact": "The biggest and busiest of the Southern Gulf Islands."
+    "fact": "The biggest and busiest of the Southern Gulf Islands.",
+    "knowledge": {
+      "tagline": "The artists' island",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "food",
+          "text": "A big Saturday market in Ganges, spring to fall",
+          "months": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "kind": "events",
+          "text": "Its fall fair has run since the 1890s",
+          "months": [
+            9
+          ]
+        },
+        {
+          "kind": "history",
+          "text": "Black pioneers from California settled here in 1859"
+        },
+        {
+          "kind": "nature",
+          "text": "Named for the salty springs at its north end"
+        }
+      ],
+      "checked": false
+    }
   },
   "galiano-island": {
     "name": "Galiano Island",
-    "fact": "A long, skinny island. Its south tip lines Active Pass."
+    "fact": "A long, skinny island. Its south tip lines Active Pass.",
+    "knowledge": {
+      "tagline": "The long, skinny island",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "Named after a Spanish explorer who came in 1792"
+        },
+        {
+          "kind": "nature",
+          "text": "Bluffs Park looks down on ferries in Active Pass"
+        },
+        {
+          "kind": "nature",
+          "text": "Montague Harbour has bright white shell beaches"
+        },
+        {
+          "kind": "nature",
+          "text": "Waves have carved caves into its sandstone shore"
+        }
+      ],
+      "checked": false
+    }
   },
   "north-pender-island": {
     "name": "North Pender Island",
-    "fact": "A little bridge joins it to South Pender Island."
+    "fact": "A little bridge joins it to South Pender Island.",
+    "knowledge": {
+      "tagline": "The busier Pender",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "A canal split it from South Pender in 1903"
+        },
+        {
+          "kind": "nature",
+          "text": "A big disc golf course winds through its forest"
+        },
+        {
+          "kind": "events",
+          "text": "The island's fall fair is held each August",
+          "months": [
+            8
+          ]
+        },
+        {
+          "kind": "food",
+          "text": "A Saturday farmers' market at the Community Hall"
+        }
+      ],
+      "checked": false
+    }
   },
   "south-pender-island": {
     "name": "South Pender Island",
-    "fact": "The quieter Pender, joined to North Pender by a little bridge."
+    "fact": "The quieter Pender, joined to North Pender by a little bridge.",
+    "knowledge": {
+      "tagline": "The quiet Pender",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "A one-lane bridge joined the Penders in 1955"
+        },
+        {
+          "kind": "history",
+          "text": "Boats from the USA have checked in here since 1958"
+        },
+        {
+          "kind": "nature",
+          "text": "Trails climb Mount Norman in the national park"
+        }
+      ],
+      "checked": false
+    }
   },
   "mayne-island": {
     "name": "Mayne Island",
-    "fact": "Gold miners rested at its Miners Bay on the way to the Fraser River gold rush."
+    "fact": "Gold miners rested at its Miners Bay on the way to the Fraser River gold rush.",
+    "knowledge": {
+      "tagline": "The gold-rush stopover",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "A lighthouse has guarded Active Pass since 1885"
+        },
+        {
+          "kind": "history",
+          "text": "Its tiny museum is the island's old 1896 jail"
+        },
+        {
+          "kind": "history",
+          "text": "A Japanese garden honours families sent away in 1942"
+        },
+        {
+          "kind": "events",
+          "text": "Its August fall fair began in the 1920s",
+          "months": [
+            8
+          ]
+        }
+      ],
+      "checked": false
+    }
   },
   "saturna-island": {
     "name": "Saturna Island",
-    "fact": "The most remote Southern Gulf Island. Much of it is national park."
+    "fact": "The most remote Southern Gulf Island. Much of it is national park.",
+    "knowledge": {
+      "tagline": "The wild, faraway island",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "events",
+          "text": "A Canada Day lamb barbecue, held since 1950",
+          "months": [
+            7
+          ]
+        },
+        {
+          "kind": "nature",
+          "text": "East Point is a top spot to watch orcas from land"
+        },
+        {
+          "kind": "history",
+          "text": "East Point's lighthouse first shone in 1888"
+        }
+      ],
+      "checked": false
+    }
   },
   "prevost-island": {
     "name": "Prevost Island",
-    "fact": "A quiet island with no ferry, between Saltspring and Mayne."
+    "fact": "A quiet island with no ferry, between Saltspring and Mayne.",
+    "knowledge": {
+      "tagline": "An island farm",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "One family has farmed most of it since the 1920s"
+        },
+        {
+          "kind": "nature",
+          "text": "Parts of its shore are in the national park"
+        },
+        {
+          "kind": "history",
+          "text": "Named after the captain of HMS Satellite"
+        }
+      ],
+      "checked": false
+    }
   },
   "moresby-island": {
     "name": "Moresby Island",
-    "fact": "A small island at the south end of Swanson Channel."
+    "fact": "A small island at the south end of Swanson Channel.",
+    "knowledge": {
+      "tagline": "A private farm island",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "A private cattle farm, closed to visitors"
+        },
+        {
+          "kind": "history",
+          "text": "Named after Royal Navy admiral Fairfax Moresby"
+        }
+      ],
+      "checked": false
+    }
   },
   "portland-island": {
     "name": "Portland Island",
-    "fact": "Part of Gulf Islands National Park Reserve. You can only get there by boat."
+    "fact": "Part of Gulf Islands National Park Reserve. You can only get there by boat.",
+    "knowledge": {
+      "tagline": "The princess's island",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "BC gave it to Princess Margaret in 1958"
+        },
+        {
+          "kind": "history",
+          "text": "She gave it back in 1967, and it became a park"
+        },
+        {
+          "kind": "nature",
+          "text": "A ship sunk here in 1991 is now a reef for fish"
+        }
+      ],
+      "checked": false
+    }
   },
   "piers-island": {
     "name": "Piers Island",
-    "fact": "A small island right next to the Swartz Bay terminal."
+    "fact": "A small island right next to the Swartz Bay terminal.",
+    "knowledge": {
+      "tagline": "Swartz Bay's next-door island",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "A 1930s prison held Doukhobor protesters here"
+        }
+      ],
+      "checked": false
+    }
   },
   "sidney-island": {
     "name": "Sidney Island",
-    "fact": "It has a long sandy spit and a herd of fallow deer."
+    "fact": "It has a long sandy spit, part of a national park.",
+    "knowledge": {
+      "tagline": "Island of the sandy spit",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "nature",
+          "text": "Its long, sandy spit is part of the national park"
+        },
+        {
+          "kind": "history",
+          "text": "A factory made bricks from its clay, 1906 to 1915"
+        },
+        {
+          "kind": "nature",
+          "text": "Its lagoon is protected as a home for birds"
+        }
+      ],
+      "checked": false
+    }
   },
   "james-island": {
     "name": "James Island",
-    "fact": "Long ago it had a factory that made explosives."
+    "fact": "Long ago it had a factory that made explosives.",
+    "knowledge": {
+      "tagline": "The island that made TNT",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "Its factory made TNT in both World Wars"
+        },
+        {
+          "kind": "history",
+          "text": "Hundreds of workers once lived in a village here"
+        },
+        {
+          "kind": "history",
+          "text": "Today it's private, with a golf course"
+        }
+      ],
+      "checked": false
+    }
   },
   "saanich-peninsula": {
     "name": "Saanich Peninsula",
-    "fact": "The tip of Vancouver Island. The Swartz Bay terminal is at its north end."
+    "fact": "The tip of Vancouver Island. The Swartz Bay terminal is at its north end.",
+    "knowledge": {
+      "tagline": "Gardens, fairs and stars",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "events",
+          "text": "The Saanich Fair: Labour Day weekend, since 1868",
+          "months": [
+            9
+          ]
+        },
+        {
+          "kind": "nature",
+          "text": "Butchart Gardens bloom in an old stone quarry"
+        },
+        {
+          "kind": "history",
+          "text": "Its 1918 telescope was briefly the world's largest"
+        }
+      ],
+      "checked": false
+    }
   },
   "swartz-bay-terminal": {
     "name": "Swartz Bay terminal",
@@ -109,7 +548,22 @@
   },
   "tsawwassen": {
     "name": "Tsawwassen",
-    "fact": "A mainland community, home of the Tsawwassen First Nation."
+    "fact": "A mainland community, home of the Tsawwassen First Nation.",
+    "knowledge": {
+      "tagline": "Beaches and birds",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "nature",
+          "text": "Huge flocks of shorebirds stop at Boundary Bay"
+        },
+        {
+          "kind": "nature",
+          "text": "Boundary Bay's shallow water gets warm in summer"
+        }
+      ],
+      "checked": false
+    }
   },
   "roberts-bank": {
     "name": "Roberts Bank",
@@ -117,11 +571,47 @@
   },
   "sidney": {
     "name": "Sidney",
-    "fact": "A seaside town near the Swartz Bay terminal."
+    "fact": "A seaside town near the Swartz Bay terminal.",
+    "knowledge": {
+      "tagline": "The seaside book town",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "arts",
+          "text": "Known as a book town, with several bookshops"
+        },
+        {
+          "kind": "nature",
+          "text": "A seaside aquarium shows Salish Sea creatures"
+        },
+        {
+          "kind": "events",
+          "text": "A Thursday-night street market runs all summer",
+          "months": [
+            6,
+            7,
+            8,
+            9
+          ]
+        }
+      ],
+      "checked": false
+    }
   },
   "point-roberts": {
     "name": "Point Roberts (USA)",
-    "fact": "Part of the USA, but you can only drive there through Canada!"
+    "fact": "Part of the USA, but you can only drive there through Canada!",
+    "knowledge": {
+      "tagline": "A little piece of the USA",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "nature",
+          "text": "One of the best places to see orcas from land"
+        }
+      ],
+      "checked": false
+    }
   },
   "vancouver": {
     "name": "Vancouver",

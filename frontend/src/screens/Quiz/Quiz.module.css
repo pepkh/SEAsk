@@ -1,36 +1,25 @@
-/* Laid out at kiosk size and zoomed to the window. */
-.screen {
-  zoom: var(--ui-scale);
-  height: 100%;
-  background: var(--ground);
-}
-
-.section {
-  height: 100%;
-  padding: 32px 36px 26px;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  min-height: 0;
-}
-
-.controls {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
 .playing {
-  flex: 1;
+  height: 100%;
   min-height: 0;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 560px;
-  gap: 20px;
+  gap: 24px;
 }
 
 .side {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
   min-height: 0;
+}
+
+.done {
+  height: 100%;
+  display: flex;
+}
+
+@media (max-width: 900px) {
+  .playing {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }

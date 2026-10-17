@@ -1,103 +1,542 @@
 {
   "bruce-peak": {
     "name": "Pic Bruce",
-    "fact": "Le point le plus haut de l'île Saltspring."
+    "fact": "Le point le plus haut de l'île Saltspring.",
+    "knowledge": {
+      "tagline": "Le toit de Saltspring",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "nature",
+          "text": "La plus haute montagne de toutes les îles Gulf"
+        },
+        {
+          "kind": "nature",
+          "text": "Cherchez les antennes radio et cellulaires au sommet"
+        }
+      ],
+      "checked": false
+    }
   },
   "mount-tuam": {
     "name": "Mont Tuam",
-    "fact": "Une montagne abrupte au sud de l'île Saltspring."
+    "fact": "Une montagne abrupte au sud de l'île Saltspring.",
+    "knowledge": {
+      "tagline": "Face au chenal Satellite",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "nature",
+          "text": "Son versant sud-est abrupt est une réserve écologique"
+        }
+      ],
+      "checked": false
+    }
   },
   "mount-maxwell": {
     "name": "Mont Maxwell",
-    "fact": "Son parc au sommet des falaises offre l'une des plus belles vues des îles Gulf."
+    "fact": "Son parc au sommet des falaises offre l'une des plus belles vues des îles Gulf.",
+    "knowledge": {
+      "tagline": "Le belvédère de Saltspring",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "Devenu un parc en 1938 pour ses vues magnifiques"
+        },
+        {
+          "kind": "nature",
+          "text": "Super pour voir le coucher du soleil sur la baie Burgoyne"
+        }
+      ],
+      "checked": false
+    }
   },
   "mount-galiano": {
     "name": "Mont Galiano",
-    "fact": "Les randonneurs y montent pour voir les traversiers passer dans le passage Active."
+    "fact": "Les randonneurs y montent pour voir les traversiers passer dans le passage Active.",
+    "knowledge": {
+      "tagline": "Belvédère sur le passage Active",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "nature",
+          "text": "Par temps clair, on voit le mont Baker du sommet"
+        }
+      ],
+      "checked": false
+    }
   },
   "mount-parke": {
     "name": "Mont Parke",
-    "fact": "Le point le plus haut de l'île Mayne."
+    "fact": "Le point le plus haut de l'île Mayne.",
+    "knowledge": {
+      "tagline": "Le belvédère de Mayne",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "nature",
+          "text": "Son sentier de crête offre de grandes vues sur la terre et la mer"
+        },
+        {
+          "kind": "nature",
+          "text": "Cherchez les corbeaux, les aigles et les urubus à tête rouge"
+        }
+      ],
+      "checked": false
+    }
   },
   "mount-norman": {
     "name": "Mont Norman",
-    "fact": "Le point le plus haut des îles Pender, dans la réserve de parc national des Îles-Gulf."
+    "fact": "Le point le plus haut des îles Pender, dans la réserve de parc national des Îles-Gulf.",
+    "knowledge": {
+      "tagline": "Le belvédère des Pender",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "nature",
+          "text": "Une plateforme d'observation en bois se trouve au sommet"
+        },
+        {
+          "kind": "history",
+          "text": "Nommé en 1860 d'après un commissaire de la Royal Navy"
+        }
+      ],
+      "checked": false
+    }
   },
   "mount-warburton-pike": {
     "name": "Mont Warburton Pike",
-    "fact": "Le point le plus haut de l'île Saturna, face au passage Boundary et aux États-Unis."
+    "fact": "Le point le plus haut de l'île Saturna, face au passage Boundary et aux États-Unis.",
+    "knowledge": {
+      "tagline": "La haute crête de Saturna",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "Nommé d'après Warburton Pike, explorateur et auteur"
+        },
+        {
+          "kind": "nature",
+          "text": "Des chèvres sauvages se promènent sur sa longue crête rocheuse"
+        }
+      ],
+      "checked": false
+    }
   },
   "mount-newton": {
     "name": "Mont Newton",
-    "fact": "Une colline boisée de la péninsule de Saanich, au sud du terminal de Swartz Bay."
+    "fact": "Une colline boisée de la péninsule de Saanich, au sud du terminal de Swartz Bay.",
+    "knowledge": {
+      "tagline": "Un parc forestier sur la péninsule",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "Son parc a été le premier parc donné à la C.-B., en 1921"
+        }
+      ],
+      "checked": false
+    }
   },
   "grouse-mountain": {
     "name": "Grouse Mountain",
-    "fact": "Une station de ski au-dessus de North Vancouver. Ses lumières brillent la nuit."
+    "fact": "Une station de ski au-dessus de North Vancouver. Ses lumières brillent la nuit.",
+    "knowledge": {
+      "tagline": "Le terrain de jeu de Vancouver",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "nature",
+          "text": "Les randonneurs grimpent le Grouse Grind : environ 2 800 marches!"
+        },
+        {
+          "kind": "nature",
+          "text": "Un grand téléphérique emmène les gens au sommet"
+        }
+      ],
+      "checked": false
+    }
   },
   "mount-seymour": {
     "name": "Mont Seymour",
-    "fact": "Une montagne de ski dans le parc provincial du Mont-Seymour, à North Vancouver."
+    "fact": "Une montagne de ski dans le parc provincial du Mont-Seymour, à North Vancouver.",
+    "knowledge": {
+      "tagline": "Jeux de neige sur la Rive-Nord",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "Un parc provincial depuis 1936"
+        },
+        {
+          "kind": "nature",
+          "text": "Ski, raquette et glissade en hiver"
+        }
+      ],
+      "checked": false
+    }
   },
   "black-mountain": {
     "name": "Black Mountain",
-    "fact": "Elle fait partie du parc provincial Cypress, au-dessus de West Vancouver."
+    "fact": "Elle fait partie du parc provincial Cypress, au-dessus de West Vancouver.",
+    "knowledge": {
+      "tagline": "Un des sommets de Cypress",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "Sa station, Cypress, a accueilli des épreuves olympiques en 2010"
+        }
+      ],
+      "checked": false
+    }
   },
   "mount-constitution": {
     "name": "Mont Constitution",
-    "fact": "Le point le plus haut des îles San Juan, aux États-Unis. Une tour de pierre se dresse au sommet."
+    "fact": "Le point le plus haut des îles San Juan, aux États-Unis. Une tour de pierre se dresse au sommet.",
+    "knowledge": {
+      "tagline": "Le toit des îles San Juan",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "Sa tour de pierre a été terminée en 1936"
+        },
+        {
+          "kind": "nature",
+          "text": "Il se trouve dans le parc d'État Moran, sur l'île Orcas"
+        }
+      ],
+      "checked": false
+    }
   },
   "saltspring-island": {
     "name": "Île Saltspring",
-    "fact": "La plus grande et la plus animée des îles Gulf du Sud."
+    "fact": "La plus grande et la plus animée des îles Gulf du Sud.",
+    "knowledge": {
+      "tagline": "L'île des artistes",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "food",
+          "text": "Un grand marché le samedi à Ganges, du printemps à l'automne",
+          "months": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "kind": "events",
+          "text": "Sa foire agricole d'automne existe depuis les années 1890",
+          "months": [
+            9
+          ]
+        },
+        {
+          "kind": "history",
+          "text": "Des pionniers noirs de Californie s'y sont installés en 1859"
+        },
+        {
+          "kind": "nature",
+          "text": "Son nom vient des sources salées au nord de l'île"
+        }
+      ],
+      "checked": false
+    }
   },
   "galiano-island": {
     "name": "Île Galiano",
-    "fact": "Une île longue et étroite. Sa pointe sud borde le passage Active."
+    "fact": "Une île longue et étroite. Sa pointe sud borde le passage Active.",
+    "knowledge": {
+      "tagline": "L'île longue et étroite",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "Nommée d'après un explorateur espagnol venu en 1792"
+        },
+        {
+          "kind": "nature",
+          "text": "Du parc Bluffs, on voit les traversiers dans le passage Active"
+        },
+        {
+          "kind": "nature",
+          "text": "Le port Montague a des plages blanches faites de coquillages"
+        },
+        {
+          "kind": "nature",
+          "text": "Les vagues ont creusé des grottes dans ses rives de grès"
+        }
+      ],
+      "checked": false
+    }
   },
   "north-pender-island": {
     "name": "Île North Pender",
-    "fact": "Un petit pont la relie à l'île South Pender."
+    "fact": "Un petit pont la relie à l'île South Pender.",
+    "knowledge": {
+      "tagline": "La Pender la plus animée",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "Un canal l'a séparée de South Pender en 1903"
+        },
+        {
+          "kind": "nature",
+          "text": "Un grand parcours de disc golf serpente dans sa forêt"
+        },
+        {
+          "kind": "events",
+          "text": "La foire d'automne de l'île a lieu chaque année en août",
+          "months": [
+            8
+          ]
+        },
+        {
+          "kind": "food",
+          "text": "Un marché fermier le samedi à la salle communautaire"
+        }
+      ],
+      "checked": false
+    }
   },
   "south-pender-island": {
     "name": "Île South Pender",
-    "fact": "La plus tranquille des Pender, reliée à North Pender par un petit pont."
+    "fact": "La plus tranquille des Pender, reliée à North Pender par un petit pont.",
+    "knowledge": {
+      "tagline": "La Pender tranquille",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "Un pont à une voie relie les deux Pender depuis 1955"
+        },
+        {
+          "kind": "history",
+          "text": "Depuis 1958, les bateaux des États-Unis passent la douane ici"
+        },
+        {
+          "kind": "nature",
+          "text": "Des sentiers montent au mont Norman, dans le parc national"
+        }
+      ],
+      "checked": false
+    }
   },
   "mayne-island": {
     "name": "Île Mayne",
-    "fact": "Les chercheurs d'or s'arrêtaient à sa baie Miners en route vers la ruée vers l'or du Fraser."
+    "fact": "Les chercheurs d'or s'arrêtaient à sa baie Miners en route vers la ruée vers l'or du Fraser.",
+    "knowledge": {
+      "tagline": "L'escale de la ruée vers l'or",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "Un phare veille sur le passage Active depuis 1885"
+        },
+        {
+          "kind": "history",
+          "text": "Son petit musée est l'ancienne prison de l'île, bâtie en 1896"
+        },
+        {
+          "kind": "history",
+          "text": "Un jardin japonais honore les familles forcées de partir en 1942"
+        },
+        {
+          "kind": "events",
+          "text": "Sa foire d'automne, en août, a commencé dans les années 1920",
+          "months": [
+            8
+          ]
+        }
+      ],
+      "checked": false
+    }
   },
   "saturna-island": {
     "name": "Île Saturna",
-    "fact": "La plus isolée des îles Gulf du Sud. Une grande partie est un parc national."
+    "fact": "La plus isolée des îles Gulf du Sud. Une grande partie est un parc national.",
+    "knowledge": {
+      "tagline": "L'île sauvage et lointaine",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "events",
+          "text": "Un méchoui d'agneau à la fête du Canada, depuis 1950",
+          "months": [
+            7
+          ]
+        },
+        {
+          "kind": "nature",
+          "text": "À East Point, on peut observer des épaulards depuis la rive"
+        },
+        {
+          "kind": "history",
+          "text": "Le phare d'East Point s'est allumé pour la première fois en 1888"
+        }
+      ],
+      "checked": false
+    }
   },
   "prevost-island": {
     "name": "Île Prevost",
-    "fact": "Une île tranquille sans traversier, entre Saltspring et Mayne."
+    "fact": "Une île tranquille sans traversier, entre Saltspring et Mayne.",
+    "knowledge": {
+      "tagline": "Une île-ferme",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "La même famille y a sa ferme depuis les années 1920"
+        },
+        {
+          "kind": "nature",
+          "text": "Certaines de ses rives font partie du parc national"
+        },
+        {
+          "kind": "history",
+          "text": "Nommée d'après le capitaine du HMS Satellite"
+        }
+      ],
+      "checked": false
+    }
   },
   "moresby-island": {
     "name": "Île Moresby",
-    "fact": "Une petite île au sud du chenal Swanson."
+    "fact": "Une petite île au sud du chenal Swanson.",
+    "knowledge": {
+      "tagline": "Une île-ferme privée",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "Une ferme d'élevage privée, fermée aux visiteurs"
+        },
+        {
+          "kind": "history",
+          "text": "Nommée d'après Fairfax Moresby, amiral de la Royal Navy"
+        }
+      ],
+      "checked": false
+    }
   },
   "portland-island": {
     "name": "Île Portland",
-    "fact": "Elle fait partie de la réserve de parc national des Îles-Gulf. On n'y va qu'en bateau."
+    "fact": "Elle fait partie de la réserve de parc national des Îles-Gulf. On n'y va qu'en bateau.",
+    "knowledge": {
+      "tagline": "L'île de la princesse",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "La C.-B. l'a offerte à la princesse Margaret en 1958"
+        },
+        {
+          "kind": "history",
+          "text": "Elle l'a rendue en 1967, et l'île est devenue un parc"
+        },
+        {
+          "kind": "nature",
+          "text": "Un navire coulé ici en 1991 sert de récif aux poissons"
+        }
+      ],
+      "checked": false
+    }
   },
   "piers-island": {
     "name": "Île Piers",
-    "fact": "Une petite île juste à côté du terminal de Swartz Bay."
+    "fact": "Une petite île juste à côté du terminal de Swartz Bay.",
+    "knowledge": {
+      "tagline": "La voisine de Swartz Bay",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "Dans les années 1930, une prison y a détenu des Doukhobors"
+        }
+      ],
+      "checked": false
+    }
   },
   "sidney-island": {
     "name": "Île Sidney",
-    "fact": "Elle a une longue flèche de sable et un troupeau de daims."
+    "fact": "Elle a une longue flèche de sable, dans un parc national.",
+    "knowledge": {
+      "tagline": "L'île de la flèche de sable",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "nature",
+          "text": "Sa longue flèche de sable fait partie du parc national"
+        },
+        {
+          "kind": "history",
+          "text": "Une usine y faisait des briques avec son argile, de 1906 à 1915"
+        },
+        {
+          "kind": "nature",
+          "text": "Sa lagune est protégée pour les oiseaux qui y vivent"
+        }
+      ],
+      "checked": false
+    }
   },
   "james-island": {
     "name": "Île James",
-    "fact": "Autrefois, une usine d'explosifs s'y trouvait."
+    "fact": "Autrefois, une usine d'explosifs s'y trouvait.",
+    "knowledge": {
+      "tagline": "L'île qui fabriquait du TNT",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "history",
+          "text": "Son usine a fabriqué du TNT pendant les deux guerres mondiales"
+        },
+        {
+          "kind": "history",
+          "text": "Des centaines d'ouvriers vivaient autrefois dans un village ici"
+        },
+        {
+          "kind": "history",
+          "text": "Elle est aujourd'hui privée, avec un terrain de golf"
+        }
+      ],
+      "checked": false
+    }
   },
   "saanich-peninsula": {
     "name": "Péninsule de Saanich",
-    "fact": "La pointe de l'île de Vancouver. Le terminal de Swartz Bay est à son extrémité nord."
+    "fact": "La pointe de l'île de Vancouver. Le terminal de Swartz Bay est à son extrémité nord.",
+    "knowledge": {
+      "tagline": "Jardins, foires et étoiles",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "events",
+          "text": "La foire de Saanich, à la fête du Travail, depuis 1868",
+          "months": [
+            9
+          ]
+        },
+        {
+          "kind": "nature",
+          "text": "Les jardins Butchart fleurissent dans une ancienne carrière"
+        },
+        {
+          "kind": "history",
+          "text": "Son télescope de 1918 a été un temps le plus grand du monde"
+        }
+      ],
+      "checked": false
+    }
   },
   "swartz-bay-terminal": {
     "name": "Terminal de Swartz Bay",
@@ -109,7 +548,22 @@
   },
   "tsawwassen": {
     "name": "Tsawwassen",
-    "fact": "Une communauté du continent, où vit la Première Nation Tsawwassen."
+    "fact": "Une communauté du continent, où vit la Première Nation Tsawwassen.",
+    "knowledge": {
+      "tagline": "Plages et oiseaux",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "nature",
+          "text": "Des nuées d'oiseaux de rivage font halte dans la baie Boundary"
+        },
+        {
+          "kind": "nature",
+          "text": "L'eau peu profonde de la baie Boundary se réchauffe l'été"
+        }
+      ],
+      "checked": false
+    }
   },
   "roberts-bank": {
     "name": "Roberts Bank",
@@ -117,11 +571,47 @@
   },
   "sidney": {
     "name": "Sidney",
-    "fact": "Une ville en bord de mer près du terminal de Swartz Bay."
+    "fact": "Une ville en bord de mer près du terminal de Swartz Bay.",
+    "knowledge": {
+      "tagline": "La ville des livres, au bord de la mer",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "arts",
+          "text": "Surnommée « ville du livre », avec plusieurs librairies"
+        },
+        {
+          "kind": "nature",
+          "text": "Un aquarium au bord de l'eau montre la vie de la mer des Salish"
+        },
+        {
+          "kind": "events",
+          "text": "Un marché de rue le jeudi soir, tout l'été",
+          "months": [
+            6,
+            7,
+            8,
+            9
+          ]
+        }
+      ],
+      "checked": false
+    }
   },
   "point-roberts": {
     "name": "Point Roberts (États-Unis)",
-    "fact": "Ça fait partie des États-Unis, mais on ne peut y aller en voiture qu'en passant par le Canada!"
+    "fact": "Ça fait partie des États-Unis, mais on ne peut y aller en voiture qu'en passant par le Canada!",
+    "knowledge": {
+      "tagline": "Un petit bout des États-Unis",
+      "indigenousName": "",
+      "specialties": [
+        {
+          "kind": "nature",
+          "text": "Un des meilleurs endroits où voir des épaulards depuis la rive"
+        }
+      ],
+      "checked": false
+    }
   },
   "vancouver": {
     "name": "Vancouver",

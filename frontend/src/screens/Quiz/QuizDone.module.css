@@ -1,7 +1,8 @@
 .card {
   flex: 1;
   min-height: 0;
-  background: var(--card);
+  background: var(--neu-surface);
+  box-shadow: var(--neu-out);
   border-radius: 28px;
   display: flex;
   flex-direction: column;
@@ -59,6 +60,8 @@
 
 .secondary,
 .secondary:hover {
-  background: var(--button-soft);
+  border: 0;
+  background: var(--neu-surface);
+  box-shadow: var(--neu-out-small);
   color: var(--ink);
 }

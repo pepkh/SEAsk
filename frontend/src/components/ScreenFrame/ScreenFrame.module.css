@@ -1,0 +1,108 @@
+.screen {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+  overflow: hidden;
+}
+
+.neu {
+  background: var(--neu-surface);
+}
+
+/* Under the water: light at the top, deep at the bottom (the Dive bands sit on top) */
+.water {
+  background: linear-gradient(180deg, var(--water-surface) 0%, var(--water-mid) 45%, var(--water-deep) 80%, var(--water-floor) 100%);
+}
+
+/* Laid out at kiosk size and zoomed to the window */
+.frame {
+  zoom: var(--ui-scale);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 28px max(36px, env(safe-area-inset-right, 0px)) 26px max(36px, env(safe-area-inset-left, 0px));
+  min-height: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.titles {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  margin: 0;
+  font-size: 44px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 20px;
+  color: var(--muted);
+}
+
+.water .title {
+  color: var(--water-floor);
+}
+
+.water .subtitle {
+  color: #1d4b5e;
+}
+
+.aside {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+}
+
+@media (max-width: 900px) {
+  .screen {
+    position: relative;
+    min-height: 100%;
+    overflow: visible;
+  }
+
+  .frame {
+    height: auto;
+    padding: 16px;
+  }
+
+  .header {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .titles {
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  .aside {
+    margin-left: auto;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+}

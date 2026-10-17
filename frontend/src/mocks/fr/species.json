@@ -1,31 +1,21 @@
 {
-  "featured": {
-    "name": "Épaulard",
-    "latin": "Orcinus orca · aussi appelé orque",
-    "text": "Les épaulards vivent en groupes familiaux appelés « pods ». Chaque groupe a ses propres cris, un peu comme un accent de famille. Certains épaulards de ces eaux mangent surtout du saumon.",
-    "photo": "épaulard",
-    "photoId": "orca",
-    "sizes": [
-      { "role": "you", "label": "Vous", "m": 1.3 },
-      { "role": "featured", "label": "Épaulard", "m": 8 },
-      { "role": "reference", "label": "Rorqual à bosse", "m": 15 }
-    ],
-    "footnote": "Notre traversier est à peu près aussi long que 20 épaulards nageant à la file."
-  },
+  "featuredId": "orca",
   "items": [
-    { "id": "humpback", "name": "Rorqual à bosse", "habitat": "surface", "group": "mammals", "photo": "rorqual à bosse", "photoId": "humpback",
+    { "id": "orca", "name": "Épaulard", "habitat": "openWater", "group": "mammals", "photo": "épaulard", "photoId": "orca", "latin": "Orcinus orca", "sizeM": 8,
+      "text": "Les épaulards vivent en groupes familiaux appelés « pods ». Chaque groupe a ses propres cris, un peu comme un accent de famille. Certains épaulards de ces eaux mangent surtout du saumon." },
+    { "id": "humpback", "name": "Rorqual à bosse", "habitat": "surface", "group": "mammals", "photo": "rorqual à bosse", "photoId": "humpback", "latin": "Megaptera novaeangliae", "sizeM": 15,
       "text": "Autrefois rares ici, les rorquals à bosse sont de retour. Cherchez un souffle et une queue qui sort de l'eau." },
-    { "id": "harbour-seal", "name": "Phoque commun", "habitat": "shore", "group": "mammals", "photo": "phoque commun", "photoId": "harbour-seal",
-      "text": "Un pelage tacheté et une tête de chiot. Ils se reposent sur les rochers à marée basse." },
-    { "id": "white-sided-dolphin", "name": "Dauphin à flancs blancs", "habitat": "surface", "group": "mammals", "photo": "dauphin à flancs blancs", "photoId": "white-sided-dolphin",
+    { "id": "white-sided-dolphin", "name": "Dauphin à flancs blancs", "habitat": "surface", "group": "mammals", "photo": "dauphin à flancs blancs", "photoId": "white-sided-dolphin", "latin": "Lagenorhynchus obliquidens", "sizeM": 2.3,
       "text": "Rapides, joueurs et sociables. Parfois, ils sautent à côté des bateaux." },
-    { "id": "chinook", "name": "Saumon quinnat", "habitat": "openWater", "group": "fish", "photo": "saumon quinnat", "photoId": "chinook",
+    { "id": "harbour-seal", "name": "Phoque commun", "habitat": "shore", "group": "mammals", "photo": "phoque commun", "photoId": "harbour-seal", "latin": "Phoca vitulina", "sizeM": 1.7,
+      "text": "Un pelage tacheté et une tête de chiot. Ils se reposent sur les rochers à marée basse." },
+    { "id": "bull-kelp", "name": "Varech géant", "habitat": "shore", "group": "seaweed", "photo": "forêt de varech", "photoId": "bull-kelp", "latin": "Nereocystis luetkeana", "sizeM": 30,
+      "text": "Une algue qui devient une grande forêt sous l'eau en un seul été." },
+    { "id": "chinook", "name": "Saumon quinnat", "habitat": "openWater", "group": "fish", "photo": "saumon quinnat", "photoId": "chinook", "latin": "Oncorhynchus tshawytscha", "sizeM": 1,
       "text": "Le plus gros saumon du Pacifique, et un repas préféré des épaulards d'ici." },
-    { "id": "octopus", "name": "Pieuvre géante", "habitat": "seafloor", "group": "invertebrates", "photo": "pieuvre géante du Pacifique", "photoId": "octopus",
+    { "id": "octopus", "name": "Pieuvre géante", "habitat": "seafloor", "group": "invertebrates", "photo": "pieuvre géante du Pacifique", "photoId": "octopus", "latin": "Enteroctopus dofleini", "sizeM": 4,
       "text": "Trois cœurs, du sang bleu, et elle change de couleur en un clin d'œil." },
-    { "id": "glass-sponge", "name": "Récif d'éponges siliceuses", "habitat": "deep", "group": "invertebrates", "photo": "récif d'éponges siliceuses", "photoId": "glass-sponge",
-      "text": "Les scientifiques pensaient que ces récifs avaient disparu depuis longtemps, jusqu'à ce qu'on en trouve des vivants au large de la C.-B." },
-    { "id": "bull-kelp", "name": "Varech géant", "habitat": "shore", "group": "seaweed", "photo": "forêt de varech", "photoId": "bull-kelp",
-      "text": "Une algue qui devient une grande forêt sous l'eau en un seul été." }
+    { "id": "glass-sponge", "name": "Récif d'éponges siliceuses", "habitat": "deep", "group": "invertebrates", "photo": "récif d'éponges siliceuses", "photoId": "glass-sponge", "latin": "Hexactinellida",
+      "text": "Les scientifiques pensaient que ces récifs avaient disparu depuis longtemps, jusqu'à ce qu'on en trouve des vivants au large de la C.-B." }
   ]
 }

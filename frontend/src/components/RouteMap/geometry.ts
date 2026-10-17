@@ -54,6 +54,26 @@ export interface SvgRoute {
 }
 
 /**
+ * The route fraction nearest to a point of the drawing, and how far the point is from the route (drawing units).
+ * The inverse of svgRoute: a tap on the route map → a place on the real route.
+ */
+export function fractionAt(px: number, py: number): { fraction: number; distance: number } {
+  let best = { len: 0, distance: Infinity }
+  for (let i = 0; i < ROUTE_SVG.length - 1; i++) {
+    const [ax, ay] = ROUTE_SVG[i]
+    const [bx, by] = ROUTE_SVG[i + 1]
+    const dx = bx - ax
+    const dy = by - ay
+    const l2 = dx * dx + dy * dy
+    const t = l2 ? Math.min(1, Math.max(0, ((px - ax) * dx + (py - ay) * dy) / l2)) : 0
+    const distance = Math.hypot(px - (ax + t * dx), py - (ay + t * dy))
+    if (distance < best.distance) best = { len: cumulative[i] + t * Math.sqrt(l2), distance }
+  }
+  const fraction = anchoredLerp(best.len, [[0, 0], [cumulative[ACTIVE_PASS_INDEX], ROUTE.activePassAt], [total, 1]])
+  return { fraction, distance: best.distance }
+}
+
+/**
  * Split the drawn route at the ship. The route fraction maps to the drawing so that
  * Active Pass on the real route is at the mockup ship position.
  */

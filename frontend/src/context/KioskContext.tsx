@@ -3,27 +3,23 @@ import { HOME_SCENE, MAP_MODE_ENABLED } from '../config/env'
 import { tilesAvailable } from '../map/tilesAvailable'
 import type { ViewName } from '../scene/constants'
 
-export type Audience = 'kids' | 'adults'
 export type SceneMode = 'sea' | 'map'
 
 interface KioskValue {
-  audience: Audience
-  setAudience: (audience: Audience) => void
-  /** Journey background: the 3D sea scene or the Cesium map */
+  /** Ferry screen background: the 3D sea scene or the Cesium map */
   sceneMode: SceneMode
   setSceneMode: (mode: SceneMode) => void
   /** Map mode is on and its offline tiles are there (shows the globe button). */
   mapAvailable: boolean
-  /** Camera view of the 3D sea and the map, the same for Kids and Grown-ups */
+  /** Camera view of the 3D sea and the map */
   view: ViewName
   setView: (view: ViewName) => void
 }
 
 const KioskContext = createContext<KioskValue | null>(null)
 
-/** Kiosk-wide choices that stay the same on all tabs. */
+/** Kiosk-wide choices that stay the same on all screens. */
 export function KioskProvider({ children }: { children: ReactNode }) {
-  const [audience, setAudience] = useState<Audience>('kids')
   const [sceneMode, setSceneMode] = useState<SceneMode>(HOME_SCENE)
   const [mapAvailable, setMapAvailable] = useState(MAP_MODE_ENABLED)
   const [view, setView] = useState<ViewName>('chase')
@@ -40,8 +36,8 @@ export function KioskProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const value = useMemo(
-    () => ({ audience, setAudience, sceneMode, setSceneMode, mapAvailable, view, setView }),
-    [audience, sceneMode, mapAvailable, view],
+    () => ({ sceneMode, setSceneMode, mapAvailable, view, setView }),
+    [sceneMode, mapAvailable, view],
   )
   return <KioskContext value={value}>{children}</KioskContext>
 }

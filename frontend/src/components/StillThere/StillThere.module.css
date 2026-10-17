@@ -1,0 +1,92 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  display: grid;
+  place-items: center;
+  background: rgba(7, 30, 41, 0.35);
+  animation: fade 300ms ease both;
+}
+
+/* A bubble: you touch it to stay. */
+.bubble {
+  zoom: var(--ui-scale);
+  position: relative;
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  border: 2px solid var(--bubble-rim);
+  background: var(--bubble-fill);
+  backdrop-filter: var(--bubble-backdrop);
+  -webkit-backdrop-filter: var(--bubble-backdrop);
+  box-shadow: var(--bubble-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+  color: var(--ink);
+  font: inherit;
+  animation: pop 420ms var(--ease-spring) both;
+}
+
+.bubble b {
+  font-size: 44px;
+  font-weight: 600;
+}
+
+.bubble span {
+  font-size: 24px;
+  color: var(--body);
+}
+
+.ring {
+  position: absolute;
+  inset: 18px;
+  rotate: -90deg;
+}
+
+.track,
+.left {
+  fill: none;
+  stroke-width: 5;
+}
+
+.track {
+  stroke: rgba(31, 111, 224, 0.15);
+}
+
+/* The ring empties over the countdown (circumference 2π × 54 ≈ 339). */
+.left {
+  stroke: var(--accent);
+  stroke-linecap: round;
+  stroke-dasharray: 339;
+  animation: empty linear both;
+}
+
+@keyframes empty {
+  to {
+    stroke-dashoffset: 339;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes pop {
+  from {
+    scale: 0.5;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .bubble {
+    animation: none;
+  }
+}

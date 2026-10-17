@@ -1,10 +1,11 @@
-import { Link } from 'react-router'
+import { useTransition } from '../../components/WaterTransition/TransitionContext'
 import { useLanguage } from '../../i18n/LanguageContext'
 import styles from './QuizDone.module.css'
 
 /** Final score with "Play again" and "Meet the animals". */
 export function QuizDone({ score, total, onRestart }: { score: number; total: number; onRestart: () => void }) {
   const { t } = useLanguage()
+  const { go } = useTransition()
   const finalLine = score === total ? 'quiz.finalAll' : score >= 3 ? 'quiz.finalGood' : 'quiz.finalTry'
 
   return (
@@ -19,9 +20,9 @@ export function QuizDone({ score, total, onRestart }: { score: number; total: nu
         <button type="button" className={styles.primary} onClick={onRestart}>
           {t('quiz.playAgain')}
         </button>
-        <Link to="/sea-life" className={styles.secondary}>
+        <button type="button" className={styles.secondary} onClick={() => go('/dive')}>
           {t('quiz.meetAnimals')}
-        </Link>
+        </button>
       </div>
     </div>
   )

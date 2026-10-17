@@ -19,7 +19,7 @@ class SourceStatus(BaseModel):
 
 
 class Status(BaseModel):
-    onc: SourceStatus = Field(description="Ocean Networks Canada ship data (`/api/ship/latest`).")
+    onc: SourceStatus = Field(description="Ocean Networks Canada ship data (`/api/ship/latest`, `/api/ship/history`).")
     openweathermap: SourceStatus = Field(description="OpenWeatherMap (`/api/weather`, weather part).")
     openmeteo: SourceStatus = Field(description="Open-Meteo Marine (`/api/weather`, waves part).")
     dfo: SourceStatus = Field(description="DFO IWLS tide and current predictions (`/api/tides`).")

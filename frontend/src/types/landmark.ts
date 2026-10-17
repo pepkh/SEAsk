@@ -14,5 +14,18 @@ export interface Landmark {
   elevationM?: number
 }
 
+export type KnowledgeKind = 'food' | 'events' | 'nature' | 'history' | 'arts'
+
+/** What an island or peak is known for, one card-sized line each (a draft until the team checks it). */
+export interface PlaceKnowledge {
+  tagline?: string
+  /** Left empty for the team to fill from verified sources */
+  indigenousName?: string
+  /** `months` (1–12): an event that happens then; it comes first, with a "This month" badge, in those months */
+  specialties?: { kind: KnowledgeKind; text: string; months?: number[] }[]
+  /** False until a team member has fact-checked the entry */
+  checked: boolean
+}
+
 /** Landmark texts by id (src/mocks/{lang}/landmarks.json). */
-export type LandmarksContent = Record<string, { name: string; fact: string }>
+export type LandmarksContent = Record<string, { name: string; fact: string; knowledge?: PlaceKnowledge }>

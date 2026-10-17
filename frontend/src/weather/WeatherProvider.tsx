@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react'
 import { getWeather, SAMPLE_WEATHER } from '../api/weather'
 import { LIVE_DATA } from '../config/env'
+import { useSession } from '../context/SessionContext'
 import { distanceM } from '../ship/geo'
 import { useShip } from '../ship/ShipProvider'
 import type { LatLon } from '../types/route'
@@ -14,8 +15,12 @@ const CHECK_MS = 5000
 
 const WeatherContext = createContext<Weather>(SAMPLE_WEATHER)
 
-/** Weather at the ship's position (live with VITE_LIVE_DATA, else the sample). Needs a ShipProvider above. */
+/**
+ * Weather at the ship's position (live with VITE_LIVE_DATA, else the sample), fetched only during a
+ * visitor session. Needs a ShipProvider above.
+ */
 export function WeatherProvider({ children }: { children: ReactNode }) {
+  const { active } = useSession()
   const ship = useShip()
   const position = useRef<LatLon | null>(null)
   const [weather, setWeather] = useState<Weather>(SAMPLE_WEATHER)
@@ -25,7 +30,7 @@ export function WeatherProvider({ children }: { children: ReactNode }) {
   }, [ship])
 
   useEffect(() => {
-    if (!LIVE_DATA) return
+    if (!LIVE_DATA || !active) return
     let live = true
     let last: { at: LatLon; time: number } | undefined
     const check = async () => {
@@ -41,7 +46,7 @@ export function WeatherProvider({ children }: { children: ReactNode }) {
       live = false
       clearInterval(id)
     }
-  }, [])
+  }, [active])
 
   return <WeatherContext value={weather}>{children}</WeatherContext>
 }

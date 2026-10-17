@@ -1,7 +1,8 @@
 .hint {
   flex: 1;
   min-height: 0;
-  background: var(--card);
+  background: var(--neu-surface);
+  box-shadow: var(--neu-out);
   border-radius: 24px;
   padding: 28px;
   display: flex;
@@ -24,7 +25,8 @@
 .answered {
   flex: 1;
   min-height: 0;
-  background: var(--card);
+  background: var(--neu-surface);
+  box-shadow: var(--neu-out);
   border-radius: 24px;
   overflow: hidden;
   display: flex;

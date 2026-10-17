@@ -16,5 +16,8 @@ export const TILES_URL = (env.VITE_TILES_URL ?? '/tiles').replace(/\/$/, '')
 
 export const REPLAY_SPEED = Math.max(1, Number(env.VITE_REPLAY_SPEED) || 1)
 
+/** No backdrop blur on bubbles and cards (cheaper over the live 3D canvas on slow kiosk hardware). */
+export const LOW_FX = env.VITE_LOW_FX === 'true'
+
 /** The real feed sends one row each second. */
 export const FEED_POLL_MS = 1000

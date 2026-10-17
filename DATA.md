@@ -199,8 +199,20 @@ Locations: `TWSB` (ship systems) and `TWSB.N1` (navigation).
 
 | What | Notes |
 | --- | --- |
-| Live data | Every sensor in `readings`, about 1 s behind. The backend's `GET /api/ship/latest` reads it (now including `oxygen_saturation`). |
+| Live data | Every sensor in `readings`, about 1 s behind. The backend's `GET /api/ship/latest` reads it (now including `oxygen_saturation`), and `GET /api/ship/history` the last 1 to 180 min of it, one row per 1 to 60 s. |
 | QC flags | `scalardata/location` with `qualityControl=raw` gives a flag per sample. `build_derived.py` reads them for the TSG, OXYSENSOR and TURBCHLFL. |
 | History | TSG data on this route 2001–2011, 2014–2018 and 2020 to now (current Sea-Bird 45 since 2025-10-10). NAV and the other sensors since 2020. |
 | Instruments | On 2026-08-17: Hemisphere GNSS (NAV), Sea-Bird TSG 45, WET Labs ECO Triplet (TURBCHLFL), Aanderaa Optode 3835 (OXYSENSOR), Rotronic air temperature, RM Young pressure and compass, PVCS pump control. |
 | Not available | Wind (no wind monitor deployed; the RM Young met station returns no data), relative humidity, transmissometer and the older fluorometers (retired). |
+
+## 7. Island knowledge (draft, to check)
+
+The kiosk shows what each island and the main peaks along the route are known for (food, events, nature, history,
+arts): on the ferry screen's card while the ship passes, and on the map labels. The text is bundled in
+`frontend/src/mocks/{en,fr}/landmarks.json` under each place's `knowledge` key.
+
+All 28 entries are drafts researched from public web sources on 2026-10-17, each with `"checked": false`.
+**A person on the team must verify every entry before the kiosk goes live**, using
+[`frontend/src/mocks/KNOWLEDGE_CHECKLIST.md`](frontend/src/mocks/KNOWLEDGE_CHECKLIST.md) (sources, confidence,
+and sensitive items first). Indigenous names (`indigenousName`) are left empty on purpose, for the team to fill
+from verified sources.

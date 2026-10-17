@@ -6,7 +6,7 @@
       "pic": "pieuvre géante du Pacifique",
       "picId": "octopus",
       "options": [["a", "L'épaulard"], ["b", "La pieuvre géante du Pacifique"], ["c", "Le phoque commun"], ["d", "Le saumon quinnat"]],
-      "hint": "Elle vit sur le fond marin et a huit bras. Regardez l'onglet Vie marine.",
+      "hint": "Elle vit sur le fond marin et a huit bras. Plongez pour la rencontrer.",
       "why": "La pieuvre géante du Pacifique a trois cœurs : deux pompent le sang dans ses branchies et un l'envoie dans tout le corps. Son sang est bleu, en plus!"
     },
     {
@@ -15,7 +15,7 @@
       "pic": "le fleuve Fraser qui rejoint la mer",
       "picId": "fraser-plume",
       "options": [["a", "La pluie tombe sur le traversier"], ["b", "Les poissons boivent le sel"], ["c", "Un grand fleuve verse de l'eau douce"], ["d", "Le traversier la filtre"]],
-      "hint": "Regardez l'onglet Fond marin, près de la fin du trajet.",
+      "hint": "Regardez le sel sur la carte du traversier quand on approche de Tsawwassen.",
       "why": "Le fleuve Fraser se jette dans le détroit de Georgia. Son eau douce est plus légère que l'eau salée, alors elle s'étend en surface."
     },
     {
@@ -24,7 +24,7 @@
       "pic": "la Lune et la Terre",
       "picId": "earth-moon",
       "options": [["a", "Le vent"], ["b", "La Lune qui attire la mer"], ["c", "Les vagues des traversiers"], ["d", "Les baleines qui nagent"]],
-      "hint": "La réponse est dans le ciel. Regardez l'onglet Marées et météo.",
+      "hint": "La réponse est dans le ciel. Regardez la marée sur la carte du traversier.",
       "why": "La gravité de la Lune tire l'océan en un renflement. Comme la Terre tourne dedans, l'eau ici monte et descend environ deux fois par jour."
     },
     {

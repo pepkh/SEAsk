@@ -1,0 +1,224 @@
+.screen {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+  display: grid;
+  grid-template-columns: calc(600px * var(--ui-scale)) minmax(0, 1fr);
+  background: var(--neu-surface);
+}
+
+/* Left: data panel, laid out at kiosk size and zoomed to the window */
+.panel {
+  zoom: var(--ui-scale);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 28px 32px 24px 40px;
+  background: var(--neu-surface);
+  min-height: 0;
+}
+
+.top {
+  display: flex;
+}
+
+/* The water / outside switch: a neumorphic well with the chosen side raised. */
+.tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 7px;
+  border-radius: 999px;
+  box-shadow: var(--neu-in);
+}
+
+.tabs button {
+  height: 54px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  font: 600 19px var(--display);
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.tabs button[aria-selected='true'] {
+  background: var(--neu-surface);
+  color: var(--ink);
+  box-shadow: var(--neu-out-small);
+}
+
+/* Keyboard focus: a soft ring in the tab's own shape, not the page-wide outline */
+.tabs button:focus-visible {
+  outline: none;
+  box-shadow: var(--neu-out-small), 0 0 0 3px rgba(31, 111, 224, 0.45);
+}
+
+/*
+ * Each tab scrolls when its cards are taller than the panel. The cards keep their natural height (squeezed, the
+ * weather tiles and the readings table collapse), and the edges fade where content scrolls under them.
+ */
+.content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow-y: auto;
+  margin: -10px -12px 0 -12px;
+  padding: 10px 12px 16px 12px;
+  mask-image: linear-gradient(180deg, transparent 0, #000 12px, #000 calc(100% - 16px), transparent 100%);
+  scrollbar-width: thin;
+}
+
+/* Natural height for every card (the readings table is `flex: 1` on its own, which would start it at zero) */
+.content > * {
+  flex: none;
+}
+
+.route {
+  font-size: 18px;
+  color: var(--body);
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.eyebrow {
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.title {
+  font-size: 38px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+/* Right: map with floating cards. The cards are zoomed one by one, so the map canvas is not. */
+.mapArea {
+  position: relative;
+  overflow: hidden;
+  background: var(--sea-map);
+}
+
+.pill {
+  zoom: var(--ui-scale);
+  position: absolute;
+  left: 32px;
+  top: 30px;
+}
+
+.toggles {
+  zoom: var(--ui-scale);
+  position: absolute;
+  right: 32px;
+  top: 30px;
+  display: flex;
+  gap: 12px;
+}
+
+.colourBy {
+  zoom: var(--ui-scale);
+  position: absolute;
+  right: 32px;
+  top: 118px;
+}
+
+/* Route profile chart above "What's happening here" */
+.leftStack {
+  zoom: var(--ui-scale);
+  position: absolute;
+  left: 32px;
+  bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bottomRight {
+  zoom: var(--ui-scale);
+  position: absolute;
+  right: 32px;
+  bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+/* Phones: the panel first, then the map, then the map's cards stacked under it at full width. */
+@media (max-width: 900px) {
+  .screen {
+    position: relative;
+    inset: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .panel {
+    padding: 16px;
+  }
+
+  .content {
+    overflow: visible;
+    mask-image: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .mapArea {
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: calc(56vh + 16px) 16px 24px;
+  }
+
+  /* The track map keeps the top of the area (its size is set inline) */
+  .mapArea > svg {
+    height: 56vh !important;
+    bottom: auto !important;
+  }
+
+  .pill {
+    left: 16px;
+    top: 16px;
+    max-width: calc(100% - 150px);
+  }
+
+  .toggles {
+    right: 16px;
+    top: 16px;
+  }
+
+  .colourBy,
+  .leftStack,
+  .bottomRight {
+    position: static;
+  }
+
+  .colourBy,
+  .leftStack > *,
+  .bottomRight > * {
+    width: auto !important;
+    max-width: 100%;
+  }
+
+  .bottomRight {
+    align-items: stretch;
+  }
+}

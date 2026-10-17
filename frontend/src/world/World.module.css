@@ -1,0 +1,18 @@
+/* Behind every screen; never zoomed (three.js and Cesium read pointer positions in unzoomed pixels). */
+.world {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--sky-top) 0%, var(--horizon) 48%, var(--horizon) 100%);
+}
+
+.world canvas {
+  display: block;
+  touch-action: none;
+}
+
+@media (max-width: 900px) {
+  .world {
+    bottom: auto;
+    height: 56vh;
+  }
+}

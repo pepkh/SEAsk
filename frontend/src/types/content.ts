@@ -52,18 +52,14 @@ export interface Species {
   text: string
   photo: string
   photoId?: string
+  latin?: string
+  /** Typical adult length (m), for the size check next to you; left out where a size makes no sense (a reef) */
+  sizeM?: number
 }
 
 export interface SpeciesContent {
-  featured: {
-    name: string
-    latin: string
-    text: string
-    photo: string
-    photoId?: string
-    sizes: { role: 'you' | 'featured' | 'reference'; label: string; m: number }[]
-    footnote: string
-  }
+  /** The "Animal of the crossing" (it gets a badge on the Dive screen) */
+  featuredId: string
   items: Species[]
 }
 

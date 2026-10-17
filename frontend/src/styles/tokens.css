@@ -52,4 +52,50 @@
   /* Fonts */
   --display: 'Outfit', 'Helvetica Neue', sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /*
+   * Bubbles and cards. The one rule: a bubble floats and shines, and you can touch it;
+   * a card is flat and still, and only shows information.
+   */
+  --bubble-fill: radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.97) 0%, rgba(255, 255, 255, 0.82) 38%, rgba(232, 243, 248, 0.7) 100%);
+  --bubble-rim: rgba(255, 255, 255, 0.9);
+  --bubble-backdrop: blur(14px) saturate(1.25);
+  --bubble-shadow: 0 14px 40px rgba(16, 52, 72, 0.22), inset 0 -10px 24px rgba(31, 111, 224, 0.1), inset 0 6px 14px rgba(255, 255, 255, 0.8);
+  --card-glass: rgba(255, 255, 255, 0.8);
+  --card-backdrop: blur(10px);
+  --card-shadow: 0 6px 22px rgba(21, 25, 28, 0.1);
+
+  /* Neumorphic surfaces (screens below the hub: Dive, Quiz, Lab) */
+  --neu-surface: #E3ECF0;
+  --neu-light: rgba(255, 255, 255, 0.92);
+  --neu-dark: rgba(140, 163, 178, 0.55);
+  --neu-out: 9px 9px 22px var(--neu-dark), -9px -9px 22px var(--neu-light);
+  --neu-out-small: 5px 5px 12px var(--neu-dark), -5px -5px 12px var(--neu-light);
+  --neu-in: inset 6px 6px 14px var(--neu-dark), inset -6px -6px 14px var(--neu-light);
+  --neu-deep-surface: #123342;
+  --neu-deep-light: rgba(46, 96, 118, 0.55);
+  --neu-deep-dark: rgba(3, 14, 20, 0.6);
+  --neu-deep-out: 9px 9px 22px var(--neu-deep-dark), -9px -9px 22px var(--neu-deep-light);
+  --neu-deep-in: inset 6px 6px 14px var(--neu-deep-dark), inset -6px -6px 14px var(--neu-deep-light);
+
+  /* Water, shared by the Dive screen bands and the dive / surface transition */
+  --water-surface: #7FC4D8;
+  --water-mid: #2E7F9E;
+  --water-deep: #0D3446;
+  --water-floor: #071E29;
+
+  /* Transitions: every crossing of the waterline feels the same */
+  --t-pop: 1100ms;
+  --t-dive: 2050ms;
+  --t-surface: 1700ms;
+  --ease-water: cubic-bezier(0.45, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* VITE_LOW_FX=true: no backdrop blur (cheaper over the live 3D canvas), more opaque glass instead. */
+:root[data-lowfx] {
+  --bubble-backdrop: none;
+  --card-backdrop: none;
+  --bubble-fill: radial-gradient(circle at 32% 26%, #ffffff 0%, #f4f9fb 40%, #dfeef4 100%);
+  --card-glass: rgba(255, 255, 255, 0.96);
 }

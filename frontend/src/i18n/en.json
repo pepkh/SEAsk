@@ -1,61 +1,18 @@
 {
-  "dock": {
-    "label": "Kiosk sections",
-    "journey": "Journey",
-    "seaLife": "Sea life",
-    "seafloor": "Seafloor",
-    "tides": "Tides & weather",
-    "quiz": "Ocean quiz",
-    "wind": "Wind {kn} kn {dir}",
-    "eta": "{place} in {min} min",
-    "next": "Next: {place}"
-  },
-  "audience": {
-    "label": "Audience",
-    "kids": "Kids",
-    "adults": "Grown-ups"
-  },
   "language": {
     "button": "EN · FR",
     "label": "Change language: English or French"
   },
   "sampleData": "SAMPLE DATA",
-  "sampleTides": "SAMPLE TIDES",
-  "sampleWeather": "SAMPLE WEATHER",
   "compass": "N,NE,E,SE,S,SW,W,NW",
   "photo": "[photo: {name}]",
   "waypoint": {
     "swartzBay": "Swartz Bay",
-    "strait": "Strait",
     "tsawwassen": "Tsawwassen"
   },
   "journey": {
-    "youAreHere": "You are here",
-    "knots": "knots",
-    "speedHint": "about {kmh} km/h, {comparison}",
-    "speedDocked": "the ship is at the dock",
-    "comparison": {
-      "slow": "as fast as a bicycle",
-      "medium": "as fast as a city bus",
-      "fast": "as fast as a car on the highway"
-    },
-    "eta": "{place} in {min} min",
-    "toGo": "{km} km to go",
     "sensorsResting": "Sensors rest while the ferry is docked",
-    "noReading": "No reading right now",
     "next": "Next: {place}",
-    "yourRoute": "Your route",
-    "routeMapLabel": "Route map with the ferry near {place}",
-    "underShip": "Under the ship",
-    "mOfWater": "m of water",
-    "diveDown": "Dive down →",
-    "views": {
-      "chase": "Chase camera",
-      "side": "Side view",
-      "top": "Bird's-eye view",
-      "showMap": "Show the map",
-      "showSea": "Show the sea"
-    },
     "nowCrossing": "Now crossing",
     "nextCrossing": "Next crossing",
     "speed": "Speed",
@@ -111,22 +68,8 @@
     }
   },
   "seaLife": {
-    "title": "Life below us",
-    "subtitleStart": "Animals and plants of the Salish Sea, near ",
-    "subtitleEnd": " right now",
-    "filterLabel": "Show animals by group",
-    "filters": {
-      "all": "All",
-      "mammals": "Mammals",
-      "fish": "Fish",
-      "invertebrates": "Invertebrates",
-      "seaweed": "Seaweed"
-    },
     "featured": "Animal of the crossing",
-    "heroPhoto": "[hero photo or 3D model: {name}]",
-    "sizeCheck": "Size check",
-    "spotted": "Spotted something?",
-    "spottedText": "Tap to log what you saw. Your sighting appears on the map for the next crossing."
+    "sizeCheck": "Size check"
   },
   "habitat": {
     "surface": "Surface",
@@ -136,11 +79,6 @@
     "deep": "Deep"
   },
   "seafloor": {
-    "title": "What's under the ship?",
-    "subtitle": "A slice through the sea, from Swartz Bay to Tsawwassen. The ship is at the top, the seafloor at the bottom.",
-    "viewLabel": "Seafloor view",
-    "slice": "Slice view",
-    "threeD": "3D seafloor",
     "sliceLabel": "Cross-section of water depth along the ferry route",
     "sunlight": "Sunlight zone",
     "sunlightSub": "plants can grow here",
@@ -151,8 +89,6 @@
     "footnote": "Depth under the route from GEBCO 2026, stretched 25× so the shape is easy to see"
   },
   "tides": {
-    "title": "Tides & weather",
-    "subtitle": "What the sea and sky are doing around the ship right now",
     "tideToday": "Tide today · {place}",
     "chartLabel": "Tide height through the day, with the current time",
     "now": "Now",
@@ -237,7 +173,7 @@
   },
   "quiz": {
     "title": "Ocean quiz",
-    "subtitle": "Five questions about the sea you're crossing. Everything you need is on the other tabs.",
+    "subtitle": "Five questions about the sea you're crossing. The ferry and the dive have all the answers.",
     "progress": "Question {num} of {total}",
     "score": "Your score",
     "illustration": "[illustration: {pic}]",
@@ -249,8 +185,174 @@
     "complete": "Quiz complete",
     "finalAll": "Ocean expert! You got every one.",
     "finalGood": "Great sailing! You know this sea.",
-    "finalTry": "Nice try! Explore the tabs and play again.",
+    "finalTry": "Nice try! Explore the ferry and the dive, then play again.",
     "playAgain": "Play again",
     "meetAnimals": "Meet the animals"
+  },
+  "welcome": {
+    "title": "Welcome to",
+    "touch": "Touch to explore",
+    "touchOther": "Touchez pour explorer",
+    "start": "Start exploring"
+  },
+  "nav": {
+    "backToFerry": "Back to the ferry",
+    "surface": "Surface",
+    "close": "Close"
+  },
+  "now": {
+    "label": "Right now on the crossing",
+    "live": "LIVE",
+    "passing": "Now passing",
+    "eta": "{min} min to {place}",
+    "docked": "At the dock · next stop {place}",
+    "slot": "Fact {n} of {total}",
+    "outside": "{temp}° · {wind}",
+    "wind": {
+      "calm": "calm",
+      "breezy": "breezy",
+      "windy": "windy",
+      "stormy": "very windy"
+    },
+    "water": {
+      "title": "How's the water?",
+      "labels": {
+        "temp": "Temperature",
+        "salt": "Saltiness",
+        "o2": "Oxygen",
+        "plankton": "Plankton"
+      },
+      "temp": {
+        "icy": "Icy",
+        "chilly": "Chilly",
+        "cool": "Cool",
+        "mild": "Mild"
+      },
+      "salt": {
+        "fresh": "Less salty",
+        "salty": "Salty",
+        "verySalty": "Very salty"
+      },
+      "o2": {
+        "low": "Low",
+        "good": "Good for fish",
+        "fizzy": "Lots!"
+      },
+      "plankton": {
+        "clear": "Clear",
+        "green": "A bit green",
+        "veryGreen": "Very green"
+      }
+    },
+    "ride": {
+      "bike": "As fast as a bicycle",
+      "bus": "As fast as a city bus",
+      "car": "As fast as a car on the highway",
+      "docked": "The ship is resting at the dock"
+    },
+    "trip": {
+      "justLeft": "Just left the dock",
+      "onTheWay": "On our way",
+      "halfway": "Halfway there!",
+      "almostThere": "Almost there!"
+    },
+    "tideLabel": "Tide level"
+  },
+  "bubbles": {
+    "routeMap": "Route map",
+    "routeMapLabel": "Route map. The ferry is near {place}.",
+    "dive": "Dive in",
+    "diveBelow": "{m} m below",
+    "diveLike": "as deep as a {n}-storey tower",
+    "quiz": "Ocean quiz",
+    "lab": "For the curious",
+    "labLabel": "Ocean lab: all the live data",
+    "view": "Camera views",
+    "views": {
+      "chase": "Behind the ferry",
+      "side": "Side view",
+      "top": "Bird's-eye view",
+      "map": "Show the real map",
+      "sea": "Show the 3D sea"
+    }
+  },
+  "guide": {
+    "name": "the diver",
+    "label": "Tap {name} for a tour",
+    "hello": "Hi! I'm your ocean guide.",
+    "aboard": "Welcome aboard!",
+    "prompt": {
+      "map": "Tap the map to go back in time!",
+      "dive": "Ready to dive? Tap Dive in!",
+      "quiz": "Think you know the sea? Try the quiz!",
+      "tour": "Tap me for a tour!"
+    },
+    "tour": {
+      "now": "This card shows where we are and what's happening.",
+      "map": "This is our route. Tap where we've been to go back in time!",
+      "dive": "Dive in with me to meet the animals under the ship!",
+      "quiz": "Test what you know in the ocean quiz and win stars!"
+    },
+    "skip": "Skip",
+    "dive": "Tap an animal to see how big it is next to you!",
+    "quizRight": "Yes! Well done!",
+    "quizWrong": "Oops! Have a look at the answer.",
+    "bye": "Bye! Come back soon!",
+    "stillThere": "Still there?",
+    "keepExploring": "Tap to keep exploring",
+    "rewinding": "Rewinding to {place}! Tap Go Live to come back.",
+    "liveAgain": "We're live again!",
+    "notYet": "We're not there yet. About {min} min to go!",
+    "notYetDocked": "We haven't left yet! Tap a part we sailed.",
+    "notRecorded": "I missed that part. Tap closer to the ferry!",
+    "next": "Next",
+    "done": "Done"
+  },
+  "dive": {
+    "title": "Dive into the ocean",
+    "subtitle": "Who lives under the ferry? Tap an animal to meet it.",
+    "bands": {
+      "surface": "Near the surface",
+      "open": "Open water",
+      "floor": "Seafloor"
+    },
+    "gauge": {
+      "title": "Under the ship",
+      "depth": "{m} m of water",
+      "label": "Water column under the ship: {m} m deep"
+    },
+    "route": "The seafloor along the route",
+    "sizeYou": "You",
+    "about": "about {m} m",
+    "open": "Meet the {name}"
+  },
+  "lab": {
+    "title": "Ocean lab",
+    "tabs": {
+      "label": "Lab sections",
+      "water": "The water",
+      "outside": "Outside"
+    }
+  },
+  "live": {
+    "label": "Watching an earlier moment of this crossing",
+    "agoMin": "{min} min ago",
+    "agoNow": "Moments ago",
+    "pause": "Pause",
+    "play": "Play",
+    "speed": "Speed: {n}×",
+    "goLive": "Go Live",
+    "goLiveLabel": "Go back to now"
+  },
+  "knowledge": {
+    "kinds": {
+      "food": "Food & drink",
+      "events": "Events",
+      "nature": "Nature",
+      "history": "History",
+      "arts": "Arts"
+    },
+    "thisMonth": "This month",
+    "draft": "DRAFT"
   }
 }

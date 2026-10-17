@@ -20,21 +20,29 @@ import { ferryGlbUrl } from './ferryGlb'
 import { Landmarks } from './Landmarks'
 import { IMAGERY_LOOK, imageryCredit, imageryProviders, imageryShortCredit, terrainProvider, toRectangle } from './layers'
 import { MapCredits } from './MapCredits'
+import { MapReady } from './MapReady'
 import styles from './MapScene.module.css'
 import { SURFACE_GRANULARITY } from './positions'
-import { createShipTrack, WATER_HEIGHT, type ShipTrack } from './shipTrack'
+import { createShipTrack, RENDER_DELAY_S, WATER_HEIGHT, type ShipTrack } from './shipTrack'
 import { fixedSunLight } from './sun'
 import { TerminalLabels } from './TerminalLabels'
 import { useMapCamera } from './useMapCamera'
 import { Wake } from './Wake'
 import { createWaterMaterial } from './waterMaterial'
 
-/** The map lags the feed a little, so the ship always moves between two known fixes (live fixes come every few seconds). */
-const RENDER_DELAY_S = 5
 const SEA = Color.fromCssColorString('#174a5e')
 
+interface Props {
+  view: ViewName
+  /** Stop drawing while another screen covers the map */
+  paused?: boolean
+  /** Changes when the shown time jumps (rewind, go live): the ship appears at its new place instead of gliding there */
+  trackKey?: number
+  children?: ReactNode
+}
+
 /** Offline Cesium map with terrain, water and the ferry at the feed position (map mode). */
-export function MapScene({ view, children }: { view: ViewName; children?: ReactNode }) {
+export function MapScene({ view, paused = false, trackKey = 0, children }: Props) {
   const { lang } = useLanguage()
   const ship = useShip()
   const track = useMemo(() => createShipTrack(), [])
@@ -52,6 +60,11 @@ export function MapScene({ view, children }: { view: ViewName; children?: ReactN
   useEffect(() => {
     terrainProvider().then((p) => setHasTerrain(p instanceof CesiumTerrainProvider))
   }, [])
+
+  // Before the effect below, so after a jump the first new row is the only position.
+  useEffect(() => {
+    if (trackKey) track.reset()
+  }, [trackKey, track])
 
   useEffect(() => {
     if (!ship) return
@@ -78,6 +91,7 @@ export function MapScene({ view, children }: { view: ViewName; children?: ReactN
         selectionIndicator={false}
         scene3DOnly
         shouldAnimate
+        useDefaultRenderLoop={!paused}
       >
         {/* Real-time clock, a little behind the feed */}
         <Clock currentTime={start} clockStep={ClockStep.SYSTEM_CLOCK_MULTIPLIER} multiplier={1} clockRange={ClockRange.UNBOUNDED} />
@@ -91,6 +105,7 @@ export function MapScene({ view, children }: { view: ViewName; children?: ReactN
         <Camera view={view} track={track} hold={holdCamera} />
         <Landmarks onOpenChange={onLandmarkOpen} />
         <TerminalLabels />
+        <MapReady track={track} />
         {children}
       </Viewer>
       <MapCredits

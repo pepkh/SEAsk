@@ -1,0 +1,53 @@
+/* The box is a size container, so a bubble can rise through exactly its height (cqh) at any size. */
+.box {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  container-type: size;
+}
+
+.box i {
+  position: absolute;
+  left: var(--x);
+  top: 100%;
+  width: var(--s);
+  height: var(--s);
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.08) 60%);
+  animation: rise var(--d) linear infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes rise {
+  0% {
+    translate: 0 0;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  50% {
+    translate: var(--wobble) -55cqh;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    translate: 0 -112cqh;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .box i {
+    animation: none;
+    top: auto;
+    bottom: calc(var(--s) * 3);
+  }
+}

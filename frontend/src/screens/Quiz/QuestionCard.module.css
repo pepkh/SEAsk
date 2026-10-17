@@ -1,5 +1,6 @@
 .card {
-  background: var(--card);
+  background: var(--neu-surface);
+  box-shadow: var(--neu-out);
   border-radius: 28px;
   padding: 40px 44px;
   display: flex;
@@ -64,12 +65,21 @@
   min-height: 120px;
   padding: 0 26px;
   border-radius: 22px;
-  background: #FFFFFF;
-  border: 3px solid var(--line);
+  background: var(--neu-surface);
+  border: 3px solid transparent;
+  box-shadow: var(--neu-out-small);
   color: var(--ink);
   font: 500 26px var(--display);
   text-align: left;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: box-shadow 140ms ease, scale 140ms var(--ease-spring);
+}
+
+/* Pressed, an answer sinks into the surface. */
+.answer:active {
+  box-shadow: var(--neu-in);
+  scale: 0.98;
 }
 
 .badge {
@@ -78,7 +88,8 @@
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: var(--button-soft);
+  background: var(--neu-surface);
+  box-shadow: var(--neu-in);
   color: var(--ink);
   font-weight: 700;
   font-size: 22px;
@@ -91,6 +102,7 @@
 }
 
 .right .badge {
+  box-shadow: none;
   background: var(--good);
   color: #FFFFFF;
 }
@@ -101,6 +113,32 @@
 }
 
 .wrong .badge {
+  box-shadow: none;
   background: var(--bad);
   color: #FFFFFF;
+}
+
+@media (max-width: 900px) {
+  .card {
+    padding: 22px 18px;
+    gap: 20px;
+  }
+
+  .dots span {
+    width: 22px;
+  }
+
+  .question {
+    font-size: 30px;
+  }
+
+  .answers {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .answer {
+    min-height: 76px;
+    font-size: 20px;
+    padding: 0 16px;
+  }
 }

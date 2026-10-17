@@ -20,6 +20,14 @@ export function bearingDeg([lat1, lon1]: LatLon, [lat2, lon2]: LatLon): number {
   return ((Math.atan2(y, x) * 180) / Math.PI + 360) % 360
 }
 
+/** The point `m` metres from `p` along a bearing (degrees true). A flat step: fine over a few kilometres. */
+export function offsetM([lat, lon]: LatLon, bearing: number, m: number): LatLon {
+  const b = toRad(bearing)
+  const dLat = (m * Math.cos(b)) / EARTH_RADIUS_M
+  const dLon = (m * Math.sin(b)) / (EARTH_RADIUS_M * Math.cos(toRad(lat)))
+  return [lat + (dLat * 180) / Math.PI, lon + (dLon * 180) / Math.PI]
+}
+
 /** Cumulative distance in metres at each point of a polyline. */
 export function cumulativeM(points: LatLon[]): number[] {
   const out = [0]

@@ -1,21 +1,26 @@
 .app {
   position: relative;
   height: 100%;
-  display: grid;
-  grid-template-rows: minmax(0, 1fr) calc(112px * var(--ui-scale));
   overflow: hidden;
 }
 
+/* Screens fill this box; each screen takes touches itself (the ferry screen lets them through to the world). */
 .main {
-  position: relative;
-  min-height: 0;
-  min-width: 0;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
 @media (max-width: 900px) {
   .app {
     height: auto;
-    grid-template-rows: auto auto;
+    min-height: 100%;
     overflow: visible;
+  }
+
+  .main {
+    position: relative;
+    inset: auto;
+    min-height: 100vh;
   }
 }

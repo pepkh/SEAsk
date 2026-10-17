@@ -5,14 +5,17 @@ import { CRUISE_KN, HORIZON, SUN_POSITION, type ViewName } from './constants'
 import { Ferry } from './Ferry'
 import { Landscape } from './Landscape'
 import { Ocean } from './Ocean'
+import { ReadyProbe } from './ReadyProbe'
 
 interface Props {
   view: ViewName
   speedKn: number
+  /** Stop drawing while another screen covers the scene */
+  paused?: boolean
 }
 
-/** Full-bleed 3D sea with the ferry centre stage (sea mode of the Journey screen). */
-export default function SeaScene({ view, speedKn }: Props) {
+/** Full-bleed 3D sea with the ferry centre stage (sea mode of the ferry screen). */
+export default function SeaScene({ view, speedKn, paused = false }: Props) {
   const reduced = useReducedMotion()
   const speedFactor = Math.max(0, Math.min(1.3, speedKn / CRUISE_KN))
 
@@ -20,6 +23,7 @@ export default function SeaScene({ view, speedKn }: Props) {
     <Canvas
       shadows="soft"
       dpr={[1, 2]}
+      frameloop={paused ? 'never' : 'always'}
       gl={{ antialias: true, alpha: true }}
       onCreated={({ gl }) => {
         gl.toneMappingExposure = 1.05
@@ -45,6 +49,7 @@ export default function SeaScene({ view, speedKn }: Props) {
       <Ocean speedFactor={speedFactor} reduced={reduced} />
       <Landscape speedFactor={speedFactor} reduced={reduced} />
       <CameraRig view={view} reduced={reduced} />
+      <ReadyProbe />
     </Canvas>
   )
 }

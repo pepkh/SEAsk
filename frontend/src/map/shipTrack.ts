@@ -13,6 +13,11 @@ import type { ShipRow } from '../types/feed'
 
 /** Height of the water surface and of the ship waterline (m). Above the DEM sea level (0 m). */
 export const WATER_HEIGHT = 1
+/**
+ * The map draws the ship this far behind the feed (s), so it always moves between two known fixes
+ * (live fixes come every few seconds).
+ */
+export const RENDER_DELAY_S = 5
 /** Samples older than this are removed. */
 const KEEP_S = 60
 
@@ -25,6 +30,8 @@ export interface ShipTrack {
   /** Where the bow points, degrees true */
   heading: () => number
   add: (row: ShipRow) => void
+  /** Forget all positions, so the next row appears at once (after a jump back in time, or back to live) */
+  reset: () => void
 }
 
 /** Ship position (smoothed between feed fixes) and orientation (compass heading, else course when under way). */
@@ -56,6 +63,10 @@ export function createShipTrack(): ShipTrack {
       }
       if (row.heading !== null && row.heading !== undefined) heading = row.heading
       else if (heading === undefined || row.speed_over_ground >= STEADY_KN) heading = row.ship_course
+    },
+    reset() {
+      position.removeSamples(new TimeInterval({ start: JulianDate.fromDate(new Date(0)), stop: JulianDate.addDays(JulianDate.now(), 1, new JulianDate()) }))
+      lastFix = undefined
     },
   }
 }
