@@ -1,0 +1,232 @@
+{
+  "dock": {
+    "label": "Kiosk sections",
+    "journey": "Journey",
+    "seaLife": "Sea life",
+    "seafloor": "Seafloor",
+    "tides": "Tides & weather",
+    "quiz": "Ocean quiz",
+    "wind": "Wind {kn} kn {dir}",
+    "eta": "{place} in {min} min",
+    "next": "Next: {place}"
+  },
+  "audience": {
+    "label": "Audience",
+    "kids": "Kids",
+    "adults": "Grown-ups"
+  },
+  "language": {
+    "button": "EN · FR",
+    "label": "Change language: English or French"
+  },
+  "sampleData": "SAMPLE DATA",
+  "sampleTides": "SAMPLE TIDES",
+  "sampleWeather": "SAMPLE WEATHER",
+  "compass": "N,NE,E,SE,S,SW,W,NW",
+  "photo": "[photo: {name}]",
+  "waypoint": {
+    "swartzBay": "Swartz Bay",
+    "strait": "Strait",
+    "tsawwassen": "Tsawwassen"
+  },
+  "journey": {
+    "youAreHere": "You are here",
+    "knots": "knots",
+    "speedHint": "about {kmh} km/h, {comparison}",
+    "speedDocked": "the ship is at the dock",
+    "comparison": {
+      "slow": "as fast as a bicycle",
+      "medium": "as fast as a city bus",
+      "fast": "as fast as a car on the highway"
+    },
+    "eta": "{place} in {min} min",
+    "toGo": "{km} km to go",
+    "sensorsResting": "Sensors rest while the ferry is docked",
+    "noReading": "No reading right now",
+    "next": "Next: {place}",
+    "yourRoute": "Your route",
+    "routeMapLabel": "Route map with the ferry near {place}",
+    "underShip": "Under the ship",
+    "mOfWater": "m of water",
+    "diveDown": "Dive down →",
+    "views": {
+      "chase": "Chase camera",
+      "side": "Side view",
+      "top": "Bird's-eye view",
+      "showMap": "Show the map",
+      "showSea": "Show the sea"
+    },
+    "nowCrossing": "Now crossing",
+    "nextCrossing": "Next crossing",
+    "speed": "Speed",
+    "course": "Course",
+    "position": "Position",
+    "kn": "kn",
+    "arrive": "Arrive {place} {time}",
+    "table": {
+      "reading": "Reading",
+      "now": "Now",
+      "last15": "Last 15 min",
+      "qc": "QC",
+      "dockedNote": "The sea sensors rest while the ferry is docked. They start again when it sails."
+    },
+    "colourBy": "Colour the track by",
+    "trackMapLabel": "Route map with the track coloured by {reading}",
+    "happening": "What's happening here",
+    "aboutData": "About the data",
+    "aboutDataText": "Instruments on board sample seawater through an intake in the hull as the ferry sails. Readings come from Ocean Networks Canada and refresh every few seconds.",
+    "qcNote": "QC = share of readings passing quality checks",
+    "landmarks": {
+      "kinds": {
+        "peak": "Mountain",
+        "island": "Island",
+        "place": "Place",
+        "water": "Water"
+      },
+      "height": "about {m} m high"
+    }
+  },
+  "seaLife": {
+    "title": "Life below us",
+    "subtitleStart": "Animals and plants of the Salish Sea, near ",
+    "subtitleEnd": " right now",
+    "filterLabel": "Show animals by group",
+    "filters": {
+      "all": "All",
+      "mammals": "Mammals",
+      "fish": "Fish",
+      "invertebrates": "Invertebrates",
+      "seaweed": "Seaweed"
+    },
+    "featured": "Animal of the crossing",
+    "heroPhoto": "[hero photo or 3D model: {name}]",
+    "sizeCheck": "Size check",
+    "spotted": "Spotted something?",
+    "spottedText": "Tap to log what you saw. Your sighting appears on the map for the next crossing."
+  },
+  "habitat": {
+    "surface": "Surface",
+    "shore": "Shore",
+    "openWater": "Open water",
+    "seafloor": "Seafloor",
+    "deep": "Deep"
+  },
+  "seafloor": {
+    "title": "What's under the ship?",
+    "subtitle": "A slice through the sea, from Swartz Bay to Tsawwassen. The ship is at the top, the seafloor at the bottom.",
+    "viewLabel": "Seafloor view",
+    "slice": "Slice view",
+    "threeD": "3D seafloor",
+    "sliceLabel": "Cross-section of water depth along the ferry route",
+    "sunlight": "Sunlight zone",
+    "sunlightSub": "plants can grow here",
+    "twilight": "Twilight zone",
+    "twilightSub": "too dark for plants",
+    "you": "You · {place}",
+    "waterBelow": "Water below you",
+    "footnote": "Depth stretched 25× so the shape is easy to see · profile shown is a placeholder"
+  },
+  "tides": {
+    "title": "Tides & weather",
+    "subtitle": "What the sea and sky are doing around the ship right now",
+    "tideToday": "Tide today · {place}",
+    "chartLabel": "Tide height through the day, with the current time",
+    "now": "Now",
+    "high": "High {h} m · {time}",
+    "low": "Low {h} m · {time}",
+    "currentIn": "Current in {place}",
+    "currentLabel": "Current arrow pointing {dir}",
+    "topSpeed": "Top speed today: {n} knots.",
+    "north": "N",
+    "whyTides": "Why are there tides?",
+    "moonPullLabel": "The Moon pulling a bulge of ocean on the Earth",
+    "moon": "Moon",
+    "outside": "Outside right now",
+    "feelsLike": "{sky} · feels like {t}°",
+    "wind": "Wind",
+    "windFrom": "kn from {dir}",
+    "waves": "Waves",
+    "visibility": "How far you can see",
+    "sunset": "Sunset",
+    "moonTonight": "Moon tonight: {phase}",
+    "compassWords": "north,north-east,east,south-east,south,south-west,west,north-west",
+    "flowing": "Flowing {dir}",
+    "slackTitle": "Slack water",
+    "slackText": "The current is turning around: a calm moment for boats.",
+    "liveCurrent": "Right now about {kn} knots.",
+    "nextSlack": "Next slack water at {time}.",
+    "state": {
+      "high": "High tide now",
+      "low": "Low tide now",
+      "almostHigh": "Almost high tide",
+      "almostLow": "Almost low tide",
+      "rising": "The tide is coming in",
+      "falling": "The tide is going out"
+    },
+    "trend": {
+      "risingMin": "Water is rising for about {n} more minutes",
+      "risingHours": "Water is rising for about {n} more hours",
+      "fallingMin": "Water is falling for about {n} more minutes",
+      "fallingHours": "Water is falling for about {n} more hours",
+      "turnSoonFall": "The water will soon start to fall",
+      "turnSoonRise": "The water will soon start to rise"
+    }
+  },
+  "weather": {
+    "sky": {
+      "clear": "Clear sky",
+      "fewClouds": "A few clouds",
+      "partlyCloudy": "Partly cloudy",
+      "cloudy": "Mostly cloudy",
+      "overcast": "Overcast",
+      "drizzle": "Drizzle",
+      "rain": "Rain",
+      "thunder": "Thunderstorm",
+      "snow": "Snow",
+      "fog": "Fog"
+    },
+    "waves": {
+      "calm": "flat calm",
+      "ripples": "small ripples",
+      "small": "small waves",
+      "choppy": "choppy",
+      "rough": "rough sea"
+    },
+    "visibility": {
+      "far": "Clear enough to spot Mount Baker",
+      "islands": "You can see the nearby islands",
+      "hazy": "Hazy: the islands look faint",
+      "fog": "Foggy: listen for the foghorn"
+    },
+    "moon": {
+      "new": "New moon",
+      "waxingCrescent": "Waxing crescent",
+      "firstQuarter": "First quarter",
+      "waxingGibbous": "Waxing gibbous",
+      "full": "Full moon",
+      "waningGibbous": "Waning gibbous",
+      "lastQuarter": "Last quarter",
+      "waningCrescent": "Waning crescent"
+    },
+    "creditWeather": "Weather: OpenWeather",
+    "creditWaves": "Waves: Open-Meteo"
+  },
+  "quiz": {
+    "title": "Ocean quiz",
+    "subtitle": "Five questions about the sea you're crossing. Everything you need is on the other tabs.",
+    "progress": "Question {num} of {total}",
+    "score": "Your score",
+    "illustration": "[illustration: {pic}]",
+    "hint": "Need a hint?",
+    "correct": "Correct!",
+    "wrong": "Not quite!",
+    "next": "Next question",
+    "seeScore": "See my score",
+    "complete": "Quiz complete",
+    "finalAll": "Ocean expert! You got every one.",
+    "finalGood": "Great sailing! You know this sea.",
+    "finalTry": "Nice try! Explore the tabs and play again.",
+    "playAgain": "Play again",
+    "meetAnimals": "Meet the animals"
+  }
+}

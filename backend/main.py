@@ -1,3 +1,4 @@
+from contextlib import asynccontextmanager
 from datetime import datetime, timezone
 from typing import Literal
 
@@ -6,23 +7,45 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from sqlalchemy import text
 
+from app.config import get_settings
+from app.http import start_client, stop_client
+from app.routes import ship, status, tides, weather
 from db import get_engine
+
+
+@asynccontextmanager
+async def lifespan(_: FastAPI):
+    """One shared HTTP client for all upstream APIs."""
+    start_client(get_settings().http_timeout_s)
+    try:
+        yield
+    finally:
+        await stop_client()
+
 
 app = FastAPI(
     title="SEAsk API",
     description=(
-        "BC Ferries trips between Tsawwassen and Swartz Bay on 2026-08-17. "
-        "All timestamps are UTC (ISO 8601, ending in `Z`)."
+        "BC Ferries trips between Tsawwassen and Swartz Bay on 2026-08-17, plus live data under "
+        "`/api`: ship readings (Ocean Networks Canada), weather (OpenWeatherMap), waves "
+        "(Open-Meteo Marine) and tides and currents (DFO IWLS). All UTC timestamps are ISO 8601 "
+        "ending in `Z`."
     ),
+    lifespan=lifespan,
 )
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=list(get_settings().cors_origins),
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET"],
     allow_headers=["*"],
 )
+
+app.include_router(ship.router)
+app.include_router(weather.router)
+app.include_router(tides.router)
+app.include_router(status.router)
 
 
 class Point(BaseModel):

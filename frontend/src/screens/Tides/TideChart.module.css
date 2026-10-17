@@ -1,0 +1,48 @@
+.card {
+  flex: 0 1 auto;
+  min-height: 0;
+  background: var(--card);
+  border-radius: 24px;
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.headText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.eyebrow {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.sub {
+  font-size: 18px;
+  color: var(--body);
+}
+
+/* 300 px tall when there is room; shrinks (keeping its shape) on short screens. */
+.chart {
+  flex: 0 1 300px;
+  min-height: 120px;
+  width: 100%;
+}

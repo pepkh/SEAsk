@@ -1,0 +1,49 @@
+.panel {
+  position: relative;
+  height: 600px;
+  flex: none;
+  border-radius: 26px;
+  overflow: hidden;
+  background: #0F1D24;
+}
+
+.panel svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.callout {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  background: #FFFFFF;
+  color: var(--ink);
+  border-radius: 18px;
+  padding: 14px 18px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+.calloutLabel {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.calloutValue {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.footnote {
+  position: absolute;
+  left: 22px;
+  bottom: 16px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: #BFD3DC;
+  opacity: 0.8;
+}

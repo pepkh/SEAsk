@@ -1,0 +1,154 @@
+{
+  "bruce-peak": {
+    "name": "Bruce Peak",
+    "fact": "The highest point on Saltspring Island."
+  },
+  "mount-tuam": {
+    "name": "Mount Tuam",
+    "fact": "A steep mountain at the south end of Saltspring Island."
+  },
+  "mount-maxwell": {
+    "name": "Mount Maxwell",
+    "fact": "Its cliff-top park has one of the best views in the Gulf Islands."
+  },
+  "mount-galiano": {
+    "name": "Mount Galiano",
+    "fact": "Hikers climb it to watch the ferries go through Active Pass."
+  },
+  "mount-parke": {
+    "name": "Mount Parke",
+    "fact": "The highest point on Mayne Island."
+  },
+  "mount-norman": {
+    "name": "Mount Norman",
+    "fact": "The highest point of the Pender Islands, in Gulf Islands National Park Reserve."
+  },
+  "mount-warburton-pike": {
+    "name": "Mount Warburton Pike",
+    "fact": "Saturna Island's highest point, looking over Boundary Pass to the USA."
+  },
+  "mount-newton": {
+    "name": "Mount Newton",
+    "fact": "A forested hill on the Saanich Peninsula, south of the Swartz Bay terminal."
+  },
+  "grouse-mountain": {
+    "name": "Grouse Mountain",
+    "fact": "A ski hill above North Vancouver. Its lights twinkle at night."
+  },
+  "mount-seymour": {
+    "name": "Mount Seymour",
+    "fact": "A ski mountain in Mount Seymour Provincial Park, North Vancouver."
+  },
+  "black-mountain": {
+    "name": "Black Mountain",
+    "fact": "Part of Cypress Provincial Park, above West Vancouver."
+  },
+  "mount-constitution": {
+    "name": "Mount Constitution",
+    "fact": "The highest point of the San Juan Islands, in the USA. A stone tower stands on top."
+  },
+  "saltspring-island": {
+    "name": "Saltspring Island",
+    "fact": "The biggest and busiest of the Southern Gulf Islands."
+  },
+  "galiano-island": {
+    "name": "Galiano Island",
+    "fact": "A long, skinny island. Its south tip lines Active Pass."
+  },
+  "north-pender-island": {
+    "name": "North Pender Island",
+    "fact": "A little bridge joins it to South Pender Island."
+  },
+  "south-pender-island": {
+    "name": "South Pender Island",
+    "fact": "The quieter Pender, joined to North Pender by a little bridge."
+  },
+  "mayne-island": {
+    "name": "Mayne Island",
+    "fact": "Gold miners rested at its Miners Bay on the way to the Fraser River gold rush."
+  },
+  "saturna-island": {
+    "name": "Saturna Island",
+    "fact": "The most remote Southern Gulf Island. Much of it is national park."
+  },
+  "prevost-island": {
+    "name": "Prevost Island",
+    "fact": "A quiet island with no ferry, between Saltspring and Mayne."
+  },
+  "moresby-island": {
+    "name": "Moresby Island",
+    "fact": "A small island at the south end of Swanson Channel."
+  },
+  "portland-island": {
+    "name": "Portland Island",
+    "fact": "Part of Gulf Islands National Park Reserve. You can only get there by boat."
+  },
+  "piers-island": {
+    "name": "Piers Island",
+    "fact": "A small island right next to the Swartz Bay terminal."
+  },
+  "sidney-island": {
+    "name": "Sidney Island",
+    "fact": "It has a long sandy spit and a herd of fallow deer."
+  },
+  "james-island": {
+    "name": "James Island",
+    "fact": "Long ago it had a factory that made explosives."
+  },
+  "saanich-peninsula": {
+    "name": "Saanich Peninsula",
+    "fact": "The tip of Vancouver Island. The Swartz Bay terminal is at its north end."
+  },
+  "swartz-bay-terminal": {
+    "name": "Swartz Bay terminal",
+    "fact": "Where this ferry docks on Vancouver Island."
+  },
+  "tsawwassen-terminal": {
+    "name": "Tsawwassen terminal",
+    "fact": "Where this ferry docks on the mainland, at the end of a long causeway."
+  },
+  "tsawwassen": {
+    "name": "Tsawwassen",
+    "fact": "A mainland community, home of the Tsawwassen First Nation."
+  },
+  "roberts-bank": {
+    "name": "Roberts Bank",
+    "fact": "A huge port where container ships and coal trains load."
+  },
+  "sidney": {
+    "name": "Sidney",
+    "fact": "A seaside town near the Swartz Bay terminal."
+  },
+  "point-roberts": {
+    "name": "Point Roberts (USA)",
+    "fact": "Part of the USA, but you can only drive there through Canada!"
+  },
+  "vancouver": {
+    "name": "Vancouver",
+    "fact": "The heart of Canada's third-biggest metro area."
+  },
+  "active-pass": {
+    "name": "Active Pass",
+    "fact": "A narrow, twisty pass. Strong tides rush through and ferries turn sharply."
+  },
+  "swanson-channel": {
+    "name": "Swanson Channel",
+    "fact": "The channel between Saltspring and North Pender. Orcas often travel through it."
+  },
+  "satellite-channel": {
+    "name": "Satellite Channel",
+    "fact": "Named after HMS Satellite, a navy ship from the 1850s."
+  },
+  "haro-strait": {
+    "name": "Haro Strait",
+    "fact": "The Canada–USA border runs down this strait."
+  },
+  "boundary-pass": {
+    "name": "Boundary Pass",
+    "fact": "The Canada–USA border runs through this pass."
+  },
+  "strait-of-georgia": {
+    "name": "Strait of Georgia",
+    "fact": "Part of the Salish Sea, between Vancouver Island and the mainland."
+  }
+}

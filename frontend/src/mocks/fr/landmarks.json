@@ -1,0 +1,154 @@
+{
+  "bruce-peak": {
+    "name": "Pic Bruce",
+    "fact": "Le point le plus haut de l'île Saltspring."
+  },
+  "mount-tuam": {
+    "name": "Mont Tuam",
+    "fact": "Une montagne abrupte au sud de l'île Saltspring."
+  },
+  "mount-maxwell": {
+    "name": "Mont Maxwell",
+    "fact": "Son parc au sommet des falaises offre l'une des plus belles vues des îles Gulf."
+  },
+  "mount-galiano": {
+    "name": "Mont Galiano",
+    "fact": "Les randonneurs y montent pour voir les traversiers passer dans le passage Active."
+  },
+  "mount-parke": {
+    "name": "Mont Parke",
+    "fact": "Le point le plus haut de l'île Mayne."
+  },
+  "mount-norman": {
+    "name": "Mont Norman",
+    "fact": "Le point le plus haut des îles Pender, dans la réserve de parc national des Îles-Gulf."
+  },
+  "mount-warburton-pike": {
+    "name": "Mont Warburton Pike",
+    "fact": "Le point le plus haut de l'île Saturna, face au passage Boundary et aux États-Unis."
+  },
+  "mount-newton": {
+    "name": "Mont Newton",
+    "fact": "Une colline boisée de la péninsule de Saanich, au sud du terminal de Swartz Bay."
+  },
+  "grouse-mountain": {
+    "name": "Grouse Mountain",
+    "fact": "Une station de ski au-dessus de North Vancouver. Ses lumières brillent la nuit."
+  },
+  "mount-seymour": {
+    "name": "Mont Seymour",
+    "fact": "Une montagne de ski dans le parc provincial du Mont-Seymour, à North Vancouver."
+  },
+  "black-mountain": {
+    "name": "Black Mountain",
+    "fact": "Elle fait partie du parc provincial Cypress, au-dessus de West Vancouver."
+  },
+  "mount-constitution": {
+    "name": "Mont Constitution",
+    "fact": "Le point le plus haut des îles San Juan, aux États-Unis. Une tour de pierre se dresse au sommet."
+  },
+  "saltspring-island": {
+    "name": "Île Saltspring",
+    "fact": "La plus grande et la plus animée des îles Gulf du Sud."
+  },
+  "galiano-island": {
+    "name": "Île Galiano",
+    "fact": "Une île longue et étroite. Sa pointe sud borde le passage Active."
+  },
+  "north-pender-island": {
+    "name": "Île North Pender",
+    "fact": "Un petit pont la relie à l'île South Pender."
+  },
+  "south-pender-island": {
+    "name": "Île South Pender",
+    "fact": "La plus tranquille des Pender, reliée à North Pender par un petit pont."
+  },
+  "mayne-island": {
+    "name": "Île Mayne",
+    "fact": "Les chercheurs d'or s'arrêtaient à sa baie Miners en route vers la ruée vers l'or du Fraser."
+  },
+  "saturna-island": {
+    "name": "Île Saturna",
+    "fact": "La plus isolée des îles Gulf du Sud. Une grande partie est un parc national."
+  },
+  "prevost-island": {
+    "name": "Île Prevost",
+    "fact": "Une île tranquille sans traversier, entre Saltspring et Mayne."
+  },
+  "moresby-island": {
+    "name": "Île Moresby",
+    "fact": "Une petite île au sud du chenal Swanson."
+  },
+  "portland-island": {
+    "name": "Île Portland",
+    "fact": "Elle fait partie de la réserve de parc national des Îles-Gulf. On n'y va qu'en bateau."
+  },
+  "piers-island": {
+    "name": "Île Piers",
+    "fact": "Une petite île juste à côté du terminal de Swartz Bay."
+  },
+  "sidney-island": {
+    "name": "Île Sidney",
+    "fact": "Elle a une longue flèche de sable et un troupeau de daims."
+  },
+  "james-island": {
+    "name": "Île James",
+    "fact": "Autrefois, une usine d'explosifs s'y trouvait."
+  },
+  "saanich-peninsula": {
+    "name": "Péninsule de Saanich",
+    "fact": "La pointe de l'île de Vancouver. Le terminal de Swartz Bay est à son extrémité nord."
+  },
+  "swartz-bay-terminal": {
+    "name": "Terminal de Swartz Bay",
+    "fact": "Là où ce traversier accoste sur l'île de Vancouver."
+  },
+  "tsawwassen-terminal": {
+    "name": "Terminal de Tsawwassen",
+    "fact": "Là où ce traversier accoste sur le continent, au bout d'une longue jetée."
+  },
+  "tsawwassen": {
+    "name": "Tsawwassen",
+    "fact": "Une communauté du continent, où vit la Première Nation Tsawwassen."
+  },
+  "roberts-bank": {
+    "name": "Roberts Bank",
+    "fact": "Un immense port où l'on charge des porte-conteneurs et des trains de charbon."
+  },
+  "sidney": {
+    "name": "Sidney",
+    "fact": "Une ville en bord de mer près du terminal de Swartz Bay."
+  },
+  "point-roberts": {
+    "name": "Point Roberts (États-Unis)",
+    "fact": "Ça fait partie des États-Unis, mais on ne peut y aller en voiture qu'en passant par le Canada!"
+  },
+  "vancouver": {
+    "name": "Vancouver",
+    "fact": "Le cœur de la troisième plus grande région métropolitaine du Canada."
+  },
+  "active-pass": {
+    "name": "Passage Active",
+    "fact": "Un passage étroit et sinueux. Les marées y sont fortes et les traversiers tournent serré."
+  },
+  "swanson-channel": {
+    "name": "Chenal Swanson",
+    "fact": "Le chenal entre Saltspring et North Pender. Les épaulards y passent souvent."
+  },
+  "satellite-channel": {
+    "name": "Chenal Satellite",
+    "fact": "Nommé d'après le HMS Satellite, un navire de guerre des années 1850."
+  },
+  "haro-strait": {
+    "name": "Détroit de Haro",
+    "fact": "La frontière entre le Canada et les États-Unis passe dans ce détroit."
+  },
+  "boundary-pass": {
+    "name": "Passage Boundary",
+    "fact": "La frontière entre le Canada et les États-Unis traverse ce passage."
+  },
+  "strait-of-georgia": {
+    "name": "Détroit de Georgia",
+    "fact": "Une partie de la mer des Salish, entre l'île de Vancouver et le continent."
+  }
+}

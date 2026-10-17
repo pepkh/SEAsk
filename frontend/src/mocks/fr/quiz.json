@@ -1,0 +1,49 @@
+{
+  "questions": [
+    {
+      "text": "Quel animal marin a trois cœurs?",
+      "answer": "b",
+      "pic": "pieuvre géante du Pacifique",
+      "picId": "octopus",
+      "options": [["a", "L'épaulard"], ["b", "La pieuvre géante du Pacifique"], ["c", "Le phoque commun"], ["d", "Le saumon quinnat"]],
+      "hint": "Elle vit sur le fond marin et a huit bras. Regardez l'onglet Vie marine.",
+      "why": "La pieuvre géante du Pacifique a trois cœurs : deux pompent le sang dans ses branchies et un l'envoie dans tout le corps. Son sang est bleu, en plus!"
+    },
+    {
+      "text": "Pourquoi l'eau est-elle moins salée près de Tsawwassen?",
+      "answer": "c",
+      "pic": "le fleuve Fraser qui rejoint la mer",
+      "picId": "fraser-plume",
+      "options": [["a", "La pluie tombe sur le traversier"], ["b", "Les poissons boivent le sel"], ["c", "Un grand fleuve verse de l'eau douce"], ["d", "Le traversier la filtre"]],
+      "hint": "Regardez l'onglet Fond marin, près de la fin du trajet.",
+      "why": "Le fleuve Fraser se jette dans le détroit de Georgia. Son eau douce est plus légère que l'eau salée, alors elle s'étend en surface."
+    },
+    {
+      "text": "Qu'est-ce qui fait monter et descendre la marée?",
+      "answer": "b",
+      "pic": "la Lune et la Terre",
+      "picId": "earth-moon",
+      "options": [["a", "Le vent"], ["b", "La Lune qui attire la mer"], ["c", "Les vagues des traversiers"], ["d", "Les baleines qui nagent"]],
+      "hint": "La réponse est dans le ciel. Regardez l'onglet Marées et météo.",
+      "why": "La gravité de la Lune tire l'océan en un renflement. Comme la Terre tourne dedans, l'eau ici monte et descend environ deux fois par jour."
+    },
+    {
+      "text": "Que mangent surtout les épaulards qui vivent ici?",
+      "answer": "b",
+      "pic": "épaulard qui chasse un saumon",
+      "picId": "orca",
+      "options": [["a", "Du varech"], ["b", "Du saumon"], ["c", "Des méduses"], ["d", "Des étoiles de mer"]],
+      "hint": "C'est un gros poisson qui remonte les rivières pour pondre ses œufs.",
+      "why": "Les épaulards résidents de ces eaux mangent surtout du saumon, en particulier le gros saumon quinnat."
+    },
+    {
+      "text": "Comment appelle-t-on les petites plantes qui flottent dans la mer?",
+      "answer": "a",
+      "pic": "phytoplancton au microscope",
+      "picId": "phytoplankton",
+      "options": [["a", "Le phytoplancton"], ["b", "Le corail"], ["c", "Les balanes"], ["d", "Les oursins"]],
+      "hint": "Le traversier les mesure avec son capteur de chlorophylle.",
+      "why": "Le phytoplancton est formé de petits êtres vivants semblables à des plantes. Il nourrit presque tout le reste de la mer, et le traversier le mesure sous forme de chlorophylle."
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+.screen {
+  height: 100%;
+  display: grid;
+  grid-template-columns: calc(600px * var(--ui-scale)) minmax(0, 1fr);
+  background: var(--ground);
+}
+
+/* Left: data panel, laid out at kiosk size and zoomed to the window */
+.panel {
+  zoom: var(--ui-scale);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 36px 32px 24px 40px;
+  background: var(--panel);
+  min-height: 0;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.eyebrow {
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+/* Right: map with floating cards. The cards are zoomed one by one, so the map canvas is not. */
+.mapArea {
+  position: relative;
+  overflow: hidden;
+  background: var(--sea-map);
+}
+
+.pill {
+  zoom: var(--ui-scale);
+  position: absolute;
+  left: 32px;
+  top: 30px;
+}
+
+.toggles {
+  zoom: var(--ui-scale);
+  position: absolute;
+  right: 32px;
+  top: 30px;
+  display: flex;
+  gap: 12px;
+}
+
+.colourBy {
+  zoom: var(--ui-scale);
+  position: absolute;
+  right: 32px;
+  top: 118px;
+}
+
+.happening {
+  zoom: var(--ui-scale);
+  position: absolute;
+  left: 32px;
+  bottom: 28px;
+}
+
+.bottomRight {
+  zoom: var(--ui-scale);
+  position: absolute;
+  right: 32px;
+  bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}

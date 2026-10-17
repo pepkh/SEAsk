@@ -1,0 +1,77 @@
+{
+  "swartz-bay": {
+    "here": "Swartz Bay",
+    "blurb": "Le traversier attend au quai. Les voitures et les gens montent pour la prochaine traversée.",
+    "adultTitle": "Terminal de traversier",
+    "lookout": {
+      "title": "Cherchez les cormorans",
+      "text": "Des oiseaux noirs font sécher leurs ailes sur les poteaux près du quai",
+      "photo": "cormoran",
+      "photoId": "cormorant"
+    },
+    "happening": {
+      "title": "Eau calme au terminal",
+      "text": "Swartz Bay est à l'abri du vent et des vagues. L'eau près du quai se mélange lentement, donc les mesures changent très peu avant le départ."
+    }
+  },
+  "swanson-channel": {
+    "here": "Chenal Swanson",
+    "blurb": "Des îles des deux côtés! Saltspring est à l'ouest et les Pender sont à l'est.",
+    "adultTitle": "Chenal entre les îles",
+    "lookout": {
+      "title": "Cherchez les épaulards",
+      "text": "De grands ailerons noirs traversent ce chenal en groupes familiaux",
+      "photo": "épaulard",
+      "photoId": "orca"
+    },
+    "happening": {
+      "title": "L'eau des îles, mélangée par la marée",
+      "text": "Le chenal est étroit et profond. Les courants de marée déplacent l'eau entre les îles, donc la température et la salinité restent proches des valeurs de Swartz Bay."
+    }
+  },
+  "active-pass": {
+    "here": "Active Pass",
+    "blurb": "Des marées rapides passent entre Galiano et Mayne. Tenez-vous bien, ça peut brasser!",
+    "adultTitle": "Zone de mélange des marées",
+    "lookout": {
+      "title": "Cherchez les phoques communs",
+      "text": "Des têtes qui flottent près des rochers à votre gauche",
+      "photo": "phoque",
+      "photoId": "harbour-seal"
+    },
+    "happening": {
+      "title": "Les marées brassent la colonne d'eau",
+      "text": "De forts courants dans Active Pass remontent de l'eau plus profonde et plus froide vers la surface. La salinité baisse un peu et la turbidité monte jusqu'à ce que le navire atteigne les eaux libres du détroit de Georgia."
+    }
+  },
+  "strait-of-georgia": {
+    "here": "Détroit de Georgia",
+    "blurb": "Les eaux libres! Au milieu, le détroit a plus de 400 m de profondeur.",
+    "adultTitle": "Eaux libres",
+    "lookout": {
+      "title": "Cherchez les dauphins",
+      "text": "Les dauphins à flancs blancs sautent parfois dans les vagues près du navire",
+      "photo": "dauphin à flancs blancs",
+      "photoId": "white-sided-dolphin"
+    },
+    "happening": {
+      "title": "Des eaux profondes et libres",
+      "text": "Le détroit est large et profond. Loin des îles, l'eau douce du fleuve Fraser commence à s'étendre en surface, donc la salinité baisse lentement."
+    }
+  },
+  "tsawwassen": {
+    "here": "Tsawwassen",
+    "blurb": "On arrive bientôt! L'eau boueuse du fleuve Fraser rend la mer brune ici.",
+    "adultTitle": "Panache du fleuve Fraser",
+    "lookout": {
+      "title": "Cherchez les hérons",
+      "text": "Les grands hérons chassent dans l'eau peu profonde près de la chaussée",
+      "photo": "grand héron",
+      "photoId": "great-blue-heron"
+    },
+    "happening": {
+      "title": "De l'eau douce en surface",
+      "text": "Le fleuve Fraser déverse de l'eau douce et boueuse dans le détroit. La salinité baisse et la turbidité monte à l'approche de Tsawwassen."
+    }
+  }
+}

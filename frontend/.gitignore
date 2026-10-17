@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Offline map tiles and terrain (large, made by scripts/download-tiles.ts and scripts/build-terrain.sh)
+public/tiles/
+
+# The root .gitignore ignores .env.*; keep the example file.
+!.env.example

@@ -1,0 +1,64 @@
+.card {
+  flex: 1;
+  min-height: 0;
+  background: var(--card);
+  border-radius: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  text-align: center;
+}
+
+.eyebrow {
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.score {
+  font-size: 120px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.score span {
+  font-size: 48px;
+  color: var(--muted);
+}
+
+.line {
+  font-size: 34px;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+}
+
+.primary,
+.secondary {
+  display: flex;
+  align-items: center;
+  height: 76px;
+  padding: 0 40px;
+  border: 0;
+  border-radius: 20px;
+  font: 600 22px var(--display);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.primary {
+  background: var(--accent);
+  color: #FFFFFF;
+}
+
+.secondary,
+.secondary:hover {
+  background: var(--button-soft);
+  color: var(--ink);
+}

@@ -1,0 +1,145 @@
+{
+  "bull-kelp": {
+    "src": "/images/photos/bull-kelp.jpg",
+    "width": 1024,
+    "height": 684,
+    "license": "cc-by",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "author": "tunicatedreamz",
+    "credit": "Photo: tunicatedreamz · CC BY 4.0 · iNaturalist",
+    "sourceUrl": "https://www.inaturalist.org/photos/728289613",
+    "source": "inaturalist"
+  },
+  "chinook": {
+    "src": "/images/photos/chinook.jpg",
+    "width": 1024,
+    "height": 683,
+    "license": "pd",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "author": "United States Fish and Wildlife Services",
+    "credit": "Photo: United States Fish and Wildlife Services · Public domain · iNaturalist",
+    "sourceUrl": "https://www.inaturalist.org/photos/514850178",
+    "source": "inaturalist"
+  },
+  "cormorant": {
+    "src": "/images/photos/cormorant.jpg",
+    "width": 1280,
+    "height": 855,
+    "license": "cc-by",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "author": "Colin Durfee",
+    "credit": "Photo: Colin Durfee · CC BY 2.0 · Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Double-Crested_Cormorant_-_Flickr_-_Colin_Durfee.jpg",
+    "source": "commons"
+  },
+  "earth-moon": {
+    "src": "/images/photos/earth-moon.jpg",
+    "width": 1280,
+    "height": 916,
+    "license": "pd",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "author": "NASA / Bill Anders",
+    "credit": "Photo: NASA / Bill Anders · Public domain · Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:NASA-Apollo8-Dec24-Earthrise-b.jpg",
+    "source": "commons"
+  },
+  "fraser-plume": {
+    "src": "/images/photos/fraser-plume.jpg",
+    "width": 1280,
+    "height": 853,
+    "license": "pd",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "author": "NASA Goddard Space Flight Center",
+    "credit": "Photo: NASA Goddard Space Flight Center · Public domain · Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Big_Muddy,_Western_Edition_(6987590721).jpg",
+    "source": "commons"
+  },
+  "glass-sponge": {
+    "src": "/images/photos/glass-sponge.jpg",
+    "width": 1280,
+    "height": 960,
+    "license": "cc0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "author": "Jackson Chu / Fisheries and Oceans Canada",
+    "credit": "Photo: Jackson Chu / Fisheries and Oceans Canada · CC0 · Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aphrocallistes_vastus_(10.3897-BDJ.10.e76050)_Figure_4.jpeg",
+    "source": "commons"
+  },
+  "great-blue-heron": {
+    "src": "/images/photos/great-blue-heron.jpg",
+    "width": 1280,
+    "height": 853,
+    "license": "cc-by",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "author": "Gordon Leggett",
+    "credit": "Photo: Gordon Leggett · CC BY 4.0 · Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:2026-07-12_01_Great_blue_heron_(Ardea_herodias_fannini)_hunting_-_WA_USA.jpg",
+    "source": "commons"
+  },
+  "harbour-seal": {
+    "src": "/images/photos/harbour-seal.png",
+    "width": 1024,
+    "height": 1011,
+    "license": "cc-by-sa",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "author": "David Badke",
+    "credit": "Photo: David Badke · CC BY-SA 4.0 · iNaturalist",
+    "sourceUrl": "https://www.inaturalist.org/photos/7517869",
+    "source": "inaturalist"
+  },
+  "humpback": {
+    "src": "/images/photos/humpback.jpg",
+    "width": 1024,
+    "height": 682,
+    "license": "cc-by",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "author": "Pete Lypkie",
+    "credit": "Photo: Pete Lypkie · CC BY 4.0 · iNaturalist",
+    "sourceUrl": "https://www.inaturalist.org/photos/425352717",
+    "source": "inaturalist"
+  },
+  "octopus": {
+    "src": "/images/photos/octopus.jpg",
+    "width": 1200,
+    "height": 900,
+    "license": "pd",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "author": "NOAA / R. N. Lea",
+    "credit": "Photo: NOAA / R. N. Lea · Public domain · Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Enteroctopus_dolfeini.jpg",
+    "source": "commons"
+  },
+  "orca": {
+    "src": "/images/photos/orca.jpg",
+    "width": 1024,
+    "height": 681,
+    "license": "pd",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "author": "Robert Pittman",
+    "credit": "Photo: Robert Pittman · Public domain · iNaturalist",
+    "sourceUrl": "https://www.inaturalist.org/photos/360303852",
+    "source": "inaturalist"
+  },
+  "phytoplankton": {
+    "src": "/images/photos/phytoplankton.jpg",
+    "width": 1024,
+    "height": 694,
+    "license": "cc-by-sa",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "author": "Massimo brizzi",
+    "credit": "Photo: Massimo brizzi · CC BY-SA 4.0 · iNaturalist",
+    "sourceUrl": "https://www.inaturalist.org/photos/34036545",
+    "source": "inaturalist"
+  },
+  "white-sided-dolphin": {
+    "src": "/images/photos/white-sided-dolphin.jpg",
+    "width": 1280,
+    "height": 794,
+    "license": "pd",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "author": "Captain Budd Christman, NOAA Corps",
+    "credit": "Photo: Captain Budd Christman, NOAA Corps · Public domain · Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:PacificWhiteSidedDolphine.jpg",
+    "source": "commons"
+  }
+}

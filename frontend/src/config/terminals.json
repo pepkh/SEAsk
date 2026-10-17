@@ -1,0 +1,4 @@
+[
+  { "id": "SWB", "name": "Swartz Bay", "lat": 48.6888, "lon": -123.4100, "dockRadiusM": 600 },
+  { "id": "TSA", "name": "Tsawwassen", "lat": 49.0062, "lon": -123.1325, "dockRadiusM": 600 }
+]

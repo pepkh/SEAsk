@@ -1,0 +1,32 @@
+/* Laid out at kiosk size and zoomed to the window. */
+.screen {
+  zoom: var(--ui-scale);
+  height: 100%;
+  display: grid;
+  grid-template-columns: 640px minmax(0, 1fr);
+  background: var(--ground);
+}
+
+.featured {
+  padding: 36px 20px 28px 36px;
+  display: flex;
+  min-height: 0;
+}
+
+.catalogue {
+  padding: 36px 36px 28px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  min-width: 0;
+  min-height: 0;
+}
+
+.grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}

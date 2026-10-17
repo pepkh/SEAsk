@@ -1,0 +1,61 @@
+/* Landmark label at the pointer, over the map (not zoomed itself: it sits at canvas pixels). */
+.anchor {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.dot {
+  position: absolute;
+  left: -6px;
+  top: -6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px #fff;
+}
+
+/* The card keeps the kiosk proportions like the HUD. */
+.card {
+  zoom: var(--ui-scale);
+  position: absolute;
+  left: 18px;
+  top: 0;
+  transform: translateY(-50%);
+  width: max-content;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 18px;
+  border-radius: 20px;
+  background: var(--glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 10px 40px rgba(21, 25, 28, 0.18);
+  color: var(--ink);
+}
+
+.flip .card {
+  left: auto;
+  right: 18px;
+}
+
+.kind {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.name {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.fact {
+  font-size: 16px;
+  line-height: 1.35;
+  color: var(--body);
+}

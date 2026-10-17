@@ -1,0 +1,64 @@
+.card {
+  background: var(--card);
+  border-radius: 24px;
+  padding: 24px 26px;
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.dark {
+  background: var(--ink);
+  color: #fff;
+}
+
+/* The pictures give up width before the text does. */
+.compass {
+  flex: 0 1 140px;
+  min-width: 80px;
+  aspect-ratio: 1;
+}
+
+.moon {
+  flex: 0 1 210px;
+  min-width: 120px;
+  aspect-ratio: 210 / 126;
+}
+
+.text {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.eyebrow {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.dark .eyebrow {
+  color: var(--muted-on-dark);
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.titleSmall {
+  font-size: 26px;
+}
+
+.body {
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--body);
+}
+
+.dark .body {
+  color: var(--body-on-dark);
+}

@@ -1,0 +1,26 @@
+.lang {
+  border: 0;
+  border-radius: 999px;
+  height: 58px;
+  padding: 0 22px;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 10px 40px rgba(21, 25, 28, 0.12);
+}
+
+.floating {
+  background: var(--card);
+  box-shadow: var(--shadow-float);
+}
+
+.plain {
+  background: var(--card);
+}

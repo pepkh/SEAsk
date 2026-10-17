@@ -1,0 +1,77 @@
+{
+  "swartz-bay": {
+    "here": "Swartz Bay",
+    "blurb": "The ferry waits at the dock. Cars and people get on for the next crossing.",
+    "adultTitle": "Ferry terminal",
+    "lookout": {
+      "title": "Look out for cormorants",
+      "text": "Black birds drying their wings on the posts near the dock",
+      "photo": "cormorant",
+      "photoId": "cormorant"
+    },
+    "happening": {
+      "title": "Calm water at the terminal",
+      "text": "Swartz Bay is sheltered from wind and waves. The water near the dock mixes slowly, so the readings change very little until the ship leaves."
+    }
+  },
+  "swanson-channel": {
+    "here": "Swanson Channel",
+    "blurb": "Islands on both sides! Saltspring is to the west and the Penders are to the east.",
+    "adultTitle": "Channel between the islands",
+    "lookout": {
+      "title": "Look out for orcas",
+      "text": "Tall black fins travel through this channel in family groups",
+      "photo": "orca",
+      "photoId": "orca"
+    },
+    "happening": {
+      "title": "Island water, mixed by the tide",
+      "text": "The channel is narrow and deep. Tidal currents move water between the islands, so temperature and salinity stay close to the values near Swartz Bay."
+    }
+  },
+  "active-pass": {
+    "here": "Active Pass",
+    "blurb": "Fast tides squeeze between Galiano and Mayne. Hold on, it can get bumpy!",
+    "adultTitle": "Tidal mixing zone",
+    "lookout": {
+      "title": "Look out for harbour seals",
+      "text": "Heads bobbing near the rocks on your left",
+      "photo": "seal",
+      "photoId": "harbour-seal"
+    },
+    "happening": {
+      "title": "Tides are stirring the water column",
+      "text": "Strong currents through Active Pass mix deeper, colder water up toward the surface. Watch salinity dip slightly and turbidity rise until the ship reaches open water in the Strait of Georgia."
+    }
+  },
+  "strait-of-georgia": {
+    "here": "Strait of Georgia",
+    "blurb": "Open water! In the middle, the strait is more than 400 m deep.",
+    "adultTitle": "Open water",
+    "lookout": {
+      "title": "Look out for dolphins",
+      "text": "White-sided dolphins sometimes leap in the waves beside the ship",
+      "photo": "white-sided dolphin",
+      "photoId": "white-sided-dolphin"
+    },
+    "happening": {
+      "title": "Deep, open water",
+      "text": "The strait is wide and deep. Away from the islands, fresh water from the Fraser River starts to spread across the top, so salinity falls slowly."
+    }
+  },
+  "tsawwassen": {
+    "here": "Tsawwassen",
+    "blurb": "Almost there! Muddy water from the Fraser River makes the sea look brown here.",
+    "adultTitle": "Fraser River plume",
+    "lookout": {
+      "title": "Look out for herons",
+      "text": "Great blue herons hunt in the shallow water near the causeway",
+      "photo": "great blue heron",
+      "photoId": "great-blue-heron"
+    },
+    "happening": {
+      "title": "Fresh water on top",
+      "text": "The Fraser River pours fresh, muddy water into the strait. Salinity drops and turbidity rises as the ship comes near Tsawwassen."
+    }
+  }
+}

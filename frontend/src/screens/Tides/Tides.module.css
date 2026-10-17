@@ -1,0 +1,62 @@
+/* Laid out at kiosk size and zoomed to the window. */
+.screen {
+  zoom: var(--ui-scale);
+  height: 100%;
+  background: var(--ground);
+}
+
+.section {
+  height: 100%;
+  padding: 32px 36px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 0;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 560px;
+  gap: 18px;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+.pair {
+  flex: 1 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 18px;
+}
+
+@media (max-width: 900px) {
+  .screen,
+  .section {
+    height: auto;
+  }
+
+  .section {
+    padding: 20px 16px;
+  }
+
+  .body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
