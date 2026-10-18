@@ -6,7 +6,7 @@ import { snapshotAt, type Snapshot, type WaterKey } from './snapshot'
 import { useDayData } from './useDayData'
 import { useLiveDay } from './useLiveDay'
 
-export type FieldLayer = 'none' | 'currents' | 'wind'
+export type FieldLayer = 'none' | 'currents' | 'wind' | 'fouling'
 export type Basemap = 'satellite' | 'chart' | 'plain'
 export type TrackKey = WaterKey | 'sogKn' | 'rollDeg'
 

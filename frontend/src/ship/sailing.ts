@@ -47,6 +47,9 @@ export function routeBetween(fromFraction: number, toFraction: number): LatLon[]
   return [pointAlong(ROUTE.points, CUMULATIVE, a), ...inner, pointAlong(ROUTE.points, CUMULATIVE, b)]
 }
 
+/** The point at a route fraction. */
+export const pointAt = (fraction: number): LatLon => pointAlong(ROUTE.points, CUMULATIVE, fraction * ROUTE_LENGTH_M)
+
 /** Zone id for a route fraction. */
 export function zoneAt(fraction: number): string {
   return (ROUTE.zones.find((z) => fraction <= z.to) ?? ROUTE.zones[ROUTE.zones.length - 1]).id

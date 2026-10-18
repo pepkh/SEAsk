@@ -8,10 +8,14 @@ import { LOW_FX } from '../../config/env'
  * so a frame costs no geographic maths.
  */
 
-/** Colour-scale top (kn), particle speed (px per frame per field unit) and unit → kn of each field. */
+/**
+ * Colour-scale top (kn), particle speed (px per frame per field unit) and unit → kn of each field.
+ * The biofouling index is a scalar (sampled as [score, 0], scale 0-100) and has no particles.
+ */
 export const FIELD_SCALE = {
   currents: { maxKn: 4, pxPerUnit: 3, toKn: 3600 / 1852 },
   wind: { maxKn: 25, pxPerUnit: 0.16, toKn: 1 },
+  fouling: { maxKn: 100, pxPerUnit: 0, toKn: 1 },
 } as const
 
 export interface VectorGrid {

@@ -1,5 +1,5 @@
-import { AIS_GROUPS, type ClimatologyWire, type CurrentsWire, type OceanWire, type ProfilesWire, type WindObsWire, type ShipDayWire, type StationSeriesKey, type StationsWire, type TidesWire, type TrafficWire, type TwdpKey, type WeatherWire } from '../types/bridge'
-import type { AtmKey, Climatology, Currents, MarineKey, Ocean, Profiles, ShipDay, Stations, Tides, Traffic, Weather, WindObs } from './model'
+import { AIS_GROUPS, type ClimatologyWire, type CurrentsWire, type FoulingWire, type OceanWire, type ProfilesWire, type WindObsWire, type ShipDayWire, type StationSeriesKey, type StationsWire, type TidesWire, type TrafficWire, type TwdpKey, type WeatherWire } from '../types/bridge'
+import type { AtmKey, Climatology, Currents, Fouling, MarineKey, Ocean, Profiles, ShipDay, Stations, Tides, Traffic, Weather, WindObs } from './model'
 import { SHIP_KEYS } from './model'
 import { axisOf, toFloat } from './series'
 
@@ -279,5 +279,17 @@ export function decodeClimatology(w: ClimatologyWire): Climatology {
         { mean: toFloat(v.mean, w.nBins), p10: toFloat(v.p10, w.nBins), p90: toFloat(v.p90, w.nBins), n: toFloat(v.n, w.nBins) },
       ]),
     ),
+  }
+}
+
+export function decodeFouling(w: FoulingWire): Fouling {
+  const cells = w.grid.nLat * w.grid.nLon
+  return {
+    date: w.date,
+    status: w.status,
+    grid: w.grid,
+    score: toFloat(w.score, cells),
+    spread: toFloat(w.spread, cells),
+    cover: Uint8Array.from({ length: cells }, (_, k) => w.cover[k] ?? 0),
   }
 }

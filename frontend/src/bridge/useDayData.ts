@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react'
 import { loadPart } from '../api/bridge'
 import { BUNDLED_PROFILE } from '../ship/profile'
 import type {
-  ClimatologyWire, CrossingStats, CurrentsWire, OceanWire, ProfilesWire, WindObsWire, ShipDayWire, SourcesWire, StationsWire, TidesWire, TrafficWire, WeatherWire,
+  ClimatologyWire, CrossingStats, CurrentsWire, FoulingWire, OceanWire, ProfilesWire, WindObsWire, ShipDayWire, SourcesWire, StationsWire, TidesWire, TrafficWire, WeatherWire,
 } from '../types/bridge'
 import type { RouteProfile } from '../types/profile'
-import { decodeClimatology, decodeCurrents, decodeOcean, decodeProfiles, decodeWindObs, decodeShip, decodeStations, decodeTides, decodeTraffic, decodeWeather } from './decode'
+import { decodeClimatology, decodeCurrents, decodeFouling, decodeOcean, decodeProfiles, decodeWindObs, decodeShip, decodeStations, decodeTides, decodeTraffic, decodeWeather } from './decode'
 import type { DayData, PartName, PartStatus } from './model'
 import { localMidnight } from './time'
 
-/** One loadable part: its API path, its snapshot file name, and how it goes into the day. */
+/** One loadable part: its API path (null: snapshot only), its snapshot file name, and how it goes into the day. */
 interface PartSpec<W> {
-  path: (date: string) => string
+  path: ((date: string) => string) | null
   file: string
   apply: (day: DayData, wire: W) => void
 }
@@ -32,6 +32,8 @@ const PARTS: Record<PartName, PartSpec<unknown>> = {
   profiles: spec<ProfilesWire>({ path: (d) => `/bridge/${d}/profiles`, file: 'profiles', apply: (day, w) => (day.profiles = decodeProfiles(w)) }),
   traffic: spec<TrafficWire>({ path: (d) => `/bridge/${d}/traffic?step=60`, file: 'traffic', apply: (day, w) => (day.traffic = decodeTraffic(w)) }),
   sources: spec<SourcesWire>({ path: (d) => `/bridge/${d}/sources`, file: 'sources', apply: (day, w) => (day.sources = w.items) }),
+  // One model run, written by backend/scripts/build_fouling.py; the API does not serve it.
+  fouling: spec<FoulingWire>({ path: null, file: 'fouling', apply: (day, w) => (day.fouling = decodeFouling(w)) }),
 }
 
 export const PART_NAMES = Object.keys(PARTS) as PartName[]
@@ -43,7 +45,7 @@ function request(date: string, name: PartName) {
   const key = `${date}/${name}`
   let r = requests.get(key)
   if (!r) {
-    r = loadPart<unknown>(PARTS[name].path(date), PARTS[name].file, date)
+    r = loadPart<unknown>(PARTS[name].path?.(date) ?? null, PARTS[name].file, date)
     requests.set(key, r)
   }
   return r

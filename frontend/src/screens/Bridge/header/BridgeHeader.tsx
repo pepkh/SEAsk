@@ -9,6 +9,7 @@ import { Segmented } from './Segmented'
 const LAYERS: { value: FieldLayer; label: string }[] = [
   { value: 'currents', label: t('layerCurrents') },
   { value: 'wind', label: t('layerWind') },
+  { value: 'fouling', label: t('layerFouling') },
   { value: 'none', label: t('layerNone') },
 ]
 

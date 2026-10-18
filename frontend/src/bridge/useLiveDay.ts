@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
+import { loadSnapshot } from '../api/bridge'
 import { getJson } from '../api/http'
+import { BRIDGE_DATE } from '../config/env'
 import { getHistory, getLatestRow } from '../api/shipFeed'
 import { locate, zoneAt } from '../ship/sailing'
 import type { ShipRow } from '../types/feed'
 import type { DataSource } from '../types/source'
-import type { ClimatologyWire, CurrentsWire, OceanWire, StationsWire, TidesWire, WeatherWire, WindObsWire } from '../types/bridge'
+import type { ClimatologyWire, CurrentsWire, FoulingWire, OceanWire, StationsWire, TidesWire, WeatherWire, WindObsWire } from '../types/bridge'
 import type { RouteProfile } from '../types/profile'
-import { decodeClimatology, decodeCurrents, decodeOcean, decodeStations, decodeTides, decodeWeather, decodeWindObs } from './decode'
+import { decodeClimatology, decodeCurrents, decodeFouling, decodeOcean, decodeStations, decodeTides, decodeWeather, decodeWindObs } from './decode'
 import { SHIP_KEYS, type Crossing, type DayData, type PartName, type PartStatus, type ShipDay, type ShipKey } from './model'
 import { localDate } from './time'
 import { emptyDay, PART_NAMES, type DayState } from './useDayData'
@@ -236,6 +238,15 @@ export function useLiveDay(enabled: boolean): DayState {
     }
     timers.push(window.setTimeout(pollPoint, 3000))
     timers.push(window.setInterval(pollPoint, 5 * 60_000))
+
+    // Biofouling: the model has one run (the replay day); shown live too, labelled with its own date.
+    loadSnapshot<FoulingWire>(BRIDGE_DATE, 'fouling')
+      .then((w) => {
+        day.fouling = decodeFouling(w)
+        status.fouling = { state: 'ready', source: 'snapshot' }
+      })
+      .catch(() => (status.fouling = { state: 'missing', reason: `no model run for ${BRIDGE_DATE}` }))
+      .finally(publish)
 
     for (const p of POLLS) {
       const run = () =>

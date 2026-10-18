@@ -179,6 +179,21 @@ export const SOURCES = {
     licence: { en: 'CC0, CC BY or CC BY-SA (per photo)', fr: 'CC0, CC BY ou CC BY-SA (selon la photo)' },
     url: 'https://www.inaturalist.org',
   },
+  // The team's own model, not an outside provider: listed here so the bridge credits it like the others.
+  seaskFouling: {
+    name: { en: 'SEAsk team (experimental biofouling model)', fr: 'Équipe SEAsk (modèle expérimental d’encrassement biologique)' },
+    short: { en: 'SEAsk model', fr: 'Modèle SEAsk' },
+    credit: {
+      en: 'Biofouling index: SEAsk team machine-learning model (experimental) from ONC ferry readings (chlorophyll, O₂ saturation), past routes and satellite organic matter',
+      fr: 'Indice d’encrassement biologique : modèle d’apprentissage automatique de l’équipe SEAsk (expérimental) tiré des mesures du traversier d’ONC (chlorophylle, saturation en O₂), des trajets passés et de la matière organique vue par satellite',
+    },
+    licence: { en: 'SEAsk team, unpublished', fr: 'Équipe SEAsk, non publié' },
+    url: 'https://github.com/pepkh/SEAsk',
+    notice: {
+      en: 'Unvalidated relative screening proxy: it compares places on its model day only. Not for navigation.',
+      fr: 'Indicateur de dépistage relatif non validé : il compare des endroits pour son jour de modèle seulement. Ne pas utiliser pour la navigation.',
+    },
+  },
 } satisfies Record<string, Source>
 
 export type SourceId = keyof typeof SOURCES
@@ -187,7 +202,7 @@ export type SourceId = keyof typeof SOURCES
 export const KIOSK_SOURCES: SourceId[] = ['onc', 'dfo', 'owm', 'openMeteo', 'copernicusMarine', 'gebco', 'eox', 'nrcan', 'mrdem', 'photos']
 
 /** What the captain's bridge shows. OpenWeather only fills in the live wind when the model is missing. */
-export const BRIDGE_SOURCES: SourceId[] = ['onc', 'dfo', 'eccc', 'openMeteo', 'copernicusMarine', 'salishSeaCast', 'owm', 'eox', 'nrcan']
+export const BRIDGE_SOURCES: SourceId[] = ['onc', 'dfo', 'eccc', 'openMeteo', 'copernicusMarine', 'salishSeaCast', 'owm', 'eox', 'nrcan', 'seaskFouling']
 
 export const credit = (id: SourceId, lang: Lang = 'en') => SOURCES[id].credit[lang]
 export const short = (id: SourceId, lang: Lang = 'en') => SOURCES[id].short[lang]

@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { useBridgeData, useBridgeUi, usePlayhead, useSnapshot, type FieldLayer } from '../../../bridge/BridgeProvider'
-import { currentSampler, windSourceSampler } from '../../../bridge/field'
+import { currentSampler, gridValue, windSourceSampler } from '../../../bridge/field'
 import { buildGrid, drawArrows, drawField, FIELD_SCALE, Particles, type VectorGrid } from '../../../bridge/map/flow'
 import type { Area } from '../../../bridge/map/mercator'
 import { DirtyFlags, drawTrack, drawVessels, type Hit } from '../../../bridge/map/render'
 import { drawTiles, TileCache } from '../../../bridge/map/tiles'
 import { useMapView } from '../../../bridge/map/useMapView'
 import type { DayData } from '../../../bridge/model'
-import { paletteFor } from '../../../bridge/palette'
+import { fieldLut, paletteFor } from '../../../bridge/palette'
 import { sourcesInUse } from '../../../bridge/sources'
 import { credit, short, type SourceId } from '../../../config/sources'
 import { OCEAN_AREA, TILE_LAYERS } from '../../../config/tiles'
@@ -31,6 +31,15 @@ function sampler(day: DayData, layer: FieldLayer, t: number): ((lat: number, lon
     // Measured near the Environment Canada stations, the model everywhere else (field.ts windSourceSampler).
     const s = windSourceSampler(day, t)
     return s ? (lat, lon) => s(lat, lon)?.uv ?? null : null
+  }
+  if (layer === 'fouling') {
+    // One model run for the day: a scalar, so [score, 0] (drawField colours by magnitude).
+    const f = day.fouling
+    if (!f) return null
+    return (lat, lon) => {
+      const v = gridValue(f.grid, f.score, lat, lon)
+      return Number.isFinite(v) ? [v, 0] : null
+    }
   }
   return null
 }
@@ -157,14 +166,14 @@ export function BridgeMap({ className }: { className: string }) {
         const sample = layer === 'none' ? null : sampler(day, layer, t)
         grid = sample && layer !== 'none' ? buildGrid(v, sample, FIELD_SCALE[layer].toKn) : null
         if (grid && layer !== 'none') {
-          drawField(ctx, grid, layer === 'currents' ? pal.currentLut : pal.windLut, FIELD_SCALE[layer].maxKn, scratch)
-          if (reduced) drawArrows(ctx, grid, FIELD_SCALE[layer].maxKn, pal.ink2)
+          drawField(ctx, grid, fieldLut(pal, layer), FIELD_SCALE[layer].maxKn, scratch)
+          if (reduced && layer !== 'fouling') drawArrows(ctx, grid, FIELD_SCALE[layer].maxKn, pal.ink2)
         }
-        if (!grid || reduced) particles.clear(flow.getContext('2d')!)
+        if (!grid || reduced || layer === 'fouling') particles.clear(flow.getContext('2d')!)
       }
 
       // Particles at 30 Hz: half the cost, and the trails still read as flow.
-      if (grid && !reduced && layer !== 'none' && frameNo % 2 === 0) {
+      if (grid && !reduced && layer !== 'none' && layer !== 'fouling' && frameNo % 2 === 0) {
         const ctx = flow.getContext('2d')!
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
         particles.step(ctx, grid, FIELD_SCALE[layer].pxPerUnit, FIELD_SCALE[layer].maxKn, pal.particle)
@@ -196,13 +205,13 @@ export function BridgeMap({ className }: { className: string }) {
 
   return (
     <div className={`${styles.map} ${className}`}>
-      <div ref={box} className={styles.stage} role="application" aria-label="Map of the route with vessels, currents and wind. Drag to pan, pinch to zoom.">
+      <div ref={box} className={styles.stage} role="application" aria-label="Map of the route with vessels, currents, wind and biofouling. Drag to pan, pinch to zoom.">
         <canvas ref={baseRef} className={styles.layer} />
         <canvas ref={fieldRef} className={styles.layer} />
         <canvas ref={flowRef} className={styles.layer} />
         <canvas ref={trackRef} className={styles.layer} />
         <canvas ref={topRef} className={styles.layer} />
-        <MapOverlay view={view} day={day} t={snapshot.t} showWind={ui.layer === 'wind'} />
+        <MapOverlay view={view} day={day} t={snapshot.t} showWind={ui.layer === 'wind'} showFouling={ui.layer === 'fouling'} />
       </div>
       <MapLegend />
       <div className={styles.controls}>

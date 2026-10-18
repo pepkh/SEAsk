@@ -4,6 +4,7 @@ import { windStationsAt } from '../../../bridge/field'
 import type { DayData } from '../../../bridge/model'
 import { ROUTE } from '../../../ship/sailing'
 import styles from './BridgeMap.module.css'
+import { FoulingCells, FoulingHotspots } from './FoulingOverlay'
 
 /** ONC observatories near the route (fallback positions until the stations dataset arrives). */
 const ONC_SITES = [
@@ -27,8 +28,11 @@ function scaleBar(view: View): { px: number; label: string } {
   return { px: nm / nmPerPx, label: `${nm} nm` }
 }
 
-/** Route, terminals, observatories, CODAR sites, tide gauges, wind stations, scale bar and north arrow (SVG over the canvases). */
-export const MapOverlay = memo(function MapOverlay({ view, day, t, showWind }: { view: View; day: DayData; t: number; showWind: boolean }) {
+/**
+ * Route, terminals, observatories, CODAR sites, tide gauges, wind stations, scale bar and north arrow (SVG over
+ * the canvases); on the biofouling layer also its no-estimate cells and the hotspots on the route.
+ */
+export const MapOverlay = memo(function MapOverlay({ view, day, t, showWind, showFouling }: { view: View; day: DayData; t: number; showWind: boolean; showFouling: boolean }) {
   const route = ROUTE.points.map(([lat, lon]) => project(view, lat, lon))
   const scale = scaleBar(view)
   // Gauge labels only when zoomed in: at the whole-route view they sit on the terminal names.
@@ -47,7 +51,9 @@ export const MapOverlay = memo(function MapOverlay({ view, day, t, showWind }: {
 
   return (
     <svg className={styles.overlay} width={view.w} height={view.h} aria-hidden="true">
+      {showFouling && day.fouling && <FoulingCells view={view} fouling={day.fouling} />}
       <polyline points={route.map((p) => p.join(',')).join(' ')} className={styles.route} />
+      {showFouling && day.fouling && <FoulingHotspots view={view} fouling={day.fouling} />}
       {TERMINALS.map(({ name, at }) => {
         const [x, y] = project(view, at[0], at[1])
         return (

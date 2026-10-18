@@ -373,3 +373,38 @@
 .targets li[data-danger] b {
   color: var(--b-critical);
 }
+
+/* Biofouling hotspots (FoulingSection.tsx); the next one is outlined */
+.hotspots {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.hotspots li {
+  display: grid;
+  gap: 1px;
+  padding: 5px 6px;
+  border: 1px solid transparent;
+  border-left: 3px solid var(--b-fouling);
+  border-radius: 6px;
+}
+
+.hotspots li[data-next] {
+  border-color: var(--b-line);
+  border-left-color: var(--b-fouling);
+  background: var(--b-raised);
+}
+
+.hotspots b {
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.hotspots span {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--b-ink-2);
+}

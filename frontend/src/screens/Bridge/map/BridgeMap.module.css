@@ -40,6 +40,53 @@
   opacity: 0.8;
 }
 
+/* Biofouling layer (FoulingOverlay.tsx) */
+.foulingHatch {
+  stroke: var(--b-ink-2);
+  stroke-width: 1;
+  opacity: 0.45;
+}
+
+.foulingNone {
+  stroke: none;
+}
+
+.foulingCell {
+  fill: none;
+  stroke: var(--b-ink);
+  stroke-width: 1;
+  opacity: 0.22;
+}
+
+.foulingCasing,
+.foulingHot {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.foulingCasing {
+  stroke: var(--b-plane);
+  stroke-width: 9;
+  opacity: 0.85;
+}
+
+.foulingHot {
+  stroke: var(--b-fouling);
+  stroke-width: 5;
+}
+
+.hatch {
+  display: inline-block;
+  width: 16px;
+  height: 10px;
+  margin-right: 6px;
+  vertical-align: -1px;
+  border: 1px solid var(--b-line);
+  border-radius: 2px;
+  background: repeating-linear-gradient(45deg, var(--b-ink-2) 0 1px, transparent 1px 5px);
+}
+
 .terminal {
   fill: var(--b-ink);
   stroke: var(--b-plane);

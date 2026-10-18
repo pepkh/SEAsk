@@ -17,6 +17,7 @@ export const en = {
   layerNone: 'None',
   layerCurrents: 'Currents',
   layerWind: 'Wind',
+  layerFouling: 'Biofouling',
   basemapSatellite: 'Satellite',
   basemapChart: 'Chart',
   basemapPlain: 'Plain',
@@ -90,6 +91,15 @@ export const en = {
   traffic: 'Traffic (AIS)',
   trafficReplayOnly: 'AIS is available in replay only',
   noTargets: 'No vessels near',
+  fouling: 'Biofouling ahead',
+  foulingNext: 'Next hotspot',
+  foulingInside: 'In hotspot now',
+  foulingNoneAhead: 'No hotspot ahead on this crossing',
+  foulingNoHotspots: 'No stretch of the route at or above {level}',
+  foulingIn: 'in {nm} nm · ~{min} min',
+  foulingLeft: '{nm} nm to its end · ~{min} min',
+  foulingAdvice: 'Fouling settles mostly while a hull is slow or stopped: where you can, avoid holding or slow running in these stretches.',
+  foulingCaveat: 'Relative index for {date} only (higher = more likely fouling). Unvalidated; cells about 3 km.',
 
   // Timeline
   play: 'Play',
@@ -114,6 +124,11 @@ export function t(key: BridgeText, vars?: Record<string, string | number>): stri
 /** Number with fixed decimals, "—" when missing. */
 export function num(v: number | null | undefined, digits = 1): string {
   return v === null || v === undefined || !Number.isFinite(v) ? '—' : v.toFixed(digits)
+}
+
+/** "17 Aug 2026" from an ISO date. */
+export function dayLabel(iso: string): string {
+  return new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
 }
 
 /** Bearing as three digits, "—" when missing. */

@@ -20,6 +20,7 @@ const LABELS: Record<PartName, string> = {
   profiles: 'Current profiles (ADCP)',
   traffic: 'Vessel traffic (AIS)',
   sources: 'Inventory',
+  fouling: 'Biofouling index, experimental model',
 }
 
 const SOURCE_NAMES = { api: 'backend', snapshot: 'offline copy', bundled: 'bundled', live: 'live', sample: 'sample feed (same as the kiosk)' }

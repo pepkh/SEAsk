@@ -150,7 +150,11 @@ Run from `backend/` with the script packages installed (`requirements-scripts.tx
 .venv/bin/python scripts/build_ais.py --peek              # then --date 2026-08-17: both UTC-day AIS files → ais_vessels, ais_positions
 .venv/bin/python scripts/build_climatology.py             # ~12 min the first time (cached in data/climatology/) → route_climatology
 .venv/bin/python scripts/build_ssc_map.py                 # once: SalishSeaCast grid → app/sources/ssc_map.json (regridding and rotation)
+.venv/bin/python scripts/build_fouling.py                 # the team's biofouling model run (data/*.geojson) → frontend/public/data/2026-08-17/fouling.json
 ```
+
+`build_fouling.py` writes the kiosk file directly: there is no API route for it. The bridge shows this one
+model run (17 Aug 2026) in replay and in live mode, labelled with its date.
 
 ### Offline copy for the kiosk
 

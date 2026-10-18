@@ -14,13 +14,16 @@ const TIMEOUT_MS = 20_000
 /**
  * One bridge dataset: the backend first, then the snapshot written by
  * backend/scripts/export_bridge_snapshot.py into public/data/{date}/{file}.json. Null when neither
- * has it. `path` is the API path, `file` the snapshot name.
+ * has it. `path` is the API path (null for a dataset that only exists as a snapshot), `file` the
+ * snapshot name.
  */
-export async function loadPart<T>(path: string, file: string, date: string): Promise<Loaded<T> | null> {
-  try {
-    return { data: await fetchJson<T>(`${API_URL}${path}`), source: 'api' }
-  } catch (err) {
-    console.warn(`Bridge: ${path} unavailable, trying the offline copy.`, err)
+export async function loadPart<T>(path: string | null, file: string, date: string): Promise<Loaded<T> | null> {
+  if (path !== null) {
+    try {
+      return { data: await fetchJson<T>(`${API_URL}${path}`), source: 'api' }
+    } catch (err) {
+      console.warn(`Bridge: ${path} unavailable, trying the offline copy.`, err)
+    }
   }
   try {
     return { data: await loadSnapshot<T>(date, file), source: 'snapshot' }

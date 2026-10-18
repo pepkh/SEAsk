@@ -191,6 +191,17 @@ export interface Traffic {
   vessels: Vessel[]
 }
 
+/** Experimental biofouling index (relative 0-100, one model run). Cell = iy × nLon + ix, NaN = no score. */
+export interface Fouling {
+  date: string
+  status: string
+  grid: LatLonGrid
+  score: Float32Array
+  spread: Float32Array
+  /** 0 no model point (land), 1 outside the training extent, 2 scored */
+  cover: Uint8Array
+}
+
 export interface Climatology {
   years: number[]
   nBins: number
@@ -218,10 +229,11 @@ export interface DayData {
   profiles?: Profiles
   traffic?: Traffic
   sources?: SourceItem[]
+  fouling?: Fouling
 }
 
 export type PartName =
-  | 'ship' | 'stats' | 'profile' | 'climatology' | 'tides' | 'weather' | 'stations' | 'currents' | 'ocean' | 'windobs' | 'profiles' | 'traffic' | 'sources'
+  | 'ship' | 'stats' | 'profile' | 'climatology' | 'tides' | 'weather' | 'stations' | 'currents' | 'ocean' | 'windobs' | 'profiles' | 'traffic' | 'sources' | 'fouling'
 
 export type PartStatus =
   | { state: 'loading' }

@@ -6,7 +6,9 @@ import type { AisGroup } from '../types/bridge'
  * changes.
  *
  * Fields are single-hue lightness ramps (one field at a time, legend always on): blue for currents,
- * orange for wind. Low values fade into the map, high values are light. AIS uses three validated
+ * orange for wind, violet for the biofouling index (monotone, 8° hue spread; checked on #0B1418; its
+ * scores sit in 25-85, so most of its lightness is spent there).
+ * Low values fade into the map, high values are light. AIS uses three validated
  * categorical slots (blue, orange, aqua; checked on #0B1418, all pairs) plus grey, with the hull
  * shape as a second cue.
  */
@@ -43,6 +45,7 @@ export interface Palette {
   /** 256 × RGBA lookup tables, value 0 → 255 */
   currentLut: Uint8ClampedArray
   windLut: Uint8ClampedArray
+  foulingLut: Uint8ClampedArray
 }
 
 const hex = (c: string) => [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16))
@@ -78,6 +81,7 @@ const DAY: Palette = {
   particle: [235, 244, 248],
   currentLut: lut(['#0d366b', '#1c5cab', '#3987e5', '#86b6ef', '#cde2fb'], 0.05, 0.62),
   windLut: lut(['#5a2208', '#a8441b', '#d95926', '#f19a6f', '#fbd2bd'], 0.05, 0.55),
+  foulingLut: lut(['#1d1650', '#2a2070', '#4a3cb0', '#7a6be0', '#b3aaf2', '#ecebfd'], 0.1, 0.78),
 }
 
 const NIGHT: Palette = {
@@ -97,9 +101,15 @@ const NIGHT: Palette = {
   particle: [255, 90, 78],
   currentLut: lut(['#1a0000', '#4a0703', '#8a1a12', '#c2362b', '#ff6a5e'], 0.05, 0.6),
   windLut: lut(['#1a0000', '#4a0703', '#8a1a12', '#c2362b', '#ff6a5e'], 0.05, 0.6),
+  foulingLut: lut(['#1a0000', '#4a0703', '#8a1a12', '#c2362b', '#ff6a5e'], 0.1, 0.6),
 }
 
 export const paletteFor = (night: boolean): Palette => (night ? NIGHT : DAY)
+
+const FIELD_LUT = { currents: 'currentLut', wind: 'windLut', fouling: 'foulingLut' } as const
+
+/** The colour table of a map field. */
+export const fieldLut = (pal: Palette, layer: keyof typeof FIELD_LUT) => pal[FIELD_LUT[layer]]
 
 /** rgba() of a lookup-table entry for a value scaled 0..1. */
 export function lutColor(table: Uint8ClampedArray, k: number, alpha?: number): string {

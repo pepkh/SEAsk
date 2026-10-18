@@ -64,6 +64,7 @@ Every entry here is in `frontend/src/config/sources.ts` under the same id.
 | `eox` | EOX IT Services GmbH | **EOxCloudless 2025 tiles** (`s2cloudless-2025_3857`), satellite basemap of the kiosk map and the bridge | CC BY-NC-SA 4.0 | EOxCloudless https://cloudless.eox.at by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2025) | **Non-commercial.** Commercial dashboards need EOX's paid licence. |
 | `nrcan` | Natural Resources Canada | **CBMT base map and labels** (chart basemap) | Open Government Licence – Canada | © His Majesty the King in Right of Canada, as represented by the Minister of Natural Resources Canada (OGL – Canada) | No implied endorsement. |
 | `mrdem` | Natural Resources Canada | **MRDEM-30 elevation** (kiosk map terrain, `build-terrain.sh`) | Open Government Licence – Canada | Terrain: NRCan MRDEM-30 (OGL – Canada) | — |
+| `seaskFouling` | SEAsk team (our own model, not an outside provider) | **Experimental biofouling index**: a machine-learning model trained on ONC ferry readings (chlorophyll, O₂ saturation), past routes and satellite organic matter (**product name to add**). One run for 17 Aug 2026, `backend/data/seask_experimental_bfi_proxy_2026-08-17.geojson` → `frontend/public/data/2026-08-17/fouling.json` (`backend/scripts/build_fouling.py`). | SEAsk team, unpublished | Biofouling index: SEAsk team machine-learning model (experimental) … | Status `UNVALIDATED_RELATIVE_ENVIRONMENTAL_SCREENING_PROXY`: it ranks places on its model day only. Not for navigation. In live mode the same run is shown, labelled with its date. |
 | `photos` | iNaturalist and Wikimedia Commons photographers | 13 species and scene photos. The author, licence and source of each are in [`frontend/public/images/photos/CREDITS.md`](frontend/public/images/photos/CREDITS.md). | CC0, CC BY, CC BY-SA, PD (per photo) | `Photo: author · licence · source`, shown with each photo | No platform credit is needed. CC BY and CC BY-SA need the credit with the photo. |
 
 Not data, so not in the registry:
@@ -227,6 +228,8 @@ ONC device codes and instruments come from `frontend/public/data/2026-08-17/sour
 | Currents by depth | ONC SCVIP and SEVIP ADCP150KHZ (RDI Workhorse, `RADCPTS`, 600 s ensembles). The hollow surface arrow is the blended surface current. |
 | TWDP ferry | ONC TWDP.N1 NAV (Hemisphere V200s); TWDP TSG, OXYSENSOR, TURBCHLFL |
 | Traffic: range, bearing, CPA, TCPA | ONC IONA AISRECEIVER (decoded with pyais, `build_ais.py`); CPA computed (`derive/cpa.ts`). Replay only. |
+| Biofouling ahead: next hotspot, distance and minutes, the strip along the route, the hotspot list | SEAsk biofouling model (`seaskFouling`), sampled along `route.json` in 200 bins (bilinear, `derive/fouling.ts`); distance and time computed from the ship's route fraction and SOG (service speed below 5 kn). The band is ± half the model's scenario spread. Live mode shows the same 17 Aug run, labelled "17 Aug 2026 run". |
+| Biofouling advice line ("fouling settles mostly while a hull is slow or stopped") | Written by the team. **Unchecked:** needs a source before it is shown outside the team. |
 
 ### Map, timeline, Ask
 
@@ -235,6 +238,7 @@ ONC device codes and instruments come from `frontend/public/data/2026-08-17/sour
 | Basemap | EOX (satellite) or NRCan CBMT (chart) |
 | Currents colour field and particles | same blend as the surface current row |
 | Wind field, station arrows | ECCC stations + Open-Meteo |
+| Biofouling field, hatched cells, F1/F2 route stretches | SEAsk biofouling model; hatched = outside the model's training extent; stretches as in the Biofouling ahead row |
 | Own track colour | ONC TWSB readings |
 | Vessels, COG vectors, CPA line | ONC Iona AIS; CPA computed |
 | Observatory markers, CODAR sites, tide gauges | `onc_stations.json`, CODAR site codes, DFO station positions |
@@ -311,6 +315,7 @@ These are design choices. Don't present them as measurements.
 - **Service speed 18.6 kn** (`route.json`, `scene/constants.ts`): used for the ETA when slow, and for the 3D animation.
 - **Terminal coordinates and 600 m dock radius** (`config/terminals.json`); landmark points and radii (`config/landmarks.json`).
 - **Track colour ranges** (`readings.json` `tracks`), chosen to match the 17 Aug ranges.
+- **Biofouling hotspots** (`bridge/derive/fouling.ts` `FOULING`): a stretch of the route at a score of 65 or more and at least 0.5 nm long. The model's index is relative, so 65 is a design choice (22.5% of the day's 40 scored cells reach it), not a level the model defines.
 - **Drawings, not maps:**
   - the schematic route map (`components/RouteMap/geometry.ts`)
   - the Lab track map's lat/lon labels
@@ -335,6 +340,7 @@ Details in DATA.md §4.
 - **Climatology:** the chlorophyll and turbidity climatology is unsound, so the bridge compares them with today's crossings.
 - **Predictions and models:** tides and currents are DFO **predictions**, not measurements. Wind and waves away from stations are **model** values.
 - **Live mode gaps:** no heave, synthetic QC flags, and no AIS or ADCP.
+- **Biofouling model:** an unvalidated, relative index from one run (17 Aug 2026). Only 40 of its 133 cells have a score (lat 48.73–48.98, lon −123.40 to −123.15): none at either terminal, and Active Pass is land at its 1/24° (about 3 × 4.6 km) cells. The scenario spread (5–31) is large next to the differences between neighbouring cells, which is why the bridge shows hotspots and does not suggest another route. Whether the spread is a range or a standard deviation is still to be confirmed.
 
 ---
 

@@ -78,3 +78,60 @@
   stroke: var(--b-ink);
   stroke-width: 1.2;
 }
+
+/* Biofouling along the route (FoulingStrip.tsx) */
+.strip {
+  margin: 0;
+}
+
+.foulingLine {
+  fill: none;
+  stroke: var(--b-fouling);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.spreadBand {
+  fill: var(--b-fouling);
+  opacity: 0.18;
+}
+
+.hotSpan {
+  fill: var(--b-fouling);
+  opacity: 0.1;
+}
+
+.hotLabel {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  fill: var(--b-ink);
+}
+
+.level {
+  stroke: var(--b-ink-2);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.hatchLine {
+  stroke: var(--b-muted);
+  stroke-width: 1;
+}
+
+.foulingDot {
+  fill: var(--b-fouling);
+  stroke: var(--b-surface);
+  stroke-width: 2;
+}
+
+.cursor {
+  stroke: var(--b-ink-2);
+  stroke-width: 1;
+}
+
+.readout {
+  font-family: var(--mono);
+  font-size: 10px;
+  fill: var(--b-ink-2);
+}

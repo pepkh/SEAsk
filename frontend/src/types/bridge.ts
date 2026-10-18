@@ -261,6 +261,25 @@ export interface SourcesWire {
   credit: string
 }
 
+/**
+ * The SEAsk team's experimental biofouling model for one day (backend/scripts/build_fouling.py; a
+ * snapshot only, no API route). No time axis: one model run.
+ */
+export interface FoulingWire {
+  dataset: 'fouling'
+  mode: BridgeMode
+  date: string
+  status: string
+  grid: { lat0: number; lon0: number; dLat: number; dLon: number; nLat: number; nLon: number }
+  /** Relative 0-100 per cell (higher = more fouling); null outside the training extent or on land */
+  score: Col
+  /** Spread across the model's scenarios, same units */
+  spread: Col
+  /** 0 no model point (land at this resolution), 1 outside the training extent, 2 scored */
+  cover: number[]
+  credit: string
+}
+
 export type ClimateVar = 'sst' | 'sal' | 'o2Sat' | 'chl' | 'turb'
 
 export interface ClimatologyWire {

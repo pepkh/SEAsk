@@ -18,6 +18,7 @@ export const PART_SOURCES: Record<PartName, SourceId[]> = {
   profiles: ['onc'],
   traffic: ['onc'],
   sources: ['onc'],
+  fouling: ['seaskFouling'],
 }
 
 /** "ONC", "DFO", …: the short names of a dataset's providers, for a label. */

@@ -22,6 +22,8 @@
   --b-series-1: #5598e7;
   --b-series-2: #d95926;
   --b-series-3: #199e70;
+  /* Biofouling layer: top of its violet field ramp (src/bridge/palette.ts) */
+  --b-fouling: #9085e9;
 
   /* Status: reserved, always with an icon and a label */
   --b-good: #0ca30c;
@@ -49,6 +51,7 @@
   --b-series-1: #FF4A3D;
   --b-series-2: #C2362B;
   --b-series-3: #8A2A22;
+  --b-fouling: #FF6A5E;
   --b-good: #C2362B;
   --b-warning: #FF4A3D;
   --b-serious: #FF4A3D;

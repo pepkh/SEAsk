@@ -1,10 +1,12 @@
 import { useBridgeData, useBridgeUi, useSnapshot, type TrackKey } from '../../../bridge/BridgeProvider'
 import { fmtClock, fmtDuration } from '../../../bridge/time'
 import { TRACK_RANGE } from '../../../bridge/map/render'
+import { FOULING } from '../../../bridge/derive/fouling'
 import { FIELD_SCALE } from '../../../bridge/map/flow'
-import { lutColor, paletteFor } from '../../../bridge/palette'
+import { fieldLut, lutColor, paletteFor } from '../../../bridge/palette'
 import { short } from '../../../config/sources'
 import { RAMP } from '../../Lab/trackColour'
+import { dayLabel } from '../strings'
 import styles from './BridgeMap.module.css'
 
 const TRACK_LABELS: Record<TrackKey, string> = {
@@ -17,13 +19,13 @@ const TRACK_LABELS: Record<TrackKey, string> = {
   rollDeg: 'Roll °',
 }
 
-const FIELD_TITLE = { currents: 'Surface current, kn', wind: 'Wind at 10 m, kn' }
-const FIELD_TICKS = { currents: [0, 1, 2, 3, 4], wind: [0, 5, 10, 15, 20, 25] }
+const FIELD_TITLE = { currents: 'Surface current, kn', wind: 'Wind at 10 m, kn', fouling: 'Biofouling index (experimental)' }
+const FIELD_TICKS = { currents: [0, 1, 2, 3, 4], wind: [0, 5, 10, 15, 20, 25], fouling: [0, 25, 50, 75, 100] }
 
 /** Map key: the field scale, the track reading (tap to change it) and the vessel symbols. */
 export function MapLegend() {
   const ui = useBridgeUi()
-  const { day, mode } = useBridgeData()
+  const { day, mode, status } = useBridgeData()
   const snap = useSnapshot()
   const pal = paletteFor(ui.night)
   // Live: say how old the newest radar map is.
@@ -31,7 +33,11 @@ export function MapLegend() {
   const radarAge = mode === 'live' && Number.isFinite(radarEnd) ? snap.t - radarEnd : NaN
   const layer = ui.layer
   const range = TRACK_RANGE[ui.trackKey]
-  const fieldMissing = (layer === 'currents' && !day.currents && !day.ocean) || (layer === 'wind' && !day.weather?.windU && !day.weather?.wide)
+  const fieldMissing =
+    (layer === 'currents' && !day.currents && !day.ocean) || (layer === 'wind' && !day.weather?.windU && !day.weather?.wide) || (layer === 'fouling' && !day.fouling)
+  const missingText = layer === 'fouling' && status.fouling.state === 'missing' ? `Biofouling: ${status.fouling.reason}` : 'No data for this layer'
+  // The biofouling model ran for one day: on any other day (live) say the map is that day's.
+  const otherDay = day.fouling && day.fouling.date !== day.date
 
   return (
     <div className={styles.legend}>
@@ -39,14 +45,14 @@ export function MapLegend() {
         <section>
           <h4>{FIELD_TITLE[layer]}</h4>
           {fieldMissing ? (
-            <p className={styles.note}>No data for this layer</p>
+            <p className={styles.note}>{missingText}</p>
           ) : (
             <>
               <div
                 className={styles.bar}
                 style={{
                   background: `linear-gradient(to right, ${[0, 0.25, 0.5, 0.75, 1]
-                    .map((k) => lutColor(layer === 'currents' ? pal.currentLut : pal.windLut, k, 1))
+                    .map((k) => lutColor(fieldLut(pal, layer), k, 1))
                     .join(',')})`,
                 }}
               />
@@ -68,6 +74,21 @@ export function MapLegend() {
                   {day.windobs ? `Measured at ${day.windobs.stations.length} ${short('eccc')} stations (arrows)` : 'No station data'}
                   {day.weather ? `; elsewhere model: ${short('openMeteo')}` : '; wind model not loaded'}
                 </p>
+              )}
+              {layer === 'fouling' && day.fouling && (
+                <>
+                  <p className={styles.note}>
+                    Relative 0–100, higher = more likely to foul a hull. Route stretches at {FOULING.elevated} or more: F1, F2…
+                  </p>
+                  <p className={styles.note}>
+                    <i className={styles.hatch} aria-hidden="true" />
+                    Hatched: outside the model’s training area (no estimate)
+                  </p>
+                  <p className={styles.note}>
+                    {short('seaskFouling')}, unvalidated screening proxy · model run {dayLabel(day.fouling.date)}
+                    {otherDay && ' (not today)'} · cells ~3 × 4.6 km
+                  </p>
+                </>
               )}
               {layer === 'currents' && radarAge > 30 * 60_000 && (
                 <p className={styles.note}>

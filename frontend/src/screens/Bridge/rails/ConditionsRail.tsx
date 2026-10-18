@@ -9,6 +9,7 @@ import { MiniCurrent } from '../charts/MiniCurrent'
 import { MiniTide } from '../charts/MiniTide'
 import { compass, deg, num, t } from '../strings'
 import { Arrow, Empty, Section, Stat } from './parts'
+import { FoulingSection } from './FoulingSection'
 import styles from './Rail.module.css'
 
 const notReady = (s: PartStatus) => (s.state === 'loading' ? t('loading') : t('missing'))
@@ -64,6 +65,8 @@ export function ConditionsRail({ className }: { className: string }) {
           <Empty text={notReady(status.tides)} />
         )}
       </Section>
+
+      <FoulingSection />
 
       <Section title={t('tides')} aside={`${short('dfo')} predicted · m above chart datum`}>
         {tides && domain ? (
