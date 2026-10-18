@@ -54,6 +54,13 @@ export async function getLatestRow(): Promise<FeedRow> {
 let feed: ShipRow[] | undefined
 
 /**
+ * The day the sample feed was recorded (mocks/common/ship-feed.json, from backend/scripts/export_sample_data.py).
+ * Without live data the kiosk shows that day throughout: the ship, and the tides and weather from the bridge's
+ * offline copy of it (public/data/{day}).
+ */
+export const RECORDED_DAY = '2026-08-17'
+
+/**
  * The sample feed holds one cycle of rows. The time of day (times the replay speed)
  * selects the row. Values between two rows are interpolated, like a 1 Hz feed.
  */
@@ -64,7 +71,9 @@ async function mockRow(now: Date): Promise<ShipRow> {
   const pos = ((secOfDay * REPLAY_SPEED) % (feed.length * stepS)) / stepS
   const a = feed[Math.floor(pos)]
   const b = feed[(Math.floor(pos) + 1) % feed.length]
-  return interpolateRow(a, b, pos % 1, now)
+  // The file's own `time` is when the row was recorded: kept, for the tides and weather of that moment.
+  const recorded = new Date(Date.parse(feed[0].time) + pos * stepS * 1000).toISOString()
+  return { ...interpolateRow(a, b, pos % 1, now), recorded_time: recorded }
 }
 
 /** GET /api/ship/history: the recent track, oldest first, one row per step. */

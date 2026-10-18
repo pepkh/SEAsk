@@ -16,7 +16,7 @@
       "id": "depth",
       "question": "Quelle est la profondeur ici?",
       "answer": "Juste sous nous, la mer fait environ {depth} mètres de profondeur. C'est comme {houses} maisons empilées!",
-      "fallback": "Au milieu du détroit, la mer fait plus de 200 mètres de profondeur. C'est plus haut qu'une tour de 60 étages!"
+      "fallback": "Au milieu du détroit, la mer sous le traversier atteint environ 200 mètres de profondeur. C'est à peu près la hauteur d'une tour de 60 étages!"
     },
     {
       "id": "tide",
@@ -31,13 +31,13 @@
     {
       "id": "onc",
       "question": "Que mesurent les capteurs du navire?",
-      "answer": "Les capteurs d'Ocean Networks Canada sous le traversier vérifient la mer chaque seconde : sa chaleur, son sel, son oxygène, ses petites plantes et sa clarté. En ce moment, l'eau est à {waterTemp} °C!",
-      "fallback": "Les capteurs d'Ocean Networks Canada sous le traversier vérifient la mer chaque seconde : sa chaleur, son sel, son oxygène, ses petites plantes et sa clarté."
+      "answer": "Les capteurs d'Ocean Networks Canada à bord du traversier analysent l'eau de mer pompée sous le navire, environ une fois par seconde : sa chaleur, son sel, son oxygène, ses petites plantes et sa clarté. En ce moment, l'eau est à {waterTemp} °C!",
+      "fallback": "Les capteurs d'Ocean Networks Canada à bord du traversier analysent l'eau de mer pompée sous le navire, environ une fois par seconde : sa chaleur, son sel, son oxygène, ses petites plantes et sa clarté."
     },
     {
       "id": "life",
       "question": "Qui vit sous le traversier?",
-      "answer": "Des saumons, des épaulards, des phoques, des méduses, des crabes et de grandes forêts de varech! Et tout au fond, il y a des récifs d'éponges de verre plus vieux que les pyramides."
+      "answer": "Des saumons, des épaulards, des phoques, des méduses, des crabes et de grandes forêts de varech près des côtes! Tout au fond, il y a aussi des récifs d'éponges de verre, et certains récifs de la C.-B. sont plus vieux que les pyramides."
     }
   ]
 }

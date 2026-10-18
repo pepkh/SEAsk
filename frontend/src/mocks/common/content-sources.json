@@ -1,0 +1,1475 @@
+{
+  "species.orca": {
+    "sources": [
+      {
+        "name": "Government of Canada, Species at Risk Public Registry",
+        "url": "https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry/recovery-strategies/killer-whales/chapter-1.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Parks Canada",
+        "url": "https://parks.canada.ca/pn-np/bc/gulf/nature/especes-species/srkw",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Recovery strategy ch. 1: matrilines/pods are family groups; 'Each resident pod has a unique dialect made up of approximately a dozen discrete calls'; Chinook is 'the predominant prey species' of residents; max lengths male 9.0 m, female 7.7 m (so sizeM 8 is fair). Parks Canada: pods of mothers and offspring, distinct calls, Chinook preferred. Latin Orcinus orca accepted (WoRMS 137102). habitat openWater."
+  },
+  "species.humpback": {
+    "sources": [
+      {
+        "name": "Government of Canada, Species at Risk Public Registry",
+        "url": "https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry/cosewic-assessments-status-reports/humpback-whale-2022.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "NOAA Fisheries",
+        "url": "https://www.fisheries.noaa.gov/species/humpback-whale",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "COSEWIC 2022: 'Humpbacks were extirpated from the Salish Sea early in the 20th century, and only became regularly sighted once more in the early 2000s'; 'generally raise their tail flukes when diving'; max 16-17 m, '14-15 m is more typical' (sizeM 15 OK). NOAA: 'Look for blows'; up to ~60 ft. Latin accepted (WoRMS 137092)."
+  },
+  "species.white-sided-dolphin": {
+    "sources": [
+      {
+        "name": "NOAA Fisheries",
+        "url": "https://www.fisheries.noaa.gov/species/pacific-white-sided-dolphin",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Encyclopedia of Puget Sound (University of Washington Tacoma)",
+        "url": "https://eopugetsound.org/articles/pacific-white-sided-dolphins-salish-sea",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "NOAA: adults 5.5-8 ft (1.7-2.4 m; sizeM 2.3 is near the top of the range but within it); 'playful and highly social'; often bow riding; jumping, somersaulting. EoPS: aerial behaviour frequent, 'avid bow riders'. Latin: NOAA uses Lagenorhynchus obliquidens; WoRMS now lists it as a junior synonym of Sagmatias obliquidens (left unchanged, team may decide)."
+  },
+  "species.harbour-seal": {
+    "sources": [
+      {
+        "name": "NOAA Fisheries",
+        "url": "https://www.fisheries.noaa.gov/species/harbor-seal",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Western Washington University (Northwestern Naturalist)",
+        "url": "https://faculty.aceveda.wwu.edu/PDFs/lab%20papers/Patterson%2008%20Pvit%20haul-out%20behavior.pdf",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "NOAA: 'dark speckling or spots'; about 5-6 ft (sizeM 1.7 OK); haul out on rocks and reefs. Patterson & Acevedo-Gutierrez 2008 (Northwestern Naturalist 89:17-23): 'Most seal haul-out sites are unavailable at high tide... most seals are hauled-out' at low tide. 'Puppy faces' is descriptive. Parks Canada wildlife page also says seals rest on small reefs and islets."
+  },
+  "species.bull-kelp": {
+    "sources": [
+      {
+        "name": "Monterey Bay Aquarium",
+        "url": "https://www.montereybayaquarium.org/animals/animals-a-to-z/bull-kelp",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "CHANGED text: 'in a single summer' -> 'in less than a year'. MBA: 'an annual seaweed - meaning it grows from a spore to maturity within a single year'; up to 35 m (sizeM 30 OK); can grow 25 cm a day; grows in rough coastal waters (habitat shore). Latin accepted (WoRMS 240752)."
+  },
+  "species.chinook": {
+    "sources": [
+      {
+        "name": "NOAA Fisheries",
+        "url": "https://www.fisheries.noaa.gov/species/chinook-salmon",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Government of Canada, Species at Risk Public Registry",
+        "url": "https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry/recovery-strategies/killer-whales/chapter-1.html",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "NOAA: 'the largest of the Pacific salmon'; typical mature fish about 3 ft, up to 4.9 ft (sizeM 1 OK); salmon are primary prey of Southern Resident killer whales. Recovery strategy: Chinook is the predominant prey of resident killer whales."
+  },
+  "species.octopus": {
+    "sources": [
+      {
+        "name": "Alaska Department of Fish and Game",
+        "url": "https://www.adfg.alaska.gov/index.cfm?adfg=giantpacificoctopus.printerfriendly",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Monterey Bay Aquarium",
+        "url": "https://www.montereybayaquarium.org/animals/animals-a-to-z/giant-pacific-octopus",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "ADF&G: 'two hearts pump blood to the gills and the third circulates blood to the rest of the body'; blue blood from hemocyanin; colour from chromatophores; arm span up to 16 ft. MBA: arm span 'often exceeding 13 feet (4 m)' (sizeM 4 OK); changes skin colour 'from moment to moment'; settles to the seafloor, rocky den (habitat seafloor)."
+  },
+  "species.glass-sponge": {
+    "sources": [
+      {
+        "name": "Fisheries and Oceans Canada",
+        "url": "https://www.pac.dfo-mpo.gc.ca/fm-gp/sustain-soutien/gsr-res/about-gsr-au-sujet-res-eng.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "World Register of Marine Species (WoRMS)",
+        "url": "https://www.marinespecies.org/aphia.php?p=taxdetails&id=22612",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "DFO: reefs 'were thought to have gone extinct approximately 40 million years ago' and 'live reefs were discovered in 1987 by Canadian scientists' off the Pacific coast of Canada; found in Hecate Strait, Queen Charlotte Sound, the Strait of Georgia and Howe Sound at 90-300 m (habitat deep). WoRMS: Hexactinellida is the accepted class of glass sponges (the latin shown is a class, not a species)."
+  },
+  "quiz.0": {
+    "sources": [
+      {
+        "name": "Alaska Department of Fish and Game",
+        "url": "https://www.adfg.alaska.gov/index.cfm?adfg=giantpacificoctopus.printerfriendly",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Monterey Bay Aquarium",
+        "url": "https://www.montereybayaquarium.org/animals/animals-a-to-z/giant-pacific-octopus",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Answer and why: ADF&G says two hearts pump blood to the gills and the third to the rest of the body, and the blood is blue (hemocyanin). Hint: MBA describes it settling to the seafloor and living in a rocky den; eight arms is basic octopus anatomy."
+  },
+  "quiz.1": {
+    "sources": [
+      {
+        "name": "Fisheries and Oceans Canada",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/Library/487-14.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Fisheries and Oceans Canada",
+        "url": "https://www.dfo-mpo.gc.ca/science/data-donnees/cotesud-southcoast/index-eng.html",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Thomson (1981), ch. 10 Strait of Georgia (DFO): the 'buoyant plume of brackish water spreads laterally over the Strait', a light brackish surface layer about 3 m thick. DFO monitoring page: 'The most important source of freshwater is the Fraser River.' Hint (salinity falls near Tsawwassen) matches ONC ferry data: route-profile mean salinity about 29.2 near Swartz Bay vs 26.4 near Tsawwassen."
+  },
+  "quiz.2": {
+    "sources": [
+      {
+        "name": "NOAA National Ocean Service",
+        "url": "https://oceanservice.noaa.gov/education/tutorial_tides/tides03_gravity.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "NOAA National Ocean Service",
+        "url": "https://oceanservice.noaa.gov/facts/tidefrequency.html",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "NOAA: the Moon's gravity pulls water on the near side into a bulge and the bulges stay aligned with the Moon as Earth rotates; coastal areas get two high and two low tides every lunar day (24 h 50 min). Thomson (1981) adds that Strait of Georgia tides are 'mixed, mainly semidiurnal' (two highs and lows of unequal height), so 'about twice a day' holds."
+  },
+  "quiz.3": {
+    "sources": [
+      {
+        "name": "Government of Canada, Species at Risk Public Registry",
+        "url": "https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry/recovery-strategies/killer-whales/chapter-1.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Parks Canada",
+        "url": "https://parks.canada.ca/pn-np/bc/gulf/nature/ocean/erds-srkw",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "NOAA Fisheries",
+        "url": "https://www.fisheries.noaa.gov/species/chinook-salmon",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Recovery strategy: salmon are the predominant prey of residents and they 'likely forage selectively for chinook'. Parks Canada: Chinook is over 50% of the Southern Residents' diet year-round, nearly 100% in spring. Hint (big fish that swims up rivers to spawn): NOAA Chinook page (Chinook return to fresh water to spawn)."
+  },
+  "quiz.4": {
+    "sources": [
+      {
+        "name": "NASA Earth Observatory",
+        "url": "https://science.nasa.gov/earth/earth-observatory/what-are-phytoplankton",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Ocean Networks Canada (CIOOS Pacific catalogue)",
+        "url": "https://catalogue.cioospacific.ca/dataset/1bf3f42c-49b7-4516-8f0b-94552d03cfc4",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "NASA: phytoplankton are microscopic, plant-like organisms and 'the foundation of the aquatic food web', feeding 'everything from microscopic, animal-like zooplankton to multi-ton whales'. ONC/CIOOS: an ECO Triplet on the Tsawwassen-Swartz Bay ferry route converts its readings to chlorophyll concentration and turbidity (supports the hint and 'measures them as chlorophyll'). NOAA (oceanservice.noaa.gov/facts/phyto.html) also: 'microscopic marine algae', 'the base of several aquatic food webs'."
+  },
+  "seafloor.facts.0": {
+    "sources": [
+      {
+        "name": "Fisheries and Oceans Canada",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/Library/487-14.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "CTBUH Skyscraper Center",
+        "url": "https://www.skyscrapercenter.com/vancouver/harbour-centre/4144",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "GEBCO Compilation Group",
+        "url": "https://www.gebco.net/data-products/gridded-bathymetry-data",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "CHANGED text to say where the 420 m is and how deep it is under the ferry. Thomson (1981), ch. 10 (DFO): 'The maximum recorded depth of 420 m is immediately south of ... Texada Island'; average depth about 155 m. Encyclopedia of BC agrees (420 m south of Texada). CTBUH: Harbour Centre is 147 m to its architectural top, so 420 m is about 2.9 towers ('nearly three'). GEBCO 2026 grid along the route (route-profile.json): deepest bin 200 m."
+  },
+  "seafloor.facts.1": {
+    "sources": [
+      {
+        "name": "IBA Canada (Birds Canada and Nature Canada)",
+        "url": "https://www.ibacanada.org/site.jsp?siteID=BC015&lang=en",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Encyclopedia of British Columbia (KnowBC)",
+        "url": "https://www.knowbc.com/limited/Books/Encyclopedia-of-BC/A/Active-Pass",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "IBA Canada (Active Pass, BC015): 'a tidally active body of water about 4.5 km long. The tidal mixing during the floods and ebbs creates a biologically rich feeding area for fish eating birds'. Encyclopedia of BC: seabirds and large marine mammals gather in Active Pass to feed on fish and plankton stirred up by the current."
+  },
+  "seafloor.facts.2": {
+    "sources": [
+      {
+        "name": "Fisheries and Oceans Canada",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/Library/487-14.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "NASA Earth Observatory",
+        "url": "https://science.nasa.gov/earth/earth-observatory/the-big-muddy-western-edition-77368",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Thomson (1981), ch. 10 (DFO): distinct boundary between 'the light colored brackish water and the darker salty water'; the 'buoyant plume of brackish water spreads laterally over the Strait'; brackish layer about 3 m deep. NASA Earth Observatory: the Fraser's sediment 'forms a distinct plume west of Vancouver' (the muddy colour)."
+  },
+  "seafloor.markers": {
+    "sources": [],
+    "checked": false,
+    "note": "illustrative positions, not observations"
+  },
+  "zones.swartz-bay.happening": {
+    "sources": [
+      {
+        "name": "Ocean Networks Canada (CIOOS Pacific catalogue)",
+        "url": "https://catalogue.cioospacific.ca/dataset/93fb91d5-465a-48f2-bdc8-95e13ac5906b",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Ocean Networks Canada",
+        "url": "https://data.oceannetworks.ca",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "CHANGED title and text. The old text said the water 'mixes slowly, so the readings change very little'; in fact the ferry's seawater pump is off at the berth and there are no water readings. ONC/CIOOS: thermosalinographs 'collect data from the sea surface via flow-through systems on vessels'. Pump-off at the dock is from ONC data for this ship (2026-08-17: salinity, oxygen and chlorophyll empty while docked or slow, QC flag 4 for 97% of docked time; see DATA.md). No public web page states the pump-off directly; please confirm with ONC."
+  },
+  "zones.swartz-bay.lookout": {
+    "sources": [
+      {
+        "name": "National Audubon Society",
+        "url": "https://www.audubon.org/field-guide/bird/double-crested-cormorant",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Georgia Strait Alliance",
+        "url": "https://georgiastrait.org/species-profiles/cormorant-profile",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Audubon: Double-crested Cormorant 'perches upright near water with wings half-spread to dry'; coasts and bays. Georgia Strait Alliance: in BC, double-crested cormorants nest only in Georgia Strait; Mandarte Island colony is 'just off Sidney' (a few km from Swartz Bay); pelagic cormorants nest there too. Parks Canada wildlife page lists Brandt's cormorants at Sidney Island (fall). 'Posts near the dock' is a local observation, not in these sources."
+  },
+  "zones.swanson-channel.happening": {
+    "sources": [
+      {
+        "name": "Fisheries and Oceans Canada",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/Library/487-14.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "GEBCO Compilation Group",
+        "url": "https://www.gebco.net/data-products/gridded-bathymetry-data",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Thomson (1981), ch. 10 (DFO): on the flood 'a significant portion surges northwestward via Swanson Channel, then into Trincomali Channel'. GEBCO under the route in the Swanson Channel zone: up to about 127 m deep (route-profile.json). ONC route-profile means: 14.3 C / 28.9 salinity in Swanson Channel vs 14.4 C / 29.2 near Swartz Bay (close, as the text says). 'Narrow' is relative (a few km wide vs about 28 km for the Strait)."
+  },
+  "zones.swanson-channel.lookout": {
+    "sources": [
+      {
+        "name": "Government of Canada, Species at Risk Public Registry",
+        "url": "https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry/recovery-strategies/killer-whales/chapter-3.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Parks Canada",
+        "url": "https://parks.canada.ca/pn-np/bc/gulf/nature/especes-species/srkw",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Recovery strategy ch. 3: locations 'particularly important for foraging' by southern residents include 'Swanson Channel off North Pender Island'. Parks Canada: Southern Residents live in pods of related females and offspring and use the waters around the park reserve year-round. IBA Canada (Active Pass) also: 'orcas feed and travel regularly through the pass from spring to fall'."
+  },
+  "zones.active-pass.happening": {
+    "sources": [
+      {
+        "name": "IBA Canada (Birds Canada and Nature Canada)",
+        "url": "https://www.ibacanada.org/site.jsp?siteID=BC052&lang=en",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Ocean Networks Canada",
+        "url": "https://data.oceannetworks.ca",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "CHANGED text: 'It is colder, saltier' -> 'That water is often colder and saltier' (in winter deep water can be warmer than the surface), and dropped 'until the ship reaches open water in the Strait of Georgia' (wrong for westbound sailings). IBA Canada (Porlier Pass, BC052): 'As with Active Pass ... a site of strong topographic upwelling, caused by deep waters being brought to the surface in the narrow, shallow passage.' ONC ferry data (route-profile.json): Active Pass mean 13.5 C and 78% O2 saturation vs 14.3 C / 97% in Swanson Channel and 16.3 C / 105% in the Strait; 2026-08-17 crossings: 12.6 C, 29.6 psu, O2 down to about 70% (DATA.md)."
+  },
+  "zones.active-pass.lookout": {
+    "sources": [
+      {
+        "name": "Parks Canada",
+        "url": "https://parks.canada.ca/pn-np/bc/gulf/activ/faune-wildlife",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Active_Pass",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "CHANGED text: removed 'on your left' (the ferry crosses in both directions, so the side flips). Parks Canada: 'Seals and sea lions like to climb onto small reefs and islets in the middle of the day to sleep.' Wikipedia (secondary): harbour seals are among the animals seen in Active Pass. No primary source found that names harbour seals in Active Pass specifically."
+  },
+  "zones.strait-of-georgia.happening": {
+    "sources": [
+      {
+        "name": "Fisheries and Oceans Canada",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/Library/487-14.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Fisheries and Oceans Canada",
+        "url": "https://www.dfo-mpo.gc.ca/science/data-donnees/cotesud-southcoast/index-eng.html",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Thomson (1981), ch. 10 (DFO): Strait about 28 km wide on average, average depth about 155 m; the Fraser's buoyant brackish plume spreads over the Strait. DFO monitoring page: Fraser River is the most important freshwater source; central basin over 400 m deep. ONC route profile: salinity falls from about 28.9 to 27.2 to 26.4 eastward."
+  },
+  "zones.strait-of-georgia.lookout": {
+    "sources": [
+      {
+        "name": "Encyclopedia of Puget Sound (University of Washington Tacoma)",
+        "url": "https://eopugetsound.org/articles/pacific-white-sided-dolphins-salish-sea",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "NOAA Fisheries",
+        "url": "https://www.fisheries.noaa.gov/species/pacific-white-sided-dolphin",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "EoPS (UW Tacoma): Pacific white-sided dolphins 'occasionally occur in inshore waters of the Salish Sea' including Georgia Strait and are 'now frequent visitors to BC's inshore channels and passes'; aerial behaviour frequent; 'avid bow riders, preferring to ride on ships moving at moderate speeds'. NOAA: often bow ride, jump and somersault."
+  },
+  "zones.tsawwassen.happening": {
+    "sources": [
+      {
+        "name": "NASA Earth Observatory",
+        "url": "https://science.nasa.gov/earth/earth-observatory/the-big-muddy-western-edition-77368",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Fisheries and Oceans Canada",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/Library/487-14.pdf",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "NASA Earth Observatory: the Fraser carries about 20 million tonnes of sediment a year and forms a distinct sediment plume west of Vancouver. Thomson (1981): brackish Fraser water spreads over the southern Strait. ONC route profile: lowest salinity (about 26.4) and slightly higher turbidity in the Tsawwassen zone."
+  },
+  "zones.tsawwassen.lookout": {
+    "sources": [
+      {
+        "name": "Government of Canada, Species at Risk Public Registry",
+        "url": "https://www.canada.ca/en/environment-climate-change/services/species-risk-public-registry/management-plans/great-blue-heron-fannini-2020.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "IBA Canada (Birds Canada and Nature Canada)",
+        "url": "https://www.ibacanada.org/site.jsp?siteID=BC017&lang=en",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Pacific Great Blue Heron management plan (2020): 'On a 2009 survey from the BC Ferries causeway near Tsawwassen, nearly 700 Pacific Great Blue Herons were counted within 500 m north and south of the causeway'; herons forage on tidal mudflats and eelgrass. IBA Canada (Fraser River Estuary, BC017): a very large colony 'adjacent to Roberts Bank and the Tsawwassen ferry jetty'; herons 'feed in intertidal areas'."
+  },
+  "guide.brown": {
+    "sources": [
+      {
+        "name": "NASA Earth Observatory",
+        "url": "https://science.nasa.gov/earth/earth-observatory/the-big-muddy-western-edition-77368",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "NOAA National Ocean Service",
+        "url": "https://oceanservice.noaa.gov/facts/whysalty.html",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "NASA Earth Observatory: the Fraser rises 'around Mount Robson in the Rocky Mountains' and carries about 20 million tonnes of sediment to the Pacific each year. NOAA: 'The average salinity is about 35 parts per thousand.' Note: 35 parts per thousand is by weight (g/kg), about 36 g per litre, so 'about 35 in every litre' is a fair round figure. {salinity} is live ONC data."
+  },
+  "guide.depth": {
+    "sources": [
+      {
+        "name": "GEBCO Compilation Group",
+        "url": "https://www.gebco.net/data-products/gridded-bathymetry-data",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "CTBUH Skyscraper Center",
+        "url": "https://www.skyscrapercenter.com/building/shangri-la-vancouver/1639",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "CHANGED fallback: 'more than 200 metres deep ... taller than a 60-storey tower' -> 'under the ferry is up to about 200 metres deep ... about as tall as a 60-storey tower'. GEBCO 2026 grid under the route (route-profile.json): deepest bin 200 m. CTBUH: Shangri-La Vancouver is 200.9 m with 59 floors, so a 60-storey tower is about 200 m. The live answer's {houses} is depth / 8 (AskGuide.tsx assumes an 8 m house); no source checked for the house height."
+  },
+  "guide.tide": {
+    "sources": [
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://tides.gc.ca/en/stations/07590",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Fisheries and Oceans Canada",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/Library/487-14.pdf",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "CHS Tsawwassen (07590) predictions, e.g. 2026-10-17: low 1.34 m at 04:03, high 4.08 m at 12:33 (about 2.7 m range), larger near the solstices. Thomson (1981), ch. 10 (DFO): 'the normal tidal range of 3.2 m' near the Fraser mouth; tides are mixed, mainly semidiurnal. Moon as cause: NOAA tides tutorial (see quiz.2)."
+  },
+  "guide.wiggle": {
+    "sources": [
+      {
+        "name": "Fisheries and Oceans Canada",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/Library/487-14.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Active_Pass",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Thomson (1981), ch. 10 (DFO): the Gulf Islands 'head box' drives 'strong flood currents associated with ... Active Pass'; 'Dangerous rips often appear in the eastern ends of these passes'. Wikipedia (secondary, for the shape): 'two roughly right-angle bends, one at each end'; ferries pass extremely close to shore; strong eddies and tide rips. ONC ship data for 2026-08-17 shows the largest roll in the Active Pass turns (DATA.md)."
+  },
+  "guide.onc": {
+    "sources": [
+      {
+        "name": "Ocean Networks Canada (CIOOS Pacific catalogue)",
+        "url": "https://catalogue.cioospacific.ca/dataset/93fb91d5-465a-48f2-bdc8-95e13ac5906b",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Ocean Networks Canada (CIOOS Pacific catalogue)",
+        "url": "https://catalogue.cioospacific.ca/dataset/0ff15987-48fd-4d1b-b6a6-5fe3e2a6351b",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Ocean Networks Canada (CIOOS Pacific catalogue)",
+        "url": "https://catalogue.cioospacific.ca/dataset/1bf3f42c-49b7-4516-8f0b-94552d03cfc4",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "CHANGED: 'sensors under the ferry check the sea every second' -> 'sensors on the ferry test sea water pumped in from under the ship, about once a second'. ONC/CIOOS records for the Tsawwassen-Swartz Bay route: thermosalinograph (temperature, conductivity -> salinity) on a 'flow-through system'; Aanderaa oxygen optode (dissolved oxygen); ECO Triplet (chlorophyll and turbidity). Sampling: ONC data for this ship come at 0.5-1 s intervals (DATA.md); not stated on a public page."
+  },
+  "guide.life": {
+    "sources": [
+      {
+        "name": "Parks Canada",
+        "url": "https://parks.canada.ca/amnc-nmca/cnamnc-cnnmca/dgs-ssg/region-area/valeurs-values",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Fisheries and Oceans Canada",
+        "url": "https://www.dfo-mpo.gc.ca/oceans/ceccsr-cerceef/faq-eng.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Encyclopaedia Britannica",
+        "url": "https://kids.britannica.com/students/article/Pyramids-of-Giza/630625",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Encyclopedia of Puget Sound (University of Washington Tacoma)",
+        "url": "https://www.eopugetsound.org/articles/jellyfish",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "CHANGED: kelp forests placed 'near the shore' (kelp does not grow under the ferry in deep water), and the reef age now reads 'some reefs in BC are older than the pyramids'. Parks Canada (Southern Strait of Georgia): kelp beds, crabs, five species of Pacific salmon, seals common, killer whales live here. DFO FAQ: 'glass sponge reefs in Queen Charlotte Sound started forming 9000 years ago'; DFO also lists reef refuges in the Strait of Georgia (Outer Gulf Islands, Foreslope Hills). Britannica: Giza pyramids built about 4,500 years ago (checked from the search snippet; the page blocks automated fetching). Jellyfish: EoPS lists moon, lion's mane and egg-yolk jellies in Puget Sound (Salish Sea), not the ferry route itself."
+  },
+  "tides.explainer": {
+    "sources": [
+      {
+        "name": "NOAA National Ocean Service",
+        "url": "https://oceanservice.noaa.gov/education/tutorial_tides/tides03_gravity.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "NOAA National Ocean Service",
+        "url": "https://oceanservice.noaa.gov/education/tutorial_tides/tides05_lunarday.html",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "NOAA: two bulges, one facing the Moon and one on the far side; coasts get two highs and two lows every 24 h 50 min. Text changed from 'a bulge' to 'two bulges'."
+  },
+  "landmarks.bruce-peak.fact": {
+    "sources": [
+      {
+        "name": "The Canadian Encyclopedia",
+        "url": "https://www.thecanadianencyclopedia.ca/en/article/saltspring-island",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/1559.html",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Canadian Encyclopedia: 'Bruce Peak, at more than 700 m, is the highest mountain in the Gulf Islands.' CHS PAC 201 para 677: Bruce Peak is the highest of three peaks at the S end of Saltspring. NRCan CDEM summits: Bruce 707 m, Tuam 606 m, Baynes (Maxwell) 587 m. Do NOT follow BC Parks' Mount Maxwell page, which wrongly calls Baynes Peak the island's highest point."
+  },
+  "landmarks.mount-tuam.fact": {
+    "sources": [
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/23910.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "BCGNIS: 'SW end of Saltspring Island'. CHS PAC 201 para 230: 'Cape Keppel is the south extremity of Saltspring Island. The land rises steeply from Cape Keppel to the summit of Mount Tuam.'"
+  },
+  "landmarks.mount-maxwell.fact": {
+    "sources": [
+      {
+        "name": "BC Parks",
+        "url": "https://bcparks.ca/mount-maxwell-park/",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/12512.html",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "BC Parks: Baynes Peak 'offers superb views of Vancouver Island, the surrounding Gulf Islands and the mainland'; trail runs 'very close to the cliff edge'. CHS PAC 201 para 677: Baynes Peak 'has a conspicuous precipice on its south side near the summit'. 'One of the best' is a judgment call, consistent with BC Parks' wording."
+  },
+  "landmarks.mount-galiano.fact": {
+    "sources": [
+      {
+        "name": "Galiano Club",
+        "url": "https://galianoclub.org/wp-content/uploads/2025/12/Mt-Galiano-Management-Plan-May-28th-2023-with-appendices.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/5239.html",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Galiano Club Mt Galiano Management Plan (2023), s.3.1: 'highest point on Galiano Island at 311m, the peak gives outstanding views of Active Pass and Mayne Island'; s.6.2.2: hiking trail to the viewpoint. CHS PAC 201 para 444: 'Active Pass is frequently used by large, fast ferries linking Victoria and Vancouver.'"
+  },
+  "landmarks.mount-parke.fact": {
+    "sources": [
+      {
+        "name": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Mayne_Island",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Natural Resources Canada",
+        "url": "https://geogratis.gc.ca/services/elevation/cdem/altitude?lat=48.83955&lon=-123.29592",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/16004.html",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Wikipedia (secondary): Mount Parke is Mayne's 'highest peak at 255 metres'. NRCan CDEM sweep on 2026-10-17 (Elevation API sampled on a 200 m grid over the island, then refined) found no higher ground: Mount Parke ~265 m vs next-highest ~186 m on Mayne. The CRD park page does not itself say 'highest'."
+  },
+  "landmarks.mount-norman.fact": {
+    "sources": [
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Parks Canada",
+        "url": "https://parks.canada.ca/pn-np/bc/gulf/activ/randonnee-hiking/sentiers-trails",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Mount_Norman",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "CHS PAC 201 para 370: 'Mount Norman, 244 m high and wooded, stands on South Pender Island'. Parks Canada trails page describes the trek from Beaumont (park reserve) to the summit. NRCan CDEM sweep on 2026-10-17 (Elevation API sampled on a 200 m grid over the island, then refined) found no higher ground: Mount Norman 244 m vs next-highest ~198 m (North Pender)."
+  },
+  "landmarks.mount-warburton-pike.fact": {
+    "sources": [
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/19117.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/444.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Mount_Warburton_Pike",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "BCGNIS: on the S side of Saturna. BCGNIS Boundary Pass: '...between Saturna Island and Patos Island (Washington State)'. CHS PAC 201 para 70 (Boundary Pass section): a TV tower is 'near the summit of Mount Warburton Pike'. NRCan CDEM sweep on 2026-10-17 (Elevation API sampled on a 200 m grid over the island, then refined) found no higher ground: summit ~401 m vs next-highest ~313 m on Saturna."
+  },
+  "landmarks.mount-newton.fact": {
+    "sources": [
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/14253.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Parks",
+        "url": "https://nrs.objectstore.gov.bc.ca/kuwyyf/john_dean_pk_pszp_20030325_2d20d63666.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/16637.html",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "BC Parks zoning plan (2003): park 'situated atop Mount Newton on the Saanich Peninsula'; primary role 'to protect one of the best remnants of old growth Douglas-fir forest on south Vancouver Island'. BCGNIS coordinates put the summit (48.61 N) south of the Swartz Bay terminal (48.68 N). Official other name: ȽÁUˌWELṈEW̱ (for the team's indigenousName work). Note: bcparks.ca/john-dean-park/ returned 404 on 2026-10-17."
+  },
+  "landmarks.grouse-mountain.fact": {
+    "sources": [
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/3278.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Destination Vancouver",
+        "url": "https://www.destinationvancouver.com/inspirations/outdoors/6-snowy-nighttime-adventures-around-vancouver",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Grouse Mountain",
+        "url": "https://www.grousemountain.com/",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "BCGNIS: in North Vancouver (district municipality). Destination Vancouver: 'Eighteen of Grouse Mountain's runs are lit up at night.' Run count changes by season; text gives no number."
+  },
+  "landmarks.mount-seymour.fact": {
+    "sources": [
+      {
+        "name": "BC Parks",
+        "url": "https://bcparks.ca/mount-seymour-park/",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/15303.html",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "BC Parks: resort operates skiing within the park; park entrance 'in North Vancouver'. BCGNIS: NE corner of North Vancouver (district municipality)."
+  },
+  "landmarks.black-mountain.fact": {
+    "sources": [
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/5684.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Parks",
+        "url": "https://bcparks.ca/cypress-park/",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "BCGNIS: 'Summit of (lower) Cypress Provincial Park, in West Vancouver'. BC Parks lists Black Mountain (1217 m) and the Black Mountain Plateau trail in the park."
+  },
+  "landmarks.mount-constitution.fact": {
+    "sources": [
+      {
+        "name": "HistoryLink.org",
+        "url": "https://historylink.org/File/7517",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Washington State Parks",
+        "url": "https://parks.wa.gov/find-parks/state-parks/moran-state-park",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Mount_Constitution",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "HistoryLink: 'Mount Constitution is the highest point in San Juan County' (i.e. the San Juan Islands); stone tower built 1935-36 by the CCC. Washington State Parks: restoration of 'the historic stone tower' (tower may be closed during the work)."
+  },
+  "landmarks.saltspring-island.fact": {
+    "sources": [
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/13666.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Gulf Islands Driftwood",
+        "url": "https://gulfislandsdriftwood.com/big-growth-spurt-measured-on-gulf-islands",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Salt_Spring_Island",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "BCGNIS: 'Largest of the Gulf Islands'. Driftwood (9 Feb 2022, 2021 census): Salt Spring 11,635 vs North Pender 2,467, Galiano 1,396, Mayne 1,304, Saturna 465, South Pender 306. 'Busiest' read as most populous (Wikipedia: also most visited)."
+  },
+  "landmarks.galiano-island.fact": {
+    "sources": [
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/160.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BritishColumbia.com",
+        "url": "https://britishcolumbia.com/plan-your-trip/regions-and-towns/vancouver-island-bc-islands/galiano-island/",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "CHS PAC 201 para 632: 'Galiano Island, with Porlier Pass at its north end and Active Pass at its south end, is 14 miles long'. BCGNIS Active Pass: 'Between Galiano and Mayne Islands'. BritishColumbia.com: 'A long, narrow island.'"
+  },
+  "landmarks.north-pender-island.fact": {
+    "sources": [
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Pender_Island",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "VancouverIsland.com",
+        "url": "https://vancouverisland.com/plan-your-trip/regions-and-towns/vancouver-island-bc-islands/pender-islands/",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "CHS PAC 201 para 373: 'A road bridge crosses Pender Canal near its N end' (12.0 m between piers). Wikipedia: 'In 1955 the islands were connected by a one lane bridge.'"
+  },
+  "landmarks.south-pender-island.fact": {
+    "sources": [
+      {
+        "name": "Gulf Islands Driftwood",
+        "url": "https://gulfislandsdriftwood.com/big-growth-spurt-measured-on-gulf-islands",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "VancouverIsland.com",
+        "url": "https://vancouverisland.com/plan-your-trip/regions-and-towns/vancouver-island-bc-islands/pender-islands/",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Driftwood (2021 census): South Pender 306 people vs North Pender 2,467. VancouverIsland.com: South Pender is 'less settled, with fewer roads'. Bridge: CHS PAC 201 para 373."
+  },
+  "landmarks.mayne-island.fact": {
+    "sources": [
+      {
+        "name": "Mayne Island Chamber of Commerce",
+        "url": "https://mayneislandchamber.ca/history.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/160.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Mayne_Island",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Mayne Island Chamber: 'Miners Bay owes its name to adventurers bound for the Cariboo Gold Rush of 1858, the halfway stop between Vancouver Island and the mouth of the Fraser River.' The 1858 rush was the Fraser River rush (BCGNIS Active Pass notes cite 'the 1858 rush to the Fraser River'), so the card's wording is right and the Chamber's 'Cariboo' is loose."
+  },
+  "landmarks.saturna-island.fact": {
+    "sources": [
+      {
+        "name": "VancouverIsland.com",
+        "url": "https://vancouverisland.com/plan-your-trip/regions-and-towns/vancouver-island-bc-islands/saturna-island/",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Ferries",
+        "url": "https://www.bcferries.com/travel-boarding/terminal-directions-parking-food/victoria-swartz-bay/SWB",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Gulf Islands Guide",
+        "url": "https://www.gulfislandsguide.com/parks/saturna-island-parks/",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Saturna_Island",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "CHANGED: was 'The most remote Southern Gulf Island' - the superlative appears only in travel guides I could not open (Frommer's returned 403). VancouverIsland.com: 'A remote and sparsely populated rural hideaway', 'difficult to reach'. BC Ferries (Swartz Bay page) gives Saturna travellers priority 'due to the length of time between sailings to Saturna Island'. Gulf Islands Guide: 'Almost half the island's land is now protected as part of the Gulf Islands National Park Reserve'; Wikipedia: approximately half. No Parks Canada page with a figure found."
+  },
+  "landmarks.prevost-island.fact": {
+    "sources": [
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/21199.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Ferries",
+        "url": "https://www.bcferries.com/travel-boarding/terminal-directions-parking-food",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "BCGNIS: 'E. of Ganges Harbour, Saltspring Island'. CHS PAC 201 para 350: Prevost 'separates Captain Passage from Swanson and Trincomali Channels' (Mayne lies across Swanson Channel). BC Ferries' terminal list (50 terminals) has no Prevost terminal."
+  },
+  "landmarks.moresby-island.fact": {
+    "sources": [
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/7190.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "BCGNIS: 'W. side of Swanson Channel, E. of S. end of Saltspring Island'. CHS PAC 201 para 66: 'Pelorus Point is the east extremity of Moresby Island and the SW entrance point to Swanson Channel'; para 322: Moresby forms part of the channel's west side."
+  },
+  "landmarks.portland-island.fact": {
+    "sources": [
+      {
+        "name": "Parks Canada",
+        "url": "https://parks.canada.ca/pn-np/bc/gulf/activ/navigation-de-plaisance-boating",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Parks Canada lists 'Princess Margaret (Portland Island)' under 'Islands only accessible by boat (no services)'. CHS PAC 201 para 146: the whole of Portland Island is part of Gulf Islands National Park Reserve."
+  },
+  "landmarks.piers-island.fact": {
+    "sources": [
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/39288.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "BCGNIS: 'Just N of Swartz Bay ferry terminal in Satellite Channel'. CHS PAC 201 para 188: Wilhelm Point, 0.7 mile N of Swartz Bay, is the SE extremity of Piers Island."
+  },
+  "landmarks.sidney-island.fact": {
+    "sources": [
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Parks Canada",
+        "url": "https://parks.canada.ca/pn-np/bc/gulf/activ/baignade-swimming",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/19521.html",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "CHS PAC 201 para 81: 'Sidney Spit, a low sandy spit, extends about 1 mile north from Sidney Island. The northern third of Sidney Island is part of Gulf Islands National Park Reserve.' Sidney Island area closed to visitors Oct 15 2026 - Feb 14 2027 (Parks Canada boating page)."
+  },
+  "landmarks.james-island.fact": {
+    "sources": [
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/10028.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/James_Island_(British_Columbia)",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "BCGNIS quotes a 25 Nov 1914 letter from Canadian Explosives Ltd: 'On the island we are erecting a Factory for the manufacture of High Explosives'. CHS PAC 201 notes the island is now privately owned."
+  },
+  "landmarks.saanich-peninsula.fact": {
+    "sources": [
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/40828.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/16637.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Ferries",
+        "url": "https://www.bcferries.com/travel-boarding/terminal-directions-parking-food/victoria-swartz-bay/SWB",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "CHANGED: was 'The tip of Vancouver Island' - ambiguous (the island's southern tip is Victoria; the peninsula runs north from it). BCGNIS: Saanich Peninsula is 'N of Victoria'; Swartz Bay is the 'BC Ferries' terminal at N end of Saanich Peninsula'."
+  },
+  "landmarks.swartz-bay-terminal.fact": {
+    "sources": [
+      {
+        "name": "BC Ferries",
+        "url": "https://www.bcferries.com/travel-boarding/terminal-directions-parking-food/victoria-swartz-bay/SWB",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/16637.html",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "BC Ferries: 'Swartz Bay terminal is located at the end of Highway 17, to the north of Victoria on Vancouver Island', with service to Tsawwassen. CHS PAC 201 para 549: ferries 'between Swartz Bay, on Vancouver Island, and Tsawwassen on the mainland'."
+  },
+  "landmarks.tsawwassen-terminal.fact": {
+    "sources": [
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Ferries",
+        "url": "https://www.bcferries.com/travel-boarding/terminal-directions-parking-food/vancouver-tsawwassen/TSA",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/23825.html",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "CHS PAC 201 para 151: 'A causeway extends 1.6 miles in a SW direction... Tsawwassen Terminal... is at the outer end of this causeway', with service to Swartz Bay. BC Ferries address: 1 Ferry Causeway, Delta."
+  },
+  "landmarks.tsawwassen.fact": {
+    "sources": [
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/23827.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Tsawwassen First Nation",
+        "url": "https://tsawwassenfirstnation.com/about-tfn/our-nation/",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "BCGNIS: community in Delta; name is a Halkomelem word 'facing the sea', 'in turn the name of the band that traditionally occupied this area'. TFN 'Our Nation': nearly half of members live on Tsawwassen Lands (724 ha treaty land base)."
+  },
+  "landmarks.roberts-bank.fact": {
+    "sources": [
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/51022.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "CHANGED: was 'where container ships and coal trains load' - coal trains unload here; ships load. BCGNIS: the port 'handles coal from British Columbia's interior, delivered on BCR track then transferred to cargo ships or barges'. CHS PAC 201 para 157 and Table 3.3: Westshore Terminals 'is used by bulk carriers loading coal for export' (coal shiploader); Deltaport is a container terminal."
+  },
+  "landmarks.sidney.fact": {
+    "sources": [
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/27029.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Ferries",
+        "url": "https://www.bcferries.com/travel-boarding/terminal-directions-parking-food/victoria-swartz-bay/SWB",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "BCGNIS: Town at the 'NE end of Saanich Peninsula'; its SENCOTEN name SET,TINES refers to 'the way the land juts out into the water'. BC Ferries lists the Swartz Bay terminal address as '11300 Patricia Bay Hwy, Sidney'."
+  },
+  "landmarks.point-roberts.fact": {
+    "sources": [
+      {
+        "name": "Visit Bellingham Whatcom County",
+        "url": "https://www.bellingham.org/visit-point-roberts-washingtons-geographic-oddball",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Visit Bellingham Whatcom County (county tourism bureau): Point Roberts 'is part of Washington State but is geographically attached to Canada's Tsawwassen Peninsula'; visitors 'drive up and through Canada, crossing two international borders'. 'Only' by car is the standard description (it can also be reached by boat or plane, which the text does not rule out)."
+  },
+  "landmarks.vancouver.fact": {
+    "sources": [
+      {
+        "name": "Statistics Canada",
+        "url": "https://www150.statcan.gc.ca/n1/daily-quotidien/250116/dq250116b-eng.htm",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Statistics Canada, The Daily (16 Jan 2025), July 1 2024 estimates: Toronto CMA 7,106,379; Montréal 4,615,154; Vancouver 3,108,941 - third largest."
+  },
+  "landmarks.active-pass.fact": {
+    "sources": [
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/160.html",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "CHS PAC 201 paras 443-454: 'a deep, tortuous channel'; fairway 'about 0.2 mile wide in its narrowest part'; 'Visibility is obscured by two bends in the channel'; maximum current 'rate is 8 kn'; 'frequently used by large, fast ferries'."
+  },
+  "landmarks.swanson-channel.fact": {
+    "sources": [
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/16629.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Raincoast Conservation Foundation",
+        "url": "https://www.raincoast.org/2026/03/after-dark-with-southern-residents/",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Orca Behavior Institute",
+        "url": "https://www.orcabehaviorinstitute.org/hydrophone-recordings/js-ks-and-ls-in-swanson-channel",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "CHANGED: 'often' -> 'sometimes'. BCGNIS/PAC 201 para 322: North Pender forms the E side; Moresby, Saltspring and Prevost the W side. Orca passages are documented (Raincoast hydrophone, overnight pass of Southern Residents 16-17 Feb 2026; Orca Behavior Institute: J, K and L pods went north up Swanson Channel, 18 Nov 2023) but I found no authoritative source for how often."
+  },
+  "landmarks.satellite-channel.fact": {
+    "sources": [
+      {
+        "name": "University of Victoria (Colonial Despatches)",
+        "url": "https://bcgenesis.uvic.ca/satellite_channel.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "University of Victoria (Colonial Despatches)",
+        "url": "https://bcgenesis.uvic.ca/satellite.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/17144.html",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "UVic Colonial Despatches: Satellite Channel 'is named after HMS Satellite'; HMS Satellite was 'launched from a Devonport dockyard in 1855' and served on the Pacific Station 1857-60 under Capt. Prevost."
+  },
+  "landmarks.haro-strait.fact": {
+    "sources": [
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/7674.html",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "CHS PAC 201 para 12: 'The international boundary between Canada and the United States runs along the centre of Haro Strait and Boundary Pass.' BCGNIS: 'On BC-Washington boundary'."
+  },
+  "landmarks.boundary-pass.fact": {
+    "sources": [
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/444.html",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "CHS PAC 201 para 12 (see Haro Strait). BCGNIS: 'BC-Washington boundary, between Haro Strait and S end Strait of Georgia'."
+  },
+  "landmarks.strait-of-georgia.fact": {
+    "sources": [
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/6050.html",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/53200.html",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "BCGNIS Strait of Georgia: 'Between Vancouver Island and SW British Columbia mainland'. BCGNIS Salish Sea: umbrella name for 'Juan de Fuca Strait + Strait of Georgia + Puget Sound'."
+  },
+  "landmarks.bruce-peak.elevation": {
+    "sources": [
+      {
+        "name": "Natural Resources Canada",
+        "url": "https://geogratis.gc.ca/services/elevation/cdem/altitude?lat=48.76694&lon=-123.5075",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "The Canadian Encyclopedia",
+        "url": "https://www.thecanadianencyclopedia.ca/en/article/saltspring-island",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Config 709 m. NRCan CDEM at the BCGNIS summit point: 707 m. Canadian Encyclopedia: 'more than 700 m'. Kept (2 m difference)."
+  },
+  "landmarks.mount-tuam.elevation": {
+    "sources": [
+      {
+        "name": "Natural Resources Canada",
+        "url": "https://geogratis.gc.ca/services/elevation/cdem/altitude?lat=48.72716&lon=-123.48472",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Config 602 m. NRCan CDEM summit (25 m from BCGNIS point): 606 m. Kept."
+  },
+  "landmarks.mount-maxwell.elevation": {
+    "sources": [
+      {
+        "name": "Natural Resources Canada",
+        "url": "https://geogratis.gc.ca/services/elevation/cdem/altitude?lat=48.80161&lon=-123.51756",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "BC Geographical Names",
+        "url": "https://apps.gov.bc.ca/pub/bcgnws/names/12512.html",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Config 595 m. NRCan CDEM at Baynes Peak (the official name of Mount Maxwell's highest point per BCGNIS): 587 m. Kept (8 m difference, under the 15 m threshold). No official published figure found; BC Parks gives none."
+  },
+  "landmarks.mount-galiano.elevation": {
+    "sources": [
+      {
+        "name": "Galiano Club",
+        "url": "https://galianoclub.org/wp-content/uploads/2025/12/Mt-Galiano-Management-Plan-May-28th-2023-with-appendices.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Natural Resources Canada",
+        "url": "https://geogratis.gc.ca/services/elevation/cdem/altitude?lat=48.86561&lon=-123.36466",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Config 311 m. Galiano Club management plan: 311 m. NRCan CDEM: 317 m. Kept."
+  },
+  "landmarks.mount-parke.elevation": {
+    "sources": [
+      {
+        "name": "Natural Resources Canada",
+        "url": "https://geogratis.gc.ca/services/elevation/cdem/altitude?lat=48.83955&lon=-123.29592",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Mayne_Island",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Config 255 m. NRCan CDEM summit: 265 m; Wikipedia: 255 m. Kept (10 m difference). CHS notes a radar tower on the summit, so the DEM may read slightly high there."
+  },
+  "landmarks.mount-norman.elevation": {
+    "sources": [
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Natural Resources Canada",
+        "url": "https://geogratis.gc.ca/services/elevation/cdem/altitude?lat=48.75944&lon=-123.24028",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Config 244 m. CHS PAC 201 para 370: '244 m high'. NRCan CDEM: 244 m. Kept."
+  },
+  "landmarks.mount-warburton-pike.elevation": {
+    "sources": [
+      {
+        "name": "Natural Resources Canada",
+        "url": "https://geogratis.gc.ca/services/elevation/cdem/altitude?lat=48.77466&lon=-123.17201",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Canadian Hydrographic Service",
+        "url": "https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/chs-shc-PAC201-eng-202608-41338200.pdf",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Gulf Islands Guide",
+        "url": "https://www.gulfislandsguide.com/parks/saturna-island-parks/",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Mount_Warburton_Pike",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Config 401 m - kept. Most authoritative: NRCan CDEM (federal DEM behind the NTS topo maps; BCGNIS publishes no elevations) gives 401 m at the summit, matching Wikipedia/Bivouac 401 m; Gulf Islands Guide (citing Parks Canada literature) gives 397 m. The 497 m figure seen in tourism copy is the TV TOWER: CHS PAC 201 para 70 says the tower near the summit 'has an elevation of 497 m' (para 391: tower about 62 m tall). The map shows 'about 400 m' either way."
+  },
+  "landmarks.mount-newton.elevation": {
+    "sources": [
+      {
+        "name": "Natural Resources Canada",
+        "url": "https://geogratis.gc.ca/services/elevation/cdem/altitude?lat=48.61228&lon=-123.44417",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Config 306 m. NRCan CDEM summit: 306 m. Kept."
+  },
+  "landmarks.grouse-mountain.elevation": {
+    "sources": [
+      {
+        "name": "Natural Resources Canada",
+        "url": "https://geogratis.gc.ca/services/elevation/cdem/altitude?lat=49.38998&lon=-123.08191",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Grouse_Mountain",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Config 1231 m. NRCan CDEM: 1225 m at the BCGNIS point, highest DEM cell nearby 1244 m (566 m away; ski-area grading may affect it). Wikipedia: 1231 m. Kept (within 15 m)."
+  },
+  "landmarks.mount-seymour.elevation": {
+    "sources": [
+      {
+        "name": "Natural Resources Canada",
+        "url": "https://geogratis.gc.ca/services/elevation/cdem/altitude?lat=49.39333&lon=-122.94444",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Mount_Seymour",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Config 1449 m. NRCan CDEM at the BCGNIS point: 1445 m. Wikipedia (Bivouac): 1449 m. Kept."
+  },
+  "landmarks.black-mountain.elevation": {
+    "sources": [
+      {
+        "name": "BC Parks",
+        "url": "https://bcparks.ca/cypress-park/",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "Natural Resources Canada",
+        "url": "https://geogratis.gc.ca/services/elevation/cdem/altitude?lat=49.39417&lon=-123.21834",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Config 1217 m. BC Parks: 'Black Mountain (1217 m)'. NRCan CDEM: 1217 m. Kept."
+  },
+  "landmarks.mount-constitution.elevation": {
+    "sources": [
+      {
+        "name": "USGS",
+        "url": "https://epqs.nationalmap.gov/v1/json?x=-122.8312&y=48.6776&wkid=4326&units=Meters&includeDate=false",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "HistoryLink.org",
+        "url": "https://historylink.org/File/7517",
+        "accessed": "2026-10-17"
+      },
+      {
+        "name": "NOAA National Geodetic Survey",
+        "url": "https://www.ngs.noaa.gov/cgi-bin/ds_mark.prl?PidBox=TR2008",
+        "accessed": "2026-10-17"
+      }
+    ],
+    "checked": false,
+    "note": "Config 734 m. USGS 3DEP point query at the summit: 734.2 m. HistoryLink: 2,409 ft (734 m). NOAA NGS benchmark 'Constitution Reset' disk: 731.1 m NAVD 88 (disk sits just below the top). Kept."
+  }
+}

@@ -36,6 +36,8 @@ export function BridgeHeader({ className }: { className: string }) {
       <div className={styles.brand}>
         <span className={styles.title}>{t('title')}</span>
         <span className={styles.route}>{t('route')}</span>
+        {/* ONC, CHS, GEBCO and Open-Meteo Marine all forbid navigation use: always on screen. */}
+        <span className={styles.advisory}>{t('advisory')}</span>
       </div>
       <div className={styles.clock}>
         <b>{fmtClockSec(time)}</b>

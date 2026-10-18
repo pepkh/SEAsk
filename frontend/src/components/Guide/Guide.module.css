@@ -211,3 +211,11 @@
   color: var(--muted);
   font-weight: 400;
 }
+
+/* Where the facts in an answer come from */
+.source {
+  margin-top: calc(-6px * var(--ui-scale));
+  font-size: calc(13px * var(--ui-scale));
+  font-weight: 400;
+  color: var(--muted);
+}

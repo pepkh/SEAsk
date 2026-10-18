@@ -1,17 +1,17 @@
 import { useState } from 'react'
 import { useContent } from '../../hooks/useContent'
-import { useRouteProfile } from '../../hooks/useRouteProfile'
 import { useLanguage } from '../../i18n/LanguageContext'
 import { formatNumber } from '../../i18n/format'
 import { createMockProvider } from '../../qa/mockProvider'
 import type { QaContext } from '../../qa/types'
-import { binAt } from '../../ship/profile'
+import { depthAt } from '../../ship/slice'
 import { useShip } from '../../ship/ShipProvider'
+import { factSourceText } from '../SourceLine/FactSource'
 import styles from './Guide.module.css'
 
 interface Props {
-  /** The answer to say (the diver says it in its speech bubble) */
-  onAnswer: (text: string) => void
+  /** The answer to say (the diver says it in its speech bubble), and where its facts come from */
+  onAnswer: (text: string, source: string | null) => void
   /** On the ferry screen: start the guided tour */
   onTour?: () => void
   onClose: () => void
@@ -23,14 +23,14 @@ interface Props {
  */
 export function AskGuide({ onAnswer, onTour, onClose }: Props) {
   const content = useContent('guide-qa')
-  const { lang } = useLanguage()
+  const { t, lang } = useLanguage()
   const ship = useShip()
-  const profile = useRouteProfile()
   const [provider] = useState(() => createMockProvider(''))
   if (!content) return null
 
   const context = (): QaContext => {
-    const depth = ship ? binAt(profile, ship.sailing.fraction).depth_m : null
+    // The same depth as the dive bubble and the Dive screen (GEBCO under the route, smoothed)
+    const depth = ship ? depthAt(ship.sailing.fraction) : null
     const sal = ship?.row.salinity ?? null
     const temp = ship?.row.tsg_temperature ?? null
     return {
@@ -47,7 +47,7 @@ export function AskGuide({ onAnswer, onTour, onClose }: Props) {
     const item = content.items.find((q) => q.id === id)
     if (!item) return
     const answer = await provider.ask(item, content.items, context())
-    onAnswer(answer.text)
+    onAnswer(answer.text, factSourceText(`guide.${item.id}`, t))
   }
 
   return (

@@ -3,7 +3,7 @@
     "button": "EN · FR",
     "label": "Changer de langue : anglais ou français"
   },
-  "sampleData": "DONNÉES D'EXEMPLE",
+  "sampleData": "ENREGISTRÉ LE {date}",
   "compass": "N,NE,E,SE,S,SO,O,NO",
   "photo": "[photo : {name}]",
   "waypoint": {
@@ -31,8 +31,8 @@
     "trackMapLabel": "Carte du trajet colorée selon {reading}",
     "happening": "Ce qui se passe ici",
     "aboutData": "À propos des données",
-    "aboutDataText": "Des instruments à bord prélèvent l'eau de mer par une prise dans la coque pendant la traversée. Les mesures viennent d'Ocean Networks Canada et se mettent à jour toutes les quelques secondes.",
-    "qcNote": "CQ = part des mesures qui passent le contrôle de qualité",
+    "aboutDataText": "Le traversier transporte des instruments d'Ocean Networks Canada qui prélèvent l'eau de mer par une prise dans la coque pendant la traversée. Les mesures en direct arrivent chaque seconde; sans connexion, la borne rejoue les vraies mesures du traversier du {date}.",
+    "qcNote": "CQ = part des mesures du traversier qui ont passé les contrôles de qualité d'Ocean Networks Canada le {date} (capteurs marins : pendant que l'eau de mer y circulait)",
     "comfort": {
       "calm": "Navigation en douceur",
       "gentle": "Léger roulis",
@@ -40,7 +40,7 @@
     },
     "profile": {
       "title": "{reading} le long du trajet",
-      "subtitle": "Valeurs habituelles de 8 traversées le 17 août 2026",
+      "subtitle": "Valeurs habituelles des traversées du {date} (Ocean Networks Canada). Profondeur : GEBCO 2026",
       "now": "Maintenant",
       "usual": "D'habitude",
       "label": "Graphique : {reading} le long du trajet de Swartz Bay à Tsawwassen, avec la position du navire",
@@ -65,7 +65,8 @@
         "water": "Plan d'eau"
       },
       "height": "environ {m} m d'altitude"
-    }
+    },
+    "sources": "Sources des données"
   },
   "seaLife": {
     "featured": "Animal de la traversée",
@@ -167,9 +168,7 @@
       "waningGibbous": "Gibbeuse décroissante",
       "lastQuarter": "Dernier quartier",
       "waningCrescent": "Dernier croissant"
-    },
-    "creditWeather": "Météo : OpenWeather",
-    "creditWaves": "Vagues : Open-Meteo"
+    }
   },
   "quiz": {
     "title": "Quiz océan",
@@ -256,7 +255,8 @@
       "halfway": "À mi-chemin!",
       "almostThere": "Presque arrivés!"
     },
-    "tideLabel": "Niveau de la marée"
+    "tideLabel": "Niveau de la marée",
+    "recorded": "Enregistré · {date}"
   },
   "bubbles": {
     "routeMap": "Carte du trajet",
@@ -354,5 +354,10 @@
     },
     "thisMonth": "Ce mois-ci",
     "draft": "BROUILLON"
+  },
+  "credits": {
+    "recorded": "enregistré le {date}",
+    "source": "Source : {name}",
+    "sources": "Sources : {names}"
   }
 }

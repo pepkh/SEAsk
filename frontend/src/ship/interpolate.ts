@@ -5,10 +5,12 @@ export function interpolateRow(a: ShipRow, b: ShipRow, t: number, time: Date): S
   const lerp = (x: number | null, y: number | null) => (x === null || y === null ? x : x + (y - x) * t)
   // 350° → 10° turns through 0°.
   const angle = (x: number, y: number) => (x + (((((y - x) % 360) + 540) % 360) - 180) * t + 360) % 360
+  const recorded = (x?: string, y?: string) => (x && y ? new Date(Date.parse(x) + (Date.parse(y) - Date.parse(x)) * t).toISOString() : x)
   return {
     ...a,
     time: time.toISOString(),
     time_local: time.toISOString(),
+    recorded_time: recorded(a.recorded_time, b.recorded_time),
     latitude: lerp(a.latitude, b.latitude)!,
     longitude: lerp(a.longitude, b.longitude)!,
     air_temperature: lerp(a.air_temperature, b.air_temperature),

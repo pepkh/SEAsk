@@ -1,5 +1,6 @@
 import { useState, type KeyboardEvent, type PointerEvent } from 'react'
-import { formatNumber } from '../../i18n/format'
+import { RECORDED_DAY } from '../../api/shipFeed'
+import { formatDay, formatNumber } from '../../i18n/format'
 import { useLanguage } from '../../i18n/LanguageContext'
 import { PROFILE_VALUE } from '../../ship/profile'
 import { ROUTE } from '../../ship/sailing'
@@ -110,7 +111,7 @@ export function RouteProfileCard({ profile, track, digits, row, sailing, zones, 
         <div className={styles.titles}>
           <span className={styles.title}>{t('journey.profile.title', { reading: track.label })}</span>
           <span className={styles.subtitle}>
-            {west.name} – {east.name} · {t('journey.profile.subtitle')}
+            {west.name} – {east.name} · {t('journey.profile.subtitle', { date: formatDay(RECORDED_DAY, lang) })}
           </span>
         </div>
         <dl className={styles.stats}>

@@ -1,4 +1,6 @@
-import { useClock } from '../../../hooks/useClock'
+import { SourceLine } from '../../../components/SourceLine/SourceLine'
+import type { SourceId } from '../../../config/sources'
+import { useDataTime } from '../../../hooks/useDataTime'
 import { compassPoint, formatNumber, timeParts, todayAt } from '../../../i18n/format'
 import { useLanguage } from '../../../i18n/LanguageContext'
 import type { Weather } from '../../../types/weather'
@@ -7,18 +9,18 @@ import { moonPhase } from '../../../weather/moon'
 import { WeatherIcon } from './WeatherIcon'
 import styles from './WeatherPanel.module.css'
 
-/** "Outside right now" card and the four weather tiles. */
+/** "Outside right now" card and the four weather tiles, with the credit of each source. */
 export function WeatherPanel({ weather }: { weather: Weather }) {
   const { t, lang } = useLanguage()
-  const now = useClock()
+  // The moon of the same night as the sunset shown (the recorded day's, without live weather)
+  const now = useDataTime(weather.sources.weather)
   const sunset = timeParts(todayAt(weather.sunset), lang)
   const windDir = compassPoint(weather.wind.fromDeg, t('compass'))
   const sky = skyOf(weather.condition.id)
-  // Data credits for the live parts
-  const credits = [
-    weather.sources.weather === 'live' && t('weather.creditWeather'),
-    weather.sources.waves === 'live' && t('weather.creditWaves'),
-  ].filter(Boolean)
+  // OpenWeatherMap live, else the recorded day's Open-Meteo model; waves are always Open-Meteo Marine (Copernicus Marine models).
+  const sources: SourceId[] = [weather.sources.weather === 'live' ? 'owm' : 'openMeteo']
+  if (weather.waves) sources.push('openMeteo', 'copernicusMarine')
+  const recorded = weather.sources.weather === 'sample' || (weather.waves !== null && weather.sources.waves === 'sample')
 
   return (
     <div className={styles.panel}>
@@ -51,15 +53,15 @@ export function WeatherPanel({ weather }: { weather: Weather }) {
             <path d="M2 26 Q12 12 22 26 T42 26 T62 26 T82 26" fill="none" style={{ stroke: 'var(--accent)' }} strokeWidth="4" strokeLinecap="round" />
           </svg>
           <span className={styles.value}>
-            {formatNumber(weather.waves.m, 1, lang)} <span>m · {t(`weather.waves.${waveSizeOf(weather.waves.m)}`)}</span>
+            {formatNumber(weather.waves?.m, 1, lang)} {weather.waves && <span>m · {t(`weather.waves.${waveSizeOf(weather.waves.m)}`)}</span>}
           </span>
         </div>
         <div className={styles.tile}>
           <span className={styles.label}>{t('tides.visibility')}</span>
           <span className={styles.value}>
-            {Math.round(weather.visibilityKm)} <span>km</span>
+            {formatNumber(weather.visibilityKm, 0, lang)} <span>km</span>
           </span>
-          <span className={styles.note}>{t(`weather.visibility.${visibilityOf(weather.visibilityKm)}`)}</span>
+          {weather.visibilityKm !== null && <span className={styles.note}>{t(`weather.visibility.${visibilityOf(weather.visibilityKm)}`)}</span>}
         </div>
         <div className={styles.tile}>
           <span className={styles.label}>{t('tides.sunset')}</span>
@@ -69,7 +71,7 @@ export function WeatherPanel({ weather }: { weather: Weather }) {
           <span className={styles.note}>{t('tides.moonTonight', { phase: t(`weather.moon.${moonPhase(now)}`) })}</span>
         </div>
       </div>
-      {credits.length > 0 && <span className={styles.credits}>{credits.join(' · ')}</span>}
+      <SourceLine ids={sources} full recorded={recorded} className={styles.credits} />
     </div>
   )
 }

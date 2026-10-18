@@ -1,0 +1,16 @@
+{
+  "date": "2026-08-17",
+  "source": "Ocean Networks Canada QC flags, TWSB; sea sensors while seawater flows to them",
+  "items": {
+    "tsg_temperature": 83.0,
+    "salinity": 83.0,
+    "conductivity": 83.0,
+    "sound_speed": 83.0,
+    "oxygen_saturation": 95.1,
+    "chlorophyll": 95.1,
+    "turbidity": 95.1,
+    "cdom_fluorescence": 95.1,
+    "air_temperature": 100.0,
+    "barometric_pressure": 100.0
+  }
+}

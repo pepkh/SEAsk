@@ -3,7 +3,7 @@
     "button": "EN · FR",
     "label": "Change language: English or French"
   },
-  "sampleData": "SAMPLE DATA",
+  "sampleData": "RECORDED {date}",
   "compass": "N,NE,E,SE,S,SW,W,NW",
   "photo": "[photo: {name}]",
   "waypoint": {
@@ -31,8 +31,8 @@
     "trackMapLabel": "Route map with the track coloured by {reading}",
     "happening": "What's happening here",
     "aboutData": "About the data",
-    "aboutDataText": "Instruments on board sample seawater through an intake in the hull as the ferry sails. Readings come from Ocean Networks Canada and refresh every few seconds.",
-    "qcNote": "QC = share of readings passing quality checks",
+    "aboutDataText": "The ferry carries Ocean Networks Canada instruments that sample seawater through an intake in the hull as it sails. Live readings arrive every second; without a connection the kiosk replays the ferry's real readings from {date}.",
+    "qcNote": "QC = share of the ferry's readings that passed Ocean Networks Canada's quality checks on {date} (sea sensors: while seawater flowed to them)",
     "comfort": {
       "calm": "Smooth sailing",
       "gentle": "Gently rocking",
@@ -40,7 +40,7 @@
     },
     "profile": {
       "title": "{reading} along the route",
-      "subtitle": "Usual values from 8 crossings on 17 Aug 2026",
+      "subtitle": "Usual values from the ferry's crossings on {date} (Ocean Networks Canada). Depth: GEBCO 2026",
       "now": "Now",
       "usual": "Usually",
       "label": "Chart of {reading} along the route from Swartz Bay to Tsawwassen, with the ship's position",
@@ -65,7 +65,8 @@
         "water": "Water"
       },
       "height": "about {m} m high"
-    }
+    },
+    "sources": "Data sources"
   },
   "seaLife": {
     "featured": "Animal of the crossing",
@@ -167,9 +168,7 @@
       "waningGibbous": "Waning gibbous",
       "lastQuarter": "Last quarter",
       "waningCrescent": "Waning crescent"
-    },
-    "creditWeather": "Weather: OpenWeather",
-    "creditWaves": "Waves: Open-Meteo"
+    }
   },
   "quiz": {
     "title": "Ocean quiz",
@@ -256,7 +255,8 @@
       "halfway": "Halfway there!",
       "almostThere": "Almost there!"
     },
-    "tideLabel": "Tide level"
+    "tideLabel": "Tide level",
+    "recorded": "Recorded · {date}"
   },
   "bubbles": {
     "routeMap": "Route map",
@@ -354,5 +354,10 @@
     },
     "thisMonth": "This month",
     "draft": "DRAFT"
+  },
+  "credits": {
+    "recorded": "recorded {date}",
+    "source": "Source: {name}",
+    "sources": "Sources: {names}"
   }
 }

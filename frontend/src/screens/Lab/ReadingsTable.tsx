@@ -1,13 +1,17 @@
 import { formatNumber } from '../../i18n/format'
+import qcJson from '../../mocks/common/qc.json'
 import { useLanguage } from '../../i18n/LanguageContext'
 import { recentRows } from '../../ship/recent'
 import type { ReadingsContent } from '../../types/content'
-import type { ShipRow } from '../../types/feed'
+import type { ReadingKey, ShipRow } from '../../types/feed'
 import type { Sailing } from '../../types/sailing'
 import styles from './ReadingsTable.module.css'
 import { Sparkline } from './Sparkline'
 
 const SPARK_MS = 15 * 60_000
+
+/** ONC QC pass rate (%) per reading on the recorded day (backend/scripts/export_sample_data.py). */
+const QC: { date: string; items: Partial<Record<ReadingKey, number>> } = qcJson
 
 interface Props {
   row: ShipRow
@@ -31,7 +35,7 @@ export function ReadingsTable({ row, history, sailing, readings }: Props) {
         <span className={styles.right}>{t('journey.table.qc')}</span>
       </div>
       {resting && <p className={styles.note}>{t('journey.table.dockedNote')}</p>}
-      {readings.items.map(({ key, name, unit, digits, qc }) => (
+      {readings.items.map(({ key, name, unit, digits }) => (
         <div key={key} className={`${styles.grid} ${styles.row}`}>
           <span className={styles.name}>{name}</span>
           <span className={styles.value}>
@@ -39,7 +43,7 @@ export function ReadingsTable({ row, history, sailing, readings }: Props) {
             <span> {unit}</span>
           </span>
           <Sparkline values={recent.map((r) => r[key])} />
-          <span className={styles.qc}>{qc}%</span>
+          <span className={styles.qc}>{formatNumber(QC.items[key], 0, lang)}%</span>
         </div>
       ))}
     </div>

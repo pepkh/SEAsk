@@ -1,5 +1,8 @@
 import { KnowledgeIcon } from '../../components/KnowledgeIcon/KnowledgeIcon'
 import { Photo } from '../../components/Photo/Photo'
+import { photoCredit } from '../../components/Photo/photos'
+import { SourceLine } from '../../components/SourceLine/SourceLine'
+import type { SourceId } from '../../config/sources'
 import { useClock } from '../../hooks/useClock'
 import { useLanguage, type TKey } from '../../i18n/LanguageContext'
 import { comfortOf } from '../../ship/comfort'
@@ -19,19 +22,22 @@ export function OutsideSlot() {
   const { t } = useLanguage()
   const weather = useWeather()
   const tides = useTides()
-  const now = useClock()
-  const minute = now.getHours() * 60 + now.getMinutes()
-  const sky = skyOf(weather.condition.id)
+  const minute = tides ? tides.at.getHours() * 60 + tides.at.getMinutes() : 0
   const tide = tides && describeTide(tides.tides.heights, minute)
   const fill = tides ? tideFill(tides.tides.heights, minute) : 0.5
   const rising = tide ? !['falling', 'low', 'almostLow'].includes(tide.headline) : true
+  const sources: SourceId[] = []
+  if (tides) sources.push('dfo')
+  if (weather) sources.push(weather.sources.weather === 'live' ? 'owm' : 'openMeteo')
+  const recorded = tides?.source === 'sample' || weather?.sources.weather === 'sample'
 
   return (
     <div className={styles.slot}>
-      <WeatherIcon sky={sky} night={weather.condition.icon.endsWith('n')} className={styles.icon} />
+      {weather && <WeatherIcon sky={skyOf(weather.condition.id)} night={weather.condition.icon.endsWith('n')} className={styles.icon} />}
       <div className={styles.text}>
-        <b>{t('now.outside', { temp: Math.round(weather.tempC), wind: t(`now.wind.${windWord(weather.wind.kn)}`) })}</b>
+        {weather && <b>{t('now.outside', { temp: Math.round(weather.tempC), wind: t(`now.wind.${windWord(weather.wind.kn)}`) })}</b>}
         {tide && <span>{t(`tides.state.${tide.headline}`)}</span>}
+        {sources.length > 0 && <SourceLine ids={sources} recorded={recorded} />}
       </div>
       <svg viewBox="0 0 48 48" className={styles.gauge} role="img" aria-label={t('now.tideLabel')}>
         <defs>
@@ -107,10 +113,12 @@ export function LookoutSlot({ zone }: { zone: ZoneText }) {
   const { t } = useLanguage()
   return (
     <div className={styles.slot}>
+      {/* The round photo is too small for its credit: the credit goes under the text (its licence asks for it). */}
       <Photo id={zone.lookout.photoId} alt={zone.lookout.photo} placeholder={t('photo', { name: zone.lookout.photo })} className={styles.photo} showCredit={false} />
       <div className={styles.text}>
         <b>{zone.lookout.title}</b>
         <span>{zone.lookout.text}</span>
+        {photoCredit(zone.lookout.photoId) && <small className={styles.credit}>{photoCredit(zone.lookout.photoId)}</small>}
       </div>
     </div>
   )

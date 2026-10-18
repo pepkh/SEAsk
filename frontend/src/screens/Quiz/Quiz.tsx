@@ -49,7 +49,7 @@ export function Quiz() {
           <QuestionCard question={q} index={qi} total={total} picked={picked} onPick={pick} />
           <div className={styles.side}>
             <ScoreCard score={score} total={total} />
-            <AnswerPanel question={q} picked={picked} isLast={qi === total - 1} onNext={next} />
+            <AnswerPanel question={q} index={qi} picked={picked} isLast={qi === total - 1} onNext={next} />
           </div>
         </div>
       )}

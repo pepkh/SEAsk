@@ -16,7 +16,7 @@
       "id": "depth",
       "question": "How deep is it here?",
       "answer": "Right under us the sea is about {depth} metres deep. That's about {houses} houses stacked on top of each other!",
-      "fallback": "In the middle of the Strait the sea is more than 200 metres deep. That's taller than a 60-storey tower!"
+      "fallback": "In the middle of the Strait, the sea under the ferry is up to about 200 metres deep. That's about as tall as a 60-storey tower!"
     },
     {
       "id": "tide",
@@ -31,13 +31,13 @@
     {
       "id": "onc",
       "question": "What do the sensors on this ship measure?",
-      "answer": "Ocean Networks Canada sensors under the ferry check the sea every second: how warm it is, how salty, how much oxygen, how many tiny plants and how cloudy. Right now the water is {waterTemp} °C!",
-      "fallback": "Ocean Networks Canada sensors under the ferry check the sea every second: how warm it is, how salty, how much oxygen, how many tiny plants and how cloudy."
+      "answer": "Ocean Networks Canada sensors on the ferry test sea water pumped in from under the ship, about once a second: how warm it is, how salty, how much oxygen, how many tiny plants and how cloudy. Right now the water is {waterTemp} °C!",
+      "fallback": "Ocean Networks Canada sensors on the ferry test sea water pumped in from under the ship, about once a second: how warm it is, how salty, how much oxygen, how many tiny plants and how cloudy."
     },
     {
       "id": "life",
       "question": "What lives under the ferry?",
-      "answer": "Salmon, orcas, seals, jellyfish, crabs and big forests of kelp! And deep down there are glass sponge reefs older than the pyramids."
+      "answer": "Salmon, orcas, seals, jellyfish, crabs and big kelp forests near the shore! Deep down there are glass sponge reefs too, and some reefs in BC are older than the pyramids."
     }
   ]
 }

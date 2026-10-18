@@ -154,7 +154,7 @@ async def day(settings: Settings, d: date) -> dict[str, Any]:
         **axis.header(),
         "stations": stations,
         "current": current,
-        "credit": "Fisheries and Oceans Canada (IWLS)",
+        "credit": "Fisheries and Oceans Canada, Canadian Hydrographic Service (IWLS predictions)",
     }
 
 

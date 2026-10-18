@@ -251,10 +251,10 @@ export function Guide() {
       <div ref={speech} className={styles.speech} aria-live="polite">
         {asking && !line && (
           <AskGuide
-            onAnswer={(text) => {
+            onAnswer={(text, source) => {
               setAsking(false)
               react('happy')
-              say(text, 10_000)
+              say(text, 10_000, source ?? undefined)
             }}
             onTour={
               spot === 'hub'
@@ -270,6 +270,7 @@ export function Guide() {
         {line && (
           <div key={line.id} className={styles.say}>
             <span>{line.text}</span>
+            {line.source && <small className={styles.source}>{line.source}</small>}
             {tour && (
               <span className={styles.tourButtons}>
                 <button type="button" className={styles.next} onClick={nextTour}>

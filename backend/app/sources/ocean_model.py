@@ -73,7 +73,10 @@ HALF_HOUR_S = 1800  # the model's hourly means are stamped at :30
 FILL_ABOVE = 1e10  # ERDDAP's _FillValue is 1e20
 
 MAP_PATH = Path(__file__).with_name("ssc_map.json")
-CREDIT = "SalishSeaCast (UBC EOAS); global currents: Open-Meteo Marine (CC BY 4.0)"
+CREDIT = (
+    "SalishSeaCast (UBC EOAS); global currents: Mercator Ocean via Open-Meteo Marine (CC BY 4.0), "
+    "generated using E.U. Copernicus Marine Service information"
+)
 SSC_LABEL = "SalishSeaCast"
 SSC_DEPTH = "surface 0.5 m"
 GLOBAL_LABEL = "Mercator global (Open-Meteo)"

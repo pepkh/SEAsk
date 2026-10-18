@@ -121,3 +121,25 @@
   font-size: 13px;
   color: var(--link-on-dark);
 }
+
+.sources {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--body-on-dark);
+}
+
+.sources span {
+  color: var(--muted-on-dark);
+}
+
+.notice {
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--muted-on-dark);
+}

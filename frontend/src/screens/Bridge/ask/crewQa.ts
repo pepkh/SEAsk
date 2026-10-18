@@ -1,6 +1,7 @@
 import type { DayData } from '../../../bridge/model'
 import type { Snapshot } from '../../../bridge/snapshot'
 import { fmtClock, fmtDuration } from '../../../bridge/time'
+import { short } from '../../../config/sources'
 import type { QaContext, QaItem } from '../../../qa/types'
 import { compass, deg, num, ZONE_NAMES } from '../strings'
 
@@ -15,7 +16,7 @@ export const CREW_QA: QaItem[] = [
     question: 'What is Active Pass doing, and when is slack?',
     answer: 'Active Pass is running {apDir} at {apKn} kn, setting {apToward}. Next slack {apSlack} ({apSlackIn}). {apNextMax}',
     fallback: 'There is no Active Pass current prediction for this time.',
-    sources: ['DFO IWLS station 07527 · {at}'],
+    sources: [`${short('dfo')} IWLS station 07527 (predicted) · {at}`],
     keywords: ['current', 'slack', 'tide', 'flood', 'ebb', 'pass'],
   },
   {
@@ -23,7 +24,7 @@ export const CREW_QA: QaItem[] = [
     question: 'How does the water here compare to usual?',
     answer: 'Near {zone}: sea temperature {sstNow} °C against a usual {sstUsual} °C, salinity {salNow} psu against {salUsual} psu ({salWord}), oxygen saturation {o2Now} % against {o2Usual} %.',
     fallback: 'The seawater sensors have no reading now: the pump is off at the berth, or the TSG is flagged by ONC QC.',
-    sources: ['ONC TWSB · {at}', 'usual: {usualFrom}'],
+    sources: [`${short('onc')} TWSB · {at}`, 'usual: {usualFrom}'],
     keywords: ['water', 'temperature', 'salinity', 'oxygen', 'usual', 'normal', 'compare'],
   },
   {
@@ -31,7 +32,7 @@ export const CREW_QA: QaItem[] = [
     question: 'Which crossing today was the roughest?',
     answer: 'Crossing {roughId} ({roughLeg}, departed {roughStart}) rolled the most: σ {roughStd}°, up to {roughMax}°. The calmest was crossing {calmId} at σ {calmStd}°.',
     fallback: 'The crossing statistics are not loaded.',
-    sources: ['ONC TWSB roll · crossing stats'],
+    sources: [`${short('onc')} TWSB roll · crossing stats`],
     keywords: ['rough', 'roll', 'calm', 'motion', 'crossing', 'worst'],
   },
   {
@@ -39,7 +40,7 @@ export const CREW_QA: QaItem[] = [
     question: 'Is the pressure falling?',
     answer: 'Pressure is {baro} hPa, {baroTrend} ({baroDelta} hPa in 3 h).',
     fallback: 'Pressure is {baro} hPa. The trend needs three hours of readings.',
-    sources: ['ONC TWSB barometer · {at}'],
+    sources: [`${short('onc')} TWSB barometer · {at}`],
     keywords: ['pressure', 'barometer', 'baro', 'weather', 'front'],
   },
   {
@@ -47,7 +48,7 @@ export const CREW_QA: QaItem[] = [
     question: 'Any traffic to watch?',
     answer: '{traffic}',
     fallback: 'No AIS traffic is loaded for this time.',
-    sources: ['ONC Iona AIS · {at}'],
+    sources: [`${short('onc')} Iona AIS · {at}`],
     keywords: ['traffic', 'vessel', 'ship', 'cpa', 'collision', 'ais', 'boat'],
   },
   {
@@ -55,7 +56,7 @@ export const CREW_QA: QaItem[] = [
     question: 'What is the wind doing?',
     answer: 'Wind at the ship is {windKn} kn from {windFrom}, gusting {gustKn} kn ({windSource}). {nearestNote}',
     fallback: 'No wind data for this time.',
-    sources: ['Environment Canada stations · {at}', 'Open-Meteo model'],
+    sources: [`${short('eccc')} stations · {at}`, `${short('openMeteo')} model`],
     keywords: ['wind', 'gust', 'breeze', 'blow'],
   },
   {
@@ -63,21 +64,21 @@ export const CREW_QA: QaItem[] = [
     question: 'What is the water like on the seabed?',
     answer: 'At SCVIP (300 m) the water is {scvipT} °C and {scvipSal} psu, with O₂ saturation {scvipO2} %. At SEVIP (165 m) it is {sevipT} °C, O₂ {sevipO2} %. Deep water stays cold and low in oxygen all year.',
     fallback: 'The ONC observatory data is not loaded.',
-    sources: ['ONC SCVIP, SEVIP · {at}'],
+    sources: [`${short('onc')} SCVIP, SEVIP · {at}`],
     keywords: ['deep', 'seabed', 'bottom', 'venus', 'observatory', 'node'],
   },
   {
     id: 'plume',
     question: 'Why does salinity drop toward Tsawwassen?',
     answer: 'That is the Fraser River plume. Fresh, warmer river water spreads over the Strait of Georgia from the river mouth just north of Tsawwassen. On this day salinity fell from about 29 psu near Swartz Bay to about 26 psu near Tsawwassen, and the sea warmed from 13–14 °C to almost 17 °C.',
-    sources: ['ONC TWSB, 8 crossings of 2026-08-17'],
+    sources: [`${short('onc')} TWSB, 8 crossings of 2026-08-17`],
     keywords: ['fraser', 'plume', 'river', 'fresh', 'salinity', 'brown'],
   },
   {
     id: 'active-pass-cold',
     question: 'Why is Active Pass colder and lower in oxygen?',
     answer: 'Strong tidal currents in Active Pass mix deep water up to the surface. Deep water is colder, saltier and lower in oxygen, so the surface there reads about 12.6 °C and 29.6 psu, with oxygen saturation down to about 70 %.',
-    sources: ['ONC TWSB, 2026-08-17'],
+    sources: [`${short('onc')} TWSB, 2026-08-17`],
     keywords: ['active', 'pass', 'cold', 'mixing', 'oxygen'],
   },
 ]
@@ -108,7 +109,7 @@ export function crewContext(snap: Snapshot, day: DayData): QaContext {
     v.salWord = Number.isFinite(d) ? (Math.abs(d) < 0.3 ? 'about usual' : d < 0 ? 'fresher than usual' : 'saltier than usual') : null
     v.o2Now = ok(s.water.o2Sat.now, 0)
     v.o2Usual = ok(s.water.o2Sat.usual, 0)
-    v.usualFrom = s.water.sal.usualFrom === 'climatology' ? 'ONC Augusts' : 'today’s crossings'
+    v.usualFrom = s.water.sal.usualFrom === 'climatology' ? `${short('onc')} TWSB Augusts` : 'today’s crossings'
     v.baro = ok(s.baroHpa)
     v.baroTrend = s.baro?.label ?? null
     v.baroDelta = s.baro ? `${s.baro.delta > 0 ? '+' : ''}${num(s.baro.delta)}` : null

@@ -53,7 +53,7 @@ from app.times import LOCAL_TZ, iso_utc, parse_iso, utc_now
 log = logging.getLogger(__name__)
 
 API = "https://api.weather.gc.ca/collections"
-CREDIT = "Environment and Climate Change Canada"
+CREDIT = "Data Source: Environment and Climate Change Canada (ECCC Data Services End-use Licence)"
 TIMEOUT_S = 45
 ECCC_PARALLEL = 3
 PAGE = 10000  # features per request (the API accepts more; a replayed day is ~1500 rows)

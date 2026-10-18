@@ -12,10 +12,10 @@ export interface TourStep {
 interface GuideValue {
   spot: GuideSpot
   setSpot: (spot: GuideSpot) => void
-  /** What the diver is saying, or null */
-  line: { text: string; id: number } | null
-  /** Say a line for `ms` (a new line replaces the old one) */
-  say: (text: string, ms?: number) => void
+  /** What the diver is saying (and where a fact in it comes from), or null */
+  line: { text: string; source?: string; id: number } | null
+  /** Say a line for `ms` (a new line replaces the old one); `source` is shown small under it */
+  say: (text: string, ms?: number, source?: string) => void
   hush: () => void
   /** A whole-body reaction: a happy hop or a "no" wobble */
   reaction: { kind: 'happy' | 'no'; id: number } | null
@@ -48,9 +48,9 @@ export function GuideProvider({ children }: { children: ReactNode }) {
     setLine(null)
   }, [])
 
-  const say = useCallback((text: string, ms = LINE_MS) => {
+  const say = useCallback((text: string, ms = LINE_MS, source?: string) => {
     window.clearTimeout(lineTimer.current)
-    setLine({ text, id: ++counter.current })
+    setLine({ text, source, id: ++counter.current })
     lineTimer.current = window.setTimeout(() => setLine(null), ms)
   }, [])
 

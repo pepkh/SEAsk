@@ -1,22 +1,25 @@
 import { useBridgeData } from '../../../bridge/BridgeProvider'
 import type { PartName, PartStatus } from '../../../bridge/model'
+import { partShort, sourcesInUse } from '../../../bridge/sources'
+import { SOURCES, type Source } from '../../../config/sources'
 import { t } from '../strings'
 import styles from './BridgeHeader.module.css'
 
+/** What each dataset is; its providers' names are added from src/bridge/sources.ts. */
 const LABELS: Record<PartName, string> = {
-  ship: 'Own ship (ONC TWSB)',
+  ship: 'Own ship, TWSB',
   stats: 'Crossing stats',
   profile: 'Route profile (today)',
-  climatology: 'August climatology (ONC)',
-  tides: 'Tides and currents (DFO)',
-  weather: 'Wind and weather, model (Open-Meteo)',
-  windobs: 'Wind, measured (Environment Canada)',
-  stations: 'ONC observatories and TWDP',
-  currents: 'Surface currents, measured (ONC CODAR)',
-  ocean: 'Surface currents, model (SalishSeaCast, global)',
-  profiles: 'Current profiles (ONC ADCP)',
-  traffic: 'Vessel traffic (ONC AIS)',
-  sources: 'ONC inventory',
+  climatology: 'August climatology',
+  tides: 'Tides and currents, predicted',
+  weather: 'Wind and weather, model',
+  windobs: 'Wind, measured',
+  stations: 'Observatories and TWDP',
+  currents: 'Surface currents, measured (CODAR)',
+  ocean: 'Surface currents, model',
+  profiles: 'Current profiles (ADCP)',
+  traffic: 'Vessel traffic (AIS)',
+  sources: 'Inventory',
 }
 
 const SOURCE_NAMES = { api: 'backend', snapshot: 'offline copy', bundled: 'bundled', live: 'live', sample: 'sample feed (same as the kiosk)' }
@@ -27,7 +30,7 @@ function describe(s: PartStatus): string {
   return SOURCE_NAMES[s.source] + (s.ageS !== undefined ? ` · ${Math.round(s.ageS)} s old` : '')
 }
 
-/** Data health: one dot per dataset; open for the details and every ONC source of the day. */
+/** Data health: one dot per dataset; open for the details, every ONC source of the day and the credits. */
 export function DataStatus() {
   const { status, day } = useBridgeData()
   const entries = Object.entries(status) as [PartName, PartStatus][]
@@ -51,7 +54,9 @@ export function DataStatus() {
           {entries.map(([name, s]) => (
             <li key={name} data-state={s.state}>
               <StateIcon state={s.state} />
-              <span>{LABELS[name]}</span>
+              <span>
+                {LABELS[name]} ({partShort(name)})
+              </span>
               <em>{describe(s)}</em>
             </li>
           ))}
@@ -80,6 +85,19 @@ export function DataStatus() {
             )}
           </>
         )}
+        <h3>{t('credits')}</h3>
+        <ul className={styles.sourceList}>
+          {sourcesInUse(status, day).map((id) => {
+            const source: Source = SOURCES[id]
+            return (
+              <li key={id}>
+                {source.credit.en}
+                {source.doi && <em> · doi:{source.doi.join(', doi:')}</em>}
+                {source.notice && <small className={styles.notice}>{source.notice.en}</small>}
+              </li>
+            )
+          })}
+        </ul>
       </div>
     </details>
   )

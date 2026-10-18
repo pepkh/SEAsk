@@ -27,6 +27,11 @@
   font-size: 14px;
 }
 
+.advisory {
+  color: var(--b-warning);
+  font-size: 13px;
+}
+
 .clock {
   display: flex;
   align-items: baseline;
@@ -230,6 +235,15 @@
   font-style: normal;
   color: var(--b-muted);
   font-size: 12px;
+}
+
+/* A licence's required notice, under its credit */
+.notice {
+  display: block;
+  margin-top: 2px;
+  color: var(--b-muted);
+  font-size: 11px;
+  line-height: 1.4;
 }
 
 .sourceList li {

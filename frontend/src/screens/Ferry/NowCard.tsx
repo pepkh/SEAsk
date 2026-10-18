@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 import { useContent } from '../../hooks/useContent'
 import { Card } from '../../components/Card/Card'
 import { useAgo } from '../../components/LiveBar/LiveBar'
-import { SampleChip } from '../../components/SampleChip/SampleChip'
-import { useClock } from '../../hooks/useClock'
+import { RECORDED_DAY } from '../../api/shipFeed'
+import { useDataTime } from '../../hooks/useDataTime'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
-import { formatTime } from '../../i18n/format'
+import { formatDay, formatTime } from '../../i18n/format'
 import { nearestIsland } from '../../map/findLandmark'
 import { useLanguage } from '../../i18n/LanguageContext'
 import { useTimeShift, type ShipState } from '../../ship/ShipProvider'
@@ -27,7 +27,8 @@ const ROUND = 5
  */
 export function NowCard({ ship, zone, className = '' }: { ship: ShipState; zone: ZoneText; className?: string }) {
   const { t, lang } = useLanguage()
-  const now = useClock()
+  // On the recorded day, the time the readings were taken
+  const now = useDataTime(ship.source)
   const reduced = useReducedMotion()
   const landmarks = useContent('landmarks')
   /** Facts shown so far; the slot is tick % count, and each round shows the island's next specialty */
@@ -62,6 +63,8 @@ export function NowCard({ ship, zone, className = '' }: { ship: ShipState; zone:
         <div className={styles.top}>
           {rewound ? (
             <span className={styles.ago}>⟲ {ago}</span>
+          ) : ship.source === 'sample' ? (
+            <span className={styles.recorded}>{t('now.recorded', { date: formatDay(RECORDED_DAY, lang) })}</span>
           ) : (
             <span className={styles.live}>
               <i />
@@ -69,7 +72,6 @@ export function NowCard({ ship, zone, className = '' }: { ship: ShipState; zone:
             </span>
           )}
           <span className={styles.clock}>{formatTime(now, lang)}</span>
-          <SampleChip variant="outline" show={ship.source === 'sample'} />
         </div>
         <div className={styles.where}>
           <small>{t('now.passing')}</small>

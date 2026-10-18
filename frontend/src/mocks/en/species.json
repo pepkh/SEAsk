@@ -10,7 +10,7 @@
     { "id": "harbour-seal", "name": "Harbour seal", "habitat": "shore", "group": "mammals", "photo": "harbour seal", "photoId": "harbour-seal", "latin": "Phoca vitulina", "sizeM": 1.7,
       "text": "Spotted coats, puppy faces. They rest on rocks at low tide." },
     { "id": "bull-kelp", "name": "Bull kelp", "habitat": "shore", "group": "seaweed", "photo": "bull kelp forest", "photoId": "bull-kelp", "latin": "Nereocystis luetkeana", "sizeM": 30,
-      "text": "A seaweed that grows into a tall underwater forest in a single summer." },
+      "text": "A seaweed that grows into a tall underwater forest in less than a year." },
     { "id": "chinook", "name": "Chinook salmon", "habitat": "openWater", "group": "fish", "photo": "Chinook salmon", "photoId": "chinook", "latin": "Oncorhynchus tshawytscha", "sizeM": 1,
       "text": "The biggest Pacific salmon, and a favourite food of local orcas." },
     { "id": "octopus", "name": "Giant octopus", "habitat": "seafloor", "group": "invertebrates", "photo": "giant Pacific octopus", "photoId": "octopus", "latin": "Enteroctopus dofleini", "sizeM": 4,

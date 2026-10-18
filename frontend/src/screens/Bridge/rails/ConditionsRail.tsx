@@ -2,6 +2,7 @@ import { useBridgeData, useBridgeUi, useSnapshot } from '../../../bridge/BridgeP
 import type { PartStatus } from '../../../bridge/model'
 import { extent } from '../../../bridge/series'
 import { fmtClock, fmtDuration } from '../../../bridge/time'
+import { short } from '../../../config/sources'
 import type { StationSeriesKey } from '../../../types/bridge'
 import { DepthProfile } from '../charts/DepthProfile'
 import { MiniCurrent } from '../charts/MiniCurrent'
@@ -31,7 +32,7 @@ export function ConditionsRail({ className }: { className: string }) {
 
   return (
     <aside className={`${styles.rail} ${className}`} aria-label={t('conditions')}>
-      <Section title={t('activePass')} aside={snap.current ? `${snap.current.station}` : undefined}>
+      <Section title={t('activePass')} aside={snap.current ? `${snap.current.station} · ${short('dfo')} predicted` : undefined}>
         {tides?.current && snap.current ? (
           <>
             <div className={styles.pair}>
@@ -64,7 +65,7 @@ export function ConditionsRail({ className }: { className: string }) {
         )}
       </Section>
 
-      <Section title={t('tides')} aside="m above chart datum">
+      <Section title={t('tides')} aside={`${short('dfo')} predicted · m above chart datum`}>
         {tides && domain ? (
           <div className={styles.tides}>
             {tides.stations.map((s, i) => {
@@ -92,7 +93,7 @@ export function ConditionsRail({ className }: { className: string }) {
         )}
       </Section>
 
-      <Section title={t('wind')}>
+      <Section title={t('wind')} aside={`${short('eccc')} · ${short('openMeteo')}`}>
         {snap.wind.atShip || snap.wind.nearest ? (
           <>
             <div className={styles.pair}>
@@ -135,7 +136,7 @@ export function ConditionsRail({ className }: { className: string }) {
         )}
       </Section>
 
-      <Section title={t('sea')}>
+      <Section title={t('sea')} aside={`${short('openMeteo')} model`}>
         <div className={styles.triple}>
           <Stat label={t('waves')} value={num(snap.sea.waveM, 2)} unit="m" sub={Number.isFinite(snap.sea.wavePeriodS) ? `${num(snap.sea.wavePeriodS)} s from ${compass(snap.sea.waveFromDeg)}` : undefined} />
           <Stat label={t('visibility')} value={num(snap.sea.visKm, 0)} unit="km" />
@@ -195,7 +196,7 @@ export function ConditionsRail({ className }: { className: string }) {
         )}
       </Section>
 
-      <Section title={t('depthCurrents')}>
+      <Section title={t('depthCurrents')} aside={`${short('onc')} SCVIP, SEVIP`}>
         {day.profiles?.nodes.length ? (
           <div className={styles.depthPair}>
             {day.profiles.nodes.map((n) => (
@@ -210,7 +211,7 @@ export function ConditionsRail({ className }: { className: string }) {
         )}
       </Section>
 
-      <Section title={t('twdp')}>
+      <Section title={t('twdp')} aside={`${short('onc')} TWDP`}>
         {snap.twdp ? (
           <>
             <div className={styles.triple}>
@@ -229,7 +230,7 @@ export function ConditionsRail({ className }: { className: string }) {
         )}
       </Section>
 
-      <Section title={t('traffic')} aside={day.traffic ? `${snap.targets.length} in range` : undefined}>
+      <Section title={t('traffic')} aside={day.traffic ? `${snap.targets.length} in range · ${short('onc')} Iona AIS` : undefined}>
         {mode === 'live' ? (
           <Empty text={t('trafficReplayOnly')} />
         ) : day.traffic ? (

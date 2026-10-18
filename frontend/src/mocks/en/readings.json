@@ -1,19 +1,19 @@
 {
   "items": [
-    { "key": "tsg_temperature", "name": "Water temperature", "unit": "°C", "digits": 2, "qc": 99,
+    { "key": "tsg_temperature", "name": "Water temperature", "unit": "°C", "digits": 2,
       "kids": { "name": "Sea temperature", "hint": "Colder than a swimming pool", "digits": 1 } },
-    { "key": "salinity", "name": "Salinity", "unit": "PSU", "digits": 2, "qc": 99,
+    { "key": "salinity", "name": "Salinity", "unit": "PSU", "digits": 2,
       "kids": { "name": "Saltiness", "hint": "≈ 5 teaspoons of salt per litre", "digits": 1 } },
-    { "key": "oxygen_saturation", "name": "O₂ saturation", "unit": "%", "digits": 1, "qc": 99,
+    { "key": "oxygen_saturation", "name": "O₂ saturation", "unit": "%", "digits": 1,
       "kids": { "name": "Oxygen for fish", "hint": "Air in the water that fish breathe", "digits": 0 } },
-    { "key": "conductivity", "name": "Conductivity", "unit": "S/m", "digits": 2, "qc": 99 },
-    { "key": "chlorophyll", "name": "Chlorophyll", "unit": "µg/L", "digits": 2, "qc": 98,
+    { "key": "conductivity", "name": "Conductivity", "unit": "S/m", "digits": 2 },
+    { "key": "chlorophyll", "name": "Chlorophyll", "unit": "µg/L", "digits": 2,
       "kids": { "name": "Plankton", "hint": "Tiny plants feeding the sea", "digits": 1 } },
-    { "key": "turbidity", "name": "Turbidity", "unit": "NTU", "digits": 2, "qc": 97 },
-    { "key": "cdom_fluorescence", "name": "CDOM fluorescence", "unit": "ppb", "digits": 2, "qc": 99 },
-    { "key": "sound_speed", "name": "Speed of sound", "unit": "m/s", "digits": 1, "qc": 100 },
-    { "key": "air_temperature", "name": "Air temperature", "unit": "°C", "digits": 1, "qc": 100 },
-    { "key": "barometric_pressure", "name": "Air pressure", "unit": "hPa", "digits": 1, "qc": 100 }
+    { "key": "turbidity", "name": "Turbidity", "unit": "NTU", "digits": 2 },
+    { "key": "cdom_fluorescence", "name": "CDOM fluorescence", "unit": "ppb", "digits": 2 },
+    { "key": "sound_speed", "name": "Speed of sound", "unit": "m/s", "digits": 1 },
+    { "key": "air_temperature", "name": "Air temperature", "unit": "°C", "digits": 1 },
+    { "key": "barometric_pressure", "name": "Air pressure", "unit": "hPa", "digits": 1 }
   ],
   "tracks": [
     { "key": "salinity", "label": "Salinity", "unit": "PSU", "min": 26, "max": 30 },

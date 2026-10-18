@@ -1,6 +1,7 @@
 import { useBridgeData, useSnapshot } from '../../../bridge/BridgeProvider'
 import type { WaterKey, WaterReading } from '../../../bridge/snapshot'
 import { fmtClock, fmtDuration } from '../../../bridge/time'
+import { short } from '../../../config/sources'
 import { deg, num, t, ZONE_NAMES } from '../strings'
 import { Compass } from './Compass'
 import { Arrow, Empty, Section, Stat } from './parts'
@@ -21,6 +22,14 @@ const QC: { label: string; key: WaterKey }[] = [
 ]
 
 const COMFORT: Record<string, string> = { calm: 'Calm', gentle: 'Gentle roll', rolly: 'Rolly' }
+
+/** "2017–2025 (no 2019)": the first and last year, and any year missing between them. */
+function yearSpan(years: number[]): string {
+  const first = years[0]
+  const last = years[years.length - 1]
+  const missing = Array.from({ length: last - first + 1 }, (_, i) => first + i).filter((y) => !years.includes(y))
+  return `${first}–${last}` + (missing.length ? ` (no ${missing.join(', ')})` : '')
+}
 
 /** Left rail: everything about our own ferry at the playhead. */
 export function OwnShipRail({ className }: { className: string }) {
@@ -43,12 +52,12 @@ export function OwnShipRail({ className }: { className: string }) {
   const to = crossing?.direction === 'tsa_to_swb' ? 'Swartz Bay' : 'Tsawwassen'
   const climYears = day.climatology?.years
   const usualCaption = Object.values(ship.water).some((w) => w.usualFrom === 'climatology') && climYears?.length
-    ? t('usualFromClimatology', { years: `${climYears[0]}–${climYears[climYears.length - 1]}` })
+    ? t('usualFromClimatology', { source: `${short('onc')} TWSB`, years: yearSpan(climYears) })
     : t('usualFromToday')
 
   return (
     <aside className={`${styles.rail} ${className}`} aria-label={t('ownShip')}>
-      <Section title={t('nav')}>
+      <Section title={t('nav')} aside={`${short('onc')} TWSB`}>
         <div className={styles.navRow}>
           <div className={styles.navStats}>
             <Stat label={t('sog')} value={num(ship.sogKn)} unit="kn" size="lg" />
@@ -125,7 +134,7 @@ export function OwnShipRail({ className }: { className: string }) {
         </table>
       </Section>
 
-      <Section title={t('air')}>
+      <Section title={t('air')} aside={`${short('onc')} TWSB`}>
         <div className={styles.pair}>
           <Stat label={t('airTemp')} value={num(ship.airC)} unit="°C" />
           <Stat
@@ -146,7 +155,7 @@ export function OwnShipRail({ className }: { className: string }) {
         </div>
       </Section>
 
-      <Section title={t('sensorQc')}>
+      <Section title={t('sensorQc')} aside={`${short('onc')} QC flags`}>
         <ul className={styles.qc}>
           {QC.map((q) => (
             <QcRow key={q.key} label={q.label} flag={ship.water[q.key].flag} />

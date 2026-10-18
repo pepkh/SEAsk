@@ -30,3 +30,7 @@
   line-height: 1.4;
   color: #C3CED3;
 }
+
+.source {
+  color: var(--muted-on-dark);
+}

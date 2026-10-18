@@ -9,10 +9,15 @@ Writes:
   crossing (berth to berth), simplified with Douglas-Peucker. `activePassAt` and the zone and stop
   fractions are moved to the new line: the point at the old fraction on the old line is projected
   onto the new one. Every other field is kept.
+- frontend/src/mocks/common/qc.json: for each reading the Lab table shows, the share of the day's
+  samples that passed ONC's quality control. Sea sensors count only the seconds with seawater
+  flowing to them (`readings_derived.is_sampling`; ONC flags the dry berth time bad), from the ONC
+  flags of the TSG, OXYSENSOR and TURBCHLFL in `readings_derived`. Air sensors (sampled all day)
+  come from `sensors.pct_good` (the hackathon's TWSB_2026-08-17_inventory.csv).
 
 Neon is only read (a read-only transaction).
 
-Run from backend/:  .venv/bin/python scripts/export_sample_data.py [--crossing N] [--dry-run]
+Run from backend/:  .venv/bin/python scripts/export_sample_data.py [--crossing N] [--dry-run] [--qc-only]
 Needs NEON_URL in backend/.env.
 """
 
@@ -37,6 +42,7 @@ from db import get_engine
 FRONTEND = BACKEND.parent / "frontend"
 FEED_FILE = FRONTEND / "src/mocks/common/ship-feed.json"
 ROUTE_FILE = FRONTEND / "src/config/route.json"
+QC_FILE = FRONTEND / "src/mocks/common/qc.json"
 
 STEP_S = 10
 DOCK_LEAD = timedelta(minutes=20)
@@ -82,16 +88,40 @@ READINGS_SQL = text(
     "where ts >= :start and ts <= :end order by ts"
 )
 
+# Lab table reading -> its ONC device's QC flag column in readings_derived, or the sensors row
+# (deviceCategoryCode, sensor) for the air sensors.
+QC_FLAG = {
+    "tsg_temperature": "tsg_flag",
+    "salinity": "tsg_flag",
+    "conductivity": "tsg_flag",
+    "sound_speed": "tsg_flag",
+    "oxygen_saturation": "oxygen_flag",
+    "chlorophyll": "optics_flag",
+    "turbidity": "optics_flag",
+    "cdom_fluorescence": "optics_flag",
+}
+QC_SENSOR = {
+    "air_temperature": ("TEMPHUMID", "air_temperature"),
+    "barometric_pressure": ("BARPRESS", "barometric_pressure"),
+}
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("--crossing", type=int, help="First crossing id of the round trip.")
     parser.add_argument("--dry-run", action="store_true", help="Print the summaries, write nothing.")
+    parser.add_argument("--qc-only", action="store_true", help="Write only qc.json.")
     args = parser.parse_args()
     declination = get_settings().magnetic_declination_deg
 
     with get_engine().connect() as conn:
         conn.execute(text("set transaction read only"))
+        qc = build_qc(conn)
+        print("QC % (" + ", ".join(f"{k} {v}" for k, v in qc["items"].items()) + ")")
+        if args.qc_only:
+            if not args.dry_run:
+                write_qc(qc)
+            return
         crossings = conn.execute(
             text("select id, direction, start_ts, end_ts from crossings order by id")
         ).fetchall()
@@ -116,8 +146,38 @@ def main() -> None:
         return
     FEED_FILE.write_text(json.dumps(feed, separators=(",", ":"), allow_nan=False))
     ROUTE_FILE.write_text(format_route(new_route))
+    write_qc(qc)
     print(f"Wrote {FEED_FILE.relative_to(BACKEND.parent)} ({FEED_FILE.stat().st_size / 1000:.0f} kB)")
     print(f"Wrote {ROUTE_FILE.relative_to(BACKEND.parent)}")
+
+
+# --- Quality control
+
+
+def build_qc(conn) -> dict:
+    """QC pass rate (%) per Lab reading on the recorded day; see the module docstring."""
+    flags = sorted(set(QC_FLAG.values()))
+    sql = ", ".join(
+        f"round(100.0 * count(*) filter (where {f} = 1) / nullif(count({f}), 0), 1) as {f}" for f in flags
+    )
+    sea = conn.execute(text(f"select {sql} from readings_derived where is_sampling")).mappings().one()
+    air = {
+        (r.deviceCategoryCode, r.sensor): float(r.pct_good)
+        for r in conn.execute(text('select "deviceCategoryCode", sensor, pct_good from sensors'))
+    }
+    day = conn.execute(text("select min(ts) from readings")).scalar_one().astimezone(LOCAL_TZ).date()
+    items = {key: float(sea[flag]) for key, flag in QC_FLAG.items()}
+    items |= {key: air[row] for key, row in QC_SENSOR.items()}
+    return {
+        "date": day.isoformat(),
+        "source": "Ocean Networks Canada QC flags, TWSB; sea sensors while seawater flows to them",
+        "items": items,
+    }
+
+
+def write_qc(qc: dict) -> None:
+    QC_FILE.write_text(json.dumps(qc, indent=2) + "\n")
+    print(f"Wrote {QC_FILE.relative_to(BACKEND.parent)}")
 
 
 # --- Round trip and feed

@@ -8,6 +8,8 @@ import { drawTiles, TileCache } from '../../../bridge/map/tiles'
 import { useMapView } from '../../../bridge/map/useMapView'
 import type { DayData } from '../../../bridge/model'
 import { paletteFor } from '../../../bridge/palette'
+import { sourcesInUse } from '../../../bridge/sources'
+import { credit, short, type SourceId } from '../../../config/sources'
 import { OCEAN_AREA, TILE_LAYERS } from '../../../config/tiles'
 import { useReducedMotion } from '../../../hooks/useReducedMotion'
 import styles from './BridgeMap.module.css'
@@ -248,14 +250,15 @@ export function BridgeMap({ className }: { className: string }) {
   )
 }
 
+/** The licence credits of the basemap and of every dataset in use: short names, the full text on tap. */
 function Credits({ basemap }: { basemap: string }) {
   const [open, setOpen] = useState(false)
-  const tiles = basemap === 'satellite' ? TILE_LAYERS.sentinel.credit : basemap === 'chart' ? TILE_LAYERS.nrcanMap.credit : ''
-  const short = basemap === 'satellite' ? TILE_LAYERS.sentinel.short : basemap === 'chart' ? TILE_LAYERS.nrcanMap.short : ''
-  const all = [tiles, 'Ocean Networks Canada', 'Fisheries and Oceans Canada (IWLS)', 'Weather data by Open-Meteo.com (CC BY 4.0)'].filter(Boolean)
+  const { day, status } = useBridgeData()
+  const tiles: SourceId[] = basemap === 'satellite' ? ['eox'] : basemap === 'chart' ? ['nrcan'] : []
+  const ids = [...tiles, ...sourcesInUse(status, day)]
   return (
     <button type="button" className={styles.credits} aria-expanded={open} onClick={() => setOpen(!open)}>
-      {open ? all.join(' · ') : `© ${[short, 'ONC', 'DFO', 'Open-Meteo'].filter(Boolean).join(' · ')}`}
+      {open ? ids.map((id) => credit(id)).join(' · ') : `© ${ids.map((id) => short(id)).join(' · ')}`}
     </button>
   )
 }

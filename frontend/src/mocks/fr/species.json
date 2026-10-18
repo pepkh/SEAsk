@@ -10,7 +10,7 @@
     { "id": "harbour-seal", "name": "Phoque commun", "habitat": "shore", "group": "mammals", "photo": "phoque commun", "photoId": "harbour-seal", "latin": "Phoca vitulina", "sizeM": 1.7,
       "text": "Un pelage tacheté et une tête de chiot. Ils se reposent sur les rochers à marée basse." },
     { "id": "bull-kelp", "name": "Varech géant", "habitat": "shore", "group": "seaweed", "photo": "forêt de varech", "photoId": "bull-kelp", "latin": "Nereocystis luetkeana", "sizeM": 30,
-      "text": "Une algue qui devient une grande forêt sous l'eau en un seul été." },
+      "text": "Une algue qui devient une grande forêt sous l'eau en moins d'un an." },
     { "id": "chinook", "name": "Saumon quinnat", "habitat": "openWater", "group": "fish", "photo": "saumon quinnat", "photoId": "chinook", "latin": "Oncorhynchus tshawytscha", "sizeM": 1,
       "text": "Le plus gros saumon du Pacifique, et un repas préféré des épaulards d'ici." },
     { "id": "octopus", "name": "Pieuvre géante", "habitat": "seafloor", "group": "invertebrates", "photo": "pieuvre géante du Pacifique", "photoId": "octopus", "latin": "Enteroctopus dofleini", "sizeM": 4,

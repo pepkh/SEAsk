@@ -8,6 +8,11 @@ export interface ShipRow {
   time: string
   /** ISO 8601 time with the local offset */
   time_local: string
+  /**
+   * Sample feed only: when the row was really recorded (ISO 8601, UTC, on the recorded day). `time` is the kiosk
+   * clock the row is replayed at.
+   */
+  recorded_time?: string
   latitude: number
   longitude: number
   /** °C */

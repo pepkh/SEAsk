@@ -38,12 +38,24 @@ export function timeParts(date: Date, lang: Lang): { main: string; period: strin
   return { main, period }
 }
 
+/** A calendar day ("YYYY-MM-DD") written out: "17 Aug 2026" (EN) or "17 août 2026" (FR). */
+export function formatDay(day: string, lang: Lang): string {
+  const [y, m, d] = day.split('-').map(Number)
+  return new Intl.DateTimeFormat(lang === 'fr' ? 'fr-CA' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(y, m - 1, d))
+}
+
 /** Today at a local "HH:MM" time. */
 export function todayAt(hhmm: string): Date {
   const [h, m] = hhmm.split(':').map(Number)
   const d = new Date()
   d.setHours(h, m, 0, 0)
   return d
+}
+
+/** Local "HH:MM" of a time (epoch ms), the way the backend sends clock times. */
+export function hhmmOf(t: number): string {
+  const d = new Date(t)
+  return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`
 }
 
 /** Minutes since local midnight for "HH:MM". */

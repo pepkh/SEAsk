@@ -362,7 +362,7 @@
   },
   "saturna-island": {
     "name": "Saturna Island",
-    "fact": "The most remote Southern Gulf Island. Much of it is national park.",
+    "fact": "A remote, hard-to-reach island. Much of it is national park.",
     "knowledge": {
       "tagline": "The wild, faraway island",
       "indigenousName": "",
@@ -514,7 +514,7 @@
   },
   "saanich-peninsula": {
     "name": "Saanich Peninsula",
-    "fact": "The tip of Vancouver Island. The Swartz Bay terminal is at its north end.",
+    "fact": "A peninsula of Vancouver Island, north of Victoria. The Swartz Bay terminal is at its north end.",
     "knowledge": {
       "tagline": "Gardens, fairs and stars",
       "indigenousName": "",
@@ -567,7 +567,7 @@
   },
   "roberts-bank": {
     "name": "Roberts Bank",
-    "fact": "A huge port where container ships and coal trains load."
+    "fact": "A huge port where coal trains unload and container ships dock."
   },
   "sidney": {
     "name": "Sidney",
@@ -623,7 +623,7 @@
   },
   "swanson-channel": {
     "name": "Swanson Channel",
-    "fact": "The channel between Saltspring and North Pender. Orcas often travel through it."
+    "fact": "The channel between Saltspring and North Pender. Orcas sometimes travel through it."
   },
   "satellite-channel": {
     "name": "Satellite Channel",

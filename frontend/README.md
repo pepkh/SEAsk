@@ -121,27 +121,31 @@ only (`screens/Bridge/strings.ts`). The map is a small canvas engine (`src/bridg
 2D particles and colour fields are cheap there, and a captain expects a north-up chart. Useful
 addresses: `/bridge` (live), `/bridge?mode=replay&t=13:20` (the recorded day from 13:20).
 
-## Live data and sample data
+## Live data and the recorded day
 
-| Data | Live source (via the backend) | Sample (bundled) |
+Without live data the kiosk replays one real day, 17 Aug 2026 (`RECORDED_DAY` in `src/api/shipFeed.ts`), and
+says so ("Recorded · 17 Aug 2026"). Tides and weather are shown for the moment the replayed ship row was recorded.
+
+| Data | Live source (via the backend) | Recorded day (bundled) |
 | --- | --- | --- |
-| Ship position, speed, heading, sea sensors | Ocean Networks Canada, ferry TWSB | `src/mocks/common/ship-feed.json`: a real recorded round trip (2026-08-17) |
-| Weather at the ship | OpenWeatherMap | `src/mocks/common/weather.json` |
+| Ship position, speed, heading, sea sensors | Ocean Networks Canada, ferry TWSB | `src/mocks/common/ship-feed.json`: a real recorded round trip |
+| Weather at the ship | OpenWeatherMap | `public/data/2026-08-17/weather.json` (Open-Meteo, the bridge's offline copy) |
 | Waves | Open-Meteo Marine | same file |
-| Tides and Active Pass current | Fisheries and Oceans Canada (IWLS) | `src/mocks/{en,fr}/tides.json` |
-| Track of the last 90 min (session start) | Ocean Networks Canada (`/api/ship/history`) | made from the sample feed |
-| Texts: zones, species, quiz, landmarks | always bundled | `src/mocks/{en,fr}/*.json` |
+| Tides and Active Pass current | Fisheries and Oceans Canada (IWLS) | `public/data/2026-08-17/tides.json` (DFO, the bridge's offline copy) |
+| QC % (Lab table) | — | `src/mocks/common/qc.json`: ONC QC pass rates of the day |
+| Track of the last 90 min (session start) | Ocean Networks Canada (`/api/ship/history`) | made from the recorded feed |
+| Texts: zones, species, quiz, landmarks | always bundled | `src/mocks/{en,fr}/*.json`; sources in `src/mocks/common/content-sources.json` |
 | Island knowledge (specialties) | always bundled, **draft** | `knowledge` in `src/mocks/{en,fr}/landmarks.json` |
 
-Each live source falls back to the sample on its own when it is down, and the SAMPLE chip says which
-part is sample. The ship feed switches after a 503 or 3 failed polls and tries the live feed again
-every 30 s. Code: `src/api/`, `src/ship/ShipProvider.tsx`, `src/weather/`, `src/tides/`.
+Each live source falls back to the recorded day on its own when it is down, and the RECORDED chip says
+so. The ship feed switches after a 503 or 3 failed polls and tries the live feed again every 30 s.
+Code: `src/api/`, `src/ship/ShipProvider.tsx`, `src/weather/`, `src/tides/`.
 
 The ferry's seawater pump is off while it is docked (for example overnight), so the sea readings are
 empty then. The cards say "Sensors rest while the ferry is docked".
 
-To rebuild the sample feed and the route line from the recorded day in Neon:
-`cd ../backend && .venv/bin/python scripts/export_sample_data.py`.
+To rebuild the sample feed, the route line and the QC rates from the recorded day in Neon:
+`cd ../backend && .venv/bin/python scripts/export_sample_data.py` (`--qc-only` for the QC rates alone).
 
 ## Map mode and offline tiles
 
@@ -211,10 +215,16 @@ scripts/        download-tiles.ts, build-terrain.sh, fetch-photos.ts, build-dive
 
 ## Licences and credits
 
+Every provider's credit text lives in [`src/config/sources.ts`](src/config/sources.ts); the screens read it from
+there. [`../SOURCES.md`](../SOURCES.md) lists each value on screen with its source, licence and citation.
+
 - Photos: see [`public/images/photos/CREDITS.md`](public/images/photos/CREDITS.md). Each credit is shown with its photo.
 - Map: Sentinel-2 cloudless by EOX (contains modified Copernicus Sentinel data); terrain and base map
   NRCan (Open Government Licence – Canada). The credit is in the map corner; tap it for the full text.
+- Written facts: sources in [`src/mocks/common/content-sources.json`](src/mocks/common/content-sources.json), shown
+  as "Source: …" under each fact. Set `"checked": true` once a person has verified an entry.
 - Diver model: from `ref/diver1.3mf`, whose file metadata names no author or licence (it points to a downloaded
   aquarium ornament). **Confirm where it came from and that it may be used on a public kiosk before launch.**
 - **Check before any commercial use:** EOX Sentinel-2 cloudless from 2018 on is CC BY-NC-SA 4.0
-  (non-commercial), and the free Open-Meteo API is for non-commercial use.
+  (non-commercial), the free Open-Meteo API is for non-commercial use, and the CHS tide licence forbids
+  commercial derivative products. See SOURCES.md §10.

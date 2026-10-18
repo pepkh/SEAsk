@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useCesium } from 'resium'
 import { KnowledgeIcon } from '../components/KnowledgeIcon/KnowledgeIcon'
+import { FactSource } from '../components/SourceLine/FactSource'
 import { useContent } from '../hooks/useContent'
 import { formatNumber } from '../i18n/format'
 import { useLanguage } from '../i18n/LanguageContext'
@@ -100,6 +101,7 @@ export function Landmarks({ onOpenChange }: { onOpenChange: (open: boolean) => v
         <span className={styles.kind}>{height ? `${kind} · ${height}` : kind}</span>
         <b className={styles.name}>{text.name}</b>
         <span className={styles.fact}>{text.fact}</span>
+        <FactSource sourceKey={[`landmarks.${shown.id}.fact`, ...(height ? [`landmarks.${shown.id}.elevation`] : [])]} />
         {text.knowledge?.specialties && (
           <span className={styles.chips}>
             {text.knowledge.specialties.slice(0, CHIPS).map((s) => (

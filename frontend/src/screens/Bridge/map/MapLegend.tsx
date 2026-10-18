@@ -3,6 +3,7 @@ import { fmtClock, fmtDuration } from '../../../bridge/time'
 import { TRACK_RANGE } from '../../../bridge/map/render'
 import { FIELD_SCALE } from '../../../bridge/map/flow'
 import { lutColor, paletteFor } from '../../../bridge/palette'
+import { short } from '../../../config/sources'
 import { RAMP } from '../../Lab/trackColour'
 import styles from './BridgeMap.module.css'
 
@@ -58,14 +59,14 @@ export function MapLegend() {
               </div>
               {layer === 'currents' && (
                 <p className={styles.note}>
-                  {day.currents ? 'Measured by ONC radar in the open Strait' : 'No radar data'}
+                  {day.currents ? `Measured by ${short('onc')} radar (CODAR) in the open Strait` : 'No radar data'}
                   {day.ocean ? `; elsewhere model: ${[...new Set(day.ocean.layers.map((l) => l.label))].join(', ')}` : '; model currents not loaded'}
                 </p>
               )}
               {layer === 'wind' && (
                 <p className={styles.note}>
-                  {day.windobs ? `Measured at ${day.windobs.stations.length} Environment Canada stations (arrows)` : 'No station data'}
-                  {day.weather ? '; elsewhere model: Open-Meteo' : '; wind model not loaded'}
+                  {day.windobs ? `Measured at ${day.windobs.stations.length} ${short('eccc')} stations (arrows)` : 'No station data'}
+                  {day.weather ? `; elsewhere model: ${short('openMeteo')}` : '; wind model not loaded'}
                 </p>
               )}
               {layer === 'currents' && radarAge > 30 * 60_000 && (

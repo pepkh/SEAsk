@@ -23,6 +23,7 @@ export const en = {
   night: 'Night',
   ask: 'Ask',
   sources: 'Data sources',
+  credits: 'Credits and licences',
 
   // Own ship
   ownShip: 'Own ship',
@@ -47,7 +48,7 @@ export const en = {
   zone: 'Zone',
   water: 'Surface water',
   usualHere: 'usual here',
-  usualFromClimatology: 'Aug {years}',
+  usualFromClimatology: '{source}, Aug {years}',
   usualFromToday: 'today’s crossings',
   air: 'Air',
   airTemp: 'Air temp',

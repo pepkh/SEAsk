@@ -1,3 +1,4 @@
+import { FactSource } from '../../../components/SourceLine/FactSource'
 import { useLanguage } from '../../../i18n/LanguageContext'
 import type { TidesContent } from '../../../types/content'
 import styles from './TidesCards.module.css'
@@ -19,6 +20,7 @@ export function TidesExplainer({ explainer }: { explainer: TidesContent['explain
         <span className={styles.eyebrow}>{t('tides.whyTides')}</span>
         <span className={`${styles.title} ${styles.titleSmall}`}>{explainer.title}</span>
         <span className={styles.body}>{explainer.text}</span>
+        <FactSource sourceKey="tides.explainer" />
       </div>
     </div>
   )

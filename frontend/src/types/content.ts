@@ -23,8 +23,6 @@ export interface ReadingMeta {
   name: string
   unit: string
   digits: number
-  /** Quality-check pass rate in percent (static until the API sends QC data) */
-  qc: number
   /** Present for the four readings on the Kids Journey tiles */
   kids?: { name: string; hint: string; digits: number }
 }
@@ -71,12 +69,8 @@ export interface SeafloorContent {
   facts: { eyebrow: string; title: string; text: string }[]
 }
 
+/** The tide numbers come from DFO (live, or the recorded day): see src/tides/useTides.ts. */
 export interface TidesContent {
-  place: string
-  /** Tide height in metres, one value every 24 minutes from 00:00 (61 values) */
-  heights: number[]
-  extremes: { type: 'high' | 'low'; h: number; at: string }[]
-  current: { title: string; text: string; topSpeedKn: number; bearingDeg: number }
   explainer: { title: string; text: string }
 }
 

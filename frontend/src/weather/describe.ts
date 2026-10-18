@@ -12,6 +12,18 @@ export function skyOf(id: number): Sky {
   return id === 800 ? 'clear' : id === 801 ? 'fewClouds' : id === 802 ? 'partlyCloudy' : id === 803 ? 'cloudy' : 'overcast'
 }
 
+/**
+ * The recorded day's Open-Meteo hour → the nearest OpenWeatherMap condition id, so it shows like a live answer:
+ * fog under 1 km visibility, then rain (mm in the hour), then cloud cover in OpenWeatherMap's bands.
+ */
+export function conditionOf(cloudPct: number, rainMm: number, visKm: number): number {
+  if (visKm < 1) return 741
+  if (rainMm >= 2.5) return 501
+  if (rainMm >= 0.2) return 500
+  if (rainMm > 0) return 300
+  return cloudPct < 11 ? 800 : cloudPct < 25 ? 801 : cloudPct < 51 ? 802 : cloudPct < 85 ? 803 : 804
+}
+
 export type WaveSize = 'calm' | 'ripples' | 'small' | 'choppy' | 'rough'
 
 export function waveSizeOf(m: number): WaveSize {

@@ -1,5 +1,7 @@
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from 'react'
+import { loadRecordedTides } from '../api/recorded'
 import { getTides } from '../api/tides'
+import type { Tides } from '../bridge/model'
 import { LIVE_DATA } from '../config/env'
 import { useSession } from '../context/SessionContext'
 import { distanceM } from '../ship/geo'
@@ -13,17 +15,34 @@ const REFRESH_MS = 30 * 60_000
 const MOVE_M = 5000
 const CHECK_MS = 5000
 
-const TidesContext = createContext<TidesResponse | null>(null)
+interface TideData {
+  /** Today's DFO predictions near the ship (with VITE_LIVE_DATA), or null */
+  live: TidesResponse | null
+  /** The recorded day's DFO predictions, shown when there is no live answer; null until loaded */
+  recorded: Tides | null
+}
+
+const TidesContext = createContext<TideData>({ live: null, recorded: null })
 
 /**
  * DFO tide predictions near the ship (with VITE_LIVE_DATA), fetched once for the whole kiosk and only during a
- * visitor session. null until the first answer (or without live data). Needs a ShipProvider above.
+ * visitor session, and the recorded day's predictions for when there is no live answer. Needs a ShipProvider above.
  */
 export function TidesProvider({ children }: { children: ReactNode }) {
   const { active } = useSession()
   const ship = useShip()
   const [live, setLive] = useState<TidesResponse | null>(null)
+  const [recorded, setRecorded] = useState<Tides | null>(null)
   const position = useRef<LatLon | null>(null)
+
+  useEffect(() => {
+    if (!active) return
+    let alive = true
+    loadRecordedTides().then((tides) => alive && setRecorded(tides))
+    return () => {
+      alive = false
+    }
+  }, [active])
 
   useEffect(() => {
     position.current = ship ? [ship.row.latitude, ship.row.longitude] : null
@@ -48,9 +67,9 @@ export function TidesProvider({ children }: { children: ReactNode }) {
     }
   }, [active])
 
-  return <TidesContext value={live}>{children}</TidesContext>
+  return <TidesContext value={{ live, recorded }}>{children}</TidesContext>
 }
 
-/** The live tide answer, or null (useTides merges it onto the bundled sample). */
+/** The live tide answer and the recorded day (useTides picks one and adds the texts). */
 // eslint-disable-next-line react/only-export-components
-export const useLiveTides = () => useContext(TidesContext)
+export const useTideData = () => useContext(TidesContext)

@@ -1,0 +1,7 @@
+/* Data credit under a card's numbers: small and quiet, never a control */
+.line {
+  display: block;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--muted);
+}

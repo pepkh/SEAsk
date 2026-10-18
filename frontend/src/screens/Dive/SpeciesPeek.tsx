@@ -1,4 +1,5 @@
 import { Photo } from '../../components/Photo/Photo'
+import { FactSource } from '../../components/SourceLine/FactSource'
 import { formatNumber } from '../../i18n/format'
 import { useLanguage } from '../../i18n/LanguageContext'
 import type { Species } from '../../types/content'
@@ -38,6 +39,7 @@ export function SpeciesPeek({ species, featured }: { species: Species; featured:
             </div>
           </div>
         )}
+        <FactSource sourceKey={`species.${species.id}`} />
       </div>
     </div>
   )

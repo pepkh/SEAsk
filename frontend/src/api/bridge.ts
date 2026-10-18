@@ -23,11 +23,14 @@ export async function loadPart<T>(path: string, file: string, date: string): Pro
     console.warn(`Bridge: ${path} unavailable, trying the offline copy.`, err)
   }
   try {
-    return { data: await fetchJson<T>(`/data/${date}/${file}.json`), source: 'snapshot' }
+    return { data: await loadSnapshot<T>(date, file), source: 'snapshot' }
   } catch {
     return null
   }
 }
+
+/** The offline copy of one bridge dataset: public/data/{date}/{file}.json. */
+export const loadSnapshot = <T>(date: string, file: string) => fetchJson<T>(`/data/${date}/${file}.json`)
 
 async function fetchJson<T>(url: string): Promise<T> {
   const res = await fetch(url, { signal: AbortSignal.timeout(TIMEOUT_MS) })

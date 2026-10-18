@@ -48,6 +48,14 @@
   animation: pulse 1.8s ease-out infinite;
 }
 
+/* The recorded day replayed (no live feed): plain, so it never passes for live */
+.recorded {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
 /* Rewound: a warm tint, so the card never passes for live */
 .rewound {
   background: rgba(255, 246, 228, 0.88);

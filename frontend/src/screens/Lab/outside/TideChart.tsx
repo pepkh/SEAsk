@@ -1,7 +1,8 @@
+import { SourceLine } from '../../../components/SourceLine/SourceLine'
 import { formatHour, formatNumber, formatTime, minutesOf, todayAt } from '../../../i18n/format'
 import { useLanguage } from '../../../i18n/LanguageContext'
 import { describeTide } from '../../../tides/trend'
-import type { TidesContent } from '../../../types/content'
+import type { TideView } from '../../../tides/useTides'
 import styles from './TideChart.module.css'
 
 /* Chart frame from the mockup: x 40–1060 for 24 h, y = 260 − 62 × height (m). */
@@ -13,8 +14,11 @@ const yAt = (h: number) => 260 - 62 * h
 const NOW_CLEARANCE = 60
 const NOW_SHIFT = 126
 
-/** Today's tide curve with "Now" at the clock time, and a headline worked out from the curve. */
-export function TideChart({ tides, now }: { tides: TidesContent; now: Date }) {
+/**
+ * The day's DFO tide curve with "Now" at `now` (the clock, or the recorded moment), and a headline worked out from
+ * the curve. `recorded`: the curve is the recorded day's.
+ */
+export function TideChart({ tides, now, recorded }: { tides: TideView; now: Date; recorded: boolean }) {
   const { t, lang } = useLanguage()
   const nowMin = now.getHours() * 60 + now.getMinutes()
   const said = describeTide(tides.heights, nowMin)
@@ -73,6 +77,7 @@ export function TideChart({ tides, now }: { tides: TidesContent; now: Date }) {
           })}
         </g>
       </svg>
+      <SourceLine ids={['dfo']} full recorded={recorded} />
     </div>
   )
 }

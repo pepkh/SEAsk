@@ -10,8 +10,8 @@
       "photoId": "cormorant"
     },
     "happening": {
-      "title": "Calm water at the terminal",
-      "text": "Swartz Bay is sheltered from wind and waves. The water near the dock mixes slowly, so the readings change very little until the ship leaves."
+      "title": "Sensors resting at the dock",
+      "text": "While the ship is at the dock, its seawater pump is switched off, so the water sensors take a break. New readings start once the ship is under way."
     }
   },
   "swanson-channel": {
@@ -35,13 +35,13 @@
     "adultTitle": "Tidal mixing zone",
     "lookout": {
       "title": "Look out for harbour seals",
-      "text": "Heads bobbing near the rocks on your left",
+      "text": "Heads bobbing near the rocky shores of the pass",
       "photo": "seal",
       "photoId": "harbour-seal"
     },
     "happening": {
       "title": "Tides are stirring the water column",
-      "text": "Strong currents through Active Pass mix deep water up to the surface. It is colder, saltier and holds less oxygen, so watch the temperature and oxygen dip here until the ship reaches open water in the Strait of Georgia."
+      "text": "Strong currents through Active Pass mix deep water up to the surface. That water is often colder and saltier and holds less oxygen, so watch the temperature and oxygen dip in the pass."
     }
   },
   "strait-of-georgia": {

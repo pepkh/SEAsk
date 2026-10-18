@@ -62,3 +62,7 @@
 .dark .body {
   color: var(--body-on-dark);
 }
+
+.dark .source {
+  color: var(--muted-on-dark);
+}

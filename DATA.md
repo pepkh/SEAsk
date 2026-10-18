@@ -1,6 +1,7 @@
 # Data Guide
 
-This document explains where our data lives and what is in the shared Neon Postgres database.
+This document explains where our data lives and what is in the shared Neon Postgres database. For where each
+value on screen comes from, and the licence and credit of every provider, see [SOURCES.md](SOURCES.md).
 
 ---
 
@@ -198,7 +199,7 @@ writes only its own tables. Served by `/bridge/{date}/*` and `/route/climatology
 - **Do not use `pitch`:** it swings ±5° (standard deviation) even at the berth, around −2°. `roll` (±4.6°, largest in the Active Pass turns) and `heave` look right.
 - **`magnetic_heading`** is off by up to ~60° (compass deviation). Use `heading` (NAV true heading).
 - Barometric pressure, air temperature and magnetic heading are sampled at 2 Hz in the raw data. `combined` resamples everything to 1 row per second.
-- **IONA wind is stuck:** the Iona anemometer (ONC `IONA` / WINDMONITOR) reads 0.0 m/s in 98% of samples on 2026-08-17 while its vane still turns. The bridge does not use it: measured wind comes from Environment and Climate Change Canada stations (`/bridge/{date}/windobs`, about 50 stations, incl. the Tsawwassen ferry terminal), the Open-Meteo model elsewhere. On 2026-08-17 the model runs a little below the stations (day means 3.5–5.5 kn modelled vs 4.2–7.7 kn measured at Tsawwassen, Victoria Airport, Saturna, Kelp Reefs and Sand Heads). ECCC hourly records have no gusts and step in whole km/h. Data: api.weather.gc.ca (Open Government Licence – Canada).
+- **IONA wind is stuck:** the Iona anemometer (ONC `IONA` / WINDMONITOR) reads 0.0 m/s in 98% of samples on 2026-08-17 while its vane still turns. The bridge does not use it: measured wind comes from Environment and Climate Change Canada stations (`/bridge/{date}/windobs`, about 50 stations, incl. the Tsawwassen ferry terminal), the Open-Meteo model elsewhere. On 2026-08-17 the model runs a little below the stations (day means 3.5–5.5 kn modelled vs 4.2–7.7 kn measured at Tsawwassen, Victoria Airport, Saturna, Kelp Reefs and Sand Heads). ECCC hourly records have no gusts and step in whole km/h. Data: api.weather.gc.ca (ECCC Data Services End-use Licence; credit "Data Source: Environment and Climate Change Canada").
 - **SCVIP chlorophyll** (FLNTU) is QC-flagged bad on 2026-08-17; turbidity there is fine.
 - **CODAR covers 40% of the route:** all of the Strait of Georgia part and 70% of the Tsawwassen zone, but only the east end of Active Pass and none of Swanson Channel or Swartz Bay (the Gulf Islands block the radar). The bridge's currents layer fills the rest from the SalishSeaCast model (UBC, ~500 m), and a global model (Mercator 1/12° via Open-Meteo) beyond the Salish Sea. Over 2026-08-17 the model and the radar agree on mean speed (27 vs 28 cm/s; vector correlation 0.57). In Active Pass the model follows DFO's predicted current closely (correlation 0.98) but peaks at only ~60% of it (2.5 vs 4.7 kn): the pass is narrower than the model's resolution, so the bridge's Active Pass panel uses DFO.
 - **The August climatology is sound for temperature, salinity and oxygen**, not for chlorophyll and turbidity: the ferry's fluorometer had calibration gaps (0.02–0.1 µg/l for weeks in 2021–2024) and biofouling in 2025. The bridge compares chlorophyll and turbidity with today's crossings instead. 2021 has only 9 TSG days (some at 21–23 °C); 2018 oxygen saturation averages 122%.

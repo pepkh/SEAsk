@@ -3,7 +3,6 @@ import { BackButton } from '../../components/BackButton/BackButton'
 import { useGuideSpot } from '../../components/Guide/GuideContext'
 import { LanguageButton } from '../../components/LanguageButton/LanguageButton'
 import { SampleChip } from '../../components/SampleChip/SampleChip'
-import { useClock } from '../../hooks/useClock'
 import { useContent } from '../../hooks/useContent'
 import { useRouteProfile } from '../../hooks/useRouteProfile'
 import { useLanguage } from '../../i18n/LanguageContext'
@@ -40,7 +39,6 @@ export function Lab() {
   const profile = useRouteProfile()
   const tides = useTides()
   const weather = useWeather()
-  const now = useClock()
   const [trackKey, setTrackKey] = useState<TrackKey>('salinity')
   const [tab, setTab] = useState<Tab>('water')
   useGuideSpot('hidden')
@@ -64,7 +62,7 @@ export function Lab() {
             <span className={styles.title}>{t('lab.title')}</span>
             <span className={styles.route}>{sailing.from.name} → {sailing.to.name}</span>
           </div>
-          <SampleChip show={ship.source === 'sample'} />
+          <SampleChip show={ship.source === 'sample' || tides?.source === 'sample' || weather?.sources.weather === 'sample'} />
         </div>
         <div className={styles.tabs} role="tablist" aria-label={t('lab.tabs.label')}>
           {(['water', 'outside'] as const).map((value) => (
@@ -83,12 +81,12 @@ export function Lab() {
           <div className={styles.content} role="tabpanel">
             {tides && (
               <>
-                <TideChart tides={tides.tides} now={now} />
-                <CurrentCard place={tides.currentPlace} current={tides.tides.current} />
+                <TideChart tides={tides.tides} now={tides.at} recorded={tides.source === 'sample'} />
+                {tides.tides.current && <CurrentCard place={tides.currentPlace} current={tides.tides.current} recorded={tides.source === 'sample'} />}
                 <TidesExplainer explainer={tides.tides.explainer} />
               </>
             )}
-            <WeatherPanel weather={weather} />
+            {weather && <WeatherPanel weather={weather} />}
           </div>
         )}
       </section>
@@ -102,7 +100,7 @@ export function Lab() {
         <TrackColourCard tracks={readings.tracks} track={track} onSelect={setTrackKey} className={styles.colourBy} />
         <div className={styles.leftStack}>
           <RouteProfileCard profile={profile} track={track} digits={digits} row={row} sailing={sailing} zones={zones} />
-          <HappeningCard zone={zone} usual={binAt(profile, sailing.fraction)} />
+          <HappeningCard zoneId={sailing.zoneId} zone={zone} usual={binAt(profile, sailing.fraction)} />
         </div>
         <div className={styles.bottomRight}>
           <AboutDataCard />

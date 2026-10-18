@@ -5,6 +5,7 @@ import type { DayData } from '../../../bridge/model'
 import { usePlayheadTime } from '../../../bridge/playhead'
 import { extent, valueAt, type Axis } from '../../../bridge/series'
 import { fmtClock, HOUR, MINUTE } from '../../../bridge/time'
+import { short } from '../../../config/sources'
 import { linePath, type Scale } from '../charts/path'
 import { num, t } from '../strings'
 import { PlayControls } from './PlayControls'
@@ -62,7 +63,7 @@ function rowsOf(day: DayData): Row[] {
     )
   }
   const wind = windAlongTrack(day)
-  if (wind) rows.push({ id: 'wind', label: 'Wind at ship', unit: 'kn', digits: 0, lines: [wind], note: 'Measured near Environment Canada stations, model elsewhere (as on the map)' })
+  if (wind) rows.push({ id: 'wind', label: 'Wind at ship', unit: 'kn', digits: 0, lines: [wind], note: `Measured near ${short('eccc')} stations, ${short('openMeteo')} model elsewhere (as on the map)` })
   const mb = day.tides?.stations.find((x) => x.code === '07528') ?? day.tides?.stations[0]
   if (mb && day.tides) rows.push({ id: 'tide', label: `Tide ${mb.name}`, unit: 'm', digits: 2, lines: [{ axis: day.tides.axis, v: mb.h }] })
   if (day.tides?.current) rows.push({ id: 'cur', label: 'Active Pass', unit: 'kn', digits: 1, lines: [{ axis: day.tides.axis, v: day.tides.current.signedKn }], zero: true, note: '+ flood / − ebb' })

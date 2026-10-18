@@ -1,10 +1,11 @@
+import { SourceLine } from '../../../components/SourceLine/SourceLine'
 import { compassPoint } from '../../../i18n/format'
 import { useLanguage } from '../../../i18n/LanguageContext'
-import type { TidesContent } from '../../../types/content'
+import type { TideView } from '../../../tides/useTides'
 import styles from './TidesCards.module.css'
 
-/** Dark card: tidal current with a compass arrow. */
-export function CurrentCard({ place, current }: { place: string; current: TidesContent['current'] }) {
+/** Dark card: tidal current (DFO prediction) with a compass arrow. `recorded`: the recorded day's prediction. */
+export function CurrentCard({ place, current, recorded }: { place: string; current: NonNullable<TideView['current']>; recorded: boolean }) {
   const { t } = useLanguage()
   return (
     <div className={`${styles.card} ${styles.dark}`}>
@@ -20,8 +21,9 @@ export function CurrentCard({ place, current }: { place: string; current: TidesC
         <span className={styles.eyebrow}>{t('tides.currentIn', { place })}</span>
         <span className={styles.title}>{current.title}</span>
         <span className={styles.body}>
-          {current.text} {t('tides.topSpeed', { n: current.topSpeedKn })}
+          {current.text} {current.topSpeedKn !== null && t('tides.topSpeed', { n: current.topSpeedKn })}
         </span>
+        <SourceLine ids={['dfo']} recorded={recorded} className={styles.source} />
       </div>
     </div>
   )

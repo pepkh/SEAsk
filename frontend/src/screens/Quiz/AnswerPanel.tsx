@@ -1,17 +1,20 @@
 import { Photo } from '../../components/Photo/Photo'
+import { FactSource } from '../../components/SourceLine/FactSource'
 import { useLanguage } from '../../i18n/LanguageContext'
 import type { QuizQuestion } from '../../types/content'
 import styles from './AnswerPanel.module.css'
 
 interface Props {
   question: QuizQuestion
+  /** Place in quiz.json (its sources are under "quiz.{index}") */
+  index: number
   picked: string | null
   isLast: boolean
   onNext: () => void
 }
 
 /** Before an answer: a hint. After an answer: the verdict, the explanation and the next button. */
-export function AnswerPanel({ question, picked, isLast, onNext }: Props) {
+export function AnswerPanel({ question, index, picked, isLast, onNext }: Props) {
   const { t } = useLanguage()
 
   if (picked === null) {
@@ -37,6 +40,7 @@ export function AnswerPanel({ question, picked, isLast, onNext }: Props) {
           {t(correct ? 'quiz.correct' : 'quiz.wrong')}
         </span>
         <span className={styles.why}>{question.why}</span>
+        <FactSource sourceKey={`quiz.${index}`} />
         <button type="button" className={styles.next} onClick={onNext}>
           {t(isLast ? 'quiz.seeScore' : 'quiz.next')}
         </button>

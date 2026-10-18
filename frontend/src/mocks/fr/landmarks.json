@@ -362,7 +362,7 @@
   },
   "saturna-island": {
     "name": "Île Saturna",
-    "fact": "La plus isolée des îles Gulf du Sud. Une grande partie est un parc national.",
+    "fact": "Une île isolée et difficile d'accès. Une grande partie est un parc national.",
     "knowledge": {
       "tagline": "L'île sauvage et lointaine",
       "indigenousName": "",
@@ -514,7 +514,7 @@
   },
   "saanich-peninsula": {
     "name": "Péninsule de Saanich",
-    "fact": "La pointe de l'île de Vancouver. Le terminal de Swartz Bay est à son extrémité nord.",
+    "fact": "Une péninsule de l'île de Vancouver, au nord de Victoria. Le terminal de Swartz Bay est à son extrémité nord.",
     "knowledge": {
       "tagline": "Jardins, foires et étoiles",
       "indigenousName": "",
@@ -567,7 +567,7 @@
   },
   "roberts-bank": {
     "name": "Roberts Bank",
-    "fact": "Un immense port où l'on charge des porte-conteneurs et des trains de charbon."
+    "fact": "Un immense port où l'on décharge les trains de charbon et où accostent les porte-conteneurs."
   },
   "sidney": {
     "name": "Sidney",
@@ -623,7 +623,7 @@
   },
   "swanson-channel": {
     "name": "Chenal Swanson",
-    "fact": "Le chenal entre Saltspring et North Pender. Les épaulards y passent souvent."
+    "fact": "Le chenal entre Saltspring et North Pender. Les épaulards y passent parfois."
   },
   "satellite-channel": {
     "name": "Chenal Satellite",

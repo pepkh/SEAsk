@@ -10,8 +10,8 @@
       "photoId": "cormorant"
     },
     "happening": {
-      "title": "Eau calme au terminal",
-      "text": "Swartz Bay est à l'abri du vent et des vagues. L'eau près du quai se mélange lentement, donc les mesures changent très peu avant le départ."
+      "title": "Capteurs au repos à quai",
+      "text": "Quand le navire est à quai, sa pompe d'eau de mer est arrêtée et les capteurs d'eau font une pause. Les nouvelles mesures reprennent dès que le navire se met en route."
     }
   },
   "swanson-channel": {
@@ -35,13 +35,13 @@
     "adultTitle": "Zone de mélange des marées",
     "lookout": {
       "title": "Cherchez les phoques communs",
-      "text": "Des têtes qui flottent près des rochers à votre gauche",
+      "text": "Des têtes qui flottent près des rives rocheuses du passage",
       "photo": "phoque",
       "photoId": "harbour-seal"
     },
     "happening": {
       "title": "Les marées brassent la colonne d'eau",
-      "text": "De forts courants dans Active Pass remontent l'eau profonde vers la surface. Elle est plus froide, plus salée et contient moins d'oxygène : la température et l'oxygène baissent ici jusqu'à ce que le navire atteigne les eaux libres du détroit de Georgia."
+      "text": "De forts courants dans Active Pass remontent l'eau profonde vers la surface. Cette eau est souvent plus froide et plus salée, et contient moins d'oxygène : surveillez la baisse de la température et de l'oxygène dans le passage."
     }
   },
   "strait-of-georgia": {

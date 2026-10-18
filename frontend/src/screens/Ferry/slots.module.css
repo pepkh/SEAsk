@@ -26,6 +26,12 @@
   color: var(--body);
 }
 
+.text .credit {
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
 .icon {
   width: 82px;
   height: 66px;

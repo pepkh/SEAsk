@@ -9,7 +9,8 @@ const KN = 3600 / 1852
 
 /**
  * Current through the water column at one ADCP: one arrow per depth bin (direction and speed), surface
- * at the top, with the CODAR surface value as a hollow arrow above for comparison.
+ * at the top, with the surface current at the ship as a hollow arrow above for comparison (CODAR radar where it
+ * measured, else the current model, as in the "Surface current" row).
  */
 export function DepthProfile({ axis, node, t, surface }: { axis: Axis; node: ProfileNode; t: number; surface: { kn: number; towardDeg: number } | null }) {
   const p = framePair(axis, t)
