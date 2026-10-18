@@ -17,8 +17,8 @@ cp .env.example .env.local     # optional: the defaults work with sample data
 npm run dev                    # http://localhost:5173
 ```
 
-With no backend and `VITE_LIVE_DATA=false`, everything runs on the bundled sample data and shows a
-**SAMPLE DATA** chip. For live data, run the backend too (see [`../backend/README.md`](../backend/README.md))
+With no backend and `VITE_LIVE_DATA=false`, the kiosk replays the ferry's real recorded day (17 Aug 2026)
+and says so: "Recorded · 17 Aug 2026" on the ferry card, a **RECORDED** chip in the Lab. For live data, run the backend too (see [`../backend/README.md`](../backend/README.md))
 and set `VITE_LIVE_DATA=true`.
 
 | Command | What it does |
