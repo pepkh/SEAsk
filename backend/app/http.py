@@ -41,23 +41,45 @@ def client() -> httpx.AsyncClient:
     return _client
 
 
-async def get_json(url: str, params: dict[str, Any]) -> tuple[int, Any]:
+async def get_json(url: str, params: dict[str, Any], timeout_s: float | None = None) -> tuple[int, Any]:
     """GET `url` and return `(status, parsed JSON or None)`.
 
+    `timeout_s` overrides HTTP_TIMEOUT_S for slow calls (whole-day reads); None keeps the default.
     Raises `UpstreamError("timeout" | "network")` when no response arrives. The httpx
     exception is dropped (`from None`) because its message and request hold the full URL.
     """
-    try:
-        response = await client().get(url, params=params)
-    except httpx.TimeoutException:
-        raise UpstreamError("timeout") from None
-    except httpx.HTTPError:
-        raise UpstreamError("network") from None
+    response = await _get(url, params, timeout_s)
     try:
         body = response.json()
     except ValueError:
         body = None
     return response.status_code, body
+
+
+async def get_text(url: str, params: dict[str, Any], timeout_s: float | None = None) -> tuple[int, str]:
+    """GET `url` and return `(status, body text)`. Errors as in `get_json`."""
+    response = await _get(url, params, timeout_s)
+    return response.status_code, response.text
+
+
+async def get_bytes(url: str, params: dict[str, Any] | None, timeout_s: float | None = None) -> tuple[int, bytes]:
+    """GET `url` and return `(status, body bytes)` (binary formats). Errors as in `get_json`.
+
+    `params=None` sends the URL's own query string untouched (e.g. ERDDAP's `var[a:b][c]` queries,
+    which are not key=value pairs: httpx would rewrite them when merging params)."""
+    response = await _get(url, params, timeout_s)
+    return response.status_code, response.content
+
+
+async def _get(url: str, params: dict[str, Any] | None, timeout_s: float | None) -> httpx.Response:
+    # Only pass `timeout` when set: `timeout=None` in httpx means no timeout at all.
+    extra = {"timeout": timeout_s} if timeout_s is not None else {}
+    try:
+        return await client().get(url, params=params, **extra)
+    except httpx.TimeoutException:
+        raise UpstreamError("timeout") from None
+    except httpx.HTTPError:
+        raise UpstreamError("network") from None
 
 
 def redact(text: str, *secrets: str) -> str:

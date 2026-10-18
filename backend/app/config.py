@@ -9,6 +9,10 @@ from dotenv import load_dotenv
 
 load_dotenv(Path(__file__).resolve().parents[1] / ".env")
 
+# The open water around Vancouver Island that the bridge map can zoom out to (south, north, west,
+# east): the `global` model currents and the `wide` wind of the bridge datasets cover it.
+OCEAN_AREA = (47.0, 51.0, -129.5, -122.0)
+
 
 def _str(name: str, default: str = "") -> str:
     """The variable's value, or `default` when it is unset or blank."""
@@ -27,6 +31,17 @@ def _float(name: str, default: float) -> float:
 
 def _list(name: str, default: str) -> tuple[str, ...]:
     return tuple(item.strip() for item in _str(name, default).split(",") if item.strip())
+
+
+def _floats(name: str, default: str, count: int) -> tuple[float, ...]:
+    items = _list(name, default)
+    try:
+        values = tuple(float(item) for item in items)
+    except ValueError:
+        raise RuntimeError(f"{name} must be {count} comma-separated numbers") from None
+    if len(values) != count:
+        raise RuntimeError(f"{name} must be {count} comma-separated numbers, got {len(values)}")
+    return values
 
 
 @dataclass(frozen=True)
@@ -55,6 +70,13 @@ class Settings:
     dfo_tide_stations: tuple[str, ...]
     dfo_current_station: str
     dfo_cache_s: float
+    # Captain's bridge screen (/bridge and /api/bridge)
+    bridge_bbox: tuple[float, float, float, float]  # south, north, west, east
+    bridge_wx_grid_deg: float
+    bridge_past_cache_s: float
+    bridge_day_timeout_s: float
+    bridge_live_cache_s: float
+    onc_codar_location_code: str
     # Shared
     http_timeout_s: float
     cors_origins: tuple[str, ...]
@@ -83,6 +105,12 @@ def get_settings() -> Settings:
         dfo_tide_stations=_list("DFO_TIDE_STATIONS", "07270,07528,07590"),
         dfo_current_station=_str("DFO_CURRENT_STATION", "07527"),
         dfo_cache_s=_float("DFO_CACHE_S", 6 * 3600),
+        bridge_bbox=_floats("BRIDGE_BBOX", "48.55,49.35,-123.75,-122.85", 4),  # type: ignore[arg-type]
+        bridge_wx_grid_deg=_float("BRIDGE_WX_GRID_DEG", 0.05),
+        bridge_past_cache_s=_float("BRIDGE_PAST_CACHE_S", 7 * 24 * 3600),
+        bridge_day_timeout_s=_float("BRIDGE_DAY_TIMEOUT_S", 90),
+        bridge_live_cache_s=_float("BRIDGE_LIVE_CACHE_S", 300),
+        onc_codar_location_code=_str("ONC_CODAR_LOCATION_CODE", "SOGCS"),
         http_timeout_s=_float("HTTP_TIMEOUT_S", 10),
         cors_origins=_list("CORS_ORIGINS", "http://localhost:5173,http://localhost:4173"),
     )

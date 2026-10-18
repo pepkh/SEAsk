@@ -43,6 +43,8 @@ All settings are in [`.env.example`](.env.example). Vite reads them at start-up,
 | `VITE_TILES_URL` | `/tiles` | Where the offline map tiles are served from. |
 | `VITE_REPLAY_SPEED` | `1` | Speed of the sample ship feed (10 = demo, 10× faster). |
 | `VITE_LOW_FX` | `false` | `true`: no backdrop blur on the bubbles and the card (for slow kiosk hardware). |
+| `VITE_BRIDGE_DATE` | `2026-08-17` | The recorded day the captain's bridge (`/bridge`) replays. |
+| `VITE_BRIDGE_MODE` | `live` | The bridge opens `live` (the same ship as the kiosk) or in `replay` of `VITE_BRIDGE_DATE` (`/bridge?mode=replay` also works). |
 
 API keys (Ocean Networks Canada, OpenWeatherMap) live only in `backend/.env`. Never put a key in a
 `VITE_` variable: those end up in the browser bundle.
@@ -56,6 +58,7 @@ API keys (Ocean Networks Canada, OpenWeatherMap) live only in `backend/.env`. Ne
 | Dive into the ocean | `/dive` | Sea life in three depth bands, the water under the ship, the seafloor along the route. |
 | Ocean quiz | `/quiz` | Five questions; the diver cheers or wobbles. |
 | Ocean lab | `/lab` | For the curious: every reading, the coloured track, the route profile, tides and weather. |
+| Captain's bridge | `/bridge` | Crew screen, outside the visitor shell (no session, diver or idle prompt). See below. |
 
 - **Bubbles and cards.** If it floats and shines it's a bubble, and you can touch it. If it's flat and still it's
   a card, and it only shows information. Keep to this rule when adding things (`components/Bubble`,
@@ -75,7 +78,48 @@ API keys (Ocean Networks Canada, OpenWeatherMap) live only in `backend/.env`. Ne
 - **The diver** (`components/Guide`) is `public/models/diver.glb`, built from the 3D-print file in `ref/` by
   `scripts/build-diver.py` (`pip install -r scripts/requirements-diver.txt`). It's painted by height in code
   (`DiverModel.tsx`). On the ferry screen it stands in the card's right column (`data-guide-home`); it's drawn by its
-  own layer, so it can still talk and be tapped there. A tap starts a short tour (Next / Skip). If the model can't load, a flat drawing takes its place.
+  own layer, so it can still talk and be tapped there. A tap opens "Ask the diver": a few questions answered with canned text and the live readings (`AskGuide.tsx`, texts in `mocks/{en,fr}/guide-qa.json`); on the ferry screen the first chip starts the short tour (Next / Skip). If the model can't load, a flat drawing takes its place.
+
+## Captain's bridge (`/bridge`)
+
+A data-heavy, Windy-style screen for the crew: everything known about one moment of the day. It
+follows today live (the default) or replays a recorded day (scrub or play at 1×, 60×, 600× or 3600×).
+
+- **Same ship as the kiosk.** Live, the bridge reads the ship through the kiosk's own feed
+  (`api/shipFeed.ts`: `getLatestRow` every second, `getHistory` for the past), so both screens always show
+  the same position: the ONC feed with `VITE_LIVE_DATA=true`, otherwise the sample feed (which both work out
+  from the clock). The header says `LIVE · SAMPLE FEED` when it is the sample.
+
+- **Left:** own ship: SOG / COG / heading and compass, roll, heave and ride comfort, the crossing and
+  ETA, surface water now against "usual here" (ONC Augusts 2017–2025 for temperature, salinity and
+  oxygen, with the 10–90% band; today's crossings for chlorophyll and turbidity), air, pressure trend, ONC QC flags.
+- **Map:** offline tiles (satellite, inverted chart or plain), surface currents or model wind as a
+  colour field with drifting particles (static arrows with reduced motion). Currents are blended per place:
+  the ONC CODAR radar where it measured (the open Strait), else the SalishSeaCast model (Gulf Islands,
+  Haro Strait, Juan de Fuca), else a global model (the open Pacific); the rail says which one is at the ship.
+  Wind works the same way: measured at about 50 Environment Canada stations (arrows on the map; the
+  measurement outweighs the model within ~6 km and fades out by 18 km), the Open-Meteo model elsewhere
+  (fine over the route, coarse over the ocean). The rail shows the wind at the ship as "measured" (with the
+  station) or "model", next to the nearest station's reading; the timeline's wind row is the same value.
+  ◎ zooms out to the Salish Sea and the open Pacific (offline tiles to zoom 8 there). Also the track coloured by a
+  reading, AIS vessels with 6-minute vectors, the Duke Point ferry, ONC observatories, radar sites and
+  tide gauges. Tap a vessel for its CPA / TCPA. Drag, pinch or wheel to move; buttons to fit or follow.
+- **Right:** the Active Pass current and next slack, three tide stations, wind (model and Iona), waves,
+  visibility, sunset, deep water at the VENUS nodes, ADCP currents by depth, the Duke Point ferry's
+  water, and the nearest vessels by CPA.
+- **Timeline:** the crossings and eight readings on one time axis; drag anywhere to scrub (keys:
+  ←/→ 1 min, Shift 10 min, Space plays). Replay shows the whole day; live shows a window that moves with
+  now (2 h back, 1 h of tide, current and wind forecast ahead). Scrubbing back shows "Back to live";
+  playing forward until now goes live again.
+- **Header:** replay / live, layers, basemap, NIGHT (red on black) and **Ask**, a preview of the
+  assistant: canned questions answered with the values at the playhead (`src/qa`,
+  `screens/Bridge/ask/crewQa.ts`). The dots open the data status and every ONC source used that day.
+
+Data: `/bridge/{date}/*` and `/api/bridge/*` (see `backend/README.md`). Without the backend it uses the
+offline copy in `public/data/{date}/` (`backend/scripts/export_bridge_snapshot.py`). Text is English
+only (`screens/Bridge/strings.ts`). The map is a small canvas engine (`src/bridge/map`), not Cesium:
+2D particles and colour fields are cheap there, and a captain expects a north-up chart. Useful
+addresses: `/bridge` (live), `/bridge?mode=replay&t=13:20` (the recorded day from 13:20).
 
 ## Live data and sample data
 
@@ -132,7 +176,8 @@ stacks for phones instead.
 
 ```
 src/
-  api/          backend calls (ship feed and history, weather, tides) and the bundled content loader
+  api/          backend calls (ship feed and history, weather, tides, bridge datasets) and the bundled content loader
+  bridge/       captain's bridge data: day model and decoders, playhead, snapshot, derived values, map engine
   components/   shared UI: Bubble, Card, Peek, ScreenFrame, BackButton, Guide (diver), WaterTransition,
                 LiveBar, StillThere, RisingBubbles, Photo, SampleChip
   config/       env.ts (settings), route.json, terminals.json, landmarks.json, photos.json, tiles.ts
@@ -141,8 +186,9 @@ src/
   layout/       KioskLayout: world, screen, diver, transition and "Still there?" layers
   map/          Cesium map: MapScene, water material, wake, landmarks, camera
   mocks/        sample data and all texts, per language (+ KNOWLEDGE_CHECKLIST.md)
+  qa/           Ask panels: question/answer types, canned-answer provider, useAsk
   scene/        three.js sea scene and the procedural ferry (also used on the map)
-  screens/      Welcome, Ferry, Dive, Quiz, Lab
+  screens/      Welcome, Ferry, Dive, Quiz, Lab, Bridge (crew screen)
   ship/         ShipProvider (polls the feed), TimeShiftProvider (rewind) and route maths
   tides/ weather/   live tides and weather providers
   world/        the 3D world behind the ferry screen

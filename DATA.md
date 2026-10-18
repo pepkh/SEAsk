@@ -165,6 +165,22 @@ sailed), `avg_kn`, `max_kn`, `dwell_before_min` (time at the berth since the pre
 `active_pass_min`, `roll_std`, `max_abs_roll`, mean `sst`, `salinity` (+ `salinity_min`,
 `salinity_max`), `o2_sat`, `chl`, and `tsg_missing` (true for crossing 6).
 
+### Captain's bridge
+
+Built by the scripts listed in `backend/README.md` ("Building the bridge tables"); each script
+writes only its own tables. Served by `/bridge/{date}/*` and `/route/climatology`.
+
+| Table | Rows (2026-08-17) | Contents |
+| --- | --- | --- |
+| `codar_cells` | 6,882 | ONC Strait of Georgia CODAR 1 km grid (93 × 74): `cell_id` (= iy·nx + ix), `ix`, `iy` from the south-west corner, `x_km`, `y_km`, `lat`, `lon` |
+| `codar_totals` | 69,627 | Hourly surface currents 2026-08-16 00Z to 08-18 23Z: `ts`, `cell_id`, `u`, `v` (m/s east / north), `u_err`, `v_err`, `gdop`, `n_radials`, `flag` (1 good, 4 bad raw fit) |
+| `adcp_profiles` | 16,610 | SCVIP (bins 40–285 m) and SEVIP (17–159 m) 150 kHz ADCPs, 600 s ensembles: `node`, `ts` (window start), `bin_depth_m`, `u`, `v` (m/s), `pg`. Cleaned: side-lobe bins, low beam correlation and spikes dropped |
+| `onc_inventory` | 316 | Every ONC location/device category in the bridge box that day: `day`, `location`, `category`, `kind` (scalar / archive / product), `sensors`, `status`, device, depth, `used_by` |
+| `ais_vessels` | 633 | Latest static AIS data per MMSI: name, callsign, IMO, `ship_type`, `type_group`, length, beam, destination, `role` (`own` = 316001269 Spirit of Vancouver Island; `twdp` = 316001245 Queen of Alberni) |
+| `ais_positions` | 89,698 | ONC Iona AIS fixes in the box: `mmsi`, `ts`, `lat`, `lon`, `sog_kn`, `cog_deg`, `heading_deg`, `nav_status`; last fix per minute per vessel, one per 10 min while stationary |
+| `route_climatology` | 1,000 | `"window"` (quote it: reserved word) `aug`, `bin` (the 200 `route_profile` bins), `var` (`sst`, `sal`, `o2Sat`, `chl`, `turb`), `mean`, `p10`, `p90`, `n`, `years` |
+| `bridge_cache` | 3 | Cache of finished past days of tides, weather and stations (the JSON responses). Safe to empty |
+
 ---
 
 ## 4. Things to know about the data
@@ -182,6 +198,10 @@ sailed), `avg_kn`, `max_kn`, `dwell_before_min` (time at the berth since the pre
 - **Do not use `pitch`:** it swings ±5° (standard deviation) even at the berth, around −2°. `roll` (±4.6°, largest in the Active Pass turns) and `heave` look right.
 - **`magnetic_heading`** is off by up to ~60° (compass deviation). Use `heading` (NAV true heading).
 - Barometric pressure, air temperature and magnetic heading are sampled at 2 Hz in the raw data. `combined` resamples everything to 1 row per second.
+- **IONA wind is stuck:** the Iona anemometer (ONC `IONA` / WINDMONITOR) reads 0.0 m/s in 98% of samples on 2026-08-17 while its vane still turns. The bridge does not use it: measured wind comes from Environment and Climate Change Canada stations (`/bridge/{date}/windobs`, about 50 stations, incl. the Tsawwassen ferry terminal), the Open-Meteo model elsewhere. On 2026-08-17 the model runs a little below the stations (day means 3.5–5.5 kn modelled vs 4.2–7.7 kn measured at Tsawwassen, Victoria Airport, Saturna, Kelp Reefs and Sand Heads). ECCC hourly records have no gusts and step in whole km/h. Data: api.weather.gc.ca (Open Government Licence – Canada).
+- **SCVIP chlorophyll** (FLNTU) is QC-flagged bad on 2026-08-17; turbidity there is fine.
+- **CODAR covers 40% of the route:** all of the Strait of Georgia part and 70% of the Tsawwassen zone, but only the east end of Active Pass and none of Swanson Channel or Swartz Bay (the Gulf Islands block the radar). The bridge's currents layer fills the rest from the SalishSeaCast model (UBC, ~500 m), and a global model (Mercator 1/12° via Open-Meteo) beyond the Salish Sea. Over 2026-08-17 the model and the radar agree on mean speed (27 vs 28 cm/s; vector correlation 0.57). In Active Pass the model follows DFO's predicted current closely (correlation 0.98) but peaks at only ~60% of it (2.5 vs 4.7 kn): the pass is narrower than the model's resolution, so the bridge's Active Pass panel uses DFO.
+- **The August climatology is sound for temperature, salinity and oxygen**, not for chlorophyll and turbidity: the ferry's fluorometer had calibration gaps (0.02–0.1 µg/l for weeks in 2021–2024) and biofouling in 2025. The bridge compares chlorophyll and turbidity with today's crossings instead. 2021 has only 9 TSG days (some at 21–23 °C); 2018 oxygen saturation averages 122%.
 
 ---
 
@@ -201,9 +221,18 @@ Locations: `TWSB` (ship systems) and `TWSB.N1` (navigation).
 | --- | --- |
 | Live data | Every sensor in `readings`, about 1 s behind. The backend's `GET /api/ship/latest` reads it (now including `oxygen_saturation`), and `GET /api/ship/history` the last 1 to 180 min of it, one row per 1 to 60 s. |
 | QC flags | `scalardata/location` with `qualityControl=raw` gives a flag per sample. `build_derived.py` reads them for the TSG, OXYSENSOR and TURBCHLFL. |
-| History | TSG data on this route 2001–2011, 2014–2018 and 2020 to now (current Sea-Bird 45 since 2025-10-10). NAV and the other sensors since 2020. |
+| History | TSG data on this route 2001–2011, 2014–2018 and 2020 to now (current Sea-Bird 45 since 2025-10-10). NAV (position) since August 2017 (none in 2019). |
 | Instruments | On 2026-08-17: Hemisphere GNSS (NAV), Sea-Bird TSG 45, WET Labs ECO Triplet (TURBCHLFL), Aanderaa Optode 3835 (OXYSENSOR), Rotronic air temperature, RM Young pressure and compass, PVCS pump control. |
 | Not available | Wind (no wind monitor deployed; the RM Young met station returns no data), relative humidity, transmissometer and the older fluorometers (retired). |
+
+Near the route, the captain's bridge also uses these ONC sources (all checked for 2026-08-17; the
+full list per day is in `onc_inventory`): the Strait of Georgia VENUS nodes **SCVIP** (296 m) and
+**SEVIP** (165 m) — CTD, oxygen, FLNTU / turbidity, current meter and 150 kHz ADCP; **IONA** (Fraser
+mouth) wind, pressure and the AIS receiver; the second ONC ferry **TWDP / TWDP.N1**
+(Tsawwassen–Duke Point: track, TSG, oxygen, optics); and the **SOGCS** CODAR surface currents.
+Reporting that day but not shown: the Saanich Inlet sites (PVIP, YPVPP; the YPVPF float has wind and
+air), IONA air temperature and humidity, and engineering channels. Not reporting that day:
+hydrophones, cameras, the echosounder and the plankton cameras.
 
 ## 7. Island knowledge (draft, to check)
 

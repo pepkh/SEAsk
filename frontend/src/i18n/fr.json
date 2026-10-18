@@ -278,7 +278,7 @@
   },
   "guide": {
     "name": "le plongeur",
-    "label": "Touchez {name} pour une visite",
+    "label": "Touchez {name} pour poser une question",
     "hello": "Bonjour! Je suis votre guide de l'océan.",
     "aboard": "Bienvenue à bord!",
     "prompt": {

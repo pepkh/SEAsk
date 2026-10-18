@@ -10,6 +10,10 @@ interface ImportMetaEnv {
   readonly VITE_MAP_IMAGERY?: string
   readonly VITE_TILES_URL?: string
   readonly VITE_REPLAY_SPEED?: string
+  /** Recorded day the bridge screen replays, YYYY-MM-DD */
+  readonly VITE_BRIDGE_DATE?: string
+  /** replay | live */
+  readonly VITE_BRIDGE_MODE?: string
 }
 
 interface ImportMeta {

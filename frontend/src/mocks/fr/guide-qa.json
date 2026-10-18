@@ -1,0 +1,43 @@
+{
+  "button": "Posez-moi une question",
+  "title": "Demandez au plongeur",
+  "tour": "Faites-moi visiter!",
+  "preview": "Aperçu : d'autres questions bientôt",
+  "close": "Fermer",
+  "noMatch": "Oh, je ne connais pas encore celle-là! Essayez une de ces questions.",
+  "items": [
+    {
+      "id": "brown",
+      "question": "Pourquoi l'eau est-elle brune près de Tsawwassen?",
+      "answer": "C'est le fleuve Fraser! Il apporte de la boue et de l'eau douce des montagnes. En ce moment, la mer ici contient {salinity} grammes de sel par litre. L'océan en contient environ 35!",
+      "fallback": "C'est le fleuve Fraser! Il apporte de la boue et de l'eau douce des montagnes, alors la mer près de Tsawwassen est bien moins salée que l'océan."
+    },
+    {
+      "id": "depth",
+      "question": "Quelle est la profondeur ici?",
+      "answer": "Juste sous nous, la mer fait environ {depth} mètres de profondeur. C'est comme {houses} maisons empilées!",
+      "fallback": "Au milieu du détroit, la mer fait plus de 200 mètres de profondeur. C'est plus haut qu'une tour de 60 étages!"
+    },
+    {
+      "id": "tide",
+      "question": "C'est quoi, la marée?",
+      "answer": "Deux fois par jour, la Lune tire un peu la mer vers le haut, puis la laisse redescendre. Ici, l'eau monte et descend d'environ 3 mètres. C'est plus grand qu'un adulte!"
+    },
+    {
+      "id": "wiggle",
+      "question": "Pourquoi le traversier bouge-t-il dans le passage Active?",
+      "answer": "Le passage Active est étroit et sinueux, avec de forts courants. Le traversier tourne beaucoup et l'eau tourbillonne, alors on se balance un peu. Tenez-vous bien!"
+    },
+    {
+      "id": "onc",
+      "question": "Que mesurent les capteurs du navire?",
+      "answer": "Les capteurs d'Ocean Networks Canada sous le traversier vérifient la mer chaque seconde : sa chaleur, son sel, son oxygène, ses petites plantes et sa clarté. En ce moment, l'eau est à {waterTemp} °C!",
+      "fallback": "Les capteurs d'Ocean Networks Canada sous le traversier vérifient la mer chaque seconde : sa chaleur, son sel, son oxygène, ses petites plantes et sa clarté."
+    },
+    {
+      "id": "life",
+      "question": "Qui vit sous le traversier?",
+      "answer": "Des saumons, des épaulards, des phoques, des méduses, des crabes et de grandes forêts de varech! Et tout au fond, il y a des récifs d'éponges de verre plus vieux que les pyramides."
+    }
+  ]
+}

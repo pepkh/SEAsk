@@ -1,0 +1,314 @@
+/* The map cell is not zoomed (canvas pointer maths in real pixels); the cards on it are. */
+.map {
+  position: relative;
+  overflow: hidden;
+  background: var(--b-surface);
+  border-left: 1px solid var(--b-line);
+  border-right: 1px solid var(--b-line);
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+  touch-action: none;
+  cursor: grab;
+}
+
+.stage:active {
+  cursor: grabbing;
+}
+
+.layer,
+.overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay {
+  pointer-events: none;
+  overflow: visible;
+}
+
+.route {
+  fill: none;
+  stroke: var(--b-ink-2);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 6;
+  stroke-linecap: round;
+  opacity: 0.8;
+}
+
+.terminal {
+  fill: var(--b-ink);
+  stroke: var(--b-plane);
+  stroke-width: 2;
+}
+
+.node {
+  fill: var(--b-series-3);
+  stroke: var(--b-plane);
+  stroke-width: 2;
+}
+
+.radar {
+  fill: none;
+  stroke: var(--b-ink-2);
+  stroke-width: 1.5;
+}
+
+.gauge {
+  fill: var(--b-plane);
+  stroke: var(--b-ink-2);
+  stroke-width: 1.5;
+}
+
+.windStation {
+  fill: var(--b-plane);
+  stroke: var(--b-ink);
+  stroke-width: 1.5;
+}
+
+.windArrow {
+  fill: none;
+  stroke: var(--b-ink);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.north {
+  fill: var(--b-ink);
+}
+
+.scale {
+  fill: none;
+  stroke: var(--b-ink);
+  stroke-width: 2;
+}
+
+.label,
+.labelSmall {
+  font-family: var(--mono);
+  fill: var(--b-ink);
+  paint-order: stroke;
+  stroke: var(--b-plane);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+
+.label {
+  font-size: 12px;
+}
+
+.labelSmall {
+  font-size: 10.5px;
+  fill: var(--b-ink-2);
+}
+
+/* Cards on the map */
+.legend,
+.controls,
+.callout,
+.credits {
+  zoom: var(--ui-scale);
+  position: absolute;
+}
+
+.legend {
+  left: 14px;
+  top: 14px;
+  width: 300px;
+  display: grid;
+  gap: 12px;
+  padding: 12px 14px;
+  background: color-mix(in srgb, var(--b-raised) 92%, transparent);
+  border: 1px solid var(--b-line);
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.legend section {
+  display: grid;
+  gap: 6px;
+}
+
+.legend h4 {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--b-ink-2);
+}
+
+.bar {
+  height: 10px;
+  border-radius: 3px;
+}
+
+.ticks {
+  position: relative;
+  height: 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--b-ink-2);
+}
+
+.ticks span {
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.ticks span:first-child {
+  transform: none;
+}
+
+.ticks span:last-child {
+  transform: translateX(-100%);
+}
+
+.rangeRow {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--b-ink-2);
+}
+
+.note {
+  margin: 0;
+  font-size: 11px;
+  color: var(--b-muted);
+}
+
+.trackKeys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.trackKeys button {
+  border: 1px solid var(--b-line);
+  background: transparent;
+  color: var(--b-ink-2);
+  border-radius: 4px;
+  padding: 3px 7px;
+  font-size: 11px;
+  min-height: 26px;
+}
+
+.trackKeys button[aria-checked='true'] {
+  color: var(--b-ink);
+  background: var(--b-raised-2);
+  border-color: var(--b-ink-2);
+}
+
+.aisKey {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 10px;
+  color: var(--b-ink-2);
+}
+
+.aisKey i {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  margin-right: 6px;
+}
+
+.controls {
+  right: 14px;
+  bottom: 42px;
+  display: grid;
+  gap: 6px;
+}
+
+.controls button {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid var(--b-line);
+  background: color-mix(in srgb, var(--b-raised) 92%, transparent);
+  color: var(--b-ink);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.controls button[aria-pressed='true'] {
+  border-color: var(--b-accent);
+  color: var(--b-accent);
+}
+
+.callout {
+  right: 74px;
+  top: 14px;
+  width: 280px;
+  padding: 12px 14px;
+  background: var(--b-raised);
+  border: 1px solid var(--b-line);
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.callout header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.callout header button {
+  background: transparent;
+  border: 0;
+  font-size: 20px;
+  color: var(--b-ink-2);
+  min-width: 32px;
+  min-height: 32px;
+}
+
+.calloutSub {
+  margin: 2px 0 8px;
+  color: var(--b-ink-2);
+  font-size: 12px;
+}
+
+.callout dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 12px;
+  margin: 0;
+}
+
+.callout dt {
+  color: var(--b-muted);
+}
+
+.callout dd {
+  margin: 0;
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.danger {
+  color: var(--b-critical);
+  font-weight: 600;
+}
+
+.credits {
+  right: 8px;
+  bottom: 6px;
+  max-width: 640px;
+  border: 0;
+  background: color-mix(in srgb, var(--b-plane) 70%, transparent);
+  color: var(--b-ink-2);
+  font-size: 10.5px;
+  padding: 3px 7px;
+  border-radius: 4px;
+  text-align: right;
+}

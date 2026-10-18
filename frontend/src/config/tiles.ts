@@ -15,6 +15,9 @@ export const ROUTE_AREA: Area = { west: -123.6, south: 48.6, east: -122.95, nort
 /** Wider area for distant views: zoom 0–10 only. */
 export const CONTEXT_AREA: Area = { west: -124.2, south: 48.2, east: -122.4, north: 49.5 }
 export const CONTEXT_MAX_ZOOM = 10
+/** The Salish Sea and the open Pacific off Vancouver Island (the bridge map zoomed out): zoom 0–8 only. */
+export const OCEAN_AREA: Area = { west: -129.5, south: 47.0, east: -122.0, north: 51.0 }
+export const OCEAN_MAX_ZOOM = 8
 
 export interface TileLayer {
   dir: string

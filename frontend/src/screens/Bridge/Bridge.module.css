@@ -1,0 +1,74 @@
+/* 1920 × 1080 design: header 56, timeline 272, rails 340 and 400. The map cell is not zoomed. */
+.root {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-rows: calc(56px * var(--ui-scale)) minmax(0, 1fr) calc(272px * var(--ui-scale));
+  grid-template-columns: calc(340px * var(--ui-scale)) minmax(0, 1fr) calc(400px * var(--ui-scale));
+  background: var(--b-plane);
+  color: var(--b-ink);
+  font-family: var(--display);
+  overflow: hidden;
+  opacity: var(--b-dim);
+}
+
+.header {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  zoom: var(--ui-scale);
+}
+
+.left {
+  grid-column: 1;
+  grid-row: 2;
+  zoom: var(--ui-scale);
+  min-height: 0;
+}
+
+.map {
+  grid-column: 2;
+  grid-row: 2;
+  min-width: 0;
+  min-height: 0;
+}
+
+.right {
+  grid-column: 3;
+  grid-row: 2;
+  zoom: var(--ui-scale);
+  min-height: 0;
+}
+
+/* The Ask drawer covers the right rail. */
+.ask {
+  grid-column: 3;
+  grid-row: 2;
+  zoom: var(--ui-scale);
+  min-height: 0;
+}
+
+.timeline {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  zoom: var(--ui-scale);
+  min-width: 0;
+}
+
+/* Below 900 px the kiosk does not scale; stack the bridge too (development on small screens). */
+@media (max-width: 900px) {
+  .root {
+    position: static;
+    min-height: 100%;
+    grid-template-rows: auto 60vh auto auto auto;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .header,
+  .left,
+  .map,
+  .right,
+  .timeline {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}

@@ -1,0 +1,1 @@
+{"days":[{"date":"2026-08-17","t0":"2026-08-17T07:00:00Z","t1":"2026-08-18T07:00:00Z","datasets":{"ship":true,"tides":true,"weather":true,"stations":true,"ocean":true,"currents":true,"traffic":true,"profiles":true,"sources":true}}],"climatology":true,"live":{"ship":true,"currents":true,"ocean":true,"traffic":false,"weather":true,"stations":true,"tides":true}}

@@ -1,7 +1,8 @@
 """Small in-memory async TTL cache.
 
 - One fetch per key at a time (a per-key `asyncio.Lock`): concurrent callers wait for it.
-- Failures (`UpstreamError`) are cached for `ERROR_TTL_S` so a broken upstream is not hammered.
+- Failures (`UpstreamError`) are cached for `ERROR_TTL_S` (or `error_ttl_s`) so a broken upstream is
+  not hammered.
 """
 
 import asyncio
@@ -21,7 +22,9 @@ class TTLCache:
         self._locks: dict[Hashable, asyncio.Lock] = {}
         self._max_entries = max_entries
 
-    async def get(self, key: Hashable, ttl_s: float, fetch: Callable[[], Awaitable[Any]]) -> Any:
+    async def get(
+        self, key: Hashable, ttl_s: float, fetch: Callable[[], Awaitable[Any]], error_ttl_s: float = ERROR_TTL_S
+    ) -> Any:
         """The cached value for `key`, calling `fetch()` when it is missing or expired."""
         entry = self._fresh(key)
         if entry is None:
@@ -31,7 +34,7 @@ class TTLCache:
                     try:
                         value = await fetch()
                     except UpstreamError as exc:
-                        entry = self._store(key, ERROR_TTL_S, None, exc.code)
+                        entry = self._store(key, error_ttl_s, None, exc.code)
                     else:
                         entry = self._store(key, ttl_s, value, None)
         _, value, error = entry
@@ -62,3 +65,9 @@ class TTLCache:
         self._locks = {
             k: lock for k, lock in self._locks.items() if k in self._entries or lock.locked()
         }
+
+    def expire_within(self, key: Hashable, ttl_s: float) -> None:
+        """Shorten a cached entry's life to at most `ttl_s` (e.g. a partial result worth retrying soon)."""
+        entry = self._entries.get(key)
+        if entry is not None:
+            self._entries[key] = (min(entry[0], time.monotonic() + ttl_s), entry[1], entry[2])

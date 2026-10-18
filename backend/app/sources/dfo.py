@@ -20,6 +20,10 @@ Units and conventions, checked on 2026-10-17:
 
 `/stations` resolves each station code once a day; each day of predictions is cached per
 (station, local date) for DFO_CACHE_S. The "now" values are computed per request from that cache.
+
+`tides()` is the `/api/tides` body (nearest station, local HH:MM times). `day()` is the bridge
+`tides` dataset for any local date: every station in DFO_TIDE_STATIONS and the full Active Pass
+current series, with ISO UTC times. Both read the same per-day cache.
 """
 
 import asyncio
@@ -32,6 +36,7 @@ from typing import Any, NoReturn
 from app import health
 from app.cache import TTLCache
 from app.config import Settings
+from app.frames import Axis, dense, rnd
 from app.http import UpstreamError, get_json
 from app.times import LOCAL_TZ, iso_utc, parse_iso
 
@@ -88,10 +93,14 @@ _days = TTLCache(max_entries=64)
 
 def local_day(now: datetime) -> Day:
     """The America/Vancouver day that contains `now`. 23 or 25 hours long on DST days."""
-    today = now.astimezone(LOCAL_TZ).date()
-    start = datetime.combine(today, time(), LOCAL_TZ)
-    end = datetime.combine(today + timedelta(days=1), time(), LOCAL_TZ)
-    return Day(today, start.astimezone(timezone.utc), end.astimezone(timezone.utc))
+    return day_of(now.astimezone(LOCAL_TZ).date())
+
+
+def day_of(d: date) -> Day:
+    """The local day `d`, from local 00:00 to the next local 00:00."""
+    start = datetime.combine(d, time(), LOCAL_TZ)
+    end = datetime.combine(d + timedelta(days=1), time(), LOCAL_TZ)
+    return Day(d, start.astimezone(timezone.utc), end.astimezone(timezone.utc))
 
 
 async def tides(settings: Settings, lat: float, lon: float, now: datetime) -> dict[str, Any]:
@@ -100,21 +109,103 @@ async def tides(settings: Settings, lat: float, lon: float, now: datetime) -> di
     stations = await _tide_stations(settings)
     station = min(stations, key=lambda s: _distance_m(lat, lon, s.lat, s.lon))
     day = local_day(now)
-    tide, current = await asyncio.gather(
-        _days.get(
-            ("tide", station.code, day.date),
-            settings.dfo_cache_s,
-            lambda: _fetch_tide(settings, station, day),
-        ),
-        _current(settings, day, now),
-    )
+    tide, current = await asyncio.gather(_tide(settings, station, day), _current(settings, day, now))
     return {
         "station": {"code": station.code, "name": station.name},
         "date": day.date.isoformat(),
         "stepMin": int(STEP.total_seconds() // 60),
-        **tide,
+        "heights": tide["heights"],
+        "extremes": [{"type": e["type"], "h": e["h"], "at": _hhmm(e["time"])} for e in tide["extremes"]],
         "current": current,
     }
+
+
+async def day(settings: Settings, d: date) -> dict[str, Any]:
+    """The bridge `tides` dataset for the local day `d` (`mode` "replay"; the live route changes it).
+
+    Every station of DFO_TIDE_STATIONS that has predictions, in config order, and the current at
+    DFO_CURRENT_STATION (null when it cannot be read), on one 15-minute axis from local 00:00 to the
+    next local 00:00 inclusive. Raises `UpstreamError("no_data")` when DFO has nothing for the day,
+    or the first error code when nothing could be read.
+    """
+    span = day_of(d)
+    axis = Axis(span.start, int(STEP.total_seconds()), round((span.end - span.start) / STEP) + 1)
+    found, current = await asyncio.gather(
+        asyncio.gather(
+            *(_station_day(settings, code, span) for code in settings.dfo_tide_stations), return_exceptions=True
+        ),
+        _current_day(settings, span, axis),
+    )
+    stations, errors = [], []
+    for result in found:
+        if isinstance(result, UpstreamError):
+            errors.append(result.code)
+        elif isinstance(result, BaseException):
+            raise result
+        else:
+            stations.append(result)
+    if not stations and current is None:
+        codes = [c for c in errors if c != "no_data"]
+        raise UpstreamError(codes[0] if codes else "no_data")
+    return {
+        "dataset": "tides",
+        "mode": "replay",
+        "date": d.isoformat(),
+        **axis.header(),
+        "stations": stations,
+        "current": current,
+        "credit": "Fisheries and Oceans Canada (IWLS)",
+    }
+
+
+async def _station_day(settings: Settings, code: str, span: Day) -> dict[str, Any]:
+    station = await _station(settings, code)
+    tide = await _tide(settings, station, span)
+    return {
+        "code": station.code,
+        "name": station.name,
+        "lat": station.lat,
+        "lon": station.lon,
+        "heights": tide["heights"],
+        "extremes": [{"type": e["type"], "h": e["h"], "t": iso_utc(e["time"])} for e in tide["extremes"]],
+    }
+
+
+async def _current_day(settings: Settings, span: Day, axis: Axis) -> dict[str, Any] | None:
+    """The full current series of the bridge `tides` dataset, or None when it cannot be read."""
+    try:
+        station = await _station(settings, settings.dfo_current_station, current=True)
+        data: CurrentDay = await _days.get(
+            ("current", station.code, span.date),
+            settings.dfo_cache_s,
+            lambda: _fetch_current(settings, station, span),
+        )
+    except UpstreamError:
+        return None
+    kn = dense(axis, ((p.time, p.value) for p in data.speed), 1)
+    toward = dense(axis, data.direction.items(), 0)
+    signed = []
+    for i, speed in enumerate(kn):
+        flooding = _flooding(toward[i], station.flood_deg, data.events, axis.time(i))
+        signed.append(None if speed is None or flooding is None else (speed if flooding else -speed))
+    return {
+        "code": station.code,
+        "station": station.name,
+        "lat": station.lat,
+        "lon": station.lon,
+        "floodDeg": rnd(station.flood_deg, 0),
+        "kn": kn,
+        "towardDeg": [None if v is None else v % 360 for v in toward],
+        "signedKn": signed,
+        "events": [{"type": kind, "t": iso_utc(t), "kn": round(v, 1)} for t, kind, v in data.events],
+    }
+
+
+async def _tide(settings: Settings, station: Station, day: Day) -> dict[str, Any]:
+    """One day of `_fetch_tide`, cached per (station, local date) for DFO_CACHE_S."""
+    return await _days.get(
+        ("tide", station.code, day.date), settings.dfo_cache_s, lambda: _fetch_tide(settings, station, day)
+    )
 
 
 async def _tide_stations(settings: Settings) -> list[Station]:
@@ -177,7 +268,7 @@ async def _fetch_tide(settings: Settings, station: Station, day: Day) -> dict[st
         neighbours = [q.value for q in hilo[max(0, i - 1) : i + 2] if q is not p]
         reference = sum(neighbours) / len(neighbours) if neighbours else mean
         kind = "high" if p.value > reference else "low"
-        extremes.append({"type": kind, "h": round(p.value, 2), "at": _hhmm(p.time)})
+        extremes.append({"type": kind, "h": round(p.value, 2), "time": p.time})
     return {"heights": heights, "extremes": extremes}
 
 

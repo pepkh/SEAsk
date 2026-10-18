@@ -278,7 +278,7 @@
   },
   "guide": {
     "name": "the diver",
-    "label": "Tap {name} for a tour",
+    "label": "Tap {name} to ask a question",
     "hello": "Hi! I'm your ocean guide.",
     "aboard": "Welcome aboard!",
     "prompt": {

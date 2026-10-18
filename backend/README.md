@@ -25,7 +25,7 @@ All settings are described in [`.env.example`](.env.example). Never commit `.env
 | `GET /api/ship/history?minutes=90&step=5` | Ocean Networks Canada | The last `minutes` (1 to 180, default 90: a whole crossing) as `rows` of `ShipRow`, oldest first, one per `step` seconds (1 to 60, default 5), plus `source`, `from`, `to`, `step_s`. Each row is the newest good sample of every sensor in its step, mapped and converted as in `/api/ship/latest`; steps without a position are left out, sensors without a sample in the step are null. Cached for `ONC_HISTORY_CACHE_S` (20 s). Same 503 codes as `/api/ship/latest`. Needs `ONC_TOKEN`. |
 | `GET /api/weather?lat=&lon=` | OpenWeatherMap + Open-Meteo Marine | Point inside the Salish Sea box (lat 47.5 to 50.5, lon -125.5 to -121.5), else 422. Each part is `live` or `unavailable`; 503 `weather_unavailable` if both fail. |
 | `GET /api/tides?lat=&lon=` | DFO IWLS (no key) | Today's tide (local day, America/Vancouver) at the nearest of `DFO_TIDE_STATIONS` and the Active Pass current. Same box as `/api/weather`, else 422. 503 `tides_unavailable` if the tide fails; `current` is null if only the current station fails. |
-| `GET /api/status` | | Per source (`onc`, `openweathermap`, `openmeteo`, `dfo`): `configured`, `ok`, `last_error`, `last_success_at`. |
+| `GET /api/status` | | Per source (`onc`, `openweathermap`, `openmeteo`, `dfo`, `onc_observatories`, `codar`, `openmeteo_forecast`, `salishseacast`, `eccc`): `configured`, `ok`, `last_error`, `last_success_at`. |
 | `GET /trips/stats` | Neon | One row per trip: distance, speed, berth and Active Pass time, roll, mean water values (`crossing_stats`). |
 | `GET /trips/{id}/profile`, `GET /route/profile` | Neon | Water values and depth in 200 parts of the route, for one trip or all trips (`route_profile`). |
 
@@ -106,3 +106,73 @@ The kiosk's sample ship feed (`frontend/src/mocks/common/ship-feed.json`) and ro
   Douglas-Peucker (20 m). `activePassAt`, the zones and the stops are moved onto the new line.
   `--crossing N` starts the round trip at crossing N (the route then comes from its eastbound
   crossing; 3, 5 and 7 leave Swartz Bay by another channel, up to 4 km away).
+
+## Captain's bridge (`/bridge` in the kiosk)
+
+The crew screen replays a whole recorded day (or shows today, live) from these endpoints. Every
+dataset is column-oriented on a regular time axis (`t0` ISO UTC, `stepS`, `n`; every list has `n`
+values, `null` = missing), so the kiosk loads a day once and scrubs it locally. Responses are
+gzipped (`GZipMiddleware`). Replay payloads are built once per process: **restart the API after
+rebuilding a table**.
+
+| Route | Source | Notes |
+| --- | --- | --- |
+| `GET /bridge/days` | Neon | Recorded days and which datasets each has, plus which are available live. |
+| `GET /bridge/{date}/ship?step=10` | Neon `readings` + `readings_derived` | Own ship for the local day (`step` 1 to 60 s; first reading per step): position, SOG/COG/heading, roll/heave, air, pressure, water values, crossing, zone, route fraction, comfort, QC flags. ~0.12 MB gzipped. |
+| `GET /bridge/{date}/tides` | DFO IWLS | 15-min axis (97 frames): every `DFO_TIDE_STATIONS` station (`heights`, ISO `extremes`) and the Active Pass current (`kn`, `towardDeg`, `signedKn` + flood / − ebb, `events`). Any date up to tomorrow (422 `day_out_of_range` after). |
+| `GET /bridge/{date}/weather` | Open-Meteo historical forecast + Marine | 25 hourly frames. Atmosphere (wind, gust, pressure, temperature, cloud, rain, visibility) as [n][cells] on a `BRIDGE_WX_GRID_DEG` grid over `BRIDGE_BBOX` (cell = iy·nLon + ix, iy 0 = south); `wide`: wind and gusts on a coarse grid over 47–51° N, 129.5–122° W; marine (waves, SST, model current in kn toward) at 14 route points. CC BY 4.0. Requests are paced to 500 calls/min; when Open-Meteo breaks off a response on one variable (it streams `Unexpected error while streaming data`), that variable is dropped and the rest asked again. |
+| `GET /bridge/{date}/stations` | ONC `scalardata` | SCVIP and SEVIP (CTD, oxygen, optics, current meter) and IONA (wind, pressure) every 10 min; the Tsawwassen–Duke Point ferry (TWDP.N1 track + TSG, oxygen, optics) every minute as `twdp`. Angles are vector-averaged or newest per step. Finished days only (422 `day_not_finished`). |
+| `GET /bridge/{date}/ocean` | SalishSeaCast (UBC ERDDAP) + Open-Meteo Marine | Model surface currents where the radar can't see, finest layer first: `ssc-fine` (SalishSeaCast, top level 0.5 m, on a 0.006° × 0.009° grid over `BRIDGE_BBOX`), `ssc-wide` (SalishSeaCast, 0.04° × 0.06° over the Salish Sea) and `global` (Mercator 1/12° via Open-Meteo, 0.25° × 0.35° out to 129.5° W). int cm/s east/north, null on land. Replay from the SalishSeaCast hindcast (2007 to ~2 days ago; newer days from its forecast); the model grid is rotated to east/north and regridded with `app/sources/ssc_map.json` (`scripts/build_ssc_map.py`). `?stride=N` thins the SalishSeaCast grids (the snapshot uses 5). ~0.6 MB gzipped; a day is built once (~15 s) and kept in `bridge_cache`. |
+| `GET /bridge/{date}/windobs` | ECCC climate-hourly | Measured wind at every Environment and Climate Change Canada station in 47–51° N, 129.5–122° W (about 50: lightstations, automatic stations, airports, incl. the Tsawwassen ferry terminal): hourly, 25 frames, knots and direction it blows from (calm = 0 kn, direction null), no gusts. The kiosk uses it first near each station and the model elsewhere, like the radar for currents. Finished days only (ECCC publishes about a day later); kept in Neon once three days old. climate-hourly times are Local Standard Time (UTC−8) all year. |
+| `GET /api/bridge/windobs` | ECCC SWOB real-time | Live: the last 3 h at 10 min (19 frames): 10-min mean wind and the highest wind in the 10 min (`gustKn`). Minutely stations fill every frame, hourly ones every 6th (the kiosk holds a reading up to 70 min). Cached 5 min. |
+| `GET /bridge/{date}/currents` | Neon `codar_*` | ONC Strait of Georgia CODAR surface currents, hourly (n = 25), int cm/s on the radar's 1 km grid, cells with data that day only, plus the radar `sites`. |
+| `GET /bridge/{date}/profiles` | Neon `adcp_profiles` | SCVIP and SEVIP 150 kHz ADCP current profiles every 10 min: `binDepthM`, `u`/`v` m/s per bin. |
+| `GET /bridge/{date}/traffic?step=60` | Neon `ais_*` | ONC Iona AIS: each vessel's name, type group, size, `role` (`own` = our ferry, `twdp` = the Duke Point ferry) and fixes (`t` = seconds from `t0`). `step` 60 to 600 (multiple of 60): ~1 MB gzipped at 60 s. |
+| `GET /bridge/{date}/sources` | Neon `onc_inventory` | Every ONC location/device category in the bbox that day, with what it returned and which bridge dataset uses it (`usedBy`). |
+| `GET /route/climatology?window=aug` | Neon `route_climatology` | "Usual" water along the route: mean, p10, p90 and n per route bin for `sst`, `sal`, `o2Sat`, `chl`, `turb` over Aug 3–31 of 2017, 2018 and 2020–2025. |
+| `GET /api/bridge/tides`, `/weather`, `/stations`, `/currents`, `/ocean` | as above + ONC CODAR `.tuv` | Live: the same shapes with `"mode": "live"` and `now`. Tides today; weather 3 h back to 6 h ahead at the replay's resolution (`atmosphere` 0.05°, `wide` 0.25° × 0.35°), each grid read once per 3-hour block (staggered by an hour with the ocean's global currents: ~8.1k Open-Meteo calls a day live, free tier 10k), marine hourly; a failed or degraded part is retried within minutes; stations the last 3 h at 5 min; currents the newest 6 hourly CODAR files (503 `currents_unavailable` with none in 9 h); ocean from the SalishSeaCast forecast (hourly) and the global model (every 3 h). AIS is replay only: ONC publishes it as daily files. |
+
+Errors: 404 `day_not_found`; 503 `neon_not_configured`, `replay_unavailable`, `onc_not_configured`,
+`onc_auth`, `onc_down`, `tides_unavailable`, `weather_unavailable`. Datasets made of several
+upstream parts answer 200 with `parts: {name: "ok" | code}` when at least one part works. Finished
+past days of tides, weather and stations are kept in the Neon table `bridge_cache`, so a restart (or
+a teammate without `ONC_TOKEN`) does not refetch them.
+
+### Building the bridge tables
+
+Run from `backend/` with the script packages installed (`requirements-scripts.txt`). Each script has
+`--dry-run` and prints a summary; each writes only its own tables.
+
+```sh
+.venv/bin/python scripts/build_currents.py --inspect      # then without flags: codar_cells, codar_totals (from frontend/ref/*Totals_Clean.nc)
+.venv/bin/python scripts/build_adcp.py --date 2026-08-17  # orders ONC RADCPTS NetCDF (600 s ensembles) → adcp_profiles
+.venv/bin/python scripts/onc_inventory.py --date 2026-08-17   # ~2 min → onc_inventory
+.venv/bin/python scripts/build_ais.py --peek              # then --date 2026-08-17: both UTC-day AIS files → ais_vessels, ais_positions
+.venv/bin/python scripts/build_climatology.py             # ~12 min the first time (cached in data/climatology/) → route_climatology
+.venv/bin/python scripts/build_ssc_map.py                 # once: SalishSeaCast grid → app/sources/ssc_map.json (regridding and rotation)
+```
+
+### Offline copy for the kiosk
+
+The bridge falls back to `frontend/public/data/{date}/{dataset}.json` when the API is down. The
+files are the exact API responses (ship at 20 s, traffic at 180 s, model currents at stride 5; about 4 MB in total):
+
+```sh
+.venv/bin/python scripts/export_bridge_snapshot.py --date 2026-08-17
+```
+
+### Planned: an assistant (`POST /api/ask`)
+
+The bridge's "Ask" panel and the passenger diver answer canned questions today
+(`frontend/src/qa/mockProvider.ts`), filled with the values on screen. The next step is a real
+assistant behind the same interface (`QaProvider`):
+
+- `POST /api/ask` with `{persona: "crew" | "guide", lang, question, context: {mode, t, snapshot}}`,
+  streaming back `{text, sources[], followUps[]}`.
+- Answers come from **tool calls over the endpoints above** (`conditions_at(t)`,
+  `series(var, from, to, stat)`, `tides_and_current(date)`, `traffic_near(t, r)`, `crossing_stats()`,
+  `route_profile(var)`), not from vector search: the data is numbers in time and space. The small
+  text knowledge (DATA.md findings, zones, species, instrument notes) goes in a cached system prompt.
+- Server-side only (the model key never reaches the browser), with topic limits, a rate limit per
+  kiosk, a kid-safe tone for the diver, "advisory only, not for navigation" for the crew, and the
+  canned answers as the offline fallback.

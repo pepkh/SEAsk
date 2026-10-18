@@ -1,0 +1,65 @@
+{
+  "_comment": [
+    "ONC series of the bridge `stations` dataset. Used by app/sources/onc_stations.py.",
+    "stations: the observatories, in payload order. kind 'node' (seabed instrument platform) or 'shore'. lat, lon and depthM are shown on the map (depthM null on shore).",
+    "series: payload key -> ONC sensor. location defaults to the station code; deviceCategory and sensorCategoryCode are ONC codes (checked against scalardata/location on 2026-08-17).",
+    "unit: target unit, converted from the sensor's unitOfMeasure with onc.py CONVERSIONS. Omit to pass the value through.",
+    "digits: decimals sent.",
+    "aggregate: how samples become one value per step. 'avg' (default) = ONC resampleType=avg at the step. The others read raw samples (paged) and aggregate here: 'mean', 'max' (e.g. gusts), 'newest' (the newest sample in the step: headings and courses) and 'vector' (direction of the mean vector, weighted by the samples of `weight` from the same device, e.g. wind direction weighted by wind speed; unweighted when every weight in the step is 0). ONC's avg breaks angles across 0/360, so angles never use 'avg'.",
+    "twdp: the second ONC ferry (BC Ferries Tsawwassen - Duke Point), one value per stepS (60 s replay). Its NAV device is at TWDP.N1, the water sensors at TWDP. TWDP TEMPSENSOR reads the water intake (same as TSG), so there is no airC."
+  ],
+  "stations": {
+    "SCVIP": {
+      "name": "Strait of Georgia Central (VENUS)", "kind": "node", "lat": 49.0401, "lon": -123.4255, "depthM": 296,
+      "series": {
+        "tempC": {"deviceCategory": "CTD", "sensorCategoryCode": "temperature", "unit": "C", "digits": 3},
+        "sal": {"deviceCategory": "CTD", "sensorCategoryCode": "salinity", "digits": 3},
+        "sigmaT": {"deviceCategory": "CTD", "sensorCategoryCode": "sigma_t", "digits": 3},
+        "soundSpeed": {"deviceCategory": "CTD", "sensorCategoryCode": "sound_speed", "digits": 2},
+        "o2MlL": {"deviceCategory": "OXYSENSOR", "sensorCategoryCode": "oxygen_corrected", "digits": 3},
+        "o2Sat": {"deviceCategory": "OXYSENSOR", "sensorCategoryCode": "oxygen_saturation", "digits": 2},
+        "chl": {"deviceCategory": "FLNTU", "sensorCategoryCode": "chlorophyll", "digits": 2},
+        "turb": {"deviceCategory": "FLNTU", "sensorCategoryCode": "turbidity", "digits": 2},
+        "curEastMs": {"deviceCategory": "CURRENTMETER", "sensorCategoryCode": "current_velocity_beam1_x_east", "unit": "m/s", "digits": 3},
+        "curNorthMs": {"deviceCategory": "CURRENTMETER", "sensorCategoryCode": "current_velocity_beam2_y_north", "unit": "m/s", "digits": 3}
+      }
+    },
+    "SEVIP": {
+      "name": "Strait of Georgia East (VENUS)", "kind": "node", "lat": 49.0431, "lon": -123.3167, "depthM": 165,
+      "series": {
+        "tempC": {"deviceCategory": "CTD", "sensorCategoryCode": "temperature", "unit": "C", "digits": 3},
+        "sal": {"deviceCategory": "CTD", "sensorCategoryCode": "salinity", "digits": 3},
+        "sigmaT": {"deviceCategory": "CTD", "sensorCategoryCode": "sigma_t", "digits": 3},
+        "soundSpeed": {"deviceCategory": "CTD", "sensorCategoryCode": "sound_speed", "digits": 2},
+        "o2MlL": {"deviceCategory": "OXYSENSOR", "sensorCategoryCode": "oxygen_corrected", "digits": 3},
+        "o2Sat": {"deviceCategory": "OXYSENSOR", "sensorCategoryCode": "oxygen_saturation", "digits": 2},
+        "turb": {"deviceCategory": "TURBIDITYMETER", "sensorCategoryCode": "turbidity", "digits": 2}
+      }
+    },
+    "IONA": {
+      "name": "Iona (Fraser River mouth)", "kind": "shore", "lat": 49.2161, "lon": -123.2055, "depthM": null,
+      "series": {
+        "windKn": {"deviceCategory": "WINDMONITOR", "sensorCategoryCode": "windspeed", "unit": "kn", "aggregate": "mean", "digits": 1},
+        "windFromDeg": {"deviceCategory": "WINDMONITOR", "sensorCategoryCode": "wind_direction_corrected", "aggregate": "vector", "weight": "windspeed", "digits": 0},
+        "gustKn": {"deviceCategory": "WINDMONITOR", "sensorCategoryCode": "windspeed", "unit": "kn", "aggregate": "max", "digits": 1},
+        "baroHpa": {"deviceCategory": "BARPRESS", "sensorCategoryCode": "barometric_pressure", "unit": "hPa", "digits": 1}
+      }
+    }
+  },
+  "twdp": {
+    "code": "TWDP", "stepS": 60,
+    "series": {
+      "lat": {"location": "TWDP.N1", "deviceCategory": "NAV", "sensorCategoryCode": "latitude", "digits": 5},
+      "lon": {"location": "TWDP.N1", "deviceCategory": "NAV", "sensorCategoryCode": "longitude", "digits": 5},
+      "hdgDeg": {"location": "TWDP.N1", "deviceCategory": "NAV", "sensorCategoryCode": "heading", "aggregate": "newest", "digits": 0},
+      "cogDeg": {"location": "TWDP.N1", "deviceCategory": "NAV", "sensorCategoryCode": "ship_course", "aggregate": "newest", "digits": 0},
+      "sogKn": {"location": "TWDP.N1", "deviceCategory": "NAV", "sensorCategoryCode": "speed_over_ground", "unit": "kn", "digits": 1},
+      "sstC": {"deviceCategory": "TSG", "sensorCategoryCode": "temperature", "unit": "C", "digits": 2},
+      "sal": {"deviceCategory": "TSG", "sensorCategoryCode": "salinity", "digits": 2},
+      "o2Sat": {"deviceCategory": "OXYSENSOR", "sensorCategoryCode": "oxygen_saturation", "digits": 1},
+      "chl": {"deviceCategory": "TURBCHLFL", "sensorCategoryCode": "chlorophyll", "digits": 2},
+      "turb": {"deviceCategory": "TURBCHLFL", "sensorCategoryCode": "turbidity", "digits": 2},
+      "cdom": {"deviceCategory": "TURBCHLFL", "sensorCategoryCode": "cdom_fluorescence", "digits": 2}
+    }
+  }
+}

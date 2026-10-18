@@ -1,13 +1,18 @@
-# The API (requirements.txt) plus what scripts/build_derived.py needs: the ONC client, the GEBCO
-# NetCDF reader (xarray + scipy) and TEOS-10 seawater density (gsw). The API does not use these.
+# The API (requirements.txt) plus what the scripts need: the ONC client, NetCDF readers (xarray +
+# scipy for GEBCO, h5netcdf + h5py for CODAR and ADCP), TEOS-10 seawater density (gsw) and the AIS
+# decoder (pyais). The API does not use these.
 -r requirements.txt
+attrs==26.1.0
 charset-normalizer==3.5.2
 gsw==3.6.23
+h5netcdf==1.8.1
+h5py==3.16.0
 humanize==4.16.0
 numpy==2.5.4
 onc==2.6.0
 packaging==26.3
 pandas==3.0.6
+pyais==3.3.1
 python-dateutil==2.9.0.post0
 requests==2.34.2
 scipy==1.18.1

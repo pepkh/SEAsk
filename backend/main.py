@@ -4,12 +4,13 @@ from typing import Literal
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
 from pydantic import BaseModel, Field
 from sqlalchemy import text
 
 from app.config import get_settings
 from app.http import start_client, stop_client
-from app.routes import derived, ship, status, tides, weather
+from app.routes import bridge, bridge_history, bridge_ocean, bridge_upstream, derived, ship, status, tides, weather
 from db import get_engine
 
 
@@ -41,6 +42,8 @@ app.add_middleware(
     allow_methods=["GET"],
     allow_headers=["*"],
 )
+# The bridge sends whole days of data (up to ~1 MB of JSON); gzip makes that 3-5 times smaller.
+app.add_middleware(GZipMiddleware, minimum_size=1024)
 
 app.include_router(ship.router)
 app.include_router(weather.router)
@@ -48,6 +51,11 @@ app.include_router(tides.router)
 app.include_router(status.router)
 # Before the `/trips/{trip_id}` route below, so `/trips/stats` is not read as a trip id.
 app.include_router(derived.router)
+app.include_router(bridge.router)
+app.include_router(bridge_upstream.router)
+app.include_router(bridge_upstream.live_router)
+app.include_router(bridge_ocean.router)
+app.include_router(bridge_history.router)
 
 
 class Point(BaseModel):

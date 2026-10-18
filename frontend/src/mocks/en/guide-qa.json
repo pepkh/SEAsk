@@ -1,0 +1,43 @@
+{
+  "button": "Ask me",
+  "title": "Ask the diver",
+  "tour": "Show me around!",
+  "preview": "Preview: more questions coming soon",
+  "close": "Close",
+  "noMatch": "Ooh, I don't know that one yet! Try one of these questions.",
+  "items": [
+    {
+      "id": "brown",
+      "question": "Why is the water brown near Tsawwassen?",
+      "answer": "That's the Fraser River! It brings mud and fresh water down from the mountains. Right now the sea here has {salinity} grams of salt in every litre. The open ocean has about 35!",
+      "fallback": "That's the Fraser River! It brings mud and fresh water down from the mountains, so the sea near Tsawwassen is much less salty than the open ocean."
+    },
+    {
+      "id": "depth",
+      "question": "How deep is it here?",
+      "answer": "Right under us the sea is about {depth} metres deep. That's about {houses} houses stacked on top of each other!",
+      "fallback": "In the middle of the Strait the sea is more than 200 metres deep. That's taller than a 60-storey tower!"
+    },
+    {
+      "id": "tide",
+      "question": "What's a tide?",
+      "answer": "Twice a day the Moon pulls the sea up a little and then lets it drop again. Here the water goes up and down by about 3 metres. That's taller than a grown-up!"
+    },
+    {
+      "id": "wiggle",
+      "question": "Why does the ferry wiggle in Active Pass?",
+      "answer": "Active Pass is narrow and twisty, with strong currents. The ferry turns hard and the water swirls, so we rock a little. Hold on!"
+    },
+    {
+      "id": "onc",
+      "question": "What do the sensors on this ship measure?",
+      "answer": "Ocean Networks Canada sensors under the ferry check the sea every second: how warm it is, how salty, how much oxygen, how many tiny plants and how cloudy. Right now the water is {waterTemp} °C!",
+      "fallback": "Ocean Networks Canada sensors under the ferry check the sea every second: how warm it is, how salty, how much oxygen, how many tiny plants and how cloudy."
+    },
+    {
+      "id": "life",
+      "question": "What lives under the ferry?",
+      "answer": "Salmon, orcas, seals, jellyfish, crabs and big forests of kelp! And deep down there are glass sponge reefs older than the pyramids."
+    }
+  ]
+}

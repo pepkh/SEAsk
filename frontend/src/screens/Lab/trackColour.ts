@@ -8,7 +8,7 @@ export const RAMP = ['#1B5A9C', '#2A8D8C', '#5AB86A', '#F5E58C']
 const hex = (c: string) => [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16))
 
 /** Ramp colour for a value inside the track range (values outside the range use the end colours). */
-export function rampColor(value: number, track: TrackMeta): string {
+export function rampColor(value: number, track: Pick<TrackMeta, 'min' | 'max'>): string {
   const t = Math.min(1, Math.max(0, (value - track.min) / (track.max - track.min))) * (RAMP.length - 1)
   const i = Math.min(RAMP.length - 2, Math.floor(t))
   const [a, b] = [hex(RAMP[i]), hex(RAMP[i + 1])]

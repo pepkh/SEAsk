@@ -1,4 +1,4 @@
-import { Component, lazy, Suspense, useEffect, useRef, type ReactNode } from 'react'
+import { Component, lazy, Suspense, useEffect, useRef, useState, type ReactNode } from 'react'
 import { useLocation } from 'react-router'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { uiScaleFor } from '../../hooks/useUiScale'
@@ -6,6 +6,7 @@ import { useLanguage } from '../../i18n/LanguageContext'
 import { diveCenter } from '../WaterTransition/diveBubble'
 import { DIVE_JUMP_AT, DIVE_SPLASH_AT, levelOf, SURFACE_HOP_AT, TIMING } from '../WaterTransition/levels'
 import { useTransition, type TransitionRun } from '../WaterTransition/TransitionContext'
+import { AskGuide } from './AskGuide'
 import type { DiverMotion } from './DiverModel'
 import { DiverSprite } from './DiverSprite'
 import styles from './Guide.module.css'
@@ -138,7 +139,7 @@ class ModelBoundary extends Component<{ fallback: ReactNode; children: ReactNode
  */
 export function Guide() {
   const { t } = useLanguage()
-  const { spot, line, reaction, tour, startTour, nextTour, endTour, react, say } = useGuide()
+  const { spot, line, reaction, tour, startTour, nextTour, endTour, react, say, hush } = useGuide()
   const { run } = useTransition()
   const { pathname } = useLocation()
   const reduced = useReducedMotion()
@@ -212,20 +213,26 @@ export function Guide() {
     return () => cancelAnimationFrame(raf)
   }, [])
 
+  // Tapping the diver opens its questions (and, on the ferry screen, the tour).
+  const [asking, setAsking] = useState(false)
+  const [askedOn, setAskedOn] = useState(pathname)
+  if (askedOn !== pathname) {
+    setAskedOn(pathname)
+    setAsking(false)
+  }
+
+  const tourOf = (): TourStep[] => [
+    { target: 'now-card', text: t('guide.tour.now') },
+    { target: 'route-map', text: t('guide.tour.map') },
+    { target: 'dive', text: t('guide.tour.dive') },
+    { target: 'quiz', text: t('guide.tour.quiz') },
+  ]
+
   const onTap = () => {
-    if (run) return
-    if (spot === 'hub' && !tour) {
-      const steps: TourStep[] = [
-        { target: 'now-card', text: t('guide.tour.now') },
-        { target: 'route-map', text: t('guide.tour.map') },
-        { target: 'dive', text: t('guide.tour.dive') },
-        { target: 'quiz', text: t('guide.tour.quiz') },
-      ]
-      startTour(steps)
-    } else {
-      react('happy')
-      say(t('guide.hello'), 3000)
-    }
+    if (run || tour) return
+    react('happy')
+    hush()
+    setAsking(!asking)
   }
 
   const sprite = <DiverSprite className={styles.sprite} />
@@ -242,6 +249,24 @@ export function Guide() {
         <button type="button" className={styles.hit} aria-label={t('guide.label', { name: t('guide.name') })} onClick={onTap} disabled={spot === 'hidden'} />
       </div>
       <div ref={speech} className={styles.speech} aria-live="polite">
+        {asking && !line && (
+          <AskGuide
+            onAnswer={(text) => {
+              setAsking(false)
+              react('happy')
+              say(text, 10_000)
+            }}
+            onTour={
+              spot === 'hub'
+                ? () => {
+                    setAsking(false)
+                    startTour(tourOf())
+                  }
+                : undefined
+            }
+            onClose={() => setAsking(false)}
+          />
+        )}
         {line && (
           <div key={line.id} className={styles.say}>
             <span>{line.text}</span>

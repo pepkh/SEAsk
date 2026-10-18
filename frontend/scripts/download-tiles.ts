@@ -8,6 +8,8 @@ import { access, mkdir, writeFile } from 'node:fs/promises'
 import {
   CONTEXT_AREA,
   CONTEXT_MAX_ZOOM,
+  OCEAN_AREA,
+  OCEAN_MAX_ZOOM,
   ROUTE_AREA,
   TILE_LAYERS,
   type Area,
@@ -37,7 +39,7 @@ function tileRange({ west, south, east, north }: Area, z: number) {
   return { x0: x(west), x1: Math.min(n - 1, x(east)), y0: y(north), y1: Math.min(n - 1, y(south)) }
 }
 
-/** Every tile of a layer: the wide area to zoom 10, the route area to the layer maximum. */
+/** Every tile of a layer: the ocean area to zoom 8, the wide area to zoom 10, the route area to the layer maximum. */
 function tilesFor(maxZoom: number): [number, number, number][] {
   const seen = new Set<string>()
   const out: [number, number, number][] = []
@@ -54,6 +56,7 @@ function tilesFor(maxZoom: number): [number, number, number][] {
         }
     }
   }
+  add(OCEAN_AREA, Math.min(OCEAN_MAX_ZOOM, maxZoom))
   add(CONTEXT_AREA, Math.min(CONTEXT_MAX_ZOOM, maxZoom))
   add(ROUTE_AREA, maxZoom)
   return out

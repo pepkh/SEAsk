@@ -155,3 +155,59 @@
     animation: none;
   }
 }
+
+/* "Ask the diver": questions in the speech bubble. The chips are touchable, so they are bubbles. */
+.say.ask {
+  display: grid;
+  gap: calc(10px * var(--ui-scale));
+  pointer-events: auto;
+  max-width: min(calc(440px * var(--ui-scale)), var(--room, 440px));
+}
+
+.askHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(10px * var(--ui-scale));
+}
+
+.askClose {
+  border: 0;
+  background: transparent;
+  font-size: calc(26px * var(--ui-scale));
+  line-height: 1;
+  min-width: calc(44px * var(--ui-scale));
+  min-height: calc(44px * var(--ui-scale));
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.askChips {
+  display: flex;
+  flex-direction: column;
+  gap: calc(8px * var(--ui-scale));
+}
+
+.askChips button {
+  text-align: left;
+  border: 1px solid var(--bubble-rim);
+  background: var(--bubble-fill);
+  box-shadow: var(--bubble-shadow);
+  border-radius: calc(18px * var(--ui-scale));
+  padding: calc(10px * var(--ui-scale)) calc(16px * var(--ui-scale));
+  min-height: calc(48px * var(--ui-scale));
+  font-size: calc(17px * var(--ui-scale));
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.askChips button[data-kind='tour'] {
+  color: var(--accent);
+}
+
+.askPreview {
+  font-size: calc(13px * var(--ui-scale));
+  color: var(--muted);
+  font-weight: 400;
+}

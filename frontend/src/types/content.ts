@@ -1,4 +1,5 @@
 import type { LandmarksContent } from './landmark'
+import type { QaItem } from '../qa/types'
 import type { ReadingKey, TrackKey } from './feed'
 
 /* Static content. Each type is the response of GET /api/{name}?lang=en|fr. */
@@ -94,6 +95,18 @@ export interface QuizContent {
 }
 
 /** Map of content name → response type. */
+/** Questions the diver mascot answers (mocks/{lang}/guide-qa.json). A preview: canned answers. */
+export interface GuideQaContent {
+  button: string
+  title: string
+  /** Chip that starts the guided tour (ferry screen) */
+  tour: string
+  preview: string
+  close: string
+  noMatch: string
+  items: QaItem[]
+}
+
 export interface ContentMap {
   landmarks: LandmarksContent
   zones: ZonesContent
@@ -102,6 +115,7 @@ export interface ContentMap {
   seafloor: SeafloorContent
   tides: TidesContent
   quiz: QuizContent
+  'guide-qa': GuideQaContent
 }
 
 export type ContentName = keyof ContentMap

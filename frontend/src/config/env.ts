@@ -21,3 +21,8 @@ export const LOW_FX = env.VITE_LOW_FX === 'true'
 
 /** The real feed sends one row each second. */
 export const FEED_POLL_MS = 1000
+
+/** Captain's bridge (/bridge): the recorded day it replays. */
+export const BRIDGE_DATE = /^\d{4}-\d{2}-\d{2}$/.test(env.VITE_BRIDGE_DATE ?? '') ? env.VITE_BRIDGE_DATE! : '2026-08-17'
+/** The mode the bridge opens in: live (the same ship as the kiosk) or a replay of BRIDGE_DATE. `?mode=` in the address overrides it. */
+export const BRIDGE_MODE: 'replay' | 'live' = env.VITE_BRIDGE_MODE === 'replay' ? 'replay' : 'live'

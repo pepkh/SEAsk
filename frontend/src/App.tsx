@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router'
 import { KioskLayout } from './layout/KioskLayout'
 import { Dive } from './screens/Dive/Dive'
@@ -6,9 +7,20 @@ import { Lab } from './screens/Lab/Lab'
 import { Quiz } from './screens/Quiz/Quiz'
 import { Welcome } from './screens/Welcome/Welcome'
 
+/** Crew screen, outside the passenger shell and in its own bundle. */
+const Bridge = lazy(() => import('./screens/Bridge/Bridge'))
+
 export default function App() {
   return (
     <Routes>
+      <Route
+        path="bridge"
+        element={
+          <Suspense fallback={null}>
+            <Bridge />
+          </Suspense>
+        }
+      />
       <Route element={<KioskLayout />}>
         <Route index element={<Welcome />} />
         <Route path="ferry" element={<Ferry />} />
